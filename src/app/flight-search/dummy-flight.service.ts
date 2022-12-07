@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Flight } from '../model/flight';
 import { FlightService } from './flight.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DummyFlightService implements FlightService {
   find(from: string, to: string): Observable<Flight[]> {
     const date = new Date().toISOString();
