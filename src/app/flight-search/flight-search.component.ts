@@ -47,6 +47,6 @@ export class FlightSearchComponent {
   }
 
   select(f: Flight): void {
-    this.selectedFlight = { ...f };
+    this.selectedFlight = f;
   }
 }
