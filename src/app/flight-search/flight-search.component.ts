@@ -18,13 +18,11 @@ export class FlightSearchComponent {
   to = 'Paris';
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
-  message = '';
 
   private flightService = inject(FlightService);
 
   search(): void {
     // Reset properties
-    this.message = '';
     this.selectedFlight = undefined;
 
     this.flightService.find(this.from, this.to).subscribe({
@@ -38,6 +36,6 @@ export class FlightSearchComponent {
   }
 
   select(f: Flight): void {
-    this.selectedFlight = { ...f };
+    this.selectedFlight = f;
   }
 }
