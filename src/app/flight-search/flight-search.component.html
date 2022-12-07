@@ -33,8 +33,8 @@
       [class.selected]="f?.id === selectedFlight?.id"
     >
       <td>{{ f.id }}</td>
-      <td>{{ f.from }}</td>
-      <td>{{ f.to }}</td>
+      <td>{{ f.from | city : "short" }}</td>
+      <td>{{ f.to | city : "long" }}</td>
       <td>{{ f.date | date : "dd.MM.yyyy" }}</td>
       <td>
         <a (click)="select(f)">Select</a>
