@@ -5,11 +5,12 @@ import { Flight } from '../model/flight';
 import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../shared/city.pipe';
+import { StatusColorPipe } from '../shared/status-color.pipe';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, CityPipe],
+  imports: [CommonModule, FormsModule, CityPipe, StatusColorPipe],
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
 })
