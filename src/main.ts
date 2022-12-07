@@ -1,9 +1,15 @@
 import { provideHttpClient } from '@angular/common/http';
-import { importProvidersFrom } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
+import { DefaultFlightService } from './app/flight-search/default-flight.service';
+import { FlightService } from './app/flight-search/flight.service';
 
 bootstrapApplication(AppComponent, {
-  providers: [provideHttpClient()],
+  providers: [
+    provideHttpClient(),
+    {
+      provide: FlightService,
+      useClass: DefaultFlightService,
+    },
+  ],
 });
