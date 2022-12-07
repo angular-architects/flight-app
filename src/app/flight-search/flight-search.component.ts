@@ -16,10 +16,15 @@ export class FlightSearchComponent {
   to = 'Paris';
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
+  message = '';
 
   private http = inject(HttpClient);
 
   search(): void {
+    // Reset properties
+    this.message = '';
+    this.selectedFlight = undefined;
+
     const url = 'https://demo.angulararchitects.io/api/flight';
 
     const headers = {
@@ -37,6 +42,27 @@ export class FlightSearchComponent {
       },
       error: (errResp) => {
         console.error('Error loading flights', errResp);
+      },
+    });
+  }
+
+  save(): void {
+    if (!this.selectedFlight) return;
+
+    const url = 'https://demo.angulararchitects.io/api/flight';
+
+    const headers = {
+      Accept: 'application/json',
+    };
+
+    this.http.post<Flight>(url, this.selectedFlight, { headers }).subscribe({
+      next: (flight) => {
+        this.selectedFlight = flight;
+        this.message = 'Update successful!';
+      },
+      error: (errResponse) => {
+        this.message = 'Error on updating the Flight';
+        console.error(this.message, errResponse);
       },
     });
   }
