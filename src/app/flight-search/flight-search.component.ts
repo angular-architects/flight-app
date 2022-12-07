@@ -19,7 +19,6 @@ export class FlightSearchComponent {
   selectedFlight: Flight | undefined;
   message = '';
 
-  private http = inject(HttpClient);
   private flightService = inject(FlightService);
 
   search(): void {
@@ -38,6 +37,6 @@ export class FlightSearchComponent {
   }
 
   select(f: Flight): void {
-    this.selectedFlight = { ...f };
+    this.selectedFlight = f;
   }
 }
