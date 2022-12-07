@@ -5,7 +5,7 @@ import { Flight } from '../model/flight';
 import { ConfigService } from '../shared/config.service';
 import { FlightService } from './flight.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DefaultFlightService implements FlightService {
   private http = inject(HttpClient);
   private configService = inject(ConfigService);
