@@ -6,11 +6,18 @@ import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../shared/city.pipe';
 import { StatusColorPipe } from '../shared/status-color.pipe';
+import { StatusFilterPipe } from '../shared/status-filter.pipe';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, CityPipe, StatusColorPipe],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CityPipe,
+    StatusColorPipe,
+    StatusFilterPipe,
+  ],
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
 })
@@ -20,6 +27,7 @@ export class FlightSearchComponent {
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
   message = '';
+  onlyDelayed = false;
 
   private flightService = inject(FlightService);
 
@@ -39,6 +47,6 @@ export class FlightSearchComponent {
   }
 
   select(f: Flight): void {
-    this.selectedFlight = { ...f };
+    this.selectedFlight = f;
   }
 }

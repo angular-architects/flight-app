@@ -12,6 +12,16 @@
     <input [(ngModel)]="to" name="to" class="form-control" />
   </div>
 
+  <div class="form-group mt20">
+    <input
+      type="checkbox"
+      [(ngModel)]="onlyDelayed"
+      name="onlyDelayed"
+      id="onlyDelayed"
+    />
+    <label class="ml10" for="onlyDelayed">Only Delayed</label>
+  </div>
+
   <div class="form-group">
     <button (click)="search()" class="btn btn-default">Search</button>
   </div>
@@ -24,12 +34,13 @@
       <th>From</th>
       <th>To</th>
       <th>Date</th>
+      <th>Delayed</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr
-      *ngFor="let f of flights"
+      *ngFor="let f of flights | statusFilter : onlyDelayed"
       [class.selected]="f?.id === selectedFlight?.id"
     >
       <td>{{ f.id }}</td>
@@ -37,6 +48,9 @@
       <td>{{ f.to | city : "long" }}</td>
       <td [ngStyle]="{ color: f.delayed | statusColor }">
         {{ f.date | date : "dd.MM.yyyy" }}
+      </td>
+      <td>
+        {{ f.delayed }}
       </td>
       <td>
         <a (click)="select(f)">Select</a>
