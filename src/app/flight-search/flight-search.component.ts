@@ -2,26 +2,25 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Flight } from '../model/flight';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
 })
 export class FlightSearchComponent {
-  from = '';
-  to = '';
+  from = 'London';
+  to = 'Paris';
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
 
   private http = inject(HttpClient);
 
-  ngOnInit(): void {}
-
   search(): void {
-    const url = 'http://www.angular.at/api/flight';
+    const url = 'https://demo.angulararchitects.io/api/flight';
 
     const headers = {
       Accept: 'application/json',

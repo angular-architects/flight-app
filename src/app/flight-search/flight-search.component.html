@@ -5,19 +5,19 @@
 <form>
   <div class="form-group">
     <label>From:</label>
-    <input name="from" class="form-control" />
+    <input [(ngModel)]="from" name="from" class="form-control" />
   </div>
   <div class="form-group">
     <label>To:</label>
-    <input name="to" class="form-control" />
+    <input [(ngModel)]="to" name="to" class="form-control" />
   </div>
 
   <div class="form-group">
-    <button class="btn btn-default">Search</button>
+    <button (click)="search()" class="btn btn-default">Search</button>
   </div>
 </form>
 
-<table class="table table-condensed">
+<table class="table table-condensed" *ngIf="flights.length > 0">
   <thead>
     <tr>
       <th>Id</th>
@@ -28,18 +28,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+    <tr *ngFor="let f of flights">
+      <td>{{ f.id }}</td>
+      <td>{{ f.from }}</td>
+      <td>{{ f.to }}</td>
+      <td>{{ f.date | date : "dd.MM.yyyy" }}</td>
       <td>
-        <a>Select</a>
+        <a (click)="select(f)">Select</a>
       </td>
     </tr>
   </tbody>
 </table>
 
-<div class="content">
+<div *ngIf="selectedFlight">
   <pre>{{ selectedFlight | json }}</pre>
 </div>
