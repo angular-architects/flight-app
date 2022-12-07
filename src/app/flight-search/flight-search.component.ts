@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Flight } from '../model/flight';
 import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
+import { DummyFlightService } from './dummy-flight.service';
 
 @Component({
   selector: 'app-flight-search',
@@ -11,21 +12,22 @@ import { FlightService } from './flight.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
+  providers: [
+    {
+      provide: FlightService,
+      useClass: DummyFlightService,
+    },
+  ],
 })
 export class FlightSearchComponent {
   from = 'London';
   to = 'Paris';
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
-  message = '';
 
   private flightService = inject(FlightService);
 
   search(): void {
-    // Reset properties
-    this.message = '';
-    this.selectedFlight = undefined;
-
     this.flightService.find(this.from, this.to).subscribe({
       next: (flights) => {
         this.flights = flights;
@@ -37,6 +39,6 @@ export class FlightSearchComponent {
   }
 
   select(f: Flight): void {
-    this.selectedFlight = { ...f };
+    this.selectedFlight = f;
   }
 }
