@@ -21,7 +21,25 @@ export class FlightSearchComponent {
   ngOnInit(): void {}
 
   search(): void {
-    // Method body will be implemented later
+    const url = 'http://www.angular.at/api/flight';
+
+    const headers = {
+      Accept: 'application/json',
+    };
+
+    const params = {
+      from: this.from,
+      to: this.to,
+    };
+
+    this.http.get<Flight[]>(url, { headers, params }).subscribe({
+      next: (flights) => {
+        this.flights = flights;
+      },
+      error: (errResp) => {
+        console.error('Error loading flights', errResp);
+      },
+    });
   }
 
   select(f: Flight): void {
