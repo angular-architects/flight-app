@@ -28,7 +28,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let f of flights">
+    <tr *ngFor="let f of flights" [class.selected]="f === selectedFlight">
       <td>{{ f.id }}</td>
       <td>{{ f.from }}</td>
       <td>{{ f.to }}</td>
@@ -40,6 +40,6 @@
   </tbody>
 </table>
 
-<div class="content">
+<div *ngIf="selectedFlight">
   <pre>{{ selectedFlight | json }}</pre>
 </div>
