@@ -11,17 +11,15 @@ import { Flight } from '../model/flight';
   styleUrls: ['./flight-search.component.css'],
 })
 export class FlightSearchComponent {
-  from = '';
-  to = '';
+  from = 'London';
+  to = 'Paris';
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
 
   private http = inject(HttpClient);
 
-  ngOnInit(): void {}
-
   search(): void {
-    const url = 'http://www.angular.at/api/flight';
+    const url = 'https://demo.angulararchitects.io/api/flight';
 
     const headers = {
       Accept: 'application/json',
