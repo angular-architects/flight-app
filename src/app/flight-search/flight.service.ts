@@ -19,14 +19,4 @@ export class FlightService {
 
     return this.http.get<Flight[]>(url, { headers, params });
   }
-
-  save(flight: Flight): Observable<Flight> {
-    const url = 'https://demo.angulararchitects.io/api/flight';
-
-    const headers = {
-      Accept: 'application/json',
-    };
-
-    return this.http.post<Flight>(url, flight, { headers });
-  }
 }

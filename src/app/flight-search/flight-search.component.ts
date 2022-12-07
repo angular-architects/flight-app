@@ -37,21 +37,6 @@ export class FlightSearchComponent {
     });
   }
 
-  save(): void {
-    if (!this.selectedFlight) return;
-
-    this.flightService.save(this.selectedFlight).subscribe({
-      next: (flight) => {
-        this.selectedFlight = flight;
-        this.message = 'Update successful!';
-      },
-      error: (errResponse) => {
-        this.message = 'Error on updating the Flight';
-        console.error(this.message, errResponse);
-      },
-    });
-  }
-
   select(f: Flight): void {
     this.selectedFlight = { ...f };
   }
