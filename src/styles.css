@@ -1,3 +1,11 @@
+input.ng-dirty.ng-invalid {
+  border-left: darkred 5px solid;
+}
+
+input.ng-dirty.ng-valid {
+  border-left: darkgreen 5px solid;
+}
+
 .selected {
   background-color: moccasin;
 }
