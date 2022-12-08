@@ -4,11 +4,18 @@
   <form #form="ngForm">
     <app-validation-errors
       [errors]="form?.controls?.['from']?.errors ?? {}"
+      field="from"
     ></app-validation-errors>
 
     <div>
       <input name="id" [(ngModel)]="flight.id" />
-      <input name="from" [(ngModel)]="flight.from" required minlength="3" />
+      <input
+        name="from"
+        [(ngModel)]="flight.from"
+        city
+        required
+        minlength="3"
+      />
       <input name="to" [(ngModel)]="flight.to" />
       <input name="date" [(ngModel)]="flight.date" />
     </div>

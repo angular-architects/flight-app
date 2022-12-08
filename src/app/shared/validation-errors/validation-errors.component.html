@@ -8,6 +8,10 @@
   characters.
 </div>
 
+<div *ngIf="errors['city']" class="alert alert-danger">
+  The field '{{ field }}' is not a valid city.
+</div>
+
 <div *ngIf="hasErrors" class="alert alert-danger">
   Internal error object: {{ errors | json }}
 </div>
