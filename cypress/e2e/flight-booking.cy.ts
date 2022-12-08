@@ -28,5 +28,27 @@ describe('Flight Search E2E Test', () => {
     cy.get('button.btn').click();
 
     cy.get('app-flight-card').should('have.length', 3);
+
+    // Check styles
+    cy.get('app-flight-card').first().as('flight-card');
+    cy.get('@flight-card')
+      .find('> div')
+      .should('have.css', 'background-color', 'rgb(255, 255, 255)');
+    cy.get('@flight-card').contains('button', 'Select').click();
+    cy.get('@flight-card')
+      .find('> div')
+      .should('have.css', 'background-color', 'rgb(255, 228, 181)');
+  });
+
+  it('should disable the search button when form is invalid', () => {
+    cy.get('input[name=from]').clear();
+    cy.get('input[name=to]').clear();
+    cy.get('button.btn').should('be.disabled');
+  });
+
+  it('should enable the search button when form is valid', () => {
+    cy.get('input[name=from]').clear().type('London');
+    cy.get('input[name=to]').clear().type('Paris');
+    cy.get('button.btn').should('not.be.disabled');
   });
 });
