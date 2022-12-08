@@ -1,4 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  flush,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import {
   HttpTestingController,
@@ -6,17 +12,18 @@ import {
 } from '@angular/common/http/testing';
 
 import { FlightSearchComponent } from './flight-search.component';
+import { By } from '@angular/platform-browser';
 
 describe('Unit test: flight-search.component', () => {
   let component: FlightSearchComponent;
   let fixture: ComponentFixture<FlightSearchComponent>;
   let ctrl: HttpTestingController;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [FlightSearchComponent],
       providers: [provideHttpClient(), provideHttpClientTesting()],
-    });
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FlightSearchComponent);
     ctrl = TestBed.inject(HttpTestingController);
@@ -72,4 +79,27 @@ describe('Unit test: flight-search.component', () => {
     expect(component.flights.length).toBe(0);
     ctrl.verify();
   });
+
+  function setInput(selector: string, value: string): void {
+    const input = fixture.debugElement.query(By.css(selector)).nativeElement;
+    input.value = value;
+    input.dispatchEvent(new Event('input'));
+    tick();
+  }
+
+  it('should have a disabled search button w/o params', fakeAsync(async () => {
+    tick();
+    // Set values
+    setInput('input[name=from]', '');
+    setInput('input[name=to]', '');
+
+    // Trigger change detection
+    fixture.detectChanges();
+
+    // Get disabled
+    const disabled = fixture.debugElement.query(By.css('button')).nativeElement
+      .disabled;
+
+    expect(disabled).toBeTruthy();
+  }));
 });
