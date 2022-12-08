@@ -7,6 +7,7 @@ import { validateCity } from '../shared/validation/city-validator';
 import { FlightService } from '../flight-search/flight.service';
 import { validateAsyncCity } from '../shared/validation/async-city-validator';
 import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
+import { validateRoundTrip } from '../shared/validation/roundtrip-validator';
 
 @Component({
   selector: 'app-flight-edit-reactive',
@@ -41,6 +42,8 @@ export class FlightEditReactiveComponent {
   });
 
   constructor() {
+    this.form.addValidators(validateRoundTrip);
+
     this.form.patchValue(this.flight);
 
     this.form.valueChanges.subscribe((flightForm) => {
