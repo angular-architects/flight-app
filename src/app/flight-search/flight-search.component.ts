@@ -5,11 +5,12 @@ import { Flight } from '../model/flight';
 import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../shared/city.pipe';
+import { FlightCardComponent } from '../flight-card/flight-card.component';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, CityPipe],
+  imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
 })
@@ -18,13 +19,16 @@ export class FlightSearchComponent {
   to = 'Paris';
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
-  message = '';
+
+  basket: Record<number, boolean> = {
+    3: true,
+    5: true,
+  };
 
   private flightService = inject(FlightService);
 
   search(): void {
     // Reset properties
-    this.message = '';
     this.selectedFlight = undefined;
 
     this.flightService.find(this.from, this.to).subscribe({
@@ -38,6 +42,6 @@ export class FlightSearchComponent {
   }
 
   select(f: Flight): void {
-    this.selectedFlight = { ...f };
+    this.selectedFlight = f;
   }
 }
