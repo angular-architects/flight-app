@@ -6,7 +6,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { delay, map, Observable } from 'rxjs';
-import { FlightService } from 'src/app/flight-search/flight.service';
+import { FlightService } from 'src/app/flight-booking/flight-search/flight.service';
 
 @Directive({
   selector: '[asyncCity]',

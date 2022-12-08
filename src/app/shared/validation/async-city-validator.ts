@@ -1,6 +1,6 @@
 import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
 import { delay, map } from 'rxjs';
-import { FlightService } from 'src/app/flight-search/flight.service';
+import { FlightService } from 'src/app/flight-booking/flight-search/flight.service';
 
 export function validateAsyncCity(
   flightService: FlightService
