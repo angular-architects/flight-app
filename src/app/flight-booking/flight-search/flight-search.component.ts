@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Flight } from '../model/flight';
+import { Flight } from '../../model/flight';
 import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
-import { CityPipe } from '../shared/city.pipe';
+import { CityPipe } from '../../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 
 @Component({

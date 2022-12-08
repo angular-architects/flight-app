@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { Flight } from '../model/flight';
-import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
-import { CityValidatorDirective } from '../shared/validation/city-validator.directive';
-import { AsyncCityValidatorDirective } from '../shared/validation/async-city-validator.directive';
-import { RoundtripValidatorDirective } from '../shared/validation/roundtrip-validator.directive';
+import { Flight } from '../../model/flight';
+import { ValidationErrorsComponent } from '../../shared/validation-errors/validation-errors.component';
+import { CityValidatorDirective } from '../../shared/validation/city-validator.directive';
+import { AsyncCityValidatorDirective } from '../../shared/validation/async-city-validator.directive';
+import { RoundtripValidatorDirective } from '../../shared/validation/roundtrip-validator.directive';
 
 @Component({
   selector: 'app-flight-edit',
