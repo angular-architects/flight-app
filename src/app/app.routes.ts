@@ -1,7 +1,6 @@
 import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
-import { FLIGHT_BOOKING_ROUTES } from './flight-booking/flight-booking.routes';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ConfigService } from './shared/config.service';
@@ -23,7 +22,10 @@ export const APP_ROUTES: Routes = [
       config: () => inject(ConfigService).loaded$,
     },
     children: [
-      ...FLIGHT_BOOKING_ROUTES,
+      {
+        path: 'flight-booking',
+        loadChildren: () => import('./flight-booking/flight-booking.routes'),
+      },
       {
         path: 'about',
         component: AboutComponent,

@@ -17,3 +17,5 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
     component: PassengerSearchComponent,
   },
 ];
+
+export default FLIGHT_BOOKING_ROUTES;
