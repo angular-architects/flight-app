@@ -7,6 +7,7 @@ import { Flight } from '../model/flight';
 import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
 import { CityValidatorDirective } from '../shared/validation/city-validator.directive';
 import { AsyncCityValidatorDirective } from '../shared/validation/async-city-validator.directive';
+import { RoundtripValidatorDirective } from '../shared/validation/roundtrip-validator.directive';
 
 @Component({
   selector: 'app-flight-edit',
@@ -17,6 +18,7 @@ import { AsyncCityValidatorDirective } from '../shared/validation/async-city-val
     ValidationErrorsComponent,
     CityValidatorDirective,
     AsyncCityValidatorDirective,
+    RoundtripValidatorDirective,
   ],
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
