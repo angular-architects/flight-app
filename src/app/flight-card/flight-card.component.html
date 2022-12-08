@@ -22,6 +22,8 @@
       <button (click)="deselect()" *ngIf="selected" class="btn btn-default">
         Remove
       </button>
+
+      <button (click)="edit()" class="btn btn-default">Edit</button>
     </p>
     <ng-content select=".bottom"></ng-content>
   </div>
