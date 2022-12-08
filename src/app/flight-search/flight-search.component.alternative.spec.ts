@@ -8,6 +8,7 @@ import { DummyFlightService } from './dummy-flight.service';
 describe('Alternative Unit test: flight-search.component', () => {
   let component: FlightSearchComponent;
   let fixture: ComponentFixture<FlightSearchComponent>;
+  let flightService: FlightService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -22,6 +23,10 @@ describe('Alternative Unit test: flight-search.component', () => {
     });
 
     fixture = TestBed.createComponent(FlightSearchComponent);
+
+    flightService = TestBed.inject(FlightService);
+    spyOn(flightService, 'find').and.callThrough();
+
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -36,6 +41,7 @@ describe('Alternative Unit test: flight-search.component', () => {
     component.search();
 
     expect(component.flights.length).toBe(3);
+    expect(flightService.find).toHaveBeenCalled();
   });
 
   it('should *not* load flights when user did not enter from and to', () => {
@@ -44,5 +50,6 @@ describe('Alternative Unit test: flight-search.component', () => {
     component.search();
 
     expect(component.flights.length).toBe(0);
+    expect(flightService.find).not.toHaveBeenCalled();
   });
 });
