@@ -12,11 +12,11 @@ describe('Unit test: flight-search.component', () => {
   let fixture: ComponentFixture<FlightSearchComponent>;
   let ctrl: HttpTestingController;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [FlightSearchComponent],
       providers: [provideHttpClient(), provideHttpClientTesting()],
-    });
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FlightSearchComponent);
     ctrl = TestBed.inject(HttpTestingController);
