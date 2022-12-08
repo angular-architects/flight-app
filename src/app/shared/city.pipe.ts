@@ -22,7 +22,7 @@ export class CityPipe implements PipeTransform {
         break;
       case 'Berlin':
         short = 'BER';
-        long = 'Flughafen Berlin Brandenburg - Willy Brandt';
+        long = 'Flughafen Berlin';
         break;
       default:
         short = long = value;
