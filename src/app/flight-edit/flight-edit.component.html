@@ -1,0 +1,29 @@
+<h2>Flight Edit</h2>
+
+<form #form="ngForm">
+  <div *ngIf="!form?.controls?.['from']?.valid" class="alert alert-danger">
+    Validation errors in 'from'.
+  </div>
+  <div
+    *ngIf="form?.controls?.['from']?.hasError('required')"
+    class="alert alert-danger"
+  >
+    The field 'from' is required!
+  </div>
+  <div
+    *ngIf="form?.controls?.['from']?.hasError('minlength')"
+    class="alert alert-danger"
+  >
+    The field 'from' needs to have at least
+    {{form?.controls?.['from']?.errors?.['minlength']}} characters.
+  </div>
+  <div *ngIf="!form?.controls?.['from']?.valid" class="alert alert-danger">
+    Internal error object: {{ form?.controls?.['from']?.errors }}
+  </div>
+
+  <input name="id" />
+  <input name="from" required minlength="3" />
+  <input name="to" />
+  <input name="date" />
+  <input name="delayed" type="checkbox" />
+</form>
