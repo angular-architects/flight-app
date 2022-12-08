@@ -17,34 +17,18 @@
   </div>
 </form>
 
-<table class="table table-condensed" *ngIf="flights.length > 0">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Date</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let f of flights"
-      [class.selected]="f?.id === selectedFlight?.id"
-    >
-      <td>{{ f.id }}</td>
-      <td>{{ f.from | city : "short" }}</td>
-      <td>{{ f.to | city : "long" }}</td>
-      <td>{{ f.date | date : "dd.MM.yyyy" }}</td>
-      <td>
-        <a (click)="select(f)">Select</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div *ngFor="let f of flights" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <app-flight-card
+      [item]="f"
+      [selected]="basket[f.id]"
+      (selectedChange)="basket[f.id] = $event"
+    ></app-flight-card>
+  </div>
+</div>
 
 <p>&nbsp;</p>
 
-<div *ngIf="selectedFlight">
-  <pre>{{ selectedFlight | json }}</pre>
+<div>
+  <pre>{{ basket | json }}</pre>
 </div>
