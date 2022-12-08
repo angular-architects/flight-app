@@ -12,7 +12,7 @@
       <input
         name="from"
         [(ngModel)]="flight.from"
-        city
+        [city]="['Paris', 'London', 'Berlin']"
         required
         minlength="3"
       />
