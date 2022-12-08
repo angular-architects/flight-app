@@ -6,6 +6,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Flight } from '../model/flight';
 import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
 import { CityValidatorDirective } from '../shared/validation/city-validator.directive';
+import { AsyncCityValidatorDirective } from '../shared/validation/async-city-validator.directive';
 
 @Component({
   selector: 'app-flight-edit',
@@ -15,6 +16,7 @@ import { CityValidatorDirective } from '../shared/validation/city-validator.dire
     FormsModule,
     ValidationErrorsComponent,
     CityValidatorDirective,
+    AsyncCityValidatorDirective,
   ],
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
