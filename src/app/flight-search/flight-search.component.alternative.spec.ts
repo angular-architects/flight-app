@@ -1,26 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
-import {
-  HttpTestingController,
-  provideHttpClientTesting,
-} from '@angular/common/http/testing';
 
 import { FlightSearchComponent } from './flight-search.component';
+import { FlightService } from './flight.service';
+import { DummyFlightService } from './dummy-flight.service';
 
-describe('Unit test: flight-search.component', () => {
+describe('Alternative Unit test: flight-search.component', () => {
   let component: FlightSearchComponent;
   let fixture: ComponentFixture<FlightSearchComponent>;
-  let ctrl: HttpTestingController;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [FlightSearchComponent],
-      providers: [provideHttpClient(), provideHttpClientTesting()],
-    }).compileComponents();
+      providers: [
+        provideHttpClient(),
+        {
+          provide: FlightService,
+          useClass: DummyFlightService,
+        },
+      ],
+    });
 
     fixture = TestBed.createComponent(FlightSearchComponent);
-    ctrl = TestBed.inject(HttpTestingController);
-
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -34,34 +35,7 @@ describe('Unit test: flight-search.component', () => {
     component.to = 'Hamburg';
     component.search();
 
-    const req = ctrl.expectOne('/flight?from=Graz&to=Hamburg');
-
-    req.flush([
-      {
-        id: 22,
-        from: 'here',
-        to: 'there',
-        date: '',
-        delayed: false,
-      },
-      {
-        id: 23,
-        from: 'here',
-        to: 'there',
-        date: '',
-        delayed: false,
-      },
-      {
-        id: 23,
-        from: 'here',
-        to: 'there',
-        date: '',
-        delayed: false,
-      },
-    ]);
-
     expect(component.flights.length).toBe(3);
-    ctrl.verify();
   });
 
   it('should *not* load flights when user did not enter from and to', () => {
@@ -70,6 +44,5 @@ describe('Unit test: flight-search.component', () => {
     component.search();
 
     expect(component.flights.length).toBe(0);
-    ctrl.verify();
   });
 });
