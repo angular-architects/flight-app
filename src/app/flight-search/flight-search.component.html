@@ -13,7 +13,13 @@
   </div>
 
   <div class="form-group">
-    <button (click)="search()" class="btn btn-default">Search</button>
+    <button
+      (click)="search()"
+      [disabled]="!from || !to"
+      class="btn btn-default"
+    >
+      Search
+    </button>
   </div>
 </form>
 
