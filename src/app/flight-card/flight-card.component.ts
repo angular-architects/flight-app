@@ -5,6 +5,7 @@ import { initFlight } from '../model/flight';
 import { CityPipe } from '../shared/city.pipe';
 import { StatusToggleComponent } from '../status-toggle/status-toggle.component';
 import { FlightEditComponent } from '../flight-edit/flight-edit.component';
+import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit-reactive.component';
 
 @Component({
   selector: 'app-flight-card',
@@ -33,7 +34,7 @@ export class FlightCardComponent {
   }
 
   edit() {
-    this.dialog.open(FlightEditComponent, {
+    this.dialog.open(FlightEditReactiveComponent, {
       data: { flight: this.item },
     });
   }
