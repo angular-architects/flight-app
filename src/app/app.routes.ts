@@ -1,6 +1,5 @@
 import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
-import { delay, filter } from 'rxjs';
 import { AboutComponent } from './about/about.component';
 import { FLIGHT_BOOKING_ROUTES } from './flight-booking/flight-booking.routes';
 import { HomeComponent } from './home/home.component';

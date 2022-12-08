@@ -9,4 +9,5 @@ import { DefaultFlightService } from './default-flight.service';
 })
 export abstract class FlightService {
   abstract find(from: string, to: string): Observable<Flight[]>;
+  abstract findById(id: string): Observable<Flight>;
 }

@@ -1,5 +1,7 @@
-<div class="p40">
+<div class="p40" *ngIf="flight.id != 0">
   <h2>Flight Edit</h2>
+
+  <div class="mt-10">ShowDetails: {{ showDetails }}</div>
 
   <form #form="ngForm" roundTrip>
     <app-validation-errors
@@ -38,10 +40,6 @@
         type="checkbox"
       />
       <label for="delayed">Delayed</label>
-    </div>
-
-    <div>
-      <button (click)="close()" class="btn btn-default">Close</button>
     </div>
   </form>
 </div>

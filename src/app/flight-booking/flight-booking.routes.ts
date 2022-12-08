@@ -9,7 +9,7 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
     component: FlightSearchComponent,
   },
   {
-    path: 'flight-edit',
+    path: 'flight-edit/:id',
     component: FlightEditComponent,
   },
   {

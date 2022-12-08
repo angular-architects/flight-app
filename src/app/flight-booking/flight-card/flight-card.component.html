@@ -23,7 +23,12 @@
         Remove
       </button>
 
-      <button (click)="edit()" class="btn btn-default">Edit</button>
+      <button
+        [routerLink]="['../flight-edit', item.id, { showDetails: false }]"
+        class="btn btn-default"
+      >
+        Edit
+      </button>
     </p>
     <ng-content select=".bottom"></ng-content>
   </div>

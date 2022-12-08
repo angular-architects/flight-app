@@ -1,13 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { Flight } from '../../model/flight';
+import { Flight, initFlight } from '../../model/flight';
 import { ValidationErrorsComponent } from '../../shared/validation-errors/validation-errors.component';
 import { CityValidatorDirective } from '../../shared/validation/city-validator.directive';
 import { AsyncCityValidatorDirective } from '../../shared/validation/async-city-validator.directive';
 import { RoundtripValidatorDirective } from '../../shared/validation/roundtrip-validator.directive';
+import { ActivatedRoute } from '@angular/router';
+import { FlightService } from '../flight-search/flight.service';
 
 @Component({
   selector: 'app-flight-edit',
@@ -23,19 +24,25 @@ import { RoundtripValidatorDirective } from '../../shared/validation/roundtrip-v
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
 })
-export class FlightEditComponent {
-  dialogRef = inject(MatDialogRef);
-  data = inject<{ flight: Flight }>(MAT_DIALOG_DATA);
+export class FlightEditComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private flightService = inject(FlightService);
 
-  /* 
-    Alternative: 
-    type FlightData = { flight: Flight };
-    data = inject<FlightData>(MAT_DIALOG_DATA);
-  */
+  id = '';
+  showDetails = '';
+  flight = initFlight;
 
-  flight = this.data.flight;
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.id = params.get('id') ?? '';
+      this.showDetails = params.get('showDetails') ?? '';
+      this.load(this.id);
+    });
+  }
 
-  close(): void {
-    this.dialogRef.close();
+  load(id: string): void {
+    this.flightService.findById(id).subscribe((flight) => {
+      this.flight = flight;
+    });
   }
 }

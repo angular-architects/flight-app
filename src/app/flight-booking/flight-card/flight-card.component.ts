@@ -6,11 +6,12 @@ import { CityPipe } from '../../shared/city.pipe';
 import { StatusToggleComponent } from '../../shared/status-toggle/status-toggle.component';
 import { FlightEditComponent } from '../flight-edit/flight-edit.component';
 import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit-reactive.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-flight-card',
   standalone: true,
-  imports: [CommonModule, CityPipe, StatusToggleComponent],
+  imports: [CommonModule, CityPipe, StatusToggleComponent, RouterLink],
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css'],
 })
