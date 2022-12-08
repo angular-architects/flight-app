@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { Flight } from '../model/flight';
+import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
 
 @Component({
   selector: 'app-flight-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ValidationErrorsComponent],
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
 })
