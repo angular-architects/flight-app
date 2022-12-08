@@ -1,0 +1,20 @@
+<div class="p40">
+  <h2>Flight Edit (Reactive)</h2>
+
+  <div class="alert alert-danger" *ngIf="!form.controls.from.valid">
+    {{ form.controls.from.errors | json }}
+  </div>
+
+  <form [formGroup]="form">
+    <input formControlName="id" />
+    <input formControlName="from" />
+    <input formControlName="to" />
+    <input formControlName="date" />
+    <input formControlName="delayed" type="checkbox" />
+  </form>
+
+  <div>
+    <button (click)="save()" class="btn btn-default">Save</button>
+    <button (click)="close()" class="btn btn-secondary">Close</button>
+  </div>
+</div>
