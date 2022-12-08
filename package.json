@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +33,7 @@
     "@angular-devkit/build-angular": "^15.0.0",
     "@angular/cli": "~15.0.0",
     "@angular/compiler-cli": "^15.0.0",
+    "@cypress/schematic": "^2.4.0",
     "@types/jasmine": "~4.3.0",
     "husky": "^8.0.0",
     "jasmine-core": "~4.5.0",
@@ -39,6 +43,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "pretty-quick": "^3.1.3",
-    "typescript": "~4.8.2"
+    "typescript": "~4.8.2",
+    "cypress": "latest"
   }
 }
