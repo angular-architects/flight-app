@@ -8,6 +8,9 @@
   <div class="card-body">
     <p>Flight-No.: #{{ item.id }}</p>
     <p>Date: {{ item.date | date : "dd.MM.yyyy HH:mm" }}</p>
+
+    <ng-content></ng-content>
+
     <p>
       Delayed:
       <app-status-toggle [(status)]="item.delayed"> </app-status-toggle>
