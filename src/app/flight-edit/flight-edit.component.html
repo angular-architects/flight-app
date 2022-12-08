@@ -2,26 +2,9 @@
   <h2>Flight Edit</h2>
 
   <form #form="ngForm">
-    <div *ngIf="!form?.controls?.['from']?.valid" class="alert alert-danger">
-      Validation errors in 'from'.
-    </div>
-    <div
-      *ngIf="form?.controls?.['from']?.hasError('required')"
-      class="alert alert-danger"
-    >
-      The field 'from' is required!
-    </div>
-    <div
-      *ngIf="form?.controls?.['from']?.hasError('minlength')"
-      class="alert alert-danger"
-    >
-      The field 'from' needs to have at least
-      {{form?.controls?.['from']?.errors?.['minlength']?.requiredLength}}
-      characters.
-    </div>
-    <div *ngIf="!form?.controls?.['from']?.valid" class="alert alert-danger">
-      Internal error object: {{ form?.controls?.['from']?.errors | json }}
-    </div>
+    <app-validation-errors
+      [errors]="form?.controls?.['from']?.errors ?? {}"
+    ></app-validation-errors>
 
     <div>
       <input name="id" [(ngModel)]="flight.id" />

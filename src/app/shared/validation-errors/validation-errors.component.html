@@ -1,0 +1,13 @@
+<div *ngIf="errors['required']" class="alert alert-danger">
+  The field '{{ field }}' is required!
+</div>
+
+<div *ngIf="errors['minlength']" class="alert alert-danger">
+  The field '{{ field }}' needs to have at least
+  {{ errors["minlength"]["requiredLength"] }}
+  characters.
+</div>
+
+<div *ngIf="hasErrors" class="alert alert-danger">
+  Internal error object: {{ errors | json }}
+</div>
