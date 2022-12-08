@@ -4,17 +4,21 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Flight } from '../model/flight';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { validateCity } from '../shared/validation/city-validator';
+import { FlightService } from '../flight-search/flight.service';
+import { validateAsyncCity } from '../shared/validation/async-city-validator';
+import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
 
 @Component({
   selector: 'app-flight-edit-reactive',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ValidationErrorsComponent],
   templateUrl: './flight-edit-reactive.component.html',
   styleUrls: ['./flight-edit-reactive.component.css'],
 })
 export class FlightEditReactiveComponent {
-  private dialogRef = inject(MatDialogRef);
+  private flightService = inject(FlightService);
 
+  private dialogRef = inject(MatDialogRef);
   private data = inject<{ flight: Flight }>(MAT_DIALOG_DATA);
   flight = this.data.flight;
 
@@ -29,6 +33,7 @@ export class FlightEditReactiveComponent {
         Validators.minLength(3),
         validateCity(['London', 'Paris', 'Berlin']),
       ],
+      [validateAsyncCity(this.flightService)],
     ],
     to: [''],
     date: [''],
