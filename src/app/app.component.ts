@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { FlightSearchComponent } from './flight-booking/flight-search/flight-search.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NextFlightsModule } from './next-flights/next-flights.module';
@@ -12,6 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NavbarComponent,
     FlightSearchComponent,
     NextFlightsModule,
+    RouterOutlet,
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
