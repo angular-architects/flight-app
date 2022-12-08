@@ -27,6 +27,13 @@ export const APP_ROUTES: Routes = [
         loadChildren: () => import('./flight-booking/flight-booking.routes'),
       },
       {
+        path: 'next-flights',
+        loadChildren: () =>
+          import('./next-flights/next-flights.module').then(
+            (m) => m.NextFlightsModule
+          ),
+      },
+      {
         path: 'about',
         component: AboutComponent,
       },

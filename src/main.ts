@@ -6,7 +6,6 @@ import {
   PreloadAllModules,
   provideRouter,
   withPreloading,
-  withRouterConfig,
 } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
