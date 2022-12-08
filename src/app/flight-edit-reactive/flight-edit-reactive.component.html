@@ -1,9 +1,10 @@
 <div class="p40">
   <h2>Flight Edit (Reactive)</h2>
 
-  <div class="alert alert-danger" *ngIf="!form.controls.from.valid">
-    {{ form.controls.from.errors | json }}
-  </div>
+  <app-validation-errors
+    [errors]="form.controls['from'].errors ?? {}"
+    field="from"
+  ></app-validation-errors>
 
   <form [formGroup]="form">
     <input formControlName="id" />

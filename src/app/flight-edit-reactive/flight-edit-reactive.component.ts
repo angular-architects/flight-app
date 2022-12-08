@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Flight } from '../model/flight';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { validateCity } from '../shared/validation/city-validator';
+import { ValidationErrorsComponent } from '../shared/validation-errors/validation-errors.component';
 
 @Component({
   selector: 'app-flight-edit-reactive',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ValidationErrorsComponent],
   templateUrl: './flight-edit-reactive.component.html',
   styleUrls: ['./flight-edit-reactive.component.css'],
 })
@@ -21,7 +23,14 @@ export class FlightEditReactiveComponent {
 
   form = this.fb.nonNullable.group({
     id: [0],
-    from: ['', [Validators.required, Validators.minLength(3)]],
+    from: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        validateCity(['London', 'Paris', 'Berlin']),
+      ],
+    ],
     to: [''],
     date: [''],
     delayed: [false],
