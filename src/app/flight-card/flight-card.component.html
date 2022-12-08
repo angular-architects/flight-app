@@ -8,7 +8,10 @@
   <div class="card-body">
     <p>Flight-No.: #{{ item.id }}</p>
     <p>Date: {{ item.date | date : "dd.MM.yyyy HH:mm" }}</p>
-    <p [ngStyle]="{ color: item.delayed }">Delayed: {{ item.delayed }}</p>
+    <p>
+      Delayed:
+      <app-status-toggle [(status)]="item.delayed"> </app-status-toggle>
+    </p>
     <p>
       <button (click)="select()" *ngIf="!selected" class="btn btn-default">
         Select

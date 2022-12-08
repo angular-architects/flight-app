@@ -5,3 +5,13 @@
 a {
   cursor: pointer;
 }
+
+.status {
+  text-decoration: underline;
+  color: navy;
+}
+
+.status:hover {
+  text-decoration: underline;
+  color: darkgoldenrod;
+}
