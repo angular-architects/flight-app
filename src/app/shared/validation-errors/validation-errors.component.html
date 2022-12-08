@@ -12,6 +12,10 @@
   The field '{{ field }}' is not a valid city.
 </div>
 
+<div *ngIf="errors['asyncCity']" class="alert alert-danger">
+  The field '{{ field }}' is not a valid (async) city.
+</div>
+
 <div *ngIf="hasErrors" class="alert alert-danger">
   Internal error object: {{ errors | json }}
 </div>

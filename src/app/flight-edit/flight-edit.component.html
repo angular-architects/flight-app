@@ -7,12 +7,17 @@
       field="from"
     ></app-validation-errors>
 
+    <div class="alert alert-info" *ngIf="form?.controls?.['from']?.pending">
+      Validating ...
+    </div>
+
     <div>
       <input name="id" [(ngModel)]="flight.id" />
       <input
         name="from"
         [(ngModel)]="flight.from"
         [city]="['Paris', 'London', 'Berlin']"
+        asyncCity
         required
         minlength="3"
       />
