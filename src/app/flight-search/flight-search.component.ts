@@ -2,12 +2,11 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Flight } from '../model/flight';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
 })
