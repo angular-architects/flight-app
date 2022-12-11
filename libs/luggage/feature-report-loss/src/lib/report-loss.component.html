@@ -1,0 +1,9 @@
+<h1>luggage-report-loss</h1>
+
+<table class="table">
+  <tr *ngFor="let lossReport of lossReportList$ | async">
+    <td>{{ lossReport.id }}</td>
+    <td>{{ lossReport.name }}</td>
+    <td>{{ lossReport.description }}</td>
+  </tr>
+</table>

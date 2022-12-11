@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckinFacade } from '@flight-demo/luggage/domain';
 
-import { FlightService } from '@flight-demo/tickets/domain';
+// import { FlightService } from '@flight-demo/tickets/domain';
 
 @Component({
   standalone: true,

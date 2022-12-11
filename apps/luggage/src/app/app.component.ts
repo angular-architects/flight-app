@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { CheckinComponent } from '@flight-demo/luggage/feature-checkin';
+import { RouterLink } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, CheckinComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink],
   selector: 'flight-demo-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
