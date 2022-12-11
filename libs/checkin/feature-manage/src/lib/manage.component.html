@@ -1,0 +1,8 @@
+<h2>Check-in Now for Your Flights!</h2>
+<table class="table">
+  <tr *ngFor="let ticket of ticketList$ | async">
+    <td>{{ ticket.id }}</td>
+    <td>{{ ticket.name }}</td>
+    <td>{{ ticket.description }}</td>
+  </tr>
+</table>

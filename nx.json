@@ -39,6 +39,9 @@
     },
     "lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "e2e": {
+      "inputs": ["default", "^production"]
     }
   },
   "cli": {
@@ -58,5 +61,6 @@
     "@nrwl/angular:component": {
       "style": "css"
     }
-  }
+  },
+  "defaultProject": "checkin"
 }

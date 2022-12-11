@@ -88,6 +88,10 @@
               {
                 "sourceTag": "domain:tickets",
                 "onlyDependOnLibsWithTags": ["domain:tickets", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:checkin",
+                "onlyDependOnLibsWithTags": ["domain:checkin", "domain:shared"]
               }
             ]
           }

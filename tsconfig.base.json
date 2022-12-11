@@ -20,6 +20,10 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
+      "@flight-demo/checkin/domain": ["libs/checkin/domain/src/index.ts"],
+      "@flight-demo/checkin/feature-manage": [
+        "libs/checkin/feature-manage/src/index.ts"
+      ],
       "@flight-demo/shared/ui-common": [
         "libs/shared/ui-common/src/lib/index.ts"
       ],
