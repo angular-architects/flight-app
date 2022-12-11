@@ -17,7 +17,6 @@ export class FlightSearchComponent {
   to = 'Paris';
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
-  message = '';
 
   basket: Record<number, boolean> = {
     3: true,
@@ -27,8 +26,11 @@ export class FlightSearchComponent {
   private flightService = inject(FlightService);
 
   search(): void {
+    if (!this.from || !this.to) {
+      return;
+    }
+
     // Reset properties
-    this.message = '';
     this.selectedFlight = undefined;
 
     this.flightService.find(this.from, this.to).subscribe({

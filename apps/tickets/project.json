@@ -71,6 +71,8 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
+        "browsers": "ChromeHeadless",
+        "watch": false,
         "polyfills": ["zone.js", "zone.js/testing"],
         "tsConfig": "apps/tickets/tsconfig.spec.json",
         "assets": ["apps/tickets/src/favicon.ico", "apps/tickets/src/assets"],
