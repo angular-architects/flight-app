@@ -16,7 +16,11 @@
         "tsConfig": "apps/luggage/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/luggage/src/favicon.ico", "apps/luggage/src/assets"],
-        "styles": ["apps/luggage/src/styles.scss"],
+        "styles": [
+          "node_modules/@angular-architects/paper-design/assets/css/bootstrap.css",
+          "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
+          "apps/luggage/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {

@@ -1,9 +1,5 @@
 <h1>luggage-checkin</h1>
 
-<table class="table">
-  <tr *ngFor="let luggage of luggageList$ | async">
-    <td>{{ luggage.id }}</td>
-    <td>{{ luggage.name }}</td>
-    <td>{{ luggage.description }}</td>
-  </tr>
-</table>
+<div *ngFor="let luggage of luggageList$ | async">
+  <common-luggage-card [luggage]="luggage"> </common-luggage-card>
+</div>

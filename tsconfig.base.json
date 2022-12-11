@@ -31,6 +31,7 @@
       "@flight-demo/luggage/feature-report-loss": [
         "libs/luggage/feature-report-loss/src/index.ts"
       ],
+      "@flight-demo/luggage/ui-common": ["libs/luggage/ui-common/src/index.ts"],
       "@flight-demo/shared/ui-common": [
         "libs/shared/ui-common/src/lib/index.ts"
       ],
