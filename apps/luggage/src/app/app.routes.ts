@@ -21,3 +21,5 @@ export const APP_ROUTES: Routes = [
       ),
   },
 ];
+
+export default APP_ROUTES;

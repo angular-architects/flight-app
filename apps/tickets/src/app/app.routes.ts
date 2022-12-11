@@ -23,6 +23,11 @@ export const APP_ROUTES: Routes = [
   },
 
   {
+    path: 'luggage',
+    loadChildren: () => loadRemoteModule('luggage', './routes'),
+  },
+
+  {
     path: '',
     resolve: {
       config: () => inject(ConfigService).loaded$,

@@ -6,7 +6,7 @@
   "prefix": "flight-demo",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/luggage",
@@ -21,7 +21,11 @@
           "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
           "apps/luggage/src/styles.scss"
         ],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/luggage/webpack.config.js"
+        },
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -37,7 +41,10 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/luggage/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -51,7 +58,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "luggage:build:production"
@@ -60,12 +67,17 @@
           "browserTarget": "luggage:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "browserTarget": "luggage:build"
+        "browserTarget": "luggage:build",
+        "extraWebpackConfig": "apps/luggage/webpack.config.js"
       }
     },
     "lint": {
