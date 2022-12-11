@@ -14,7 +14,8 @@ a {
   cursor: pointer;
 }
 
-.status {
+.status,
+.status:visited {
   text-decoration: underline;
   color: navy;
 }
@@ -35,4 +36,27 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.nav a,
+.nav a:visited {
+  text-decoration: underline;
+  color: black;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+  color: darkgoldenrod;
+}
+
+.secondary-content {
+  padding: 5px;
 }
