@@ -1,20 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FlightSearchComponent } from './flight-booking/flight-search/flight-search.component';
+import { ConfigService } from '@flight-demo/shared/util-config';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NextFlightsModule } from './next-flights/next-flights.module';
-import { ConfigService } from './shared/config.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   standalone: true,
-  imports: [
-    SidebarComponent,
-    NavbarComponent,
-    FlightSearchComponent,
-    NextFlightsModule,
-    RouterOutlet,
-  ],
+  imports: [SidebarComponent, NavbarComponent, RouterOutlet],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

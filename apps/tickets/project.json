@@ -87,5 +87,6 @@
         "lintFilePatterns": ["apps/tickets/**/*.ts", "apps/tickets/**/*.html"]
       }
     }
-  }
+  },
+  "tags": ["domain:tickets", "type:app"]
 }

@@ -19,7 +19,24 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
-    "paths": {},
+    "paths": {
+      "@flight-demo/shared/ui-common": [
+        "libs/shared/ui-common/src/lib/index.ts"
+      ],
+      "@flight-demo/shared/util-config": [
+        "libs/shared/util-config/src/lib/index.ts"
+      ],
+      "@flight-demo/shared/util-validation": [
+        "libs/shared/util-validation/src/lib/index.ts"
+      ],
+      "@flight-demo/tickets/domain": ["libs/tickets/domain/src/lib/index.ts"],
+      "@flight-demo/tickets/feature-booking": [
+        "libs/tickets/feature-booking/src/lib/index.ts"
+      ],
+      "@flight-demo/tickets/feature-next-flights": [
+        "libs/tickets/feature-next-flights/src/lib/index.ts"
+      ]
+    },
     "rootDir": "."
   },
   "angularCompilerOptions": {

@@ -1,6 +1,7 @@
 {
+  "npmScope": "flight-demo",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "lab200-enterprise-starter"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -18,7 +19,9 @@
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/**/*.spec.[jt]s",
       "!{projectRoot}/karma.conf.js",
-      "!{projectRoot}/.eslintrc.json"
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/jest.config.[jt]s"
     ]
   },
   "targetDefaults": {
@@ -27,7 +30,12 @@
       "inputs": ["production", "^production"]
     },
     "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js"]
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/karma.conf.js",
+        "{workspaceRoot}/jest.preset.js"
+      ]
     },
     "lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
@@ -35,5 +43,20 @@
   },
   "cli": {
     "schematicCollections": ["@angular-eslint/schematics"]
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
   }
 }

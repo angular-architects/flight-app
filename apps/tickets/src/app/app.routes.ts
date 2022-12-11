@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
+import { ConfigService } from '@flight-demo/shared/util-config';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ConfigService } from './shared/config.service';
 
 export const APP_ROUTES: Routes = [
   {
@@ -24,12 +24,15 @@ export const APP_ROUTES: Routes = [
     children: [
       {
         path: 'flight-booking',
-        loadChildren: () => import('./flight-booking/flight-booking.routes'),
+        loadChildren: () =>
+          import('@flight-demo/tickets/feature-booking').then(
+            (m) => m.FLIGHT_BOOKING_ROUTES
+          ),
       },
       {
         path: 'next-flights',
         loadChildren: () =>
-          import('./next-flights/next-flights.module').then(
+          import('@flight-demo/tickets/feature-next-flights').then(
             (m) => m.NextFlightsModule
           ),
       },
