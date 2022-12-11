@@ -8,15 +8,15 @@
   characters.
 </div>
 
-<div *ngIf="errors['city']" class="alert alert-danger">
+<div *ngIf="errors['appCity']" class="alert alert-danger">
   The field '{{ field }}' is not a valid city.
 </div>
 
-<div *ngIf="errors['asyncCity']" class="alert alert-danger">
+<div *ngIf="errors['appAsyncCity']" class="alert alert-danger">
   The field '{{ field }}' is not a valid (async) city.
 </div>
 
-<div *ngIf="errors['roundTrip']" class="alert alert-danger">
+<div *ngIf="errors['appRoundTrip']" class="alert alert-danger">
   Round Trips arn't allowed.
 </div>
 

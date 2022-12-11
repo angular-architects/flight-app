@@ -9,7 +9,7 @@ import { delay, map, Observable } from 'rxjs';
 import { FlightService } from 'src/app/flight-booking/flight-search/flight.service';
 
 @Directive({
-  selector: '[asyncCity]',
+  selector: '[appAsyncCity]',
   standalone: true,
   providers: [
     {
@@ -24,7 +24,7 @@ export class AsyncCityValidatorDirective implements AsyncValidator {
 
   validate(c: AbstractControl): Observable<ValidationErrors | null> {
     return this.flightService.find(c.value, '').pipe(
-      map((flights) => (flights.length > 0 ? null : { asyncCity: true })),
+      map((flights) => (flights.length > 0 ? null : { appAsyncCity: true })),
       delay(4000)
     );
   }

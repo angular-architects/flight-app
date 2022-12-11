@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, delay, filter } from 'rxjs';
+import { BehaviorSubject, filter } from 'rxjs';
 import { Config, initConfig } from './config';
 
 @Injectable({
@@ -18,8 +18,6 @@ export class ConfigService {
   get config(): Config {
     return { ...this._config };
   }
-
-  constructor() {}
 
   loadConfig() {
     this.http.get<Config>('./assets/config.json').subscribe((config) => {

@@ -1,10 +1,9 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { initFlight } from '../../model/flight';
 import { CityPipe } from '../../shared/city.pipe';
 import { StatusToggleComponent } from '../../shared/status-toggle/status-toggle.component';
-import { FlightEditComponent } from '../flight-edit/flight-edit.component';
 import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit-reactive.component';
 import { RouterLink } from '@angular/router';
 
@@ -19,10 +18,8 @@ export class FlightCardComponent {
   private dialog = inject(MatDialog);
 
   @Input() item = initFlight;
-  @Input() selected: boolean = false;
+  @Input() selected = false;
   @Output() selectedChange = new EventEmitter<boolean>();
-
-  ngOnInit() {}
 
   select() {
     this.selected = true;

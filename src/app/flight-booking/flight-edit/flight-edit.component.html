@@ -1,9 +1,9 @@
-<div class="p40" *ngIf="flight.id != 0">
+<div class="p40" *ngIf="flight.id !== 0">
   <h2>Flight Edit</h2>
 
   <div class="mt-10">ShowDetails: {{ showDetails }}</div>
 
-  <form #form="ngForm" roundTrip>
+  <form #form="ngForm" appRoundTrip>
     <app-validation-errors
       [errors]="form?.controls?.['from']?.errors ?? {}"
       field="from"
@@ -23,8 +23,8 @@
       <input
         name="from"
         [(ngModel)]="flight.from"
-        [city]="['Paris', 'London', 'Berlin']"
-        asyncCity
+        [appCity]="['Paris', 'London', 'Berlin']"
+        appAsyncCity
         required
         minlength="3"
       />

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FlightSearchComponent } from './flight-booking/flight-search/flight-search.component';
 import { NavbarComponent } from './navbar/navbar.component';

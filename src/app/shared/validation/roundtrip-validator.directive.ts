@@ -6,10 +6,9 @@ import {
   ValidationErrors,
   Validator,
 } from '@angular/forms';
-import { CityValidatorDirective } from './city-validator.directive';
 
 @Directive({
-  selector: '[roundTrip]',
+  selector: '[appRoundTrip]',
   standalone: true,
   providers: [
     {
@@ -32,7 +31,7 @@ export class RoundtripValidatorDirective implements Validator {
 
     if (fromCtrl.value === toCtrl.value) {
       return {
-        roundTrip: true,
+        appRoundTrip: true,
       };
     }
 
