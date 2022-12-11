@@ -7,7 +7,7 @@
   "prefix": "app",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "options": {
         "outputPath": "dist/apps/tickets",
         "index": "apps/tickets/src/index.html",
@@ -21,7 +21,11 @@
           "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
           "apps/tickets/src/styles.css"
         ],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/tickets/webpack.config.js"
+        },
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -37,7 +41,10 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/tickets/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -51,7 +58,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "tickets:build:production"
@@ -60,12 +67,17 @@
           "browserTarget": "tickets:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4200,
+        "publicHost": "http://localhost:4200"
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "browserTarget": "tickets:build"
+        "browserTarget": "tickets:build",
+        "extraWebpackConfig": "apps/tickets/webpack.config.js"
       }
     },
     "test": {

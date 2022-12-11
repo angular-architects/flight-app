@@ -12,3 +12,5 @@ import { ManageComponent } from '@flight-demo/checkin/feature-manage';
 export class AppComponent {
   title = 'checkin';
 }
+
+export default AppComponent;

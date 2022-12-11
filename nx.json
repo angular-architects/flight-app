@@ -44,9 +44,7 @@
       "inputs": ["default", "^production"]
     }
   },
-  "cli": {
-    "schematicCollections": ["@angular-eslint/schematics"]
-  },
+  "cli": {},
   "generators": {
     "@nrwl/angular:application": {
       "style": "css",
