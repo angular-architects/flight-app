@@ -92,6 +92,10 @@
               {
                 "sourceTag": "domain:checkin",
                 "onlyDependOnLibsWithTags": ["domain:checkin", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:luggage",
+                "onlyDependOnLibsWithTags": ["domain:luggage", "domain:shared"]
               }
             ]
           }

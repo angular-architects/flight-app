@@ -24,6 +24,10 @@
       "@flight-demo/checkin/feature-manage": [
         "libs/checkin/feature-manage/src/index.ts"
       ],
+      "@flight-demo/luggage/domain": ["libs/luggage/domain/src/index.ts"],
+      "@flight-demo/luggage/feature-checkin": [
+        "libs/luggage/feature-checkin/src/index.ts"
+      ],
       "@flight-demo/shared/ui-common": [
         "libs/shared/ui-common/src/lib/index.ts"
       ],
