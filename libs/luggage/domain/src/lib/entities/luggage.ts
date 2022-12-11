@@ -3,3 +3,9 @@ export interface Luggage {
   name: string;
   description: string;
 }
+
+export const initLuggage: Luggage = {
+  id: 0,
+  name: '',
+  description: '',
+};
