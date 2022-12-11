@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManageFacade } from '@flight-demo/checkin/domain';
+import { CityPipe } from '@flight-demo/shared/ui-common';
+import { CityValidatorDirective } from '@flight-demo/shared/util-validation';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CityPipe, CityValidatorDirective],
   selector: 'checkin-manage',
   templateUrl: './manage.component.html',
   styleUrls: ['./manage.component.scss'],
