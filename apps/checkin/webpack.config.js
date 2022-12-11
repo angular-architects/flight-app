@@ -17,4 +17,6 @@ module.exports = withModuleFederationPlugin({
       requiredVersion: 'auto',
     }),
   },
+
+  sharedMappings: ['@flight-demo/shared/util-auth'],
 });

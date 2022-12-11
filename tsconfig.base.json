@@ -35,6 +35,7 @@
       "@flight-demo/shared/ui-common": [
         "libs/shared/ui-common/src/lib/index.ts"
       ],
+      "@flight-demo/shared/util-auth": ["libs/shared/util-auth/src/index.ts"],
       "@flight-demo/shared/util-config": [
         "libs/shared/util-config/src/lib/index.ts"
       ],
