@@ -1,19 +1,17 @@
 import { Routes } from '@angular/router';
-import { provideState } from '@ngrx/store';
-import { provideEffects } from '@ngrx/effects';
 
 import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightLookupComponent } from './flight-lookup/flight-lookup.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
-import { ticketsFeature } from '@flight-demo/tickets/domain';
+import { provideDomain } from '@flight-demo/tickets/domain';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
   {
     path: '',
     component: FlightBookingComponent,
-    providers: [provideState(ticketsFeature), provideEffects()],
+    providers: [provideDomain()],
     children: [
       {
         path: 'flight-lookup',
