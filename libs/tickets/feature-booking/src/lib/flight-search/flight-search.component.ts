@@ -6,7 +6,6 @@ import { CityPipe } from '@flight-demo/shared/ui-common';
 import {
   Flight,
   FlightService,
-  selectFilteredFlights,
   selectFilteredFlightsWithParams,
   ticketsActions,
 } from '@flight-demo/tickets/domain';

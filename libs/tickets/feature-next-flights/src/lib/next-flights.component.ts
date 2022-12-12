@@ -9,6 +9,12 @@ import {
 } from '@angular/core';
 import { NextFlightsService } from './next-flights.service';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { Store } from '@ngrx/store';
+import {
+  selectPassengersWithTickets,
+  selectTicketsWithPassengers,
+  ticketsFeature,
+} from '@flight-demo/tickets/domain';
 
 @Component({
   selector: 'app-next-flights',
@@ -22,6 +28,10 @@ export class NextFlightsComponent implements AfterViewInit {
   injector = inject(Injector);
   nextFlightsService = inject(NextFlightsService);
   flights$ = this.nextFlightsService.load();
+
+  store = inject(Store);
+  tickets = this.store.select(selectTicketsWithPassengers);
+  passengers = this.store.select(selectPassengersWithTickets);
 
   comp: Type<unknown> | undefined;
 

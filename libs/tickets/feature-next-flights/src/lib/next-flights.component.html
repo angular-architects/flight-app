@@ -1,6 +1,12 @@
 <h2>Your Next Flights</h2>
 <pre>{{ flights$ | async | json }}</pre>
 
+<h3>Tickets</h3>
+<pre>{{ tickets | async | json }}</pre>
+
+<h3>Passengers</h3>
+<pre>{{ passengers | async | json }}</pre>
+
 <ng-container content #placeholder></ng-container>
 
 <app-checkin></app-checkin>
