@@ -6,6 +6,7 @@ export const ticketsActions = createActionGroup({
   events: {
     'flights loaded': props<{ flights: Flight[] }>(),
     'update flight': props<{ flight: Flight }>(),
+    'load flights': props<{ from: string; to: string }>(),
     'clear flights': emptyProps(),
   },
 });
