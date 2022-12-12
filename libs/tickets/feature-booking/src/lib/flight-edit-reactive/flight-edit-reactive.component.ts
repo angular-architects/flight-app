@@ -1,13 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   validateCity,
   validateRoundTrip,
   ValidationErrorsComponent,
 } from '@flight-demo/shared/util-validation';
-import { Flight } from '@flight-demo/tickets/domain';
+import { ticketsActions, ticketsFeature } from '@flight-demo/tickets/domain';
+import { Store } from '@ngrx/store';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-flight-edit-reactive',
@@ -16,23 +18,17 @@ import { Flight } from '@flight-demo/tickets/domain';
   styleUrls: ['./flight-edit-reactive.component.css'],
   imports: [CommonModule, ReactiveFormsModule, ValidationErrorsComponent],
 })
-export class FlightEditReactiveComponent {
-  private dialogRef = inject(MatDialogRef);
-  private data = inject<{ flight: Flight }>(MAT_DIALOG_DATA);
-  flight = this.data.flight;
-
+export class FlightEditReactiveComponent implements OnInit {
+  private store = inject(Store);
   private fb = inject(FormBuilder);
+  private route = inject(ActivatedRoute);
+  private flight$ = this.store.select(ticketsFeature.selectFlightToEdit);
+
+  loaded$ = this.flight$.pipe(map((f) => f.id !== 0));
 
   form = this.fb.nonNullable.group({
     id: [0],
-    from: [
-      '',
-      [
-        Validators.required,
-        Validators.minLength(3),
-        validateCity(['London', 'Paris', 'Berlin']),
-      ],
-    ],
+    from: ['', [Validators.required, Validators.minLength(3)]],
     to: [''],
     date: [''],
     delayed: [false],
@@ -40,24 +36,23 @@ export class FlightEditReactiveComponent {
 
   constructor() {
     this.form.addValidators(validateRoundTrip);
+  }
 
-    this.form.patchValue(this.flight);
-
-    this.form.valueChanges.subscribe((flightForm) => {
-      console.log('flight form changed:', flightForm);
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((paramMap) => {
+      const id = paramMap.get('id');
+      if (id) {
+        this.store.dispatch(ticketsActions.loadFlightById({ id }));
+      }
     });
 
-    this.form.controls.from.valueChanges.subscribe((from) => {
-      console.log('from changed:', from);
+    this.flight$.subscribe((flight) => {
+      this.form.patchValue(flight);
     });
   }
 
   save(): void {
-    this.flight = this.form.getRawValue();
-    console.log('flight', this.flight);
-  }
-
-  close(): void {
-    this.dialogRef.close();
+    const flight = this.form.getRawValue();
+    this.store.dispatch(ticketsActions.saveFlight({ flight }));
   }
 }

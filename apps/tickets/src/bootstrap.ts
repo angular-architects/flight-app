@@ -1,7 +1,10 @@
 import { provideHttpClient } from '@angular/common/http';
 import { importProvidersFrom, isDevMode } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
@@ -20,6 +23,8 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
     provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
     importProvidersFrom(MatDialogModule),
+    importProvidersFrom(MatSnackBarModule),
+    provideAnimations(),
 
     provideStore(),
     provideEffects(),

@@ -1,4 +1,4 @@
-<div class="p40">
+<div class="p40" *ngIf="loaded$ | async">
   <h2>Flight Edit (Reactive)</h2>
 
   <app-validation-errors
@@ -25,6 +25,5 @@
 
   <div>
     <button (click)="save()" class="btn btn-default">Save</button>
-    <button (click)="close()" class="btn btn-secondary">Close</button>
   </div>
 </div>

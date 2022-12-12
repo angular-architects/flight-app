@@ -32,4 +32,14 @@ export class DefaultFlightService implements FlightService {
 
     return this.http.get<Flight>(url, { headers, params });
   }
+
+  save(flight: Flight): Observable<Flight> {
+    const url = `${this.configService.config.baseUrl}/flight`;
+
+    const headers = {
+      Accept: 'application/json',
+    };
+
+    return this.http.post<Flight>(url, flight, { headers });
+  }
 }

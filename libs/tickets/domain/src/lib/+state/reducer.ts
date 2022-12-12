@@ -1,9 +1,10 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { Flight } from '../entities/flight';
+import { Flight, initFlight } from '../entities/flight';
 import { ticketsActions } from './actions';
 
 export interface TicketsState {
   flights: Flight[];
+  flightToEdit: Flight;
   basket: unknown;
   tickets: unknown;
   hide: number[];
@@ -11,6 +12,7 @@ export interface TicketsState {
 
 export const initialState: TicketsState = {
   flights: [],
+  flightToEdit: initFlight,
   basket: {},
   tickets: {},
   hide: [314],
@@ -35,6 +37,13 @@ export const ticketsFeature = createFeature({
       return {
         ...state,
         flights,
+      };
+    }),
+    on(ticketsActions.flightLoaded, (state, action) => {
+      const flightToEdit = action.flight;
+      return {
+        ...state,
+        flightToEdit,
       };
     }),
     on(ticketsActions.clearFlights, (state) => {
