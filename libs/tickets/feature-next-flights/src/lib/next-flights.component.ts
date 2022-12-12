@@ -8,7 +8,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { NextFlightsService } from './next-flights.service';
-import { loadRemoteModule } from '@angular-architects/module-federation';
+// import { loadRemoteModule } from '@angular-architects/module-federation';
 
 @Component({
   selector: 'app-next-flights',
