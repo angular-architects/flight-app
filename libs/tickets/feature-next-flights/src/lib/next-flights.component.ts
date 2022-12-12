@@ -28,10 +28,15 @@ export class NextFlightsComponent implements AfterViewInit {
   async ngAfterViewInit() {
     if (!this.placeholder) return;
 
-    const m = await loadRemoteModule('checkin', './Component');
-    this.placeholder.createComponent(m.AppComponent, {
-      injector: this.injector,
-    });
+    //
+    // Module Federation commented out to simplify further labs.
+    // Feel free to uncomment this again.
+    //
+
+    // const m = await loadRemoteModule('checkin', './Component');
+    // this.placeholder.createComponent(m.AppComponent, {
+    //   injector: this.injector,
+    // });
 
     // Working with properties and events:
     // const comp = this.placeholder.createComponent(m.AppComponent, { injector: this.injector });

@@ -33,6 +33,7 @@ export class FlightLookupFacade {
 
   readonly online$ = interval(2000).pipe(
     startWith(-1),
+    tap((v) => console.log('counter', v)),
     map(() => Math.random() < 0.5),
     distinctUntilChanged(),
     shareReplay({ bufferSize: 1, refCount: true })
