@@ -10,6 +10,8 @@ import {
   ticketsFeature,
 } from '@flight-demo/tickets/domain';
 import { Store } from '@ngrx/store';
+import { takeCoverage } from 'v8';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-flight-search',
@@ -53,5 +55,20 @@ export class FlightSearchComponent {
 
   select(f: Flight): void {
     this.selectedFlight = { ...f };
+  }
+
+  delay(): void {
+    this.flights$.pipe(first()).subscribe((flights) => {
+      const oldFlight = flights[0];
+      const oldDate = new Date(oldFlight.date);
+
+      const newDate = new Date(oldDate.getTime() + 1000 * 60 * 5); // Add 5 min
+      const newFlight = {
+        ...oldFlight,
+        date: newDate.toISOString(),
+      };
+
+      this.store.dispatch(ticketsActions.updateFlight({ flight: newFlight }));
+    });
   }
 }
