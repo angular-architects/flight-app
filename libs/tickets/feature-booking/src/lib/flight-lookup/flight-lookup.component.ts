@@ -3,22 +3,23 @@ import { CommonModule } from '@angular/common';
 import { FlightLookupFacade } from '@flight-demo/tickets/domain';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, filter, Subject, takeUntil, tap } from 'rxjs';
+import { LifeCycle } from './life-cycle';
 
 @Component({
   selector: 'tickets-flight-lookup',
   standalone: true,
+  hostDirectives: [LifeCycle],
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './flight-lookup.component.html',
   styleUrls: ['./flight-lookup.component.css'],
 })
-export class FlightLookupComponent implements OnInit, OnDestroy {
+export class FlightLookupComponent implements OnInit {
   facade = inject(FlightLookupFacade);
+  lifeCycle = inject(LifeCycle);
 
   control = new FormControl('', { nonNullable: true });
 
   // Source
-  private close$ = new Subject<void>();
-
   from$ = this.control.valueChanges.pipe(
     filter((v) => v.length >= 3),
     debounceTime(300)
@@ -35,12 +36,8 @@ export class FlightLookupComponent implements OnInit, OnDestroy {
       this.facade.lookup(value);
     });
 
-    this.online$.pipe(takeUntil(this.close$)).subscribe((v) => {
+    this.online$.pipe(takeUntil(this.lifeCycle.destroy$)).subscribe((v) => {
       console.log('online', v);
     });
-  }
-
-  ngOnDestroy(): void {
-    this.close$.next();
   }
 }
