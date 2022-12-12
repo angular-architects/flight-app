@@ -1,6 +1,17 @@
-import { initFederation } from '@angular-architects/module-federation';
+// import { initFederation } from '@angular-architects/module-federation';
 
-initFederation('/assets/mf.manifest.json')
-  .catch((err) => console.error(err))
-  .then((_) => import('./bootstrap'))
-  .catch((err) => console.error(err));
+(async () => {
+  //
+  // Module Federation commented out to simplify further labs.
+  // Feel free to uncomment this again.
+  //
+
+  // try {
+  //   await initFederation('/assets/mf.manifest.json');
+  // }
+  // catch(e) {
+  //   console.error(e);
+  // }
+
+  await import('./bootstrap');
+})();
