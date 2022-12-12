@@ -10,18 +10,15 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
-import {
-  PreloadAllModules,
-  provideRouter,
-  withPreloading,
-} from '@angular/router';
+import { provideRouter, withPreloading } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
+import { CustomPreloadingStrategy } from './app/common/custom-preloading.strategy';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
-    provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
+    provideRouter(APP_ROUTES, withPreloading(CustomPreloadingStrategy)),
     importProvidersFrom(MatDialogModule),
     importProvidersFrom(MatSnackBarModule),
     provideAnimations(),

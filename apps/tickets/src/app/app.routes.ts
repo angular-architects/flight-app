@@ -22,54 +22,59 @@ export const APP_ROUTES: Routes = [
     component: HomeComponent,
   },
 
-  {
-    path: 'checkin',
-    loadComponent: () => loadRemoteModule('checkin', './Component'),
-  },
+  //
+  // Module Federation commented out to simplify further labs.
+  // Feel free to uncomment this again.
+  //
 
-  {
-    path: 'luggage',
-    loadChildren: () => loadRemoteModule('luggage', './routes'),
-  },
+  // {
+  //   path: 'checkin',
+  //   loadComponent: () => loadRemoteModule('checkin', './Component'),
+  // },
 
-  {
-    path: 'angular2',
-    component: WebComponentWrapper,
-    data: {
-      type: 'script',
-      remoteEntry:
-        'https://gray-pond-030798810.azurestaticapps.net/remoteEntry.js',
-      remoteName: 'angular2',
-      exposedModule: './web-components',
-      elementName: 'angular2-element',
-    } as WebComponentWrapperOptions,
-  },
+  // {
+  //   path: 'luggage',
+  //   loadChildren: () => loadRemoteModule('luggage', './routes'),
+  // },
 
-  {
-    path: 'react',
-    component: WebComponentWrapper,
-    data: {
-      type: 'script',
-      remoteEntry:
-        'https://witty-wave-0a695f710.azurestaticapps.net/remoteEntry.js',
-      remoteName: 'react',
-      exposedModule: './web-components',
-      elementName: 'react-element',
-    } as WebComponentWrapperOptions,
-  },
+  // {
+  //   path: 'angular2',
+  //   component: WebComponentWrapper,
+  //   data: {
+  //     type: 'script',
+  //     remoteEntry:
+  //       'https://gray-pond-030798810.azurestaticapps.net/remoteEntry.js',
+  //     remoteName: 'angular2',
+  //     exposedModule: './web-components',
+  //     elementName: 'angular2-element',
+  //   } as WebComponentWrapperOptions,
+  // },
 
-  {
-    matcher: startsWith('angular3'),
-    component: WebComponentWrapper,
-    data: {
-      type: 'script',
-      remoteEntry:
-        'https://gray-river-0b8c23a10.azurestaticapps.net/remoteEntry.js',
-      remoteName: 'angular3',
-      exposedModule: './web-components',
-      elementName: 'angular3-element',
-    } as WebComponentWrapperOptions,
-  },
+  // {
+  //   path: 'react',
+  //   component: WebComponentWrapper,
+  //   data: {
+  //     type: 'script',
+  //     remoteEntry:
+  //       'https://witty-wave-0a695f710.azurestaticapps.net/remoteEntry.js',
+  //     remoteName: 'react',
+  //     exposedModule: './web-components',
+  //     elementName: 'react-element',
+  //   } as WebComponentWrapperOptions,
+  // },
+
+  // {
+  //   matcher: startsWith('angular3'),
+  //   component: WebComponentWrapper,
+  //   data: {
+  //     type: 'script',
+  //     remoteEntry:
+  //       'https://gray-river-0b8c23a10.azurestaticapps.net/remoteEntry.js',
+  //     remoteName: 'angular3',
+  //     exposedModule: './web-components',
+  //     elementName: 'angular3-element',
+  //   } as WebComponentWrapperOptions,
+  // },
 
   {
     path: '',
