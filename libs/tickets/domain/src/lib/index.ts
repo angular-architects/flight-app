@@ -8,5 +8,6 @@ export * from './infrastructure/flight.service';
 
 export * from './+state/actions';
 export * from './+state/reducer';
+export * from './+state/selectors';
 
 export * from './providers';

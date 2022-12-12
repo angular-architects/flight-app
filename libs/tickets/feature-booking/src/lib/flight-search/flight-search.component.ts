@@ -6,11 +6,10 @@ import { CityPipe } from '@flight-demo/shared/ui-common';
 import {
   Flight,
   FlightService,
+  selectFilteredFlights,
   ticketsActions,
-  ticketsFeature,
 } from '@flight-demo/tickets/domain';
 import { Store } from '@ngrx/store';
-import { takeCoverage } from 'v8';
 import { first } from 'rxjs';
 
 @Component({
@@ -24,7 +23,7 @@ export class FlightSearchComponent {
   private flightService = inject(FlightService);
   private store = inject(Store);
 
-  flights$ = this.store.select(ticketsFeature.selectFlights);
+  flights$ = this.store.select(selectFilteredFlights);
 
   from = 'London';
   to = 'Paris';
