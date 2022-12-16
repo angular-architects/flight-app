@@ -39,6 +39,9 @@
       "@flight-demo/shared/util-config": [
         "libs/shared/util-config/src/lib/index.ts"
       ],
+      "@flight-demo/shared/util-logger": [
+        "libs/shared/util-logger/src/index.ts"
+      ],
       "@flight-demo/shared/util-validation": [
         "libs/shared/util-validation/src/lib/index.ts"
       ],

@@ -17,11 +17,22 @@ import {
 } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
+import {
+  DefaultLogFormatter,
+  LogFormatter,
+  LoggerConfig,
+  provideLogger,
+} from '@flight-demo/shared/util-logger';
+import { CustomLogFormatter } from './app/logging/custom.log.formatter';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
+
     provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
+
+    provideLogger({ debug: true }, CustomLogFormatter),
+
     importProvidersFrom(MatDialogModule),
     importProvidersFrom(MatSnackBarModule),
     provideAnimations(),

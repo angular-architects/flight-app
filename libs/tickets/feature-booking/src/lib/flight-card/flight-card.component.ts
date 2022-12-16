@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -20,6 +21,7 @@ import { initFlight } from '@flight-demo/tickets/domain';
   imports: [CommonModule, CityPipe, StatusToggleComponent, RouterLink],
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightCardComponent {
   private dialog = inject(MatDialog);

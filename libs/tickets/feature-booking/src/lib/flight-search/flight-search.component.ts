@@ -10,13 +10,16 @@ import {
 } from '@flight-demo/tickets/domain';
 import { Store } from '@ngrx/store';
 import { first } from 'rxjs';
-
+import { provideLogger } from '@flight-demo/shared/util-logger';
 @Component({
   selector: 'app-flight-search',
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
+  providers: [
+    // provideLogger()
+  ],
 })
 export class FlightSearchComponent {
   private store = inject(Store);
