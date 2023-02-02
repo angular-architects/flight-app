@@ -1,4 +1,9 @@
-import { AfterContentInit, Component } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  QueryList,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabComponent } from '../tab/tab.component';
 
@@ -10,8 +15,14 @@ import { TabComponent } from '../tab/tab.component';
   styleUrls: ['./tabbed-pane.component.css'],
 })
 export class TabbedPaneComponent implements AfterContentInit {
-  tabs: Array<TabComponent> = [];
+  @ContentChildren(TabComponent)
+  tabQueryList: QueryList<TabComponent> | undefined;
+
   activeTab: TabComponent | undefined;
+
+  get tabs(): TabComponent[] {
+    return this.tabQueryList?.toArray() ?? [];
+  }
 
   ngAfterContentInit(): void {
     if (this.tabs.length > 0) {

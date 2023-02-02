@@ -12,10 +12,4 @@ import { TabbedPaneComponent } from '../tabbed-pane/tabbed-pane.component';
 export class TabComponent {
   @Input() title = '';
   visible = true;
-
-  pane = inject(TabbedPaneComponent);
-
-  constructor() {
-    this.pane.register(this);
-  }
 }
