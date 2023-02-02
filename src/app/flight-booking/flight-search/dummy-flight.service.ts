@@ -5,6 +5,20 @@ import { FlightService } from './flight.service';
 
 @Injectable()
 export class DummyFlightService implements FlightService {
+  flights: Flight[] = [];
+
+  load(from: string, to: string): void {
+    this.find(from, to).subscribe((flights) => {
+      this.flights = flights;
+    });
+  }
+
+  findById(id: string): Observable<Flight> {
+    return of();
+  }
+
+  delay(): void {}
+
   find(from: string, to: string): Observable<Flight[]> {
     const date = new Date().toISOString();
 
