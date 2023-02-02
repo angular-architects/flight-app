@@ -12,6 +12,7 @@ import { ConfirmComponent } from '../confirm/confirm.component';
 
 @Directive({
   selector: '[appClickWithWarning]',
+  exportAs: 'clickWithWarning',
   standalone: true,
 })
 export class ClickWithWarningDirective {
