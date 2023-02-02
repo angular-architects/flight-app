@@ -1,4 +1,12 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  Input,
+  NgZone,
+  Output,
+} from '@angular/core';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { initFlight } from '../../model/flight';
@@ -17,6 +25,8 @@ import { RouterLink } from '@angular/router';
 })
 export class FlightCardComponent {
   private dialog = inject(MatDialog);
+  private element = inject(ElementRef);
+  private zone = inject(NgZone);
 
   @Input() item = initFlight;
   @Input() selected: boolean = false;
@@ -38,5 +48,18 @@ export class FlightCardComponent {
     this.dialog.open(FlightEditReactiveComponent, {
       data: { flight: this.item },
     });
+  }
+
+  blink() {
+    // Dirty Hack used to visualize the change detector
+    this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';
+
+    this.zone.runOutsideAngular(() => {
+      setTimeout(() => {
+        this.element.nativeElement.firstChild.style.backgroundColor = 'white';
+      }, 1000);
+    });
+
+    return null;
   }
 }
