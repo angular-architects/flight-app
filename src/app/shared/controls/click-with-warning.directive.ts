@@ -8,6 +8,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { ConfirmComponent } from '../confirm/confirm.component';
 
 @Directive({
   selector: '[appClickWithWarning]',
@@ -23,8 +24,17 @@ export class ClickWithWarningDirective {
 
   @HostListener('click', ['$event.shiftKey'])
   handleClick(shiftKey: boolean): void {
-    if (shiftKey || confirm(this.warning)) {
+    if (shiftKey) {
       this.appClickWithWarning.emit();
     }
+
+    const ref = this.dialog.open<boolean>(ConfirmComponent, {
+      data: this.warning,
+    });
+    ref.closed.subscribe((result) => {
+      if (result) {
+        this.appClickWithWarning.emit();
+      }
+    });
   }
 }
