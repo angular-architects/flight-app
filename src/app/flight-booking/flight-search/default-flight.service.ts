@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Flight } from '../../model/flight';
 import { ConfigService } from '../../shared/config.service';
 import { FlightService } from './flight.service';
@@ -9,6 +9,9 @@ import { FlightService } from './flight.service';
 export class DefaultFlightService implements FlightService {
   private http = inject(HttpClient);
   private configService = inject(ConfigService);
+
+  private flightsSubject = new BehaviorSubject<Flight[]>([]);
+  readonly flights$ = this.flightsSubject.asObservable();
 
   flights: Flight[] = [];
 
@@ -27,6 +30,7 @@ export class DefaultFlightService implements FlightService {
   load(from: string, to: string): void {
     this.find(from, to).subscribe((flights) => {
       this.flights = flights;
+      this.flightsSubject.next(flights);
     });
   }
 
@@ -58,5 +62,7 @@ export class DefaultFlightService implements FlightService {
     const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
     const newFlights = [newFlight, ...oldFlights.slice(1)];
     this.flights = newFlights;
+
+    this.flightsSubject.next(newFlights);
   }
 }

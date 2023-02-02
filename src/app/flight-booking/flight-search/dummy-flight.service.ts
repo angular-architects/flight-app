@@ -5,11 +5,13 @@ import { FlightService } from './flight.service';
 
 @Injectable()
 export class DummyFlightService implements FlightService {
+  flights$: Observable<Flight[]> = of([]);
   flights: Flight[] = [];
 
   load(from: string, to: string): void {
     this.find(from, to).subscribe((flights) => {
       this.flights = flights;
+      this.flights$ = of(this.flights);
     });
   }
 

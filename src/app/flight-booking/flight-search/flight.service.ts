@@ -8,7 +8,9 @@ import { DefaultFlightService } from './default-flight.service';
   useClass: DefaultFlightService,
 })
 export abstract class FlightService {
+  abstract readonly flights$: Observable<Flight[]>;
   abstract flights: Flight[];
+
   abstract find(from: string, to: string): Observable<Flight[]>;
   abstract findById(id: string): Observable<Flight>;
   abstract delay(): void;

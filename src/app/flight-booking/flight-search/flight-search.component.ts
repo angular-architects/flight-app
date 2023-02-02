@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Flight } from '../../model/flight';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,7 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
   from = 'London';
@@ -26,9 +27,7 @@ export class FlightSearchComponent {
 
   private flightService = inject(FlightService);
 
-  get flights(): Flight[] {
-    return this.flightService.flights;
-  }
+  flights$ = this.flightService.flights$;
 
   search(): void {
     // Reset properties
