@@ -11,6 +11,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { TabComponent } from '../tab/tab.component';
 import { TabNavigatorComponent } from '../tab-navigator/tab-navigator.component';
+import { TabbedPaneService } from './tabbed-pane.service';
 
 @Component({
   selector: 'app-tabbed-pane',
@@ -18,6 +19,7 @@ import { TabNavigatorComponent } from '../tab-navigator/tab-navigator.component'
   templateUrl: './tabbed-pane.component.html',
   styleUrls: ['./tabbed-pane.component.css'],
   imports: [CommonModule, TabNavigatorComponent],
+  providers: [TabbedPaneService],
 })
 export class TabbedPaneComponent implements AfterContentInit, AfterViewInit {
   @ContentChildren(TabComponent)
@@ -31,6 +33,7 @@ export class TabbedPaneComponent implements AfterContentInit, AfterViewInit {
   currentPage = 0;
 
   cd = inject(ChangeDetectorRef);
+  service = inject(TabbedPaneService);
 
   get tabs(): TabComponent[] {
     return this.tabQueryList?.toArray() ?? [];
@@ -43,18 +46,18 @@ export class TabbedPaneComponent implements AfterContentInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (this.navigator) {
-      this.navigator.page = 1;
-      this.navigator.pageCount = this.tabs.length;
+    this.service.pageCount.next(this.tabs.length);
 
-      // Start another change detection cycle
-      // Use this strategy with caution!
-      this.cd.detectChanges();
+    // Use this strategy with caution
+    this.cd.detectChanges();
 
-      this.navigator.pageChange.subscribe((page: number) => {
-        this.pageChange(page);
-      });
-    }
+    this.service.currentPage.subscribe((page: number) => {
+      // Prevent cycle:
+      if (page === this.currentPage) {
+        return;
+      }
+      this.pageChange(page);
+    });
   }
 
   register(tab: TabComponent): void {
@@ -68,6 +71,7 @@ export class TabbedPaneComponent implements AfterContentInit, AfterViewInit {
     this.activeTab = active;
 
     this.currentPage = this.tabs.indexOf(active);
+    this.service.currentPage.next(this.currentPage);
   }
 
   pageChange(page: number): void {
