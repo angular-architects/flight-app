@@ -9,13 +9,7 @@
 
   <ng-content></ng-content>
 
-  <app-tab-navigator
-    #navigator
-    [page]="this.currentPage"
-    [pageCount]="this.tabs.length"
-    (pageChange)="pageChange($event)"
-  >
-  </app-tab-navigator>
+  <app-tab-navigator #navigator> </app-tab-navigator>
   <p>&nbsp;</p>
   <div>
     <button (click)="navigator.prev()">Prev</button>
