@@ -28,9 +28,9 @@
 
 <input [appTooltip]="tmpl" />
 
-<ng-template #tmpl>
-  <h4>2 Tips for Success</h4>
-  <ol>
-    <li>Don't tell everything!</li>
-  </ol>
+<ng-template #tmpl let-title let-body="text">
+  <h4>{{ title }}</h4>
+  <p>
+    {{ body }}
+  </p>
 </ng-template>

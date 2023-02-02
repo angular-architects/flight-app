@@ -8,15 +8,21 @@ import {
   HostListener,
 } from '@angular/core';
 
+// Context Information to be passed to the template
+type TipToolContext = {
+  $implicit: string;
+  text: string;
+};
+
 @Directive({
   selector: '[appTooltip]',
   standalone: true,
 })
 export class TooltipDirective {
   viewContainer = inject(ViewContainerRef);
-  viewRef: EmbeddedViewRef<unknown> | undefined;
+  viewRef: EmbeddedViewRef<TipToolContext> | undefined;
 
-  @Input('appTooltip') template: TemplateRef<unknown> | undefined;
+  @Input('appTooltip') template: TemplateRef<TipToolContext> | undefined;
 
   setHidden(hidden: boolean): void {
     this.viewRef?.rootNodes.forEach((nativeElement) => {
@@ -28,7 +34,10 @@ export class TooltipDirective {
     if (!this.template) {
       return;
     }
-    this.viewRef = this.viewContainer.createEmbeddedView(this.template);
+    this.viewRef = this.viewContainer.createEmbeddedView(this.template, {
+      $implicit: 'Tooltip!',
+      text: 'Important Information!',
+    });
 
     this.setHidden(true);
   }
