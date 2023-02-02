@@ -2,7 +2,7 @@
   <tr *ngFor="let row of data">
     <td *ngFor="let f of fieldList">
       <ng-container
-        *ngTemplateOutlet="
+        *appCustomTemplateOutlet="
           f.templateRef;
           context: { $implicit: row[f.propName] }
         "
