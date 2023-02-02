@@ -16,4 +16,8 @@ import { ClickWithWarningDirective } from '../shared/controls/click-with-warning
     ClickWithWarningDirective,
   ],
 })
-export class AboutComponent {}
+export class AboutComponent {
+  deleteAll(): void {
+    console.debug('delete ...');
+  }
+}
