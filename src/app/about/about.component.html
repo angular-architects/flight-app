@@ -23,3 +23,14 @@
 <button (click)="cww.handleClick(true)">
   Delete without asking questions!
 </button>
+
+<br /><br />
+
+<input [appTooltip]="tmpl" />
+
+<ng-template #tmpl>
+  <h4>2 Tips for Success</h4>
+  <ol>
+    <li>Don't tell everything!</li>
+  </ol>
+</ng-template>
