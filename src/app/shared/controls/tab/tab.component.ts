@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TabbedPaneComponent } from '../tabbed-pane/tabbed-pane.component';
 
 @Component({
   selector: 'app-tab',
@@ -11,4 +12,10 @@ import { CommonModule } from '@angular/common';
 export class TabComponent {
   @Input() title = '';
   visible = true;
+
+  pane = inject(TabbedPaneComponent);
+
+  constructor() {
+    this.pane.register(this);
+  }
 }
