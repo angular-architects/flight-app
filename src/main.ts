@@ -12,6 +12,10 @@ import { APP_ROUTES } from './app/app.routes';
 import { NextFlightsModule } from './app/next-flights/next-flights.module';
 import { CustomLogFormatter } from './app/shared/logger/custom-log-formatter';
 import {
+  DefaultLogAppender,
+  LOG_APPENDERS,
+} from './app/shared/logger/log-appender';
+import {
   DefaultLogFormatter,
   LogFormatter,
 } from './app/shared/logger/log-formatter';
@@ -37,6 +41,11 @@ bootstrapApplication(AppComponent, {
     {
       provide: LogFormatter,
       useClass: CustomLogFormatter,
+    },
+    {
+      provide: LOG_APPENDERS,
+      useClass: DefaultLogAppender,
+      multi: true,
     },
   ],
 });
