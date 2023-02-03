@@ -10,6 +10,11 @@ export class LoggerService {
   private config = inject(LoggerConfig);
   private appenders = inject(LOG_APPENDERS);
 
+  private parentLogger = inject(LoggerService, {
+    optional: true,
+    skipSelf: true,
+  });
+
   log(level: LogLevel, category: string, msg: string): void {
     if (level < this.config.level) {
       return;
@@ -19,6 +24,10 @@ export class LoggerService {
 
     for (const a of this.appenders) {
       a.append(level, category, formatted);
+    }
+
+    if (this.parentLogger) {
+      this.parentLogger.log(level, category, msg);
     }
   }
 

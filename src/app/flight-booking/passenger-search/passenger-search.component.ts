@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LoggerService } from 'src/app/shared/logger/logger';
 
 @Component({
   selector: 'app-passenger-search',
@@ -8,4 +9,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './passenger-search.component.html',
   styleUrls: ['./passenger-search.component.css'],
 })
-export class PassengerSearchComponent {}
+export class PassengerSearchComponent {
+  constructor(logger: LoggerService) {
+    logger.info('passenger search', 'info');
+  }
+}
