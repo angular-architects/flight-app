@@ -12,13 +12,10 @@ import { CustomLogAppender } from '../shared/logger/custom-log-appender';
 })
 export class HomeComponent {
   logger = inject(LoggerService);
-  appender = inject(CustomLogAppender);
 
   constructor() {
     this.logger.debug('home', 'debug');
     this.logger.info('home', 'info');
     this.logger.error('home', 'error');
-
-    console.log('logs', this.appender.logs);
   }
 }

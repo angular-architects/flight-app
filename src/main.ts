@@ -23,6 +23,7 @@ import {
 import { LogLevel } from './app/shared/logger/log-level';
 import { LoggerService } from './app/shared/logger/logger';
 import { LoggerConfig } from './app/shared/logger/logger-config';
+import { provideLogger } from './app/shared/logger/provider';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -31,28 +32,8 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),
 
-    // Logger
-    LoggerService,
-    {
-      provide: LoggerConfig,
-      useValue: {
-        level: LogLevel.INFO,
-      },
-    },
-    {
-      provide: LogFormatter,
-      useClass: CustomLogFormatter,
-    },
-    {
-      provide: LOG_APPENDERS,
-      useClass: DefaultLogAppender,
-      multi: true,
-    },
-    CustomLogAppender,
-    {
-      provide: LOG_APPENDERS,
-      useExisting: CustomLogAppender,
-      multi: true,
-    },
+    provideLogger({
+      level: LogLevel.INFO,
+    }),
   ],
 });
