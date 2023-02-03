@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 import { LogLevel } from './log-level';
 
-export abstract class LogFormatter {
-  abstract format(level: LogLevel, category: string, msg: string): string;
-}
+export const LOG_FORMATTER = new InjectionToken<LogFormatFn>('LOG_FORMATTER');
 
-@Injectable()
-export class DefaultLogFormatter implements LogFormatter {
-  format(level: LogLevel, category: string, msg: string): string {
-    const levelString = LogLevel[level].padEnd(5);
-    return `[${levelString}] ${category.toUpperCase()} ${msg}`;
-  }
-}
+export type LogFormatFn = (
+  level: LogLevel,
+  category: string,
+  msg: string
+) => string;
+
+export const defaultLogFormatFn: LogFormatFn = (level, category, msg) => {
+  const levelString = LogLevel[level].padEnd(5);
+  return `[${levelString}] ${category.toUpperCase()} ${msg}`;
+};

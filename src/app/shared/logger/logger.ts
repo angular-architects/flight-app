@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { LOG_APPENDERS } from './log-appender';
-import { LogFormatter } from './log-formatter';
+import { LOG_FORMATTER } from './log-formatter';
 import { LogLevel } from './log-level';
 import { LoggerConfig } from './logger-config';
 
 @Injectable()
 export class LoggerService {
-  private formatter = inject(LogFormatter);
+  private formatter = inject(LOG_FORMATTER);
   private config = inject(LoggerConfig);
   private appenders = inject(LOG_APPENDERS);
 
@@ -15,7 +15,7 @@ export class LoggerService {
       return;
     }
 
-    const formatted = this.formatter.format(level, category, msg);
+    const formatted = this.formatter(level, category, msg);
 
     for (const a of this.appenders) {
       a.append(level, category, formatted);
