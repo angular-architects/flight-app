@@ -8,7 +8,7 @@ export abstract class LogAppender {
 @Injectable()
 export class DefaultLogAppender implements LogAppender {
   append(level: LogLevel, category: string, msg: string): void {
-    console.log(level, category, msg);
+    console.log(msg);
   }
 }
 

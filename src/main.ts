@@ -10,6 +10,7 @@ import {
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
 import { NextFlightsModule } from './app/next-flights/next-flights.module';
+import { CustomLogAppender } from './app/shared/logger/custom-log-appender';
 import { CustomLogFormatter } from './app/shared/logger/custom-log-formatter';
 import {
   DefaultLogAppender,
@@ -45,6 +46,12 @@ bootstrapApplication(AppComponent, {
     {
       provide: LOG_APPENDERS,
       useClass: DefaultLogAppender,
+      multi: true,
+    },
+    CustomLogAppender,
+    {
+      provide: LOG_APPENDERS,
+      useExisting: CustomLogAppender,
       multi: true,
     },
   ],
