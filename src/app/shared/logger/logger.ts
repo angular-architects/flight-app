@@ -1,4 +1,5 @@
 import { inject, Injectable } from '@angular/core';
+import { LOG_APPENDERS } from './log-appender';
 import { LogFormatter } from './log-formatter';
 import { LogLevel } from './log-level';
 import { LoggerConfig } from './logger-config';
@@ -7,6 +8,7 @@ import { LoggerConfig } from './logger-config';
 export class LoggerService {
   private formatter = inject(LogFormatter);
   private config = inject(LoggerConfig);
+  private appenders = inject(LOG_APPENDERS);
 
   log(level: LogLevel, category: string, msg: string): void {
     if (level < this.config.level) {
@@ -15,7 +17,9 @@ export class LoggerService {
 
     const formatted = this.formatter.format(level, category, msg);
 
-    console.log(formatted);
+    for (const a of this.appenders) {
+      a.append(level, category, formatted);
+    }
   }
 
   error(category: string, msg: string): void {
