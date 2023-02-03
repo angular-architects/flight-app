@@ -10,6 +10,7 @@ import {
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
 import { NextFlightsModule } from './app/next-flights/next-flights.module';
+import { CustomLogFormatter } from './app/shared/logger/custom-log-formatter';
 import {
   DefaultLogFormatter,
   LogFormatter,
@@ -35,7 +36,7 @@ bootstrapApplication(AppComponent, {
     },
     {
       provide: LogFormatter,
-      useClass: DefaultLogFormatter,
+      useClass: CustomLogFormatter,
     },
   ],
 });
