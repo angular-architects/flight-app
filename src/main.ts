@@ -10,19 +10,7 @@ import {
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
 import { NextFlightsModule } from './app/next-flights/next-flights.module';
-import { CustomLogAppender } from './app/shared/logger/custom-log-appender';
-import { CustomLogFormatter } from './app/shared/logger/custom-log-formatter';
-import {
-  DefaultLogAppender,
-  LOG_APPENDERS,
-} from './app/shared/logger/log-appender';
-import {
-  DefaultLogFormatter,
-  LogFormatter,
-} from './app/shared/logger/log-formatter';
-import { LogLevel } from './app/shared/logger/log-level';
-import { LoggerService } from './app/shared/logger/logger';
-import { LoggerConfig } from './app/shared/logger/logger-config';
+import { withColor } from './app/shared/logger/color';
 import { provideLogger } from './app/shared/logger/provider';
 
 bootstrapApplication(AppComponent, {
@@ -32,8 +20,6 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),
 
-    provideLogger({
-      level: LogLevel.INFO,
-    }),
+    provideLogger({}, withColor()),
   ],
 });
