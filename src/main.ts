@@ -10,6 +10,13 @@ import {
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
 import { NextFlightsModule } from './app/next-flights/next-flights.module';
+import {
+  DefaultLogFormatter,
+  LogFormatter,
+} from './app/shared/logger/log-formatter';
+import { LogLevel } from './app/shared/logger/log-level';
+import { LoggerService } from './app/shared/logger/logger';
+import { LoggerConfig } from './app/shared/logger/logger-config';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -17,5 +24,18 @@ bootstrapApplication(AppComponent, {
     provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),
+
+    // Logger
+    LoggerService,
+    {
+      provide: LoggerConfig,
+      useValue: {
+        level: LogLevel.INFO,
+      },
+    },
+    {
+      provide: LogFormatter,
+      useClass: DefaultLogFormatter,
+    },
   ],
 });
