@@ -13,3 +13,10 @@
     <router-outlet name="aux"></router-outlet>
   </div>
 </div>
+
+<div *ngIf="loading$ | async" class="loading-indicator">
+  <div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+</div>
