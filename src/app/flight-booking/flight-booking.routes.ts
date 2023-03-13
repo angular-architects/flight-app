@@ -1,6 +1,5 @@
-import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
-import { AuthService } from '../shared/auth/auth.service';
+import { checkAuth } from '../shared/auth/auth';
 import { provideLogger } from '../shared/logger/provider';
 import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
@@ -33,7 +32,7 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
       {
         path: 'passenger-search',
         component: PassengerSearchComponent,
-        canActivate: [() => inject(AuthService).isAuth()],
+        canActivate: [checkAuth],
       },
     ],
   },
