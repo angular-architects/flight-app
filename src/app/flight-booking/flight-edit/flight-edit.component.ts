@@ -9,6 +9,10 @@ import { AsyncCityValidatorDirective } from '../../shared/validation/async-city-
 import { RoundtripValidatorDirective } from '../../shared/validation/roundtrip-validator.directive';
 import { ActivatedRoute } from '@angular/router';
 import { FlightService } from '../flight-search/flight.service';
+import { CanExit } from 'src/app/shared/can-exit';
+import { Observable } from 'rxjs';
+import { Dialog } from '@angular/cdk/dialog';
+import { ConfirmComponent } from 'src/app/shared/confirm/confirm.component';
 
 @Component({
   selector: 'app-flight-edit',
@@ -24,9 +28,10 @@ import { FlightService } from '../flight-search/flight.service';
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
 })
-export class FlightEditComponent implements OnInit {
+export class FlightEditComponent implements OnInit, CanExit {
   private route = inject(ActivatedRoute);
   private flightService = inject(FlightService);
+  private dialog = inject(Dialog);
 
   id = '';
   showDetails = '';
@@ -38,6 +43,13 @@ export class FlightEditComponent implements OnInit {
       this.showDetails = params.get('showDetails') ?? '';
       this.load(this.id);
     });
+  }
+
+  canExit(): Observable<boolean> {
+    const confirm = this.dialog.open(ConfirmComponent, {
+      data: 'Do you really want to leave me?',
+    });
+    return confirm.closed as Observable<boolean>;
   }
 
   load(id: string): void {

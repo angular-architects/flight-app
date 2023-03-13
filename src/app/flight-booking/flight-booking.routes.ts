@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { checkAuth } from '../shared/auth/auth';
+import { CanExit } from '../shared/can-exit';
 import { provideLogger } from '../shared/logger/provider';
 import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
@@ -28,6 +29,7 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
       {
         path: 'flight-edit/:id',
         component: FlightEditComponent,
+        canDeactivate: [(cmp: CanExit) => cmp.canExit()],
       },
       {
         path: 'passenger-search',
