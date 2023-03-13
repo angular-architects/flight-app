@@ -13,6 +13,12 @@
   </div>
 
   <div class="form-group">
+    <label>Date:</label>
+    <input [(ngModel)]="date" appDateCva name="date" class="form-control" />
+    {{ date | date : "dd.MM.yyyy HH:mm" }}
+  </div>
+
+  <div class="form-group">
     <button (click)="search()" class="btn btn-default">Search</button>
   </div>
 </form>

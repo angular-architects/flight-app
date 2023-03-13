@@ -5,13 +5,20 @@ import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
+import { DateCvaDirective } from 'src/app/shared/date/date-cva.directive';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    CityPipe,
+    FlightCardComponent,
+    DateCvaDirective,
+  ],
 })
 export class FlightSearchComponent {
   from = 'London';
@@ -19,6 +26,7 @@ export class FlightSearchComponent {
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
   message = '';
+  date = new Date();
 
   basket: Record<number, boolean> = {
     3: true,
