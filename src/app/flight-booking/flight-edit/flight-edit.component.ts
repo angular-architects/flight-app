@@ -30,7 +30,6 @@ import { ConfirmComponent } from 'src/app/shared/confirm/confirm.component';
 })
 export class FlightEditComponent implements OnInit, CanExit {
   private route = inject(ActivatedRoute);
-  private flightService = inject(FlightService);
   private dialog = inject(Dialog);
 
   id = '';
@@ -41,7 +40,10 @@ export class FlightEditComponent implements OnInit, CanExit {
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id') ?? '';
       this.showDetails = params.get('showDetails') ?? '';
-      this.load(this.id);
+    });
+
+    this.route.data.subscribe((data) => {
+      this.flight = data['flight'];
     });
   }
 
@@ -50,11 +52,5 @@ export class FlightEditComponent implements OnInit, CanExit {
       data: 'Do you really want to leave me?',
     });
     return confirm.closed as Observable<boolean>;
-  }
-
-  load(id: string): void {
-    this.flightService.findById(id).subscribe((flight) => {
-      this.flight = flight;
-    });
   }
 }
