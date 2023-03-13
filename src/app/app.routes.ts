@@ -1,6 +1,7 @@
 import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { BasketComponent } from './basket/basket.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ConfigService } from './shared/config.service';
@@ -15,7 +16,11 @@ export const APP_ROUTES: Routes = [
     path: 'home',
     component: HomeComponent,
   },
-
+  {
+    path: 'basket',
+    component: BasketComponent,
+    outlet: 'aux',
+  },
   {
     path: '',
     resolve: {
