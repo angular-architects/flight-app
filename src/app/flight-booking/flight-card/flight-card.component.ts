@@ -19,7 +19,7 @@ export class FlightCardComponent {
   private dialog = inject(MatDialog);
 
   @Input() item = initFlight;
-  @Input() selected: boolean = false;
+  @Input() selected = false;
   @Output() selectedChange = new EventEmitter<boolean>();
 
   ngOnInit() {}
