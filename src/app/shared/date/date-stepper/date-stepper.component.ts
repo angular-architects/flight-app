@@ -1,6 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { addDays, subDays } from 'date-fns';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+
+type OnChange = (value: Date) => void;
+type OnTouched = () => void;
 
 @Component({
   selector: 'app-date-stepper',
@@ -9,17 +13,34 @@ import { addDays, subDays } from 'date-fns';
   templateUrl: './date-stepper.component.html',
   styleUrls: ['./date-stepper.component.css'],
 })
-export class DateStepperComponent {
-  @Input() date = new Date();
-  @Output() dateChange = new EventEmitter<Date>();
+export class DateStepperComponent implements ControlValueAccessor {
+  ngControl = inject(NgControl);
+  date = new Date();
+  _onChange: OnChange = () => {};
+
+  constructor() {
+    this.ngControl.valueAccessor = this;
+  }
+
+  writeValue(date: Date): void {
+    this.date = date ?? new Date();
+  }
+
+  registerOnChange(fn: OnChange): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: OnTouched): void {
+    // Not used here
+  }
 
   next(): void {
     this.date = addDays(this.date, 1);
-    this.dateChange.emit(this.date);
+    this._onChange(this.date);
   }
 
   prev(): void {
     this.date = subDays(this.date, 1);
-    this.dateChange.emit(this.date);
+    this._onChange(this.date);
   }
 }

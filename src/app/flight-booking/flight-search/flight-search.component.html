@@ -13,9 +13,8 @@
   </div>
 
   <div class="form-group">
-    <label>Date:</label>
-    <input [(ngModel)]="date" appDateCva name="date" class="form-control" />
-    {{ date | date : "dd.MM.yyyy HH:mm" }}
+    <app-date-stepper [(ngModel)]="date" name="date"></app-date-stepper>
+    (Control Value: {{ date | date : "dd.MM.yyyy HH:mm" }})
   </div>
 
   <div class="form-group">
