@@ -26,6 +26,7 @@ export class ClickWithWarningDirective {
   handleClick(shiftKey: boolean): void {
     if (shiftKey) {
       this.appClickWithWarning.emit();
+      return;
     }
 
     const ref = this.dialog.open<boolean>(ConfirmComponent, {
