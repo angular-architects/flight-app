@@ -1,4 +1,4 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -10,16 +10,19 @@ import {
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
 import { NextFlightsModule } from './app/next-flights/next-flights.module';
+import { AuthInterceptor } from './app/shared/auth/auth.interceptor';
 import { withColor } from './app/shared/logger/color';
 import { provideLogger } from './app/shared/logger/provider';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([AuthInterceptor])),
+
     provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
-    importProvidersFrom(NextFlightsModule),
-    importProvidersFrom(MatDialogModule),
 
     provideLogger({}, withColor()),
+
+    importProvidersFrom(NextFlightsModule),
+    importProvidersFrom(MatDialogModule),
   ],
 });
