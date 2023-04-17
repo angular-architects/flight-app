@@ -4,12 +4,14 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FlightService } from '../flight-booking/flight-search/flight.service';
 import {
   Observable,
+  Subject,
   combineLatest,
   debounceTime,
   distinctUntilChanged,
   filter,
   interval,
   map,
+  merge,
   of,
   startWith,
   switchMap,
