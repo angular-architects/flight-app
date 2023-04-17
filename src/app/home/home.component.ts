@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { LoggerService } from '../shared/logger/logger';
 import { CustomLogAppender } from '../shared/logger/custom-log-appender';
 import { AuthService } from '../shared/auth/auth.service';
+import { FlightTypeaheadComponent } from '../flight-typeahead/flight-typeahead.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FlightTypeaheadComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
