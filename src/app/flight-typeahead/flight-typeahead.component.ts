@@ -4,6 +4,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FlightService } from '../flight-booking/flight-search/flight.service';
 import {
   Observable,
+  combineLatest,
   debounceTime,
   distinctUntilChanged,
   filter,
@@ -42,7 +43,15 @@ export class FlightTypeaheadComponent {
     debounceTime(300)
   );
 
-  flights$ = null;
+  flights$ = combineLatest({
+    input: this.input$,
+    online: this.online$,
+  }).pipe(
+    filter((combi) => combi.online),
+    tap(() => (this.loading = true)),
+    switchMap((combi) => this.load(combi.input)),
+    tap(() => (this.loading = false))
+  );
 
   load(airport: string): Observable<Flight[]> {
     return this.flightService.find(airport, '');
