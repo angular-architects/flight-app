@@ -5,6 +5,7 @@ import { FlightService } from '../flight-booking/flight-search/flight.service';
 import {
   BehaviorSubject,
   Observable,
+  catchError,
   combineLatest,
   debounceTime,
   distinctUntilChanged,
@@ -16,6 +17,7 @@ import {
   startWith,
   switchMap,
   tap,
+  throwError,
 } from 'rxjs';
 import { Flight } from '../model/flight';
 
@@ -55,6 +57,16 @@ export class FlightTypeaheadComponent {
   );
 
   load(airport: string): Observable<Flight[]> {
-    return this.flightService.find(airport, '');
+    return this.flightService.find(airport, '').pipe(
+      catchError((err) => {
+        console.error('err', err);
+
+        // Compensate Error:
+        return of([]);
+
+        // Alternative: Throw new error:
+        // return throwError(() => err)
+      })
+    );
   }
 }
