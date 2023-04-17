@@ -11,7 +11,7 @@
       <input [formControl]="control" class="form-control" />
     </div>
 
-    <div *ngIf="loading">Loading ...</div>
+    <div *ngIf="loading$ | async">Loading ...</div>
     <div>Online: {{ online$ | async }}</div>
 
     <table class="table table-striped">
