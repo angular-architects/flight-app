@@ -14,6 +14,7 @@ import {
   startWith,
   switchMap,
   tap,
+  withLatestFrom,
 } from 'rxjs';
 import { Flight } from '../model/flight';
 
@@ -43,13 +44,21 @@ export class FlightTypeaheadComponent {
     debounceTime(300)
   );
 
-  flights$ = combineLatest({
-    input: this.input$,
-    online: this.online$,
-  }).pipe(
-    filter((combi) => combi.online),
+  // flights$ = combineLatest({
+  //   input: this.input$,
+  //   online: this.online$,
+  // }).pipe(
+  //   filter((combi) => combi.online),
+  //   tap(() => (this.loading = true)),
+  //   switchMap((combi) => this.load(combi.input)),
+  //   tap(() => (this.loading = false))
+  // );
+
+  flights$ = this.input$.pipe(
+    withLatestFrom(this.online$),
+    filter(([value, online]) => online),
     tap(() => (this.loading = true)),
-    switchMap((combi) => this.load(combi.input)),
+    switchMap(([value, online]) => this.load(value)),
     tap(() => (this.loading = false))
   );
 
