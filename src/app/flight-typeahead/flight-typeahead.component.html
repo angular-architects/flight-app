@@ -11,6 +11,11 @@
       <input [formControl]="control" class="form-control" />
     </div>
 
+    <div class="control-group">
+      <label>Destination</label>
+      <input [formControl]="toControl" class="form-control" />
+    </div>
+
     <div *ngIf="loading">Loading ...</div>
     <div>Online: {{ online }}</div>
 

@@ -30,6 +30,7 @@ export class FlightTypeaheadComponent {
 
   loading = false;
   control = new FormControl();
+  toControl = new FormControl();
 
   online = false;
   online$ = interval(2000).pipe(
@@ -44,25 +45,23 @@ export class FlightTypeaheadComponent {
     debounceTime(300)
   );
 
-  // flights$ = combineLatest({
-  //   input: this.input$,
-  //   online: this.online$,
-  // }).pipe(
-  //   filter((combi) => combi.online),
-  //   tap(() => (this.loading = true)),
-  //   switchMap((combi) => this.load(combi.input)),
-  //   tap(() => (this.loading = false))
-  // );
+  to$ = this.toControl.valueChanges.pipe(
+    filter((v) => v.length >= 3),
+    debounceTime(300)
+  );
 
-  flights$ = this.input$.pipe(
-    withLatestFrom(this.online$),
-    filter(([value, online]) => online),
+  flights$ = combineLatest({
+    input: this.input$,
+    to: this.to$,
+    online: this.online$,
+  }).pipe(
+    filter((combi) => combi.online),
     tap(() => (this.loading = true)),
-    switchMap(([value, online]) => this.load(value)),
+    switchMap((combi) => this.load(combi.input, combi.to)),
     tap(() => (this.loading = false))
   );
 
-  load(airport: string): Observable<Flight[]> {
-    return this.flightService.find(airport, '');
+  load(airport: string, airportTo: string): Observable<Flight[]> {
+    return this.flightService.find(airport, airportTo);
   }
 }
