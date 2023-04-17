@@ -19,6 +19,8 @@
     <div *ngIf="loading">Loading ...</div>
     <div>Online: {{ online }}</div>
 
+    <button (click)="refresh()" class="btn btn-default">Refresh</button>
+
     <table class="table table-striped">
       <tr *ngFor="let f of flights$ | async">
         <td>{{ f.id }}</td>
