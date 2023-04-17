@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FlightService } from '../flight-booking/flight-search/flight.service';
 import {
   BehaviorSubject,
   Observable,
+  Subject,
   catchError,
   combineLatest,
   debounceTime,
@@ -16,6 +17,7 @@ import {
   shareReplay,
   startWith,
   switchMap,
+  takeUntil,
   tap,
   throwError,
 } from 'rxjs';
@@ -28,18 +30,21 @@ import { Flight } from '../model/flight';
   templateUrl: './flight-typeahead.component.html',
   styleUrls: ['./flight-typeahead.component.css'],
 })
-export class FlightTypeaheadComponent {
+export class FlightTypeaheadComponent implements OnDestroy {
   flightService = inject(FlightService);
 
   loading$ = new BehaviorSubject(false);
   control = new FormControl();
+
+  close$ = new Subject<void>();
 
   online$ = interval(2000).pipe(
     startWith(-1),
     tap((v) => console.log('counter', v)),
     map((_) => Math.random() < 0.5),
     distinctUntilChanged(),
-    shareReplay({ bufferSize: 1, refCount: false })
+    shareReplay({ bufferSize: 1, refCount: true }),
+    takeUntil(this.close$)
   );
 
   input$ = this.control.valueChanges.pipe(
@@ -69,5 +74,15 @@ export class FlightTypeaheadComponent {
         // return throwError(() => err)
       })
     );
+  }
+
+  constructor() {
+    this.online$
+      .pipe(takeUntil(this.close$))
+      .subscribe(() => console.log('tick!'));
+  }
+
+  ngOnDestroy(): void {
+    this.close$.next();
   }
 }
