@@ -11,6 +11,7 @@ import {
   interval,
   map,
   of,
+  shareReplay,
   startWith,
   switchMap,
   tap,
@@ -30,12 +31,11 @@ export class FlightTypeaheadComponent {
   loading = false;
   control = new FormControl();
 
-  online = false;
   online$ = interval(2000).pipe(
     startWith(0),
     map((_) => Math.random() < 0.5),
     distinctUntilChanged(),
-    tap((value) => (this.online = value))
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   input$ = this.control.valueChanges.pipe(

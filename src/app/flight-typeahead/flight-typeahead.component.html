@@ -12,7 +12,7 @@
     </div>
 
     <div *ngIf="loading">Loading ...</div>
-    <div>Online: {{ online }}</div>
+    <div>Online: {{ online$ | async }}</div>
 
     <table class="table table-striped">
       <tr *ngFor="let f of flights$ | async">
