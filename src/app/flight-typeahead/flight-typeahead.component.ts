@@ -58,9 +58,10 @@ export class FlightTypeaheadComponent {
     input: this.input$,
     to: this.to$,
     online: this.online$,
+    dummy: this.refresh$.pipe(startWith(null)),
   });
 
-  flights$ = merge(this.flightsCriteria$, this.refresh$).pipe(
+  flights$ = this.flightsCriteria$.pipe(
     filter((combi) => combi.online),
     tap(() => (this.loading = true)),
     switchMap((combi) => this.load(combi.input, combi.to)),
