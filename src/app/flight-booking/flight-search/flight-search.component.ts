@@ -7,6 +7,9 @@ import { CityPipe } from '../../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { DateCvaDirective } from 'src/app/shared/date/date-cva.directive';
 import { DateStepperComponent } from 'src/app/shared/date/date-stepper/date-stepper.component';
+import { Store } from '@ngrx/store';
+import { ticketsFeature } from '../+state/reducer';
+import { ticketsActions } from '../+state/actions';
 
 @Component({
   selector: 'app-flight-search',
@@ -23,9 +26,13 @@ import { DateStepperComponent } from 'src/app/shared/date/date-stepper/date-step
   ],
 })
 export class FlightSearchComponent {
+  private flightService = inject(FlightService);
+  private store = inject(Store);
+
+  flights$ = this.store.select(ticketsFeature.selectFlights);
+
   from = 'London';
   to = 'Paris';
-  flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
   message = '';
   date = new Date();
@@ -35,8 +42,6 @@ export class FlightSearchComponent {
     5: true,
   };
 
-  private flightService = inject(FlightService);
-
   search(): void {
     // Reset properties
     this.message = '';
@@ -44,7 +49,7 @@ export class FlightSearchComponent {
 
     this.flightService.find(this.from, this.to).subscribe({
       next: (flights) => {
-        this.flights = flights;
+        this.store.dispatch(ticketsActions.flightsLoaded({ flights }));
       },
       error: (errResp) => {
         console.error('Error loading flights', errResp);
