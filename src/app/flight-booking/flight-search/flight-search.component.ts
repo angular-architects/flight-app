@@ -10,7 +10,10 @@ import { DateStepperComponent } from 'src/app/shared/date/date-stepper/date-step
 import { Store } from '@ngrx/store';
 import { ticketsActions } from '../+state/actions';
 import { first } from 'rxjs';
-import { selectFilteredFlights } from '../+state/selectors';
+import {
+  selectFilteredFlights,
+  selectFilteredFlightsWithParams,
+} from '../+state/selectors';
 
 @Component({
   selector: 'app-flight-search',
@@ -30,7 +33,7 @@ export class FlightSearchComponent {
   private flightService = inject(FlightService);
   private store = inject(Store);
 
-  flights$ = this.store.select(selectFilteredFlights);
+  flights$ = this.store.select(selectFilteredFlightsWithParams([163]));
 
   from = 'London';
   to = 'Paris';
