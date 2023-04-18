@@ -30,7 +30,6 @@ import {
   ],
 })
 export class FlightSearchComponent {
-  private flightService = inject(FlightService);
   private store = inject(Store);
 
   flights$ = this.store.select(selectFilteredFlightsWithParams([163]));
@@ -47,18 +46,10 @@ export class FlightSearchComponent {
   };
 
   search(): void {
-    // Reset properties
     this.message = '';
-    this.selectedFlight = undefined;
-
-    this.flightService.find(this.from, this.to).subscribe({
-      next: (flights) => {
-        this.store.dispatch(ticketsActions.flightsLoaded({ flights }));
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
-    });
+    this.store.dispatch(
+      ticketsActions.loadFlights({ from: this.from, to: this.to })
+    );
   }
 
   select(f: Flight): void {
