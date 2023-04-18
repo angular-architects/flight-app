@@ -8,9 +8,9 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { DateCvaDirective } from 'src/app/shared/date/date-cva.directive';
 import { DateStepperComponent } from 'src/app/shared/date/date-stepper/date-stepper.component';
 import { Store } from '@ngrx/store';
-import { ticketsFeature } from '../+state/reducer';
 import { ticketsActions } from '../+state/actions';
 import { first } from 'rxjs';
+import { selectFilteredFlights } from '../+state/selectors';
 
 @Component({
   selector: 'app-flight-search',
@@ -30,7 +30,7 @@ export class FlightSearchComponent {
   private flightService = inject(FlightService);
   private store = inject(Store);
 
-  flights$ = this.store.select(ticketsFeature.selectFlights);
+  flights$ = this.store.select(selectFilteredFlights);
 
   from = 'London';
   to = 'Paris';

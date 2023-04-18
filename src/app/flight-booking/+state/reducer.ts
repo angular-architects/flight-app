@@ -6,12 +6,14 @@ export interface TicketsState {
   flights: Flight[];
   basket: unknown;
   tickets: unknown;
+  hide: number[];
 }
 
 export const initialState: TicketsState = {
   flights: [],
   basket: {},
   tickets: {},
+  hide: [163],
 };
 
 export const ticketsFeature = createFeature({
