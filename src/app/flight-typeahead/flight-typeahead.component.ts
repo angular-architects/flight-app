@@ -48,7 +48,9 @@ function log2<T>(message: string) {
 
 // switchMap(x => find(x))
 
-function mySwitchMap<T, U>(func: (input: T) => Observable<U>) {
+type Projector<T, U> = (input: T) => Observable<U>;
+
+function mySwitchMap<T, U>(func: Projector<T, U>) {
   return (input$: Observable<T>): Observable<U> => {
     return new Observable<U>((observer) => {
       const outerSub = input$.subscribe((value) => {
@@ -101,7 +103,7 @@ export class FlightTypeaheadComponent implements OnDestroy {
     filter((combi) => combi.online),
     tap(() => this.loading$.next(true)),
     mySwitchMap((combi) => this.load(combi.input)),
-    // switchMap((combi) => this.load(combi.input)),
+    //switchMap((combi) => this.load(combi.input)),
     tap(() => this.loading$.next(false))
   );
 
