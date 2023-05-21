@@ -14,11 +14,7 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
   {
     path: '',
     component: FlightBookingComponent,
-    providers: [
-      provideLogger({
-        formatter: (lvl, cat, msg) => [lvl, cat, msg].join(';'),
-      }),
-    ],
+    providers: [],
     children: [
       {
         path: '',
@@ -34,7 +30,7 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
         component: FlightEditComponent,
         resolve: {
           flight: (r: ActivatedRouteSnapshot) =>
-            inject(FlightService).findById(r.params['id']).pipe(delay(3000)),
+            inject(FlightService).findById(r.params['id']),
         },
         canDeactivate: [(cmp: CanExit) => cmp.canExit()],
       },

@@ -13,14 +13,7 @@ import { DateStepperComponent } from 'src/app/shared/date/date-stepper/date-step
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [
-    CommonModule,
-    FormsModule,
-    CityPipe,
-    FlightCardComponent,
-    DateCvaDirective,
-    DateStepperComponent,
-  ],
+  imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
 })
 export class FlightSearchComponent {
   from = 'London';

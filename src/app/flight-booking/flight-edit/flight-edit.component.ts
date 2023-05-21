@@ -13,18 +13,12 @@ import { CanExit } from 'src/app/shared/can-exit';
 import { Observable } from 'rxjs';
 import { Dialog } from '@angular/cdk/dialog';
 import { ConfirmComponent } from 'src/app/shared/confirm/confirm.component';
+import { DateCvaDirective } from 'src/app/shared/date/date-cva.directive';
 
 @Component({
   selector: 'app-flight-edit',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ValidationErrorsComponent,
-    CityValidatorDirective,
-    AsyncCityValidatorDirective,
-    RoundtripValidatorDirective,
-  ],
+  imports: [CommonModule, FormsModule, DateCvaDirective],
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
 })

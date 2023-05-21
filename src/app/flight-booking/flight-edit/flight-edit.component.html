@@ -1,35 +1,14 @@
-<div class="p40" *ngIf="flight.id != 0">
+<div *ngIf="flight.id != 0">
   <h2>Flight Edit</h2>
 
   <div class="mt-10">ShowDetails: {{ showDetails }}</div>
 
   <form #form="ngForm" roundTrip>
-    <app-validation-errors
-      [errors]="form?.controls?.['from']?.errors ?? {}"
-      field="from"
-    ></app-validation-errors>
-
-    <app-validation-errors
-      [errors]="form?.errors ?? {}"
-      field="flight"
-    ></app-validation-errors>
-
-    <div class="alert alert-info" *ngIf="form?.controls?.['from']?.pending">
-      Validating ...
-    </div>
-
     <div>
       <input name="id" [(ngModel)]="flight.id" />
-      <input
-        name="from"
-        [(ngModel)]="flight.from"
-        [city]="['Paris', 'London', 'Berlin']"
-        asyncCity
-        required
-        minlength="3"
-      />
+      <input name="from" [(ngModel)]="flight.from" />
       <input name="to" [(ngModel)]="flight.to" />
-      <input name="date" [(ngModel)]="flight.date" />
+      <input name="date" [(ngModel)]="flight.date" appDateCva />
     </div>
 
     <div>

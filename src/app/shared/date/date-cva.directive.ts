@@ -2,7 +2,7 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { format, parse } from 'date-fns';
 
-type OnChange = (value: Date) => void;
+type OnChange = (value: string) => void;
 type OnTouched = () => void;
 
 @Directive({
@@ -26,7 +26,7 @@ export class DateCvaDirective implements ControlValueAccessor {
   @HostListener('change', ['$event.target.value'])
   change(value: string): void {
     const date = value ? parse(value, 'dd.MM.yyyy HH:mm', 0) : new Date();
-    this._onChange(date);
+    this._onChange(date.toISOString());
   }
 
   @HostListener('blur')
@@ -34,7 +34,8 @@ export class DateCvaDirective implements ControlValueAccessor {
     this._onTouched();
   }
 
-  writeValue(date: Date): void {
+  writeValue(dateISO: string): void {
+    const date = new Date(dateISO);
     const formatted = date ? format(date, 'dd.MM.yyyy HH:mm') : '';
     this.value = formatted;
   }
