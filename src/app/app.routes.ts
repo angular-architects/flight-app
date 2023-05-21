@@ -1,10 +1,10 @@
 import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { BasketComponent } from './basket/basket.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { ConfigService } from './shared/config.service';
+import { AboutComponent } from './shell/about/about.component';
+import { HomeComponent } from './shell/home/home.component';
+import { BasketComponent } from './shell/basket/basket.component';
+import { ConfigService } from '@demo/shared/util-config';
+import { NotFoundComponent } from './shell/not-found/not-found.component';
 
 export const APP_ROUTES: Routes = [
   {
@@ -29,12 +29,15 @@ export const APP_ROUTES: Routes = [
     children: [
       {
         path: 'flight-booking',
-        loadChildren: () => import('./flight-booking/flight-booking.routes'),
+        loadChildren: () =>
+          import('@demo/ticketing/feature-booking').then(
+            (m) => m.FLIGHT_BOOKING_ROUTES
+          ),
       },
       {
         path: 'next-flights',
         loadChildren: () =>
-          import('./next-flights/next-flights.module').then(
+          import('@demo/ticketing/feature-next-flights').then(
             (m) => m.NextFlightsModule
           ),
       },

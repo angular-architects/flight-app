@@ -19,10 +19,36 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@demo/ticketing/data": ["src/app/domains/ticketing/data/index.ts"],
+      "@demo/ticketing/feature-booking": [
+        "src/app/domains/ticketing/feature-booking/index.ts"
+      ],
+      "@demo/ticketing/feature-next-flights": [
+        "src/app/domains/ticketing/feature-next-flights/index.ts"
+      ],
+
+      "@demo/checkin/data": ["src/app/domains/checkin/data/index.ts"],
+      "@demo/checkin/feature-manage": [
+        "src/app/domains/checkin/feature-manage/index.ts"
+      ],
+
+      "@demo/shared/ui-common": ["src/app/domains/shared/ui-common/index.ts"],
+      "@demo/shared/util-auth": ["src/app/domains/shared/util-auth/index.ts"],
+      "@demo/shared/util-common": [
+        "src/app/domains/shared/util-common/index.ts"
+      ],
+      "@demo/shared/util-config": [
+        "src/app/domains/shared/util-config/index.ts"
+      ],
+      "@demo/shared/util-logger": [
+        "src/app/domains/shared/util-logger/index.ts"
+      ],
+      "@demo/shared/util-validation": [
+        "src/app/domains/shared/util-validation/index.ts"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

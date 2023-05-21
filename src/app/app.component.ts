@@ -9,23 +9,13 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { filter, map, merge, Observable } from 'rxjs';
-import { FlightSearchComponent } from './flight-booking/flight-search/flight-search.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { NextFlightsModule } from './next-flights/next-flights.module';
-import { ConfigService } from './shared/config.service';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from './shell/sidebar/sidebar.component';
+import { NavbarComponent } from './shell/navbar/navbar.component';
+import { ConfigService } from '@demo/shared/util-config';
 
 @Component({
   standalone: true,
-  imports: [
-    SidebarComponent,
-    NavbarComponent,
-    FlightSearchComponent,
-    NextFlightsModule,
-    RouterOutlet,
-    AsyncPipe,
-    NgIf,
-  ],
+  imports: [SidebarComponent, NavbarComponent, RouterOutlet, AsyncPipe, NgIf],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

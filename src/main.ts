@@ -9,9 +9,8 @@ import {
 } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
-import { NextFlightsModule } from './app/next-flights/next-flights.module';
-import { withColor } from './app/shared/logger/color';
-import { provideLogger } from './app/shared/logger/provider';
+import { NextFlightsModule } from '@demo/ticketing/feature-next-flights';
+import { provideLogger, withColor } from '@demo/shared/util-logger';
 
 bootstrapApplication(AppComponent, {
   providers: [
