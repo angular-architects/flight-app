@@ -5,6 +5,7 @@ import { Directive, inject, Input, TemplateRef } from '@angular/core';
   standalone: true,
 })
 export class TableFieldDirective {
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input('appTableFieldAs') propName = '';
   templateRef = inject(TemplateRef) as TemplateRef<unknown>;
 }

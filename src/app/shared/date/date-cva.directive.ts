@@ -17,8 +17,12 @@ type OnTouched = () => void;
   ],
 })
 export class DateCvaDirective implements ControlValueAccessor {
-  _onChange: OnChange = () => {};
-  _onTouched: OnTouched = () => {};
+  _onChange: OnChange = () => {
+    null;
+  };
+  _onTouched: OnTouched = () => {
+    null;
+  };
 
   @HostBinding('value')
   value = '';
@@ -42,7 +46,7 @@ export class DateCvaDirective implements ControlValueAccessor {
   registerOnChange(fn: OnChange): void {
     this._onChange = fn;
   }
-  registerOnTouched(fn: any): void {
-    this._onTouched;
+  registerOnTouched(fn: OnTouched): void {
+    this._onTouched = fn;
   }
 }

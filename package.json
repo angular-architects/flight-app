@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -36,9 +37,17 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.2",
+    "@angular-eslint/builder": "16.0.2",
+    "@angular-eslint/eslint-plugin": "16.0.2",
+    "@angular-eslint/eslint-plugin-template": "16.0.2",
+    "@angular-eslint/schematics": "16.0.2",
+    "@angular-eslint/template-parser": "16.0.2",
     "@angular/cli": "~16.0.2",
     "@angular/compiler-cli": "^16.0.2",
     "@types/jasmine": "~4.3.0",
+    "@typescript-eslint/eslint-plugin": "5.59.2",
+    "@typescript-eslint/parser": "5.59.2",
+    "eslint": "^8.40.0",
     "husky": "^8.0.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",

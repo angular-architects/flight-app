@@ -9,7 +9,7 @@ import { delay, map, Observable } from 'rxjs';
 import { FlightService } from 'src/app/flight-booking/flight-search/flight.service';
 
 @Directive({
-  selector: '[asyncCity]',
+  selector: '[appAsyncCity]',
   standalone: true,
   providers: [
     {

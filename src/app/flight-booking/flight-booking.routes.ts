@@ -1,9 +1,7 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Routes } from '@angular/router';
-import { delay } from 'rxjs';
 import { checkAuth } from '../shared/auth/auth';
 import { CanExit } from '../shared/can-exit';
-import { provideLogger } from '../shared/logger/provider';
 import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';

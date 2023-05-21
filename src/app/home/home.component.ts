@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoggerService } from '../shared/logger/logger';
-import { CustomLogAppender } from '../shared/logger/custom-log-appender';
 import { AuthService } from '../shared/auth/auth.service';
 
 @Component({

@@ -2,6 +2,7 @@ import {
   Directive,
   inject,
   Input,
+  OnInit,
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
@@ -10,9 +11,11 @@ import {
   selector: '[appCustomTemplateOutlet]',
   standalone: true,
 })
-export class CustomTemplateOutletDirective {
+export class CustomTemplateOutletDirective implements OnInit {
   @Input('appCustomTemplateOutlet') template: TemplateRef<unknown> | undefined;
-  @Input('appCustomTemplateOutletContext') context: any;
+  @Input('appCustomTemplateOutletContext') context:
+    | Record<string, unknown>
+    | undefined;
 
   viewContainer = inject(ViewContainerRef);
 
@@ -28,6 +31,7 @@ export class CustomTemplateOutletDirective {
     );
 
     // Get first projected node
-    // const nativeElement = ref.rootNodes[0]
+    const nativeElement = ref.rootNodes[0];
+    console.log('nativeElement', nativeElement);
   }
 }

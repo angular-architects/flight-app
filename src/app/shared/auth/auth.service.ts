@@ -10,7 +10,7 @@ export class AuthService {
     return this._userName;
   }
 
-  login(userName: string, password = ''): void {
+  login(userName: string): void {
     // Auth for *very honest* users TM
     this._userName = userName;
   }

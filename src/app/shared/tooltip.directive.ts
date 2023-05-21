@@ -6,6 +6,7 @@ import {
   TemplateRef,
   ViewContainerRef,
   HostListener,
+  OnInit,
 } from '@angular/core';
 
 // Context Information to be passed to the template
@@ -18,7 +19,7 @@ type TipToolContext = {
   selector: '[appTooltip]',
   standalone: true,
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnInit {
   viewContainer = inject(ViewContainerRef);
   viewRef: EmbeddedViewRef<TipToolContext> | undefined;
 

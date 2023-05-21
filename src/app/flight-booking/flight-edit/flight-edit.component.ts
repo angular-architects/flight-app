@@ -2,13 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { Flight, initFlight } from '../../model/flight';
-import { ValidationErrorsComponent } from '../../shared/validation-errors/validation-errors.component';
-import { CityValidatorDirective } from '../../shared/validation/city-validator.directive';
-import { AsyncCityValidatorDirective } from '../../shared/validation/async-city-validator.directive';
-import { RoundtripValidatorDirective } from '../../shared/validation/roundtrip-validator.directive';
+import { initFlight } from '../../model/flight';
 import { ActivatedRoute } from '@angular/router';
-import { FlightService } from '../flight-search/flight.service';
 import { CanExit } from 'src/app/shared/can-exit';
 import { Observable } from 'rxjs';
 import { Dialog } from '@angular/cdk/dialog';

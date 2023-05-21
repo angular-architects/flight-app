@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 export function validateCity(validCities: string[]): ValidatorFn {
   return (c: AbstractControl) => {

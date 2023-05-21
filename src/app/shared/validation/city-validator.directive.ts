@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 
 @Directive({
-  selector: '[city]',
+  selector: '[appCity]',
   standalone: true,
   providers: [
     {
@@ -18,7 +18,7 @@ import {
   ],
 })
 export class CityValidatorDirective implements Validator {
-  @Input('city') validCities: string[] = [];
+  @Input('appCity') validCities: string[] = [];
 
   validate(c: AbstractControl): ValidationErrors | null {
     if (c.value && this.validCities.indexOf(c.value) === -1) {

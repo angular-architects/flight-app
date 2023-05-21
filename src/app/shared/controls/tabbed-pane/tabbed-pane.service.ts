@@ -7,6 +7,4 @@ import { BehaviorSubject } from 'rxjs';
 export class TabbedPaneService {
   readonly pageCount = new BehaviorSubject<number>(0);
   readonly currentPage = new BehaviorSubject<number>(1);
-
-  constructor() {}
 }

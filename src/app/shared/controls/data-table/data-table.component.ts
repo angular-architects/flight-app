@@ -11,7 +11,7 @@ import { CustomTemplateOutletDirective } from '../../custom-template-outlet.dire
   styleUrls: ['./data-table.component.css'],
 })
 export class DataTableComponent {
-  @Input() data: Array<any> = [];
+  @Input() data: Array<Record<string, unknown>> = [];
 
   @ContentChildren(TableFieldDirective)
   fields: QueryList<TableFieldDirective> | undefined;

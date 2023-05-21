@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
-import { DateCvaDirective } from 'src/app/shared/date/date-cva.directive';
-import { DateStepperComponent } from 'src/app/shared/date/date-stepper/date-stepper.component';
 
 @Component({
   selector: 'app-flight-search',
