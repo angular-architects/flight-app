@@ -8,7 +8,22 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prepare": "husky install",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build:flights": "wireit"
+  },
+  "wireit": {
+    "build:flights": {
+      "command": "ng build",
+      "files": [
+        "src/**",
+        "package.json",
+        "tsconfig.json",
+        "tsconfig.app.json"
+      ],
+      "output": [
+        "dist/flights/**"
+      ]
+    }
   },
   "private": true,
   "dependencies": {
