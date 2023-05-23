@@ -1,15 +1,9 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@flight-demo/shared/ui-common';
 import { Flight, FlightService } from '@flight-demo/tickets/domain';
-import {
-  toObservable,
-  toSignal,
-  takeUntilDestroyed,
-} from '@angular/core/rxjs-interop';
-import { combineLatest, debounceTime, filter, interval } from 'rxjs';
 
 @Component({
   selector: 'app-flight-search',
@@ -25,24 +19,6 @@ export class FlightSearchComponent {
   selectedFlight = signal<Flight | undefined>(undefined);
 
   flightRoute = computed(() => this.from() + ' to ' + this.to());
-  from$ = toObservable(this.from);
-  to$ = toObservable(this.to);
-
-  criteria$ = combineLatest({
-    from: this.from$,
-    to: this.to$,
-  }).pipe(
-    filter((combi) => combi.to.length >= 3 && combi.from.length >= 3),
-    debounceTime(300),
-    takeUntilDestroyed()
-  );
-
-  criteria = toSignal(this.criteria$, {
-    initialValue: {
-      from: 'Graz',
-      to: 'Hamburg',
-    },
-  });
 
   basket = signal<Record<number, boolean>>({
     3: true,
@@ -51,22 +27,9 @@ export class FlightSearchComponent {
 
   private flightService = inject(FlightService);
 
-  constructor() {
-    effect(() => {
-      console.log('from', this.from());
-      console.log('to', this.to());
-    });
-
-    effect(
-      () => {
-        this.search();
-      },
-      { allowSignalWrites: true }
-    );
-  }
-
   async search(): Promise<void> {
-    const { from, to } = this.criteria();
+    const from = this.from();
+    const to = this.to();
 
     if (!from || !to) {
       return;
