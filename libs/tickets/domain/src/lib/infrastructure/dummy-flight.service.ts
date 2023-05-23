@@ -5,6 +5,9 @@ import { FlightService } from './flight.service';
 
 @Injectable()
 export class DummyFlightService implements FlightService {
+  findPromise(from: string, to: string): Promise<Flight[]> {
+    throw new Error('Method not implemented.');
+  }
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   findById(id: string): Observable<Flight> {
     const date = new Date().toISOString();

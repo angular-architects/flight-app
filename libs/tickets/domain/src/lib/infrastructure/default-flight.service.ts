@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { Flight } from '../entities/flight';
 import { FlightService } from './flight.service';
 import { ConfigService } from '@flight-demo/shared/util-config';
@@ -19,6 +19,10 @@ export class DefaultFlightService implements FlightService {
     const params = { from, to };
 
     return this.http.get<Flight[]>(url, { headers, params });
+  }
+
+  findPromise(from: string, to: string): Promise<Flight[]> {
+    return firstValueFrom(this.find(from, to));
   }
 
   findById(id: string): Observable<Flight> {
