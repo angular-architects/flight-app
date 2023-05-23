@@ -5,11 +5,21 @@
 <form>
   <div class="form-group">
     <label>From:</label>
-    <input [(ngModel)]="from" name="from" class="form-control" />
+    <input
+      [ngModel]="from()"
+      (ngModelChange)="from.set($event)"
+      name="from"
+      class="form-control"
+    />
   </div>
   <div class="form-group">
     <label>To:</label>
-    <input [(ngModel)]="to" name="to" class="form-control" />
+    <input
+      [ngModel]="to()"
+      (ngModelChange)="to.set($event)"
+      name="to"
+      class="form-control"
+    />
   </div>
 
   <div class="form-group">
@@ -17,9 +27,15 @@
   </div>
 </form>
 
+<h3>{{ flightRoute() }}</h3>
+
 <div class="row">
-  <div *ngFor="let f of flights" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-    <app-flight-card [item]="f" [(selected)]="basket[f.id]">
+  <div *ngFor="let f of flights()" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <app-flight-card
+      [item]="f"
+      [selected]="basket()[f.id]"
+      (selectedChange)="select(f, $event)"
+    >
       <p class="middle"><i>Delays are possible!</i></p>
       <p class="bottom"><small>Statement without guarantee!</small></p>
     </app-flight-card>
@@ -29,5 +45,5 @@
 <p>&nbsp;</p>
 
 <div>
-  <pre>{{ basket | json }}</pre>
+  <pre>{{ basket() | json }}</pre>
 </div>
