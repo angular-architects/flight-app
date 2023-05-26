@@ -10,7 +10,6 @@ import {
   ticketsFeature,
 } from '@flight-demo/tickets/domain';
 import { Store } from '@ngrx/store';
-import { takeCoverage } from 'v8';
 import { first } from 'rxjs';
 
 @Component({
