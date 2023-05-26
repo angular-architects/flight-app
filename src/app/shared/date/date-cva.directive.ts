@@ -42,6 +42,6 @@ export class DateCvaDirective implements ControlValueAccessor {
     this._onChange = fn;
   }
   registerOnTouched(fn: any): void {
-    this._onTouched;
+    this._onTouched = fn;
   }
 }
