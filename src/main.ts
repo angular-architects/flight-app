@@ -10,7 +10,7 @@ import {
 import { AppComponent } from './app/app.component';
 import { APP_ROUTES } from './app/app.routes';
 import { NextFlightsModule } from '@demo/ticketing/feature-next-flights';
-import { provideLogger, withColor } from '@demo/shared/util-logger';
+import { LogLevel, provideLogger, withColor } from '@demo/shared/util-logger';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -19,6 +19,11 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),
 
-    provideLogger({}, withColor()),
+    provideLogger(
+      {
+        level: LogLevel.DEBUG,
+      },
+      withColor()
+    ),
   ],
 });
