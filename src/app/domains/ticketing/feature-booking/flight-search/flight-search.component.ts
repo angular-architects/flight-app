@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import {
+  FlightBookingFacade,
   FlightService,
   selectFilteredFlights,
   selectFilteredFlights2,
@@ -29,13 +30,13 @@ import { Store } from '@ngrx/store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
-  private store = inject(Store);
+  private facade = inject(FlightBookingFacade);
 
   from = signal('Paris');
   to = signal('London');
   flightRoute = computed(() => this.from() + ' to ' + this.to());
 
-  flights = this.store.selectSignal(selectFlightsWithParams([1238]));
+  flights = this.facade.flights;
 
   basket = signal<Record<number, boolean>>({
     3: true,
@@ -43,12 +44,7 @@ export class FlightSearchComponent {
   });
 
   search(): void {
-    this.store.dispatch(
-      ticketingActions.loadFlights({
-        from: this.from(),
-        to: this.to(),
-      })
-    );
+    this.facade.load(this.from(), this.to());
   }
 
   updateBasket(fid: number, selected: boolean): void {
@@ -59,13 +55,6 @@ export class FlightSearchComponent {
   }
 
   delay(): void {
-    const date = addMinutes(this.flights()[0].date, 15);
-
-    const flight = {
-      ...this.flights()[0],
-      date,
-    };
-
-    this.store.dispatch(ticketingActions.updateFlight({ flight }));
+    this.facade.delay();
   }
 }
