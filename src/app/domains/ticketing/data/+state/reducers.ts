@@ -4,6 +4,7 @@ import { ticketingActions } from './actions';
 
 export interface TicketingState {
   flights: Flight[];
+  skip: number[];
   basket: unknown;
   stats: unknown;
   from: unknown;
@@ -12,6 +13,7 @@ export interface TicketingState {
 
 export const initTicketingState: TicketingState = {
   flights: [],
+  skip: [1238],
   basket: {},
   from: '',
   to: '',
