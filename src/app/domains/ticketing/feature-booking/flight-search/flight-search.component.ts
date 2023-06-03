@@ -5,6 +5,8 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
 
+// import {  } from '@demo/checkin/data';
+
 @Component({
   selector: 'app-flight-search',
   standalone: true,
@@ -13,8 +15,8 @@ import { Flight, FlightService } from '@demo/ticketing/data';
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
 })
 export class FlightSearchComponent {
-  from = 'London';
-  to = 'Paris';
+  from = 'Paris';
+  to = 'London';
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
   message = '';
