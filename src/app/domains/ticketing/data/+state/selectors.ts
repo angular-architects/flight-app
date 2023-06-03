@@ -6,6 +6,12 @@ export const selectFilteredFlights = createSelector(
   (flights) => flights.filter((f) => f.id % 2 === 0)
 );
 
+export function selectFlightsWithParams(skip: number[]) {
+  return createSelector(ticketingFeature.selectFlights, (flights) =>
+    flights.filter((f) => !skip.includes(f.id))
+  );
+}
+
 export const selectFilteredFlights2 = createSelector(
   ticketingFeature.selectFlights,
   ticketingFeature.selectSkip,

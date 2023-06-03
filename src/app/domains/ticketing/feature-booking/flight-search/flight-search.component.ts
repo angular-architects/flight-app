@@ -13,6 +13,7 @@ import {
   FlightService,
   selectFilteredFlights,
   selectFilteredFlights2,
+  selectFlightsWithParams,
   ticketingActions,
   ticketingFeature,
 } from '@demo/ticketing/data';
@@ -35,7 +36,7 @@ export class FlightSearchComponent {
   to = signal('London');
   flightRoute = computed(() => this.from() + ' to ' + this.to());
 
-  flights = this.store.selectSignal(selectFilteredFlights2);
+  flights = this.store.selectSignal(selectFlightsWithParams([1238]));
 
   basket = signal<Record<number, boolean>>({
     3: true,
