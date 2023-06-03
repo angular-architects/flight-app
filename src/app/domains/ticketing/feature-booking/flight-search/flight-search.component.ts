@@ -6,7 +6,6 @@ import {
   computed,
   effect,
   inject,
-  runInInjectionContext,
   signal,
   untracked,
 } from '@angular/core';
@@ -14,8 +13,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
-import { Flight, FlightService } from '@demo/ticketing/data';
+import {
+  Flight,
+  FlightBookingFacade,
+  FlightService,
+} from '@demo/ticketing/data';
 import { addMinutes } from '@demo/shared/util-common';
+import {
+  toSignal,
+  toObservable,
+  takeUntilDestroyed,
+} from '@angular/core/rxjs-interop';
+import { combineLatest, debounceTime, filter, interval, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-flight-search',
@@ -26,12 +35,39 @@ import { addMinutes } from '@demo/shared/util-common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent implements OnInit {
+  private facade = inject(FlightBookingFacade);
+
   from = signal('Paris');
   to = signal('London');
 
+  from$ = toObservable(this.from);
+  to$ = toObservable(this.to);
+
+  criteria$ = combineLatest({
+    from: this.from$,
+    to: this.to$,
+    counter: interval(1000),
+  }).pipe(
+    filter((combi) => combi.from.length >= 3 && combi.to.length >= 3),
+    debounceTime(300)
+    // startWith({ from: '', to: ''} as {from:string, to:string})
+  );
+
+  criteria = toSignal(this.criteria$, {
+    initialValue: {
+      from: '',
+      to: '',
+      counter: -1,
+    },
+  });
+
+  // criteria2 = toSignal(this.criteria$, {
+  //   requireSync: true
+  // });
+
   flightRoute = computed(() => this.from() + ' to ' + this.to());
 
-  flights = signal<Array<Flight>>([]);
+  flights = this.facade.flights;
   selectedFlight = signal<Flight | undefined>(undefined);
 
   message = signal('');
@@ -48,6 +84,14 @@ export class FlightSearchComponent implements OnInit {
   private flightService = inject(FlightService);
 
   constructor() {
+    this.criteria$.pipe(takeUntilDestroyed()).subscribe((c) => {
+      console.log('counter$', c.counter);
+    });
+
+    effect(() => {
+      console.log('counter', this.criteria().counter);
+    });
+
     effect(() => {
       console.log('from', this.from());
       console.log(
@@ -88,18 +132,13 @@ export class FlightSearchComponent implements OnInit {
   }
 
   search(): void {
+    const { from, to } = this.criteria();
+
     // Reset properties
     this.message.set('');
     this.selectedFlight.set(undefined);
 
-    this.flightService.find(this.from(), this.to()).subscribe({
-      next: (flights) => {
-        this.flights.set(flights);
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
-    });
+    this.facade.load(from, to);
   }
 
   select(f: Flight): void {
@@ -128,11 +167,6 @@ export class FlightSearchComponent implements OnInit {
     //   flights[0].date = addMinutes(flights[0].date, 15);
     // });
 
-    const date = addMinutes(this.flights()[0].date, 15);
-
-    this.flights.update((flights) => [
-      { ...flights[0], date },
-      ...flights.slice(1),
-    ]);
+    this.facade.delay();
   }
 }
