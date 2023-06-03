@@ -2,12 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Luggage, LuggageService } from '../../data';
 
-// import { Flight } from '../../../ticketing/data';
+import { LuggageCardComponent } from '../../ui-common';
 
 @Component({
   selector: 'app-checkin',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LuggageCardComponent],
   templateUrl: './checkin.component.html',
   styleUrls: ['./checkin.component.css'],
 })
