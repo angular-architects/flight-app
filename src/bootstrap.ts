@@ -15,7 +15,7 @@ import { LogLevel, provideLogger, withColor } from '@demo/shared/util-logger';
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
-    provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
+    provideRouter(APP_ROUTES),
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),
 
