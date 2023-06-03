@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { Luggage, LuggageService } from '@demo/luggage/data';
-import { LuggageCardComponent } from '@demo/luggage/ui-common';
+import { Luggage, LuggageService } from '../../data';
+import { LuggageCardComponent } from '../../ui-common';
 
 @Component({
   selector: 'app-checkin',
