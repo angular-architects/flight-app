@@ -1,0 +1,16 @@
+<h2>Checkin Luggage</h2>
+
+<table class="table table-striped">
+  <tr>
+    <th>Id</th>
+    <th>Weight</th>
+    <th>Checked in</th>
+    <th>Remarks</th>
+  </tr>
+  <tr *ngFor="let item of luggage">
+    <td>{{ item.id }}</td>
+    <td>{{ item.weight }}</td>
+    <td>{{ item.checkedIn }}</td>
+    <td>{{ item.remarks }}</td>
+  </tr>
+</table>
