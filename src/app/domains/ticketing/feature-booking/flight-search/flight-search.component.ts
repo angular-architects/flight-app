@@ -1,9 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Injector,
+  OnInit,
   computed,
   effect,
   inject,
+  runInInjectionContext,
   signal,
   untracked,
 } from '@angular/core';
@@ -22,7 +25,7 @@ import { addMinutes } from '@demo/shared/util-common';
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FlightSearchComponent {
+export class FlightSearchComponent implements OnInit {
   from = signal('Paris');
   to = signal('London');
 
@@ -40,9 +43,26 @@ export class FlightSearchComponent {
     5: true,
   });
 
+  injector = inject(Injector);
+
   private flightService = inject(FlightService);
 
   constructor() {
+    effect(() => {
+      console.log('from', this.from());
+      console.log(
+        'to',
+        untracked(() => this.to())
+      );
+    });
+
+    setTimeout(() => {
+      this.from.set('Graz');
+      // Graz - London  // Glitch
+      this.to.set('Hamburg');
+      // Graz - Hamburg
+    }, 2000);
+
     effect(
       () => {
         // console.log('from', this.from());
@@ -55,6 +75,16 @@ export class FlightSearchComponent {
     // effect(() => {
     //   this.to.set(this.from())
     // }, { allowSignalWrites: true });
+  }
+
+  ngOnInit() {
+    effect(
+      () => {
+        console.log('from', this.from());
+        console.log('to', () => this.to());
+      },
+      { injector: this.injector }
+    );
   }
 
   search(): void {
