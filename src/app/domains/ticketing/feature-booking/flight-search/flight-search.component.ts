@@ -9,8 +9,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
-import { Flight, FlightService } from '@demo/ticketing/data';
+import {
+  FlightService,
+  ticketingActions,
+  ticketingFeature,
+} from '@demo/ticketing/data';
 import { addMinutes } from '@demo/shared/util-common';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-flight-search',
@@ -22,12 +27,14 @@ import { addMinutes } from '@demo/shared/util-common';
 })
 export class FlightSearchComponent {
   private flightService = inject(FlightService);
+  private store = inject(Store);
 
   from = signal('Paris');
   to = signal('London');
   flightRoute = computed(() => this.from() + ' to ' + this.to());
 
-  flights = signal<Array<Flight>>([]);
+  flights = this.store.selectSignal(ticketingFeature.selectFlights);
+
   basket = signal<Record<number, boolean>>({
     3: true,
     5: true,
@@ -36,7 +43,7 @@ export class FlightSearchComponent {
   search(): void {
     this.flightService.find(this.from(), this.to()).subscribe({
       next: (flights) => {
-        this.flights.set(flights);
+        this.store.dispatch(ticketingActions.flightsLoaded({ flights }));
       },
       error: (errResp) => {
         console.error('Error loading flights', errResp);
@@ -54,9 +61,11 @@ export class FlightSearchComponent {
   delay(): void {
     const date = addMinutes(this.flights()[0].date, 15);
 
-    this.flights.update((flights) => [
-      { ...flights[0], date },
-      ...flights.slice(1),
-    ]);
+    const flight = {
+      ...this.flights()[0],
+      date,
+    };
+
+    this.store.dispatch(ticketingActions.updateFlight({ flight }));
   }
 }
