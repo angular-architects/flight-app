@@ -84,10 +84,11 @@ export class FlightSearchComponent {
     //   basket[fid] = selected;
     // });
 
+    console.log('basket', fid, selected);
     // Immutables
     this.basket.update((basket) => ({
-      [fid]: selected,
       ...basket,
+      [fid]: selected,
     }));
   }
 }
