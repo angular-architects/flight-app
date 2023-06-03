@@ -4,15 +4,23 @@ import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
-import { FlightService, ticketingFeature } from '@demo/ticketing/data';
+import {
+  FlightService,
+  TicketingEffects,
+  ticketingFeature,
+} from '@demo/ticketing/data';
 import { checkAuth } from '@demo/shared/util-auth';
 import { provideState } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
   {
     path: '',
     component: FlightBookingComponent,
-    providers: [provideState(ticketingFeature)],
+    providers: [
+      provideState(ticketingFeature),
+      provideEffects(TicketingEffects),
+    ],
     children: [
       {
         path: '',

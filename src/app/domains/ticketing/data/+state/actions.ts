@@ -8,6 +8,8 @@ export const ticketingActions = createActionGroup({
     'flights loaded': props<{ flights: Flight[] }>(),
     // event
 
+    'load flights': props<{ from: string; to: string }>(),
+
     'update flight': props<{ flight: Flight }>(),
     // command
 

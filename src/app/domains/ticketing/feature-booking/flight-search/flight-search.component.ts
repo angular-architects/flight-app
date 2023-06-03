@@ -29,7 +29,6 @@ import { Store } from '@ngrx/store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
-  private flightService = inject(FlightService);
   private store = inject(Store);
 
   from = signal('Paris');
@@ -44,14 +43,12 @@ export class FlightSearchComponent {
   });
 
   search(): void {
-    this.flightService.find(this.from(), this.to()).subscribe({
-      next: (flights) => {
-        this.store.dispatch(ticketingActions.flightsLoaded({ flights }));
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
-    });
+    this.store.dispatch(
+      ticketingActions.loadFlights({
+        from: this.from(),
+        to: this.to(),
+      })
+    );
   }
 
   updateBasket(fid: number, selected: boolean): void {
