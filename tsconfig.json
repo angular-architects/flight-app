@@ -46,7 +46,8 @@
       ],
       "@demo/shared/util-validation": [
         "src/app/domains/shared/util-validation/index.ts"
-      ]
+      ],
+      "auth": ["projects/auth/src/public-api.ts"]
     }
   },
   "angularCompilerOptions": {

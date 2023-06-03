@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { AuthService } from 'auth';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,13 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'miles-app';
+  authService = inject(AuthService);
+
+  constructor() {
+    this.authService.userName.subscribe((userName) => {
+      console.log('userName', userName);
+    });
+  }
 }
 
 export default AppComponent;
