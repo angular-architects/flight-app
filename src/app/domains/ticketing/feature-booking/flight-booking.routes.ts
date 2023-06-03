@@ -34,7 +34,7 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
       {
         path: 'passenger-search',
         component: PassengerSearchComponent,
-        canActivate: [checkAuth],
+        // canActivate: [checkAuth],
       },
     ],
   },

@@ -11,3 +11,14 @@ export const selectFilteredFlights2 = createSelector(
   ticketingFeature.selectSkip,
   (flights, skip) => flights.filter((f) => !skip.includes(f.id))
 );
+
+export const selectPassengersWithTickets = createSelector(
+  ticketingFeature.selectPassengerIds,
+  ticketingFeature.selectPassengers,
+  ticketingFeature.selectTickets,
+  (ids, ps, ts) =>
+    ids.map((id) => ({
+      ...ps[id],
+      tickets: ps[id].ticketIds.map((id) => ts[id]),
+    }))
+);
