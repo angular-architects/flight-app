@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
+import { addMinutes } from '@demo/shared/util-common';
 
 @Component({
   selector: 'app-flight-search',
@@ -90,5 +91,18 @@ export class FlightSearchComponent {
       ...basket,
       [fid]: selected,
     }));
+  }
+
+  delay(): void {
+    // this.flights.mutate(flights => {
+    //   flights[0].date = addMinutes(flights[0].date, 15);
+    // });
+
+    const date = addMinutes(this.flights()[0].date, 15);
+
+    this.flights.update((flights) => [
+      { ...flights[0], date },
+      ...flights.slice(1),
+    ]);
   }
 }
