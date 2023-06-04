@@ -33,15 +33,16 @@ export class FlightSearchComponent {
     5: true,
   });
 
-  search(): void {
-    this.flightService.find(this.from(), this.to()).subscribe({
-      next: (flights) => {
-        this.flights.set(flights);
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
-    });
+  async search(): Promise<void> {
+    const from = this.from();
+    const to = this.to();
+
+    if (!from || !to) {
+      return;
+    }
+
+    const flights = await this.flightService.findPromise(from, to);
+    this.flights.set(flights);
   }
 
   updateBasket(fid: number, selected: boolean): void {
