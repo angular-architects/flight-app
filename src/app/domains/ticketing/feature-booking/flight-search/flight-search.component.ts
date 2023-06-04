@@ -10,12 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import {
-  FlightService,
-  selectFilteredFlights,
-  selectFilteredFlights2,
   selectFlightsWithParams,
   ticketingActions,
-  ticketingFeature,
 } from '@demo/ticketing/data';
 import { addMinutes } from '@demo/shared/util-common';
 import { Store } from '@ngrx/store';
