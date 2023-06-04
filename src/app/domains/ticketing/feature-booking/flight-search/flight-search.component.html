@@ -7,7 +7,8 @@
     <label for="from">From:</label>
     <input
       [ngModel]="from()"
-      (ngModelChange)="from.set($event)"
+      (ngModelChange)="facade.upateCriteria(fromCtrl.value, toCtrl.value)"
+      #fromCtrl
       id="from"
       name="from"
       class="form-control"
@@ -17,16 +18,17 @@
     <label for="to">To:</label>
     <input
       [ngModel]="to()"
-      (ngModelChange)="to.set($event)"
+      (ngModelChange)="facade.upateCriteria(fromCtrl.value, toCtrl.value)"
+      #toCtrl
       name="to"
       class="form-control"
     />
   </div>
 
   <div class="form-group">
-    <button (click)="search()" class="btn btn-default">Search</button>
+    <button (click)="facade.load()" class="btn btn-default">Search</button>
 
-    <button (click)="delay()" class="btn btn-default">Delay</button>
+    <button (click)="facade.delay()" class="btn btn-default">Delay</button>
   </div>
 </form>
 
@@ -37,7 +39,7 @@
     <app-flight-card
       [item]="f"
       [selected]="basket()[f.id]"
-      (selectedChange)="updateBasket(f.id, $event)"
+      (selectedChange)="facade.updateBasket(f.id, $event)"
     >
       <p class="middle"><i>Delays are possible!</i></p>
       <p class="bottom"><small>Statement without guarantee!</small></p>
