@@ -26,15 +26,10 @@ export class AboutComponent implements OnInit {
     const module = await loadRemoteModule('miles', './Miles');
     const Comp = module.MilesComponent;
 
-    // *ngComponentOutlet
     if (this.placeholder) {
-      /* const ref = */ this.placeholder.createComponent(Comp, {
+      this.placeholder.createComponent(Comp, {
         injector: this.injector,
       });
-
-      // ref.setInput('item', item);
-      // const compInst = ref.instance;
-      // compInst.item = item;
     }
   }
 }
