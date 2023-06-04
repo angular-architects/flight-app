@@ -30,7 +30,7 @@ export const APP_ROUTES: Routes = [
       {
         path: 'flight-booking',
         loadChildren: () =>
-          import('@demo/ticketing/feature-booking').then(
+          import('./domains/ticketing/feature-booking').then(
             (m) => m.FLIGHT_BOOKING_ROUTES
           ),
       },
