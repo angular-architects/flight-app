@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
+import { addMinutes } from '@demo/shared/util-common';
 
 @Component({
   selector: 'app-flight-search',
@@ -13,25 +14,18 @@ import { Flight, FlightService } from '@demo/ticketing/data';
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
 })
 export class FlightSearchComponent {
+  private flightService = inject(FlightService);
+
   from = 'Paris';
   to = 'London';
-  flights: Array<Flight> = [];
-  selectedFlight: Flight | undefined;
-  message = '';
-  date = new Date();
 
+  flights: Array<Flight> = [];
   basket: Record<number, boolean> = {
     3: true,
     5: true,
   };
 
-  private flightService = inject(FlightService);
-
   search(): void {
-    // Reset properties
-    this.message = '';
-    this.selectedFlight = undefined;
-
     this.flightService.find(this.from, this.to).subscribe({
       next: (flights) => {
         this.flights = flights;
@@ -42,7 +36,8 @@ export class FlightSearchComponent {
     });
   }
 
-  select(f: Flight): void {
-    this.selectedFlight = { ...f };
+  delay(): void {
+    const date = addMinutes(this.flights[0].date, 15);
+    this.flights[0].date = date;
   }
 }
