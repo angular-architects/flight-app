@@ -13,15 +13,15 @@
   "dependencies": {
     "@angular-architects/paper-design": "^1.0.3",
     "@angular/animations": "^16.0.4",
+    "@angular/cdk": "~16.0.1",
     "@angular/common": "^16.0.4",
     "@angular/compiler": "^16.0.4",
     "@angular/core": "^16.0.4",
     "@angular/forms": "^16.0.4",
+    "@angular/material": "^16.0.3",
     "@angular/platform-browser": "^16.0.4",
     "@angular/platform-browser-dynamic": "^16.0.4",
     "@angular/router": "^16.0.4",
-    "@angular/cdk": "~15.0.2",
-    "@angular/material": "~15.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
