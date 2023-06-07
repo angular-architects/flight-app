@@ -27,6 +27,8 @@ import { FlightService } from '../flight-search/flight.service';
 export class FlightEditComponent implements OnInit {
   private flightService = inject(FlightService);
 
+  // private activatedRoute = inject(ActivatedRoute);
+
   @Input() id = '';
   @Input() showDetails = '';
 

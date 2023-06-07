@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
+import { FlightBookingService } from '../flight-booking.service';
 
 @Component({
   selector: 'app-flight-search',
@@ -14,9 +15,16 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
 })
 export class FlightSearchComponent {
+  private flightService = inject(FlightService);
+  private flightBookingService = inject(FlightBookingService);
+
   from = 'London';
   to = 'Paris';
-  flights: Array<Flight> = [];
+
+  //flights: Array<Flight> = [];
+
+  flights = this.flightBookingService.flights;
+
   selectedFlight: Flight | undefined;
   message = '';
 
@@ -25,21 +33,10 @@ export class FlightSearchComponent {
     5: true,
   };
 
-  private flightService = inject(FlightService);
-
   search(): void {
     // Reset properties
-    this.message = '';
-    this.selectedFlight = undefined;
 
-    this.flightService.find(this.from, this.to).subscribe({
-      next: (flights) => {
-        this.flights = flights;
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
-    });
+    this.flightBookingService.load(this.from, this.to);
   }
 
   select(f: Flight): void {
