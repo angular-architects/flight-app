@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -25,19 +25,15 @@ import { FlightService } from '../flight-search/flight.service';
   styleUrls: ['./flight-edit.component.css'],
 })
 export class FlightEditComponent implements OnInit {
-  private route = inject(ActivatedRoute);
   private flightService = inject(FlightService);
 
-  id = '';
-  showDetails = '';
+  @Input() id = '';
+  @Input() showDetails = '';
+
   flight = initFlight;
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.id = params.get('id') ?? '';
-      this.showDetails = params.get('showDetails') ?? '';
-      this.load(this.id);
-    });
+    this.load(this.id);
   }
 
   load(id: string): void {
