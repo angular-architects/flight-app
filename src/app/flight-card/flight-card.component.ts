@@ -34,7 +34,7 @@ export class FlightCardComponent {
 
   edit() {
     this.dialog.open(FlightEditReactiveComponent, {
-      data: { flight: this.item },
+      data: { flight: { ...this.item } },
     });
   }
 }
