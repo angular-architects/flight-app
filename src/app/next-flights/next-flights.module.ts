@@ -5,8 +5,8 @@ import { CheckinComponent } from './checkin/checkin.component';
 import { NextFlightsService } from './next-flights.service';
 
 @NgModule({
-  declarations: [NextFlightsComponent, CheckinComponent],
-  imports: [CommonModule],
+  declarations: [NextFlightsComponent],
+  imports: [CommonModule, CheckinComponent],
   providers: [NextFlightsService],
   exports: [NextFlightsComponent],
 })
