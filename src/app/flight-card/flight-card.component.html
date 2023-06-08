@@ -11,7 +11,10 @@
 
     <ng-content select=".middle"></ng-content>
 
-    <p>Delayed: {{ item.delayed }}</p>
+    <p>
+      Delayed:
+      <app-status-toggle [(status)]="item.delayed"> </app-status-toggle>
+    </p>
     <p>
       <button (click)="select()" *ngIf="!selected" class="btn btn-default">
         Select

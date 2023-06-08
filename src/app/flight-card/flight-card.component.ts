@@ -1,12 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { initFlight } from '../model/flight';
 import { CityPipe } from '../shared/city.pipe';
+import { StatusToggleComponent } from '../status-toggle/status-toggle.component';
 
 @Component({
   selector: 'app-flight-card',
   standalone: true,
-  imports: [CommonModule, CityPipe],
+  imports: [CommonModule, CityPipe, StatusToggleComponent],
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css'],
 })
