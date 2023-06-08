@@ -1,6 +1,7 @@
 // Remove this line when activating MF
 import('./bootstrap');
 
+// For this lab, MF was removed.
 // Feel free to active MF again:
 
 // import { initFederation } from '@angular-architects/module-federation';
