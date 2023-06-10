@@ -6,6 +6,11 @@ import { BasketComponent } from './shell/basket/basket.component';
 import { ConfigService } from '@demo/shared/util-config';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import {
+  startsWith,
+  WebComponentWrapper,
+  WebComponentWrapperOptions,
+} from '@angular-architects/module-federation-tools';
 
 export const APP_ROUTES: Routes = [
   {
@@ -26,6 +31,45 @@ export const APP_ROUTES: Routes = [
   {
     path: 'miles',
     loadChildren: () => loadRemoteModule('miles', './Routes'),
+  },
+
+  {
+    path: 'angular2',
+    component: WebComponentWrapper,
+    data: {
+      type: 'script',
+      remoteEntry:
+        'https://gray-pond-030798810.azurestaticapps.net/remoteEntry.js',
+      remoteName: 'angular2',
+      exposedModule: './web-components',
+      elementName: 'angular2-element',
+    } as WebComponentWrapperOptions,
+  },
+
+  {
+    path: 'react',
+    component: WebComponentWrapper,
+    data: {
+      type: 'script',
+      remoteEntry:
+        'https://witty-wave-0a695f710.azurestaticapps.net/remoteEntry.js',
+      remoteName: 'react',
+      exposedModule: './web-components',
+      elementName: 'react-element',
+    } as WebComponentWrapperOptions,
+  },
+
+  {
+    matcher: startsWith('angular3'),
+    component: WebComponentWrapper,
+    data: {
+      type: 'script',
+      remoteEntry:
+        'https://gray-river-0b8c23a10.azurestaticapps.net/remoteEntry.js',
+      remoteName: 'angular3',
+      exposedModule: './web-components',
+      elementName: 'angular3-element',
+    } as WebComponentWrapperOptions,
   },
 
   {
