@@ -1,36 +1,27 @@
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FlightService } from './flight.service';
 import { Flight } from './flight';
-import { addMinutes } from '@demo/shared/util-common';
+import { addMinutes, createStore } from '@demo/shared/util-common';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { combineLatest, debounceTime, filter } from 'rxjs';
-
-function equal(a: unknown, b: unknown): boolean {
-  return a === b;
-}
 
 @Injectable({ providedIn: 'root' })
 export class FlightBookingFacade {
   private flightService = inject(FlightService);
 
-  private state = signal(
-    {
-      from: 'Paris',
-      to: 'London',
-      flights: [] as Flight[],
-      basket: {} as Record<number, boolean>,
-    },
-    { equal }
-  );
-
-  readonly from = computed(() => this.state().from, { equal });
-  readonly to = computed(() => this.state().to, { equal });
-  readonly flights = computed(() => this.state().flights, { equal });
-  readonly basket = computed(() => this.state().basket, { equal });
-
-  readonly flightRoute = computed(() => this.from() + ' to ' + this.to(), {
-    equal,
+  private state = createStore({
+    from: 'Paris',
+    to: 'London',
+    flights: [] as Flight[],
+    basket: {} as Record<number, boolean>,
   });
+
+  readonly from = this.state.select((s) => s.from());
+  readonly to = this.state.select((s) => s.to());
+  readonly flights = this.state.select((s) => s.flights());
+  readonly basket = this.state.select((s) => s.basket());
+
+  readonly flightRoute = this.state.select((s) => s.from() + ' to ' + s.to());
 
   private from$ = toObservable(this.from);
   private to$ = toObservable(this.to);
@@ -58,35 +49,26 @@ export class FlightBookingFacade {
     }
 
     const flights = await this.flightService.findPromise(from, to);
-    this.state.update((state) => ({
-      ...state,
-      flights,
-    }));
+    this.state.update('flights', flights);
   }
 
   upateCriteria(from: string, to: string): void {
-    this.state.update((state) => ({
-      ...state,
-      from,
-      to,
-    }));
+    this.state.update('from', from);
+    this.state.update('to', to);
   }
 
   updateBasket(fid: number, selected: boolean): void {
-    this.state.update((state) => ({
-      ...state,
-      basket: {
-        ...state.basket,
-        [fid]: selected,
-      },
+    this.state.update('basket', (basket) => ({
+      ...basket,
+      [fid]: selected,
     }));
   }
 
   delay() {
     const date = addMinutes(this.flights()[0].date, 15);
-    this.state.update((state) => ({
-      ...state,
-      flights: [{ ...state.flights[0], date }, ...state.flights.slice(1)],
-    }));
+    this.state.update('flights', (flights) => [
+      { ...flights[0], date },
+      ...flights.slice(1),
+    ]);
   }
 }
