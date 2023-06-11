@@ -28,8 +28,6 @@ export interface TicketingState {
   to: unknown;
 }
 
-const date = new Date().toISOString();
-
 export const initTicketingState: TicketingState = {
   passengerIds: [7, 8],
   passengers: {
