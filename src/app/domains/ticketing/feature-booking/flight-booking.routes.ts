@@ -9,7 +9,6 @@ import {
   TicketingEffects,
   ticketingFeature,
 } from '@demo/ticketing/data';
-import { checkAuth } from '@demo/shared/util-auth';
 import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 
