@@ -16,6 +16,7 @@ import {
 } from '@angular/forms';
 import { FlightFilter } from '@demo/ticketing/data';
 import { ComponentStore } from '@ngrx/component-store';
+import { Observable, map, tap } from 'rxjs';
 
 export interface LocalState {
   filters: FlightFilter[];
@@ -74,13 +75,22 @@ export class FlightFilterComponent {
     (state) => state.filters
   );
 
+  /**
+   * Effects
+   */
+
+  triggerSearch = this.localStore.effect((trigger$: Observable<void>) =>
+    trigger$.pipe(
+      map(() => this.filterForm.getRawValue()),
+      tap((filter: FlightFilter) => {
+        this.addFilter(filter);
+        this.searchTrigger.next(filter);
+      })
+    )
+  );
+
   constructor() {
     effect(() => this.filterForm.setValue(this.#filter()));
     this.localStore.setState(initialLocalState);
-  }
-
-  search(): void {
-    this.addFilter(this.filterForm.getRawValue());
-    this.searchTrigger.next(this.filterForm.getRawValue());
   }
 }
