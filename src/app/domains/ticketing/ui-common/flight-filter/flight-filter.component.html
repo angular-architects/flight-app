@@ -1,3 +1,12 @@
+<div class="form-group">
+  <label for="filterSelect">Previous Filters:</label>
+  <select [formControl]="selectedFilter" class="form-control" id="filterSelect">
+    <option *ngFor="let filter of selectFilters()" [ngValue]="filter">
+      {{ filter.from }} - {{ filter.to }}
+    </option>
+  </select>
+</div>
+
 <form [formGroup]="filterForm">
   <div class="form-group">
     <label>From:</label>

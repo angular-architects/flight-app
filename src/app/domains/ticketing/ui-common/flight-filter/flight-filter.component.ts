@@ -48,6 +48,10 @@ export class FlightFilterComponent {
     urgent: [false],
   });
 
+  selectedFilter = new FormControl(this.filterForm.getRawValue(), {
+    nonNullable: true,
+  });
+
   /**
    * Updater
    */
@@ -57,6 +61,17 @@ export class FlightFilterComponent {
       ...state,
       filters: [...state.filters, filter],
     })
+  );
+
+  /**
+   * Selectors
+   */
+
+  selectFilters = this.localStore.selectSignal(
+    // Selectors
+
+    // Projector
+    (state) => state.filters
   );
 
   constructor() {
