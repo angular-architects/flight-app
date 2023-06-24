@@ -8,7 +8,12 @@ import {
   signal,
   inject,
 } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { FlightFilter } from '@demo/ticketing/data';
 import { ComponentStore } from '@ngrx/component-store';
 
@@ -43,12 +48,24 @@ export class FlightFilterComponent {
     urgent: [false],
   });
 
+  /**
+   * Updater
+   */
+
+  addFilter = this.localStore.updater(
+    (state: LocalState, filter: FlightFilter) => ({
+      ...state,
+      filters: [...state.filters, filter],
+    })
+  );
+
   constructor() {
     effect(() => this.filterForm.setValue(this.#filter()));
     this.localStore.setState(initialLocalState);
   }
 
   search(): void {
+    this.addFilter(this.filterForm.getRawValue());
     this.searchTrigger.next(this.filterForm.getRawValue());
   }
 }
