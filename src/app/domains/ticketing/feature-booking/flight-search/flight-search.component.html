@@ -2,33 +2,19 @@
   <h2 class="title">Flight Search</h2>
 </div>
 
-<form>
-  <div class="form-group">
-    <label for="from">From:</label>
-    <input
-      [ngModel]="from()"
-      (ngModelChange)="from.set($event)"
-      id="from"
-      name="from"
-      class="form-control"
-    />
-  </div>
-  <div class="form-group">
-    <label for="to">To:</label>
-    <input
-      [ngModel]="to()"
-      (ngModelChange)="to.set($event)"
-      name="to"
-      class="form-control"
-    />
-  </div>
+<app-flight-filter [filter]="filter()" (searchTrigger)="search($event)">
+  <button
+    *ngIf="flights.length"
+    class="btn btn-default flight-filter-button"
+    (click)="delay()"
+  >
+    Delay
+  </button>
 
-  <div class="form-group">
-    <button (click)="search()" class="btn btn-default">Search</button>
-
-    <button (click)="delay()" class="btn btn-default">Delay</button>
+  <div *ngIf="flights.length" class="flight-filter-info">
+    {{ flights.length }} flights found!
   </div>
-</form>
+</app-flight-filter>
 
 <h3>{{ flightRoute() }}</h3>
 

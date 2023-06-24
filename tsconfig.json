@@ -27,6 +27,9 @@
       "@demo/ticketing/feature-next-flights": [
         "src/app/domains/ticketing/feature-next-flights/index.ts"
       ],
+      "@demo/ticketing/ui-common": [
+        "src/app/domains/ticketing/ui-common/index.ts"
+      ],
 
       "@demo/checkin/data": ["src/app/domains/checkin/data/index.ts"],
       "@demo/checkin/feature-manage": [
