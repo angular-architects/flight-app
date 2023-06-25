@@ -89,8 +89,14 @@ export class FlightFilterComponent {
     )
   );
 
+  updateFilterForm = this.localStore.effect(
+    (filter$: Observable<FlightFilter>) =>
+      filter$.pipe(tap((filter) => this.filterForm.patchValue(filter)))
+  );
+
   constructor() {
     effect(() => this.filterForm.setValue(this.#filter()));
     this.localStore.setState(initialLocalState);
+    this.updateFilterForm(this.selectedFilter.valueChanges);
   }
 }
