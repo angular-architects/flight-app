@@ -8,6 +8,7 @@ import {
   signal,
   inject,
 } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
   FormControl,
@@ -75,6 +76,13 @@ export class FlightFilterComponent {
     (state) => state.filters
   );
 
+  selectLatestFilters = this.localStore.selectSignal(
+    // Selectors
+    this.selectFilters,
+    // Projector
+    (filters) => filters.slice(-1)[0]
+  );
+
   /**
    * Effects
    */
@@ -94,9 +102,17 @@ export class FlightFilterComponent {
       filter$.pipe(tap((filter) => this.filterForm.patchValue(filter)))
   );
 
+  updateSelectedFilter = this.localStore.effect(
+    (filter$: Observable<FlightFilter>) =>
+      filter$.pipe(
+        tap((filter: FlightFilter) => this.selectedFilter.setValue(filter))
+      )
+  );
+
   constructor() {
     effect(() => this.filterForm.setValue(this.#filter()));
     this.localStore.setState(initialLocalState);
     this.updateFilterForm(this.selectedFilter.valueChanges);
+    this.updateSelectedFilter(toObservable(this.selectLatestFilters));
   }
 }
