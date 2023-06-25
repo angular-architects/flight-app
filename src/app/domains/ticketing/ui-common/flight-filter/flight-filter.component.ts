@@ -61,7 +61,12 @@ export class FlightFilterComponent {
   addFilter = this.localStore.updater(
     (state: LocalState, filter: FlightFilter) => ({
       ...state,
-      filters: [...state.filters, filter],
+      filters: [
+        ...state.filters.filter(
+          (f) => !(f.from === filter.from && f.to === filter.to)
+        ),
+        filter,
+      ],
     })
   );
 
