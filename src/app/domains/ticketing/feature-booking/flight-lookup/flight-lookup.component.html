@@ -1,0 +1,21 @@
+<h1 class="title">Lookahead</h1>
+
+<div class="mb10" [ngStyle]="{ color: (online$ | async) ? 'green' : 'red' }">
+  Online: {{ online$ | async }}
+</div>
+
+<div class="control-group">
+  <label>City</label>
+  <input [formControl]="control" class="form-control" />
+</div>
+
+<div *ngIf="loading$ | async">Loading ...</div>
+
+<table class="table table-striped">
+  <tr *ngFor="let f of flights$ | async">
+    <td>{{ f.id }}</td>
+    <td>{{ f.from }}</td>
+    <td>{{ f.to }}</td>
+    <td>{{ f.date | date : "dd.MM.yyyy HH:mm" }}</td>
+  </tr>
+</table>
