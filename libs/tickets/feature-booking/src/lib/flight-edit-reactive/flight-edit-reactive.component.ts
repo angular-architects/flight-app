@@ -1,13 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   validateCity,
   validateRoundTrip,
   ValidationErrorsComponent,
 } from '@flight-demo/shared/util-validation';
-import { Flight } from '@flight-demo/tickets/domain';
 
 @Component({
   selector: 'app-flight-edit-reactive',
@@ -17,10 +15,6 @@ import { Flight } from '@flight-demo/tickets/domain';
   imports: [CommonModule, ReactiveFormsModule, ValidationErrorsComponent],
 })
 export class FlightEditReactiveComponent {
-  private dialogRef = inject(MatDialogRef);
-  private data = inject<{ flight: Flight }>(MAT_DIALOG_DATA);
-  flight = this.data.flight;
-
   private fb = inject(FormBuilder);
 
   form = this.fb.nonNullable.group({
@@ -41,8 +35,6 @@ export class FlightEditReactiveComponent {
   constructor() {
     this.form.addValidators(validateRoundTrip);
 
-    this.form.patchValue(this.flight);
-
     this.form.valueChanges.subscribe((flightForm) => {
       console.log('flight form changed:', flightForm);
     });
@@ -53,11 +45,7 @@ export class FlightEditReactiveComponent {
   }
 
   save(): void {
-    this.flight = this.form.getRawValue();
-    console.log('flight', this.flight);
-  }
-
-  close(): void {
-    this.dialogRef.close();
+    const flight = this.form.value;
+    console.log('flight to save:', flight);
   }
 }
