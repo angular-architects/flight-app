@@ -4,3 +4,4 @@
 
 export * from './can-exit';
 export * from './date-utils';
+export * from './custom-preloading.strategy';
