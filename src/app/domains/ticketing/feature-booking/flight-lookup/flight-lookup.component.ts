@@ -2,8 +2,8 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlightLookupFacade } from '@demo/ticketing/data';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, filter, Subject, takeUntil } from 'rxjs';
-
+import { debounceTime, filter, finalize, Subject, takeUntil } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-flight-lookup',
   standalone: true,
@@ -21,7 +21,8 @@ export class FlightLookupComponent implements OnInit, OnDestroy {
 
   from$ = this.control.valueChanges.pipe(
     filter((v) => v.length >= 3),
-    debounceTime(300)
+    debounceTime(300),
+    takeUntilDestroyed()
   );
 
   // Sink
