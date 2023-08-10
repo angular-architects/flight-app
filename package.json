@@ -13,7 +13,7 @@
   "dependencies": {
     "@angular-architects/paper-design": "^1.0.3",
     "@angular/animations": "^16.0.4",
-    "@angular/cdk": "~16.0.1",
+    "@angular/cdk": "^16.0.1",
     "@angular/common": "^16.0.4",
     "@angular/compiler": "^16.0.4",
     "@angular/core": "^16.0.4",
@@ -38,6 +38,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "prettier": "^2.8.0",
     "pretty-quick": "^3.1.3",
     "typescript": "~4.8.2"
   }
