@@ -4,7 +4,7 @@ export const sheriffConfig: SheriffConfig = {
   version: 1,
 
   tagging: {
-    'src/app': {
+    'apps/<app>/src/app': {
       'domains/<domain>': {
         // ticketing, checkin, booking, ..
         'feature-<feature>': ['domain:<domain>', 'type:feature'],
@@ -13,6 +13,7 @@ export const sheriffConfig: SheriffConfig = {
         'util-<ui>': ['domain:<domain>', 'type:util'],
       },
     },
+    'libs/<lib>/.*': ['domain:shared'],
   },
   depRules: {
     root: ['*'],

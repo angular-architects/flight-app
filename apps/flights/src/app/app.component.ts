@@ -12,10 +12,18 @@ import { filter, map, merge, Observable } from 'rxjs';
 import { SidebarComponent } from './shell/sidebar/sidebar.component';
 import { NavbarComponent } from './shell/navbar/navbar.component';
 import { ConfigService } from '@demo/shared/util-config';
+import { UiCommonComponent } from '../../../../libs/ui-common/src';
 
 @Component({
   standalone: true,
-  imports: [SidebarComponent, NavbarComponent, RouterOutlet, AsyncPipe, NgIf],
+  imports: [
+    SidebarComponent,
+    NavbarComponent,
+    RouterOutlet,
+    AsyncPipe,
+    NgIf,
+    UiCommonComponent,
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
