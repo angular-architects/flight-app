@@ -28,6 +28,13 @@ export const APP_ROUTES: Routes = [
     },
     children: [
       {
+        path: 'luggage',
+        loadChildren: () =>
+          import('./domains/luggage/feature-checkin').then(
+            (m) => m.FEATURE_CHECKIN_ROUTES
+          ),
+      },
+      {
         path: 'flight-booking',
         loadChildren: () =>
           import('./domains/ticketing/feature-booking').then(
