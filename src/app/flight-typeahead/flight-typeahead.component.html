@@ -11,7 +11,13 @@
       <input [formControl]="control" class="form-control" />
     </div>
 
-    <div *ngIf="loading">Loading ...</div>
+    <div
+      [ngStyle]="{ 'background-color': (online$ | async) ? 'green' : 'red' }"
+    >
+      Online: {{ online$ | async }}
+    </div>
+
+    <div *ngIf="loading$ | async">Loading ...</div>
 
     <table class="table table-striped">
       <tr *ngFor="let f of flights$ | async">
