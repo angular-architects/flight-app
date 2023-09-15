@@ -12,6 +12,7 @@ import { PassengerSearchComponent } from './passenger-search/passenger-search.co
 import { provideState } from '@ngrx/store';
 import { ticketsFeature } from './+state/reducer';
 import { provideEffects } from '@ngrx/effects';
+import { FlightBookingEffects } from './+state/effects';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
   {
@@ -19,7 +20,8 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
     component: FlightBookingComponent,
     providers: [
       provideState(ticketsFeature),
-      provideEffects(),
+      provideEffects(FlightBookingEffects),
+
       provideLogger({
         formatter: (lvl, cat, msg) => [lvl, cat, msg].join(';'),
       }),

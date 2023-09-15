@@ -12,9 +12,10 @@ import { APP_ROUTES } from './app/app.routes';
 import { NextFlightsModule } from './app/next-flights/next-flights.module';
 import { withColor } from './app/shared/logger/color';
 import { provideLogger } from './app/shared/logger/provider';
-import { provideStore } from '@ngrx/store';
+import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { passengersFeature } from './app/passengers/passenger.reducer';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -22,6 +23,7 @@ bootstrapApplication(AppComponent, {
     provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
 
     provideStore(),
+    provideState(passengersFeature),
     provideEffects(),
     isDevMode() ? provideStoreDevtools() : [],
 
