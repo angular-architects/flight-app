@@ -13,6 +13,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           ref: lab00-ess-starter
       - run: npm install --force
       - name: Zip Folder
@@ -27,6 +28,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           ref: lab250-reactive-starter
       - run: npm install --force
       - name: Zip Folder
@@ -41,6 +43,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           ref: lab300-deep-dive-starter
       - run: npm install --force
       - name: Zip Folder
@@ -55,6 +58,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           ref: lab400-enterprise-starter
       - run: npm install --force
       - name: Zip Folder
@@ -69,6 +73,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           ref: lab200-enterprise-starter
       - run: npm install --force
       - name: Zip Folder
