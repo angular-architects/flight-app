@@ -1,15 +1,6 @@
 {
-  "npmScope": "flight-demo",
   "affected": {
-    "defaultBase": "lab200-enterprise-starter"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "test", "lint"]
-      }
-    }
+    "defaultBase": "lab500-enterprise-starter"
   },
   "namedInputs": {
     "sharedGlobals": [],
@@ -21,13 +12,15 @@
       "!{projectRoot}/karma.conf.js",
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/jest.config.[jt]s"
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s"
     ]
   },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "cache": true
     },
     "test": {
       "inputs": [
@@ -35,10 +28,12 @@
         "^production",
         "{workspaceRoot}/karma.conf.js",
         "{workspaceRoot}/jest.preset.js"
-      ]
+      ],
+      "cache": true
     },
     "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
+      "cache": true
     },
     "e2e": {
       "inputs": ["default", "^production"]
