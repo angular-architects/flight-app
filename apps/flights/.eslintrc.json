@@ -1,6 +1,5 @@
 {
-  "root": true,
-  "ignorePatterns": ["**/*"],
+  "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -39,5 +38,5 @@
       "extends": ["plugin:@softarc/sheriff/default"]
     }
   ],
-  "plugins": ["@nx"]
+  "extends": "../../.eslintrc.json"
 }

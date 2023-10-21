@@ -1,13 +1,13 @@
 <div [ngClass]="{ selected: selected }" class="card">
   <div class="card-header">
     <h2 class="title">
-      {{ item.from | city : "short" }} - {{ item.to | city : "long" }}
+      {{ item.from | city : 'short' }} - {{ item.to | city : 'long' }}
     </h2>
   </div>
 
   <div class="card-body">
     <p>Flight-No.: #{{ item.id }}</p>
-    <p>Date: {{ item.date | date : "dd.MM.yyyy HH:mm" }}</p>
+    <p>Date: {{ item.date | date : 'dd.MM.yyyy HH:mm' }}</p>
 
     <ng-content select=".middle"></ng-content>
 

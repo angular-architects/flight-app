@@ -1,0 +1,91 @@
+{
+  "name": "flights",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {},
+  "sourceRoot": "apps/flights/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/flights",
+        "index": "apps/flights/src/index.html",
+        "main": "apps/flights/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/flights/tsconfig.app.json",
+        "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
+        "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "node_modules/@angular-architects/paper-design/assets/css/bootstrap.css",
+          "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
+          "apps/flights/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "flights:build:production"
+        },
+        "development": {
+          "browserTarget": "flights:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "flights:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/flights/tsconfig.spec.json",
+        "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
+        "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/flights/src/styles.css"
+        ],
+        "scripts": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/flights/**/*.ts", "apps/flights/**/*.html"]
+      }
+    }
+  }
+}

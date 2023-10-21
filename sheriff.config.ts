@@ -4,7 +4,7 @@ export const sheriffConfig: SheriffConfig = {
   version: 1,
 
   tagging: {
-    'src/app': {
+    'apps/<app>/src/app': {
       'domains/<domain>': {
         'feature-<feature>': ['domain:<domain>', 'type:feature'],
         'ui-<ui>': ['domain:<domain>', 'type:ui'],
