@@ -1,5 +1,5 @@
 {
-  "name": "flights",
+  "name": "@flight-demo/source",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
