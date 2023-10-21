@@ -2,6 +2,7 @@
   "affected": {
     "defaultBase": "master"
   },
+  "workspaceLayout": {},
   "defaultProject": "flights",
   "namedInputs": {
     "sharedGlobals": [],

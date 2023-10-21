@@ -4,6 +4,10 @@ export const sheriffConfig: SheriffConfig = {
   version: 1,
 
   tagging: {
+    libs: {
+      'ui-<ui>/src': ['domain:shared', 'type:ui'],
+      'util-<util>/src': ['domain:shared', 'type:util'],
+    },
     'apps/<app>/src/app': {
       'domains/<domain>': {
         'feature-<feature>': ['domain:<domain>', 'type:feature'],

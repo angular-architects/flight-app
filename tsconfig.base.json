@@ -20,6 +20,7 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
+      "@demo/ui-common": ["libs/ui-common/src/index.ts"],
       "@demo/*": ["apps/flights/src/app/domains/*"]
     },
     "rootDir": "."
