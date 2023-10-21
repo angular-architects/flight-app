@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": ["**/*"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -38,5 +38,6 @@
       "files": ["*.ts"],
       "extends": ["plugin:@softarc/sheriff/default"]
     }
-  ]
+  ],
+  "plugins": ["@nx"]
 }
