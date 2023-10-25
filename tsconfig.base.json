@@ -20,7 +20,8 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@demo/*": ["apps/flights/src/app/domains/*"]
+      "@demo/*": ["apps/flights/src/app/domains/*"],
+      "@ngrx/signals": ["libs/util-ngrx-signal-store/src/index.ts"]
     },
     "rootDir": "."
   },
