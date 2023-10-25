@@ -14,6 +14,7 @@ import {
   HasOptionalProps,
   IsUnknownRecord,
 } from './ts-helpers';
+import { immutableConfig } from './immutable-equal';
 
 type WithStateCheck<State> = IsUnknownRecord<State> extends true
   ? '@ngrx/signals: root state keys must be string literals'
@@ -52,7 +53,11 @@ export function withState<State extends Record<string, unknown>>(
     }));
 
     const slices = stateKeys.reduce((acc, key) => {
-      const slice = computed(() => store[STATE_SIGNAL]()[key]);
+      const slice = computed(
+        () => store[STATE_SIGNAL]()[key],
+        // Patch for Angular 16, not necessary in Angular 17 👇
+        immutableConfig
+      );
       return { ...acc, [key]: toDeepSignal(slice) };
     }, {} as SignalsDictionary);
     const signals = excludeKeys(store.signals, stateKeys);

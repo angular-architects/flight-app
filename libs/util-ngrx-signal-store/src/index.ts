@@ -5,3 +5,7 @@
  */
 
 export * from './src/index';
+export * from './rxjs-interop/index';
+
+// Patch for Angular 16, not necessary in Angular 17 👇
+export * from './src/immutable-equal';

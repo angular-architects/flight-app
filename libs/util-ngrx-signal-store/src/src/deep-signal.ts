@@ -1,5 +1,6 @@
 import { computed, Signal, untracked } from '@angular/core';
 import { IsUnknownRecord } from './ts-helpers';
+import { immutableConfig } from './immutable-equal';
 
 export type DeepSignal<T> = Signal<T> &
   (T extends Record<string, unknown>
@@ -27,7 +28,11 @@ export function toDeepSignal<T>(signal: Signal<T>): DeepSignal<T> {
       }
 
       if (!target[prop]) {
-        target[prop] = computed(() => target()[prop]);
+        target[prop] = computed(
+          () => target()[prop],
+          // Patch for Angular 16, not necessary in Angular 17 👇
+          immutableConfig
+        );
       }
 
       return toDeepSignal(target[prop]);
