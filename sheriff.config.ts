@@ -12,6 +12,9 @@ export const sheriffConfig: SheriffConfig = {
         'util-<ui>': ['domain:<domain>', 'type:util'],
       },
     },
+    libs: {
+      'util-ngrx-signal-store/src': ['domain:shared', 'type:util'],
+    },
   },
   depRules: {
     root: ['*'],
