@@ -14,7 +14,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-architects/module-federation-tools": "^16.0.3",
+    "@angular-architects/module-federation": "^16.0.4",
+    "@angular-architects/module-federation-tools": "^16.0.4",
     "@angular-architects/paper-design": "^1.0.3",
     "@angular/animations": "16.2.10",
     "@angular/cdk": "16.2.9",
@@ -40,7 +41,6 @@
   },
   "devDependencies": {
     "@angular-architects/ddd": "^3.1.6",
-    "@angular-architects/module-federation": "^16.0.3",
     "@angular-devkit/build-angular": "16.2.7",
     "@angular-devkit/core": "16.2.7",
     "@angular-devkit/schematics": "16.2.7",
