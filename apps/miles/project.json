@@ -7,7 +7,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/miles",
@@ -17,7 +17,11 @@
         "tsConfig": "apps/miles/tsconfig.app.json",
         "assets": ["apps/miles/src/favicon.ico", "apps/miles/src/assets"],
         "styles": ["apps/miles/src/styles.css"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/miles/webpack.config.js"
+        },
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -33,7 +37,10 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/miles/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -47,7 +54,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "miles:build:production"
@@ -56,12 +63,17 @@
           "browserTarget": "miles:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "browserTarget": "miles:build"
+        "browserTarget": "miles:build",
+        "extraWebpackConfig": "apps/miles/webpack.config.js"
       }
     },
     "lint": {

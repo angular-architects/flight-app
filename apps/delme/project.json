@@ -7,7 +7,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/delme",
@@ -17,7 +17,11 @@
         "tsConfig": "apps/delme/tsconfig.app.json",
         "assets": ["apps/delme/src/favicon.ico", "apps/delme/src/assets"],
         "styles": ["apps/delme/src/styles.css"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/delme/webpack.config.js"
+        },
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -33,7 +37,10 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/delme/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -47,7 +54,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "delme:build:production"
@@ -56,12 +63,17 @@
           "browserTarget": "delme:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "browserTarget": "delme:build"
+        "browserTarget": "delme:build",
+        "extraWebpackConfig": "apps/delme/webpack.config.js"
       }
     },
     "lint": {
