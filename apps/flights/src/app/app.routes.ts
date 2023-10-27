@@ -5,6 +5,7 @@ import { HomeComponent } from './shell/home/home.component';
 import { BasketComponent } from './shell/basket/basket.component';
 import { ConfigService } from '@demo/shared/util-config';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 
 export const APP_ROUTES: Routes = [
   {
@@ -15,6 +16,13 @@ export const APP_ROUTES: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'miles',
+    // loadChildren:
+    loadComponent: () =>
+      loadRemoteModule('miles', './Component').then((m) => m.AppComponent),
+    //import('./app.component').then(m => m.AppComponent)
   },
   {
     path: 'basket',
