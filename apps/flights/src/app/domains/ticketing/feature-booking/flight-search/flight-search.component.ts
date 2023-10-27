@@ -18,7 +18,6 @@ export class FlightSearchComponent {
   from = 'Paris';
   to = 'London';
   flights: Array<Flight> = [];
-  selectedFlight: Flight | undefined;
 
   basket: Record<number, boolean> = {
     3: true,
