@@ -19,8 +19,6 @@ export class FlightSearchComponent {
   to = 'London';
   flights: Array<Flight> = [];
   selectedFlight: Flight | undefined;
-  message = '';
-  date = new Date();
 
   basket: Record<number, boolean> = {
     3: true,
@@ -30,10 +28,6 @@ export class FlightSearchComponent {
   private flightService = inject(FlightService);
 
   search(): void {
-    // Reset properties
-    this.message = '';
-    this.selectedFlight = undefined;
-
     this.flightService.find(this.from, this.to).subscribe({
       next: (flights) => {
         this.flights = flights;
@@ -42,9 +36,5 @@ export class FlightSearchComponent {
         console.error('Error loading flights', errResp);
       },
     });
-  }
-
-  select(f: Flight): void {
-    this.selectedFlight = { ...f };
   }
 }
