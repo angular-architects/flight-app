@@ -1,6 +1,6 @@
 {
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "lab500-enterprise-starter"
   },
   "defaultProject": "flights",
   "namedInputs": {
@@ -12,7 +12,11 @@
       "!{projectRoot}/**/*.spec.[jt]s",
       "!{projectRoot}/karma.conf.js",
       "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/eslint.config.js"
+      "!{projectRoot}/eslint.config.js",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/test-setup.[jt]s"
     ]
   },
   "targetDefaults": {
@@ -22,7 +26,12 @@
       "cache": true
     },
     "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/karma.conf.js",
+        "{workspaceRoot}/jest.preset.js"
+      ],
       "cache": true
     },
     "lint": {
@@ -32,6 +41,23 @@
         "{workspaceRoot}/eslint.config.js"
       ],
       "cache": true
+    }
+  },
+  "generators": {
+    "@nx/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none",
+      "projectNameAndRootFormat": "derived"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "projectNameAndRootFormat": "derived"
+    },
+    "@nx/angular:component": {
+      "style": "css"
     }
   }
 }
