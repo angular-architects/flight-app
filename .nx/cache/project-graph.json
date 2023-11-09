@@ -1,0 +1,798 @@
+{
+  "nodes": {
+    "tickets-feature-next-flights": {
+      "name": "tickets-feature-next-flights",
+      "type": "lib",
+      "data": {
+        "name": "tickets-feature-next-flights",
+        "root": "libs/tickets/feature-next-flights",
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/tickets/feature-next-flights/src",
+        "prefix": "tickets",
+        "targets": {
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "libs/tickets/feature-next-flights/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "libs/tickets/feature-next-flights/**/*.ts",
+                "libs/tickets/feature-next-flights/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:tickets",
+          "type:feature"
+        ],
+        "implicitDependencies": []
+      }
+    },
+    "tickets-feature-booking": {
+      "name": "tickets-feature-booking",
+      "type": "lib",
+      "data": {
+        "name": "tickets-feature-booking",
+        "root": "libs/tickets/feature-booking",
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/tickets/feature-booking/src",
+        "prefix": "tickets",
+        "targets": {
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "libs/tickets/feature-booking/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "libs/tickets/feature-booking/**/*.ts",
+                "libs/tickets/feature-booking/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:tickets",
+          "type:feature"
+        ],
+        "implicitDependencies": []
+      }
+    },
+    "checkin-feature-manage": {
+      "name": "checkin-feature-manage",
+      "type": "lib",
+      "data": {
+        "name": "checkin-feature-manage",
+        "root": "libs/checkin/feature-manage",
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/checkin/feature-manage/src",
+        "prefix": "checkin",
+        "targets": {
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "libs/checkin/feature-manage/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "libs/checkin/feature-manage/**/*.ts",
+                "libs/checkin/feature-manage/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:checkin",
+          "type:feature"
+        ],
+        "implicitDependencies": []
+      }
+    },
+    "shared-util-validation": {
+      "name": "shared-util-validation",
+      "type": "lib",
+      "data": {
+        "name": "shared-util-validation",
+        "root": "libs/shared/util-validation",
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/shared/util-validation/src",
+        "prefix": "validation",
+        "targets": {
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "libs/shared/util-validation/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "libs/shared/util-validation/**/*.ts",
+                "libs/shared/util-validation/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:shared",
+          "type:util"
+        ],
+        "implicitDependencies": []
+      }
+    },
+    "shared-util-config": {
+      "name": "shared-util-config",
+      "type": "lib",
+      "data": {
+        "name": "shared-util-config",
+        "root": "libs/shared/util-config",
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/shared/util-config/src",
+        "prefix": "config",
+        "targets": {
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "libs/shared/util-config/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "libs/shared/util-config/**/*.ts",
+                "libs/shared/util-config/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:shared",
+          "type:util"
+        ],
+        "implicitDependencies": []
+      }
+    },
+    "shared-ui-common": {
+      "name": "shared-ui-common",
+      "type": "lib",
+      "data": {
+        "name": "shared-ui-common",
+        "root": "libs/shared/ui-common",
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/shared/ui-common/src",
+        "prefix": "common",
+        "targets": {
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "libs/shared/ui-common/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "libs/shared/ui-common/**/*.ts",
+                "libs/shared/ui-common/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:shared",
+          "type:ui"
+        ],
+        "implicitDependencies": []
+      }
+    },
+    "tickets-domain": {
+      "name": "tickets-domain",
+      "type": "lib",
+      "data": {
+        "name": "tickets-domain",
+        "root": "libs/tickets/domain",
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/tickets/domain/src",
+        "prefix": "tickets",
+        "targets": {
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "libs/tickets/domain/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "libs/tickets/domain/**/*.ts",
+                "libs/tickets/domain/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:tickets",
+          "type:domain-logic"
+        ],
+        "implicitDependencies": []
+      }
+    },
+    "checkin-domain": {
+      "name": "checkin-domain",
+      "type": "lib",
+      "data": {
+        "name": "checkin-domain",
+        "root": "libs/checkin/domain",
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/checkin/domain/src",
+        "prefix": "checkin",
+        "targets": {
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "libs/checkin/domain/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "libs/checkin/domain/**/*.ts",
+                "libs/checkin/domain/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:checkin",
+          "type:domain-logic"
+        ],
+        "implicitDependencies": []
+      }
+    },
+    "checkin": {
+      "name": "checkin",
+      "type": "app",
+      "data": {
+        "name": "checkin",
+        "root": "apps/checkin",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "sourceRoot": "apps/checkin/src",
+        "prefix": "flight-demo",
+        "targets": {
+          "build": {
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ],
+            "cache": true,
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "options": {
+              "outputPath": "dist/apps/checkin",
+              "index": "apps/checkin/src/index.html",
+              "main": "apps/checkin/src/main.ts",
+              "polyfills": [
+                "zone.js"
+              ],
+              "tsConfig": "apps/checkin/tsconfig.app.json",
+              "inlineStyleLanguage": "scss",
+              "assets": [
+                "apps/checkin/src/favicon.ico",
+                "apps/checkin/src/assets"
+              ],
+              "styles": [
+                "apps/checkin/src/styles.scss"
+              ],
+              "scripts": []
+            },
+            "configurations": {
+              "production": {
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "500kb",
+                    "maximumError": "1mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "2kb",
+                    "maximumError": "4kb"
+                  }
+                ],
+                "outputHashing": "all"
+              },
+              "development": {
+                "buildOptimizer": false,
+                "optimization": false,
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "sourceMap": true,
+                "namedChunks": true
+              }
+            },
+            "defaultConfiguration": "production"
+          },
+          "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+              "production": {
+                "browserTarget": "checkin:build:production"
+              },
+              "development": {
+                "browserTarget": "checkin:build:development"
+              }
+            },
+            "defaultConfiguration": "development",
+            "options": {}
+          },
+          "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "browserTarget": "checkin:build"
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "options": {
+              "lintFilePatterns": [
+                "apps/checkin/**/*.ts",
+                "apps/checkin/**/*.html"
+              ]
+            },
+            "configurations": {}
+          },
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/checkin/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:checkin",
+          "type:app"
+        ],
+        "implicitDependencies": []
+      }
+    },
+    "tickets": {
+      "name": "tickets",
+      "type": "app",
+      "data": {
+        "name": "tickets",
+        "root": "apps/tickets",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "generators": {},
+        "sourceRoot": "apps/tickets/src",
+        "prefix": "app",
+        "targets": {
+          "build": {
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ],
+            "cache": true,
+            "executor": "@angular-devkit/build-angular:browser",
+            "options": {
+              "outputPath": "dist/apps/tickets",
+              "index": "apps/tickets/src/index.html",
+              "main": "apps/tickets/src/main.ts",
+              "polyfills": [
+                "zone.js"
+              ],
+              "tsConfig": "apps/tickets/tsconfig.app.json",
+              "assets": [
+                "apps/tickets/src/favicon.ico",
+                "apps/tickets/src/assets"
+              ],
+              "styles": [
+                "@angular/material/prebuilt-themes/indigo-pink.css",
+                "node_modules/@angular-architects/paper-design/assets/css/bootstrap.css",
+                "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
+                "apps/tickets/src/styles.css"
+              ],
+              "scripts": []
+            },
+            "configurations": {
+              "production": {
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "500kb",
+                    "maximumError": "1mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "2kb",
+                    "maximumError": "4kb"
+                  }
+                ],
+                "outputHashing": "all"
+              },
+              "development": {
+                "buildOptimizer": false,
+                "optimization": false,
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "sourceMap": true,
+                "namedChunks": true
+              }
+            },
+            "defaultConfiguration": "production"
+          },
+          "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+              "production": {
+                "browserTarget": "tickets:build:production"
+              },
+              "development": {
+                "browserTarget": "tickets:build:development"
+              }
+            },
+            "defaultConfiguration": "development",
+            "options": {}
+          },
+          "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "browserTarget": "tickets:build"
+            },
+            "configurations": {}
+          },
+          "test": {
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/karma.conf.js",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "executor": "@angular-devkit/build-angular:karma",
+            "options": {
+              "browsers": "ChromeHeadless",
+              "watch": false,
+              "polyfills": [
+                "zone.js",
+                "zone.js/testing"
+              ],
+              "tsConfig": "apps/tickets/tsconfig.spec.json",
+              "assets": [
+                "apps/tickets/src/favicon.ico",
+                "apps/tickets/src/assets"
+              ],
+              "styles": [
+                "@angular/material/prebuilt-themes/indigo-pink.css",
+                "apps/tickets/src/styles.css"
+              ],
+              "scripts": []
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json"
+            ],
+            "cache": true,
+            "executor": "@nx/eslint:lint",
+            "options": {
+              "lintFilePatterns": [
+                "apps/tickets/**/*.ts",
+                "apps/tickets/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "domain:tickets",
+          "type:app"
+        ],
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "tickets-feature-next-flights": [
+      {
+        "source": "tickets-feature-next-flights",
+        "target": "tickets-domain",
+        "type": "static"
+      }
+    ],
+    "tickets-feature-booking": [
+      {
+        "source": "tickets-feature-booking",
+        "target": "shared-ui-common",
+        "type": "static"
+      },
+      {
+        "source": "tickets-feature-booking",
+        "target": "tickets-domain",
+        "type": "static"
+      },
+      {
+        "source": "tickets-feature-booking",
+        "target": "shared-util-validation",
+        "type": "static"
+      }
+    ],
+    "checkin-feature-manage": [
+      {
+        "source": "checkin-feature-manage",
+        "target": "checkin-domain",
+        "type": "static"
+      },
+      {
+        "source": "checkin-feature-manage",
+        "target": "shared-ui-common",
+        "type": "static"
+      },
+      {
+        "source": "checkin-feature-manage",
+        "target": "shared-util-validation",
+        "type": "static"
+      }
+    ],
+    "shared-util-validation": [],
+    "shared-util-config": [],
+    "shared-ui-common": [],
+    "tickets-domain": [
+      {
+        "source": "tickets-domain",
+        "target": "shared-util-config",
+        "type": "static"
+      }
+    ],
+    "checkin-domain": [],
+    "checkin": [
+      {
+        "source": "checkin",
+        "target": "checkin-feature-manage",
+        "type": "static"
+      }
+    ],
+    "tickets": [
+      {
+        "source": "tickets",
+        "target": "shared-util-config",
+        "type": "static"
+      },
+      {
+        "source": "tickets",
+        "target": "tickets-feature-booking",
+        "type": "static"
+      },
+      {
+        "source": "tickets",
+        "target": "tickets-feature-next-flights",
+        "type": "static"
+      }
+    ]
+  },
+  "version": "6.0"
+}
