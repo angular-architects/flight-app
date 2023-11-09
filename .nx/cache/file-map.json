@@ -1,1065 +1,81 @@
 {
   "version": "6.0",
-  "nxVersion": "17.0.1",
+  "nxVersion": "17.0.3",
   "deps": {
-    "@angular-architects/module-federation": "^16.0.4",
-    "@angular-architects/module-federation-tools": "^16.0.4",
     "@angular-architects/paper-design": "^1.0.3",
-    "@angular/animations": "16.2.10",
-    "@angular/cdk": "16.2.9",
-    "@angular/common": "16.2.10",
-    "@angular/compiler": "16.2.10",
-    "@angular/core": "16.2.10",
-    "@angular/forms": "16.2.10",
-    "@angular/material": "16.2.9",
-    "@angular/platform-browser": "16.2.10",
-    "@angular/platform-browser-dynamic": "16.2.10",
-    "@angular/router": "16.2.10",
-    "@ngrx/component": "16.0.1",
-    "@ngrx/component-store": "16.0.1",
-    "@ngrx/effects": "16.0.1",
-    "@ngrx/entity": "16.0.1",
-    "@ngrx/router-store": "16.0.1",
-    "@ngrx/store": "16.0.1",
-    "@ngrx/store-devtools": "16.0.1",
-    "@nx/angular": "17.0.1",
+    "@angular/animations": "^17.0.0",
+    "@angular/cdk": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/material": "^17.0.0",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "@ngrx/signals": "^17.0.0-beta.0",
     "date-fns": "^2.30.0",
-    "rxjs": "7.8.1",
-    "tslib": "^2.5.2",
-    "zone.js": "~0.13.0",
-    "@angular-architects/ddd": "^17.0.0",
-    "@angular-devkit/build-angular": "16.2.7",
-    "@angular-devkit/core": "16.2.7",
-    "@angular-devkit/schematics": "16.2.7",
-    "@angular-eslint/eslint-plugin": "16.0.2",
-    "@angular-eslint/eslint-plugin-template": "16.0.2",
-    "@angular-eslint/template-parser": "16.0.2",
-    "@angular/cli": "~16.2.0",
-    "@angular/compiler-cli": "16.2.10",
-    "@angular/language-service": "16.2.10",
-    "@ngrx/schematics": "16.0.1",
-    "@nx/cypress": "17.0.1",
-    "@nx/eslint": "17.0.1",
-    "@nx/eslint-plugin": "17.0.1",
-    "@nx/jest": "17.0.1",
-    "@nx/js": "17.0.1",
-    "@nx/web": "17.0.1",
-    "@nx/workspace": "17.0.1",
-    "@schematics/angular": "16.2.7",
-    "@swc-node/register": "~1.6.7",
-    "@swc/core": "~1.3.85",
-    "@types/jasmine": "~4.3.1",
-    "@types/jest": "^29.4.0",
-    "@types/node": "^20.8.9",
-    "@typescript-eslint/eslint-plugin": "5.60.1",
-    "@typescript-eslint/parser": "5.60.1",
-    "cypress": "^13.0.0",
-    "eslint": "8.46.0",
-    "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-cypress": "2.13.4",
-    "husky": "^8.0.3",
-    "jasmine-core": "^4.0.0",
-    "jest": "^29.4.1",
-    "jest-environment-jsdom": "^29.4.1",
-    "jest-preset-angular": "~13.1.0",
-    "jsonc-eslint-parser": "^2.1.0",
-    "karma": "~6.4.2",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2",
+    "@angular-devkit/build-angular": "^17.0.0",
+    "@angular-eslint/builder": "17.0.1",
+    "@angular-eslint/eslint-plugin": "17.0.1",
+    "@angular-eslint/eslint-plugin-template": "17.0.1",
+    "@angular-eslint/schematics": "17.0.1",
+    "@angular-eslint/template-parser": "17.0.1",
+    "@angular/cli": "^17.0.0",
+    "@angular/compiler-cli": "^17.0.0",
+    "@softarc/eslint-plugin-sheriff": "^0.14.2",
+    "@softarc/sheriff-core": "^0.14.2",
+    "@types/jasmine": "~5.1.0",
+    "@typescript-eslint/eslint-plugin": "6.10.0",
+    "@typescript-eslint/parser": "6.10.0",
+    "eslint": "^8.53.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
-    "ngx-build-plus": "^16.0.0",
-    "nx": "17.0.1",
-    "prettier": "^2.8.8",
-    "pretty-quick": "^3.1.3",
-    "ts-jest": "^29.1.0",
-    "ts-node": "10.9.1",
-    "typescript": "5.1.6",
-    "@softarc/eslint-plugin-sheriff": "^0.14.2",
-    "@softarc/sheriff-core": "^0.14.2"
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.2.2"
   },
   "pathMappings": {
-    "@flight-demo/checkin/domain": [
-      "libs/checkin/domain/src/index.ts"
-    ],
-    "@flight-demo/checkin/feature-manage": [
-      "libs/checkin/feature-manage/src/index.ts"
-    ],
-    "@flight-demo/shared/ui-common": [
-      "libs/shared/ui-common/src/lib/index.ts"
-    ],
-    "@flight-demo/shared/util-config": [
-      "libs/shared/util-config/src/lib/index.ts"
-    ],
-    "@flight-demo/shared/util-validation": [
-      "libs/shared/util-validation/src/lib/index.ts"
-    ],
-    "@flight-demo/tickets/domain": [
-      "libs/tickets/domain/src/lib/index.ts"
-    ],
-    "@flight-demo/tickets/feature-booking": [
-      "libs/tickets/feature-booking/src/lib/index.ts"
-    ],
-    "@flight-demo/tickets/feature-next-flights": [
-      "libs/tickets/feature-next-flights/src/lib/index.ts"
+    "@demo/*": [
+      "./src/app/domains/*"
     ]
   },
   "nxJsonPlugins": [],
   "fileMap": {
-    "projectFileMap": {
-      "tickets-domain": [
-        {
-          "file": "libs/tickets/domain/.eslintrc.json",
-          "hash": "3418543370928247268"
-        },
-        {
-          "file": "libs/tickets/domain/README.md",
-          "hash": "14408101347283116582"
-        },
-        {
-          "file": "libs/tickets/domain/jest.config.ts",
-          "hash": "13342766111079237138"
-        },
-        {
-          "file": "libs/tickets/domain/project.json",
-          "hash": "2308695961488313609"
-        },
-        {
-          "file": "libs/tickets/domain/src/lib/entities/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/tickets/domain/src/lib/entities/flight.ts",
-          "hash": "5933006263770184973"
-        },
-        {
-          "file": "libs/tickets/domain/src/lib/index.ts",
-          "hash": "1557029184909707721"
-        },
-        {
-          "file": "libs/tickets/domain/src/lib/infrastructure/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/tickets/domain/src/lib/infrastructure/default-flight.service.ts",
-          "hash": "17080574595876840261",
-          "deps": [
-            "npm:@angular/common/http",
-            "npm:@angular/core",
-            "npm:rxjs",
-            "shared-util-config"
-          ]
-        },
-        {
-          "file": "libs/tickets/domain/src/lib/infrastructure/dummy-flight.service.ts",
-          "hash": "10268745824602490142",
-          "deps": [
-            "npm:@angular/core",
-            "npm:rxjs"
-          ]
-        },
-        {
-          "file": "libs/tickets/domain/src/lib/infrastructure/flight.service.ts",
-          "hash": "13212849182715619294",
-          "deps": [
-            "npm:@angular/core",
-            "npm:rxjs"
-          ]
-        },
-        {
-          "file": "libs/tickets/domain/src/test-setup.ts",
-          "hash": "17711435995618823417",
-          "deps": [
-            "npm:jest-preset-angular/setup-jest"
-          ]
-        },
-        {
-          "file": "libs/tickets/domain/tsconfig.json",
-          "hash": "4477682170649870006"
-        },
-        {
-          "file": "libs/tickets/domain/tsconfig.lib.json",
-          "hash": "9558018702647581490"
-        },
-        {
-          "file": "libs/tickets/domain/tsconfig.spec.json",
-          "hash": "4003217966072204204"
-        }
-      ],
-      "tickets-feature-booking": [
-        {
-          "file": "libs/tickets/feature-booking/.eslintrc.json",
-          "hash": "3418543370928247268"
-        },
-        {
-          "file": "libs/tickets/feature-booking/README.md",
-          "hash": "14113306454564052194"
-        },
-        {
-          "file": "libs/tickets/feature-booking/jest.config.ts",
-          "hash": "7766243071199325598"
-        },
-        {
-          "file": "libs/tickets/feature-booking/project.json",
-          "hash": "17677512764098680416"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-booking.component.html",
-          "hash": "15263895581179546877"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-booking.component.ts",
-          "hash": "11671019446688671480",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common",
-            "npm:@angular/router"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-booking.routes.ts",
-          "hash": "4085913353166498447",
-          "deps": [
-            "npm:@angular/router"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-card/flight-card.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-card/flight-card.component.html",
-          "hash": "4379694002003647003"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-card/flight-card.component.ts",
-          "hash": "16880948309989207451",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/material/dialog",
-            "npm:@angular/common",
-            "npm:@angular/router",
-            "shared-ui-common",
-            "tickets-domain"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-edit/flight-edit.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-edit/flight-edit.component.html",
-          "hash": "15451695163107174562"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-edit/flight-edit.component.ts",
-          "hash": "1259192468047337767",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common",
-            "npm:@angular/forms",
-            "npm:@angular/router",
-            "shared-util-validation",
-            "tickets-domain"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-edit-reactive/flight-edit-reactive.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-edit-reactive/flight-edit-reactive.component.html",
-          "hash": "12798334977457216932"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-edit-reactive/flight-edit-reactive.component.ts",
-          "hash": "16229825072688812131",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common",
-            "npm:@angular/forms",
-            "npm:@angular/material/dialog",
-            "shared-util-validation",
-            "tickets-domain"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-search/flight-search.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-search/flight-search.component.html",
-          "hash": "218013138867480865"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-search/flight-search.component.spec.ts",
-          "hash": "9974407896982174409",
-          "deps": [
-            "npm:@angular/core/testing",
-            "npm:@angular/common/http",
-            "npm:@angular/common/http/testing"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/flight-search/flight-search.component.ts",
-          "hash": "15609877893578644426",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common",
-            "npm:@angular/forms",
-            "shared-ui-common",
-            "tickets-domain"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/index.ts",
-          "hash": "1940093348195369411"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/passenger-search/passenger-search.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/passenger-search/passenger-search.component.html",
-          "hash": "17551137947322426531"
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/lib/passenger-search/passenger-search.component.ts",
-          "hash": "15970661723464221909",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-booking/src/test-setup.ts",
-          "hash": "17711435995618823417",
-          "deps": [
-            "npm:jest-preset-angular/setup-jest"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-booking/tsconfig.json",
-          "hash": "4477682170649870006"
-        },
-        {
-          "file": "libs/tickets/feature-booking/tsconfig.lib.json",
-          "hash": "9558018702647581490"
-        },
-        {
-          "file": "libs/tickets/feature-booking/tsconfig.spec.json",
-          "hash": "4003217966072204204"
-        }
-      ],
-      "shared-ui-common": [
-        {
-          "file": "libs/shared/ui-common/.eslintrc.json",
-          "hash": "6818471180907119865"
-        },
-        {
-          "file": "libs/shared/ui-common/README.md",
-          "hash": "2532171483413604080"
-        },
-        {
-          "file": "libs/shared/ui-common/jest.config.ts",
-          "hash": "4459784169970909154"
-        },
-        {
-          "file": "libs/shared/ui-common/project.json",
-          "hash": "578770182206139715"
-        },
-        {
-          "file": "libs/shared/ui-common/src/lib/city.pipe.ts",
-          "hash": "7573493346577548486",
-          "deps": [
-            "npm:@angular/core"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-common/src/lib/index.ts",
-          "hash": "601245878973484837"
-        },
-        {
-          "file": "libs/shared/ui-common/src/lib/status-toggle/status-toggle.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/shared/ui-common/src/lib/status-toggle/status-toggle.component.html",
-          "hash": "606763250952992066"
-        },
-        {
-          "file": "libs/shared/ui-common/src/lib/status-toggle/status-toggle.component.ts",
-          "hash": "15779481777842035723",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-common/src/test-setup.ts",
-          "hash": "17711435995618823417",
-          "deps": [
-            "npm:jest-preset-angular/setup-jest"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-common/tsconfig.json",
-          "hash": "4477682170649870006"
-        },
-        {
-          "file": "libs/shared/ui-common/tsconfig.lib.json",
-          "hash": "9558018702647581490"
-        },
-        {
-          "file": "libs/shared/ui-common/tsconfig.spec.json",
-          "hash": "4003217966072204204"
-        }
-      ],
-      "tickets": [
-        {
-          "file": "apps/tickets/.eslintrc.json",
-          "hash": "12454869446995643117"
-        },
-        {
-          "file": "apps/tickets/project.json",
-          "hash": "11018335803217426379"
-        },
-        {
-          "file": "apps/tickets/src/app/about/about.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/tickets/src/app/about/about.component.html",
-          "hash": "3185462416918106643"
-        },
-        {
-          "file": "apps/tickets/src/app/about/about.component.ts",
-          "hash": "5810924118951562629",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common"
-          ]
-        },
-        {
-          "file": "apps/tickets/src/app/app.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/tickets/src/app/app.component.html",
-          "hash": "7694106988273821500"
-        },
-        {
-          "file": "apps/tickets/src/app/app.component.spec.ts",
-          "hash": "1714207017594697527",
-          "deps": [
-            "npm:@angular/common/http",
-            "npm:@angular/core/testing",
-            "npm:@angular/router"
-          ]
-        },
-        {
-          "file": "apps/tickets/src/app/app.component.ts",
-          "hash": "10885697737950345982",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/router",
-            "shared-util-config"
-          ]
-        },
-        {
-          "file": "apps/tickets/src/app/app.routes.ts",
-          "hash": "18155943697536659432",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/router",
-            "shared-util-config",
-            "tickets-feature-booking",
-            "tickets-feature-next-flights"
-          ]
-        },
-        {
-          "file": "apps/tickets/src/app/home/home.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/tickets/src/app/home/home.component.html",
-          "hash": "17874014162781471830"
-        },
-        {
-          "file": "apps/tickets/src/app/home/home.component.ts",
-          "hash": "864904224780046447",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common"
-          ]
-        },
-        {
-          "file": "apps/tickets/src/app/navbar/navbar.component.html",
-          "hash": "2712875271837523278"
-        },
-        {
-          "file": "apps/tickets/src/app/navbar/navbar.component.ts",
-          "hash": "16734913763794271460",
-          "deps": [
-            "npm:@angular/core"
-          ]
-        },
-        {
-          "file": "apps/tickets/src/app/not-found/not-found.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/tickets/src/app/not-found/not-found.component.html",
-          "hash": "2055145212757067268"
-        },
-        {
-          "file": "apps/tickets/src/app/not-found/not-found.component.ts",
-          "hash": "4113455652741662261",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common"
-          ]
-        },
-        {
-          "file": "apps/tickets/src/app/sidebar/sidebar.component.html",
-          "hash": "6679548525328564297"
-        },
-        {
-          "file": "apps/tickets/src/app/sidebar/sidebar.component.ts",
-          "hash": "9974239610486200467",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/router"
-          ]
-        },
-        {
-          "file": "apps/tickets/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/tickets/src/assets/config.json",
-          "hash": "5909615312567723361"
-        },
-        {
-          "file": "apps/tickets/src/assets/paper-design/angular2-logo.png",
-          "hash": "3077806510177886753"
-        },
-        {
-          "file": "apps/tickets/src/favicon.ico",
-          "hash": "3464744996580215640"
-        },
-        {
-          "file": "apps/tickets/src/index.html",
-          "hash": "6632814141636163724"
-        },
-        {
-          "file": "apps/tickets/src/main.ts",
-          "hash": "14164871271210692103",
-          "deps": [
-            "npm:@angular/common/http",
-            "npm:@angular/core",
-            "npm:@angular/material/dialog",
-            "npm:@angular/platform-browser",
-            "npm:@angular/router"
-          ]
-        },
-        {
-          "file": "apps/tickets/src/styles.css",
-          "hash": "539034264992069561"
-        },
-        {
-          "file": "apps/tickets/tsconfig.app.json",
-          "hash": "2381145790002888757"
-        },
-        {
-          "file": "apps/tickets/tsconfig.spec.json",
-          "hash": "17700927949365452100"
-        }
-      ],
-      "shared-util-config": [
-        {
-          "file": "libs/shared/util-config/.eslintrc.json",
-          "hash": "11485537450267580223"
-        },
-        {
-          "file": "libs/shared/util-config/README.md",
-          "hash": "12020442911541513878"
-        },
-        {
-          "file": "libs/shared/util-config/jest.config.ts",
-          "hash": "4680599856045186084"
-        },
-        {
-          "file": "libs/shared/util-config/project.json",
-          "hash": "10344541867534060390"
-        },
-        {
-          "file": "libs/shared/util-config/src/lib/config.service.ts",
-          "hash": "6771778731985448384",
-          "deps": [
-            "npm:@angular/common/http",
-            "npm:@angular/core",
-            "npm:rxjs"
-          ]
-        },
-        {
-          "file": "libs/shared/util-config/src/lib/config.ts",
-          "hash": "7932397230459329175"
-        },
-        {
-          "file": "libs/shared/util-config/src/lib/index.ts",
-          "hash": "4445337820425804273"
-        },
-        {
-          "file": "libs/shared/util-config/src/test-setup.ts",
-          "hash": "17711435995618823417",
-          "deps": [
-            "npm:jest-preset-angular/setup-jest"
-          ]
-        },
-        {
-          "file": "libs/shared/util-config/tsconfig.json",
-          "hash": "4477682170649870006"
-        },
-        {
-          "file": "libs/shared/util-config/tsconfig.lib.json",
-          "hash": "9558018702647581490"
-        },
-        {
-          "file": "libs/shared/util-config/tsconfig.spec.json",
-          "hash": "4003217966072204204"
-        }
-      ],
-      "tickets-feature-next-flights": [
-        {
-          "file": "libs/tickets/feature-next-flights/.eslintrc.json",
-          "hash": "3418543370928247268"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/README.md",
-          "hash": "14110752228545533450"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/jest.config.ts",
-          "hash": "13591704933059453647"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/project.json",
-          "hash": "2204284303219602200"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/checkin/checkin.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/checkin/checkin.component.html",
-          "hash": "11827214945259198734"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/checkin/checkin.component.ts",
-          "hash": "254225509397013339",
-          "deps": [
-            "npm:@angular/core"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/index.ts",
-          "hash": "12917495527679480815"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/next-flights.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/next-flights.component.html",
-          "hash": "8008618415594532975"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/next-flights.component.ts",
-          "hash": "17990415822873147064",
-          "deps": [
-            "npm:@angular/core"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/next-flights.module.ts",
-          "hash": "1365745171707615058",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common",
-            "npm:@angular/router"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/next-flights.routes.ts",
-          "hash": "4469137720296927302",
-          "deps": [
-            "npm:@angular/router"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/lib/next-flights.service.ts",
-          "hash": "14202610446586944583",
-          "deps": [
-            "npm:@angular/core",
-            "tickets-domain",
-            "npm:rxjs"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/src/test-setup.ts",
-          "hash": "17711435995618823417",
-          "deps": [
-            "npm:jest-preset-angular/setup-jest"
-          ]
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/tsconfig.json",
-          "hash": "4477682170649870006"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/tsconfig.lib.json",
-          "hash": "9558018702647581490"
-        },
-        {
-          "file": "libs/tickets/feature-next-flights/tsconfig.spec.json",
-          "hash": "4003217966072204204"
-        }
-      ],
-      "shared-util-validation": [
-        {
-          "file": "libs/shared/util-validation/.eslintrc.json",
-          "hash": "12598669728720382342"
-        },
-        {
-          "file": "libs/shared/util-validation/README.md",
-          "hash": "6699800198439791440"
-        },
-        {
-          "file": "libs/shared/util-validation/jest.config.ts",
-          "hash": "15543375527147704420"
-        },
-        {
-          "file": "libs/shared/util-validation/project.json",
-          "hash": "14994199334438183480"
-        },
-        {
-          "file": "libs/shared/util-validation/src/lib/index.ts",
-          "hash": "15849071944011419313"
-        },
-        {
-          "file": "libs/shared/util-validation/src/lib/validation/city-validator.directive.ts",
-          "hash": "12831271990401151032",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/forms"
-          ]
-        },
-        {
-          "file": "libs/shared/util-validation/src/lib/validation/city-validator.ts",
-          "hash": "16508533757731978068",
-          "deps": [
-            "npm:@angular/forms"
-          ]
-        },
-        {
-          "file": "libs/shared/util-validation/src/lib/validation/roundtrip-validator.directive.ts",
-          "hash": "14457777444632976181",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/forms"
-          ]
-        },
-        {
-          "file": "libs/shared/util-validation/src/lib/validation/roundtrip-validator.ts",
-          "hash": "9795210112194073099",
-          "deps": [
-            "npm:@angular/forms"
-          ]
-        },
-        {
-          "file": "libs/shared/util-validation/src/lib/validation-errors/validation-errors.component.css",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/shared/util-validation/src/lib/validation-errors/validation-errors.component.html",
-          "hash": "298971738991412097"
-        },
-        {
-          "file": "libs/shared/util-validation/src/lib/validation-errors/validation-errors.component.ts",
-          "hash": "1046032377480331950",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common",
-            "npm:@angular/forms"
-          ]
-        },
-        {
-          "file": "libs/shared/util-validation/src/test-setup.ts",
-          "hash": "17711435995618823417",
-          "deps": [
-            "npm:jest-preset-angular/setup-jest"
-          ]
-        },
-        {
-          "file": "libs/shared/util-validation/tsconfig.json",
-          "hash": "4477682170649870006"
-        },
-        {
-          "file": "libs/shared/util-validation/tsconfig.lib.json",
-          "hash": "9558018702647581490"
-        },
-        {
-          "file": "libs/shared/util-validation/tsconfig.spec.json",
-          "hash": "4003217966072204204"
-        }
-      ],
-      "checkin": [
-        {
-          "file": "apps/checkin/.eslintrc.json",
-          "hash": "10958690951701415413"
-        },
-        {
-          "file": "apps/checkin/jest.config.ts",
-          "hash": "5780420620789092018"
-        },
-        {
-          "file": "apps/checkin/project.json",
-          "hash": "15865552942012510524"
-        },
-        {
-          "file": "apps/checkin/src/app/app.component.html",
-          "hash": "9413113549328123932"
-        },
-        {
-          "file": "apps/checkin/src/app/app.component.scss",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/checkin/src/app/app.component.ts",
-          "hash": "15256681723617112705",
-          "deps": [
-            "npm:@angular/common",
-            "npm:@angular/core",
-            "checkin-feature-manage"
-          ]
-        },
-        {
-          "file": "apps/checkin/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "apps/checkin/src/favicon.ico",
-          "hash": "9303420814833116677"
-        },
-        {
-          "file": "apps/checkin/src/index.html",
-          "hash": "11754404176819914550"
-        },
-        {
-          "file": "apps/checkin/src/main.ts",
-          "hash": "7194733773299694040",
-          "deps": [
-            "npm:@angular/common/http",
-            "npm:@angular/core",
-            "npm:@angular/platform-browser"
-          ]
-        },
-        {
-          "file": "apps/checkin/src/styles.scss",
-          "hash": "5195668842064076916"
-        },
-        {
-          "file": "apps/checkin/src/test-setup.ts",
-          "hash": "17711435995618823417",
-          "deps": [
-            "npm:jest-preset-angular/setup-jest"
-          ]
-        },
-        {
-          "file": "apps/checkin/tsconfig.app.json",
-          "hash": "8365644956319658761"
-        },
-        {
-          "file": "apps/checkin/tsconfig.editor.json",
-          "hash": "17511610827034788226"
-        },
-        {
-          "file": "apps/checkin/tsconfig.json",
-          "hash": "12094030803572703611"
-        },
-        {
-          "file": "apps/checkin/tsconfig.spec.json",
-          "hash": "7670846817526018622"
-        }
-      ],
-      "checkin-domain": [
-        {
-          "file": "libs/checkin/domain/.eslintrc.json",
-          "hash": "15922087236188162403"
-        },
-        {
-          "file": "libs/checkin/domain/README.md",
-          "hash": "4098103176898146755"
-        },
-        {
-          "file": "libs/checkin/domain/jest.config.ts",
-          "hash": "8108755483853174725"
-        },
-        {
-          "file": "libs/checkin/domain/project.json",
-          "hash": "18307133098802680702"
-        },
-        {
-          "file": "libs/checkin/domain/src/index.ts",
-          "hash": "1041351500567280436"
-        },
-        {
-          "file": "libs/checkin/domain/src/lib/application/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/checkin/domain/src/lib/application/manage.facade.ts",
-          "hash": "1568658721180906131",
-          "deps": [
-            "npm:@angular/core",
-            "npm:rxjs"
-          ]
-        },
-        {
-          "file": "libs/checkin/domain/src/lib/entities/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/checkin/domain/src/lib/entities/ticket.ts",
-          "hash": "12990997997917811166"
-        },
-        {
-          "file": "libs/checkin/domain/src/lib/infrastructure/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "libs/checkin/domain/src/lib/infrastructure/ticket.data.service.ts",
-          "hash": "14766791375597021352",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common/http",
-            "npm:rxjs"
-          ]
-        },
-        {
-          "file": "libs/checkin/domain/src/test-setup.ts",
-          "hash": "17711435995618823417",
-          "deps": [
-            "npm:jest-preset-angular/setup-jest"
-          ]
-        },
-        {
-          "file": "libs/checkin/domain/tsconfig.json",
-          "hash": "4477682170649870006"
-        },
-        {
-          "file": "libs/checkin/domain/tsconfig.lib.json",
-          "hash": "9558018702647581490"
-        },
-        {
-          "file": "libs/checkin/domain/tsconfig.spec.json",
-          "hash": "4003217966072204204"
-        }
-      ],
-      "checkin-feature-manage": [
-        {
-          "file": "libs/checkin/feature-manage/.eslintrc.json",
-          "hash": "15922087236188162403"
-        },
-        {
-          "file": "libs/checkin/feature-manage/README.md",
-          "hash": "11407436446313422107"
-        },
-        {
-          "file": "libs/checkin/feature-manage/jest.config.ts",
-          "hash": "7436137639632233027"
-        },
-        {
-          "file": "libs/checkin/feature-manage/project.json",
-          "hash": "17928586968449435027"
-        },
-        {
-          "file": "libs/checkin/feature-manage/src/index.ts",
-          "hash": "9471145350363527550"
-        },
-        {
-          "file": "libs/checkin/feature-manage/src/lib/manage.component.html",
-          "hash": "13663933184331125526"
-        },
-        {
-          "file": "libs/checkin/feature-manage/src/lib/manage.component.scss",
-          "hash": "10026629338141928282"
-        },
-        {
-          "file": "libs/checkin/feature-manage/src/lib/manage.component.spec.ts",
-          "hash": "3733094969594469539",
-          "deps": [
-            "npm:@angular/common/http",
-            "npm:@angular/core/testing"
-          ]
-        },
-        {
-          "file": "libs/checkin/feature-manage/src/lib/manage.component.ts",
-          "hash": "12560270253715929128",
-          "deps": [
-            "npm:@angular/core",
-            "npm:@angular/common",
-            "checkin-domain",
-            "shared-ui-common",
-            "shared-util-validation"
-          ]
-        },
-        {
-          "file": "libs/checkin/feature-manage/src/test-setup.ts",
-          "hash": "17711435995618823417",
-          "deps": [
-            "npm:jest-preset-angular/setup-jest"
-          ]
-        },
-        {
-          "file": "libs/checkin/feature-manage/tsconfig.json",
-          "hash": "4477682170649870006"
-        },
-        {
-          "file": "libs/checkin/feature-manage/tsconfig.lib.json",
-          "hash": "9558018702647581490"
-        },
-        {
-          "file": "libs/checkin/feature-manage/tsconfig.spec.json",
-          "hash": "4003217966072204204"
-        }
-      ]
-    },
+    "projectFileMap": {},
     "nonProjectFiles": [
       {
         "file": ".editorconfig",
         "hash": "6686520031028425313"
       },
       {
-        "file": ".eslintignore",
-        "hash": "7663861978715868291"
-      },
-      {
         "file": ".eslintrc.json",
-        "hash": "6179037197281084102"
+        "hash": "16685998197469851023"
       },
       {
         "file": ".gitignore",
-        "hash": "8638147799963390893"
+        "hash": "13044518069027839699"
       },
       {
         "file": ".husky/pre-commit",
         "hash": "18303369387915271389"
       },
       {
+        "file": ".nx/cache/file-map.json",
+        "hash": "1720478378837998495"
+      },
+      {
+        "file": ".nx/cache/project-graph.json",
+        "hash": "13656731626301555021"
+      },
+      {
         "file": ".prettierignore",
-        "hash": "5366125615757242730"
+        "hash": "16448050467312557263"
       },
       {
         "file": ".prettierrc",
@@ -1067,7 +83,7 @@
       },
       {
         "file": ".vscode/extensions.json",
-        "hash": "18037487075392171512"
+        "hash": "11761272470041752234"
       },
       {
         "file": ".vscode/launch.json",
@@ -1086,16 +102,8 @@
         "hash": "14500239786134566109"
       },
       {
-        "file": "decorate-angular-cli.js",
-        "hash": "2098921556983694501"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "12333515226966617182"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9084884494335109525"
+        "file": "angular.json",
+        "hash": "1335973782465082173"
       },
       {
         "file": "karma.conf.js",
@@ -1106,32 +114,600 @@
         "hash": "3244421341483603138"
       },
       {
-        "file": "migrations.json",
-        "hash": "17985566377812911085"
-      },
-      {
-        "file": "nx.json",
-        "hash": "16880464606085733724"
+        "file": "package-lock.json",
+        "hash": "4761550774804834121"
       },
       {
         "file": "package.json",
-        "hash": "15641116971561725077"
+        "hash": "4857955284657565126"
       },
       {
-        "file": "src/app/domains/ticketing/data/ticket-store.service.ts",
-        "hash": "17767413418307260744"
+        "file": "sheriff.config.ts",
+        "hash": "8680408161749331530"
+      },
+      {
+        "file": "src/app/app.component.css",
+        "hash": "18161877728228858206"
+      },
+      {
+        "file": "src/app/app.component.html",
+        "hash": "17807021776968534966"
+      },
+      {
+        "file": "src/app/app.component.ts",
+        "hash": "4654410476317444488"
+      },
+      {
+        "file": "src/app/app.routes.ts",
+        "hash": "3107698211009455485"
+      },
+      {
+        "file": "src/app/domains/checkin/data/checkin.service.ts",
+        "hash": "6812784069097111988"
+      },
+      {
+        "file": "src/app/domains/checkin/data/hidden.service.ts",
+        "hash": "17322369993450596052"
+      },
+      {
+        "file": "src/app/domains/checkin/data/index.ts",
+        "hash": "6716436743333923230"
+      },
+      {
+        "file": "src/app/domains/checkin/feature-manage/feature-manage.component.css",
+        "hash": "524429178687792510"
+      },
+      {
+        "file": "src/app/domains/checkin/feature-manage/feature-manage.component.html",
+        "hash": "5910562564704534418"
+      },
+      {
+        "file": "src/app/domains/checkin/feature-manage/feature-manage.component.ts",
+        "hash": "8925122280867776599"
+      },
+      {
+        "file": "src/app/domains/checkin/feature-manage/index.ts",
+        "hash": "7792442360737851744"
+      },
+      {
+        "file": "src/app/domains/luggage/data/index.ts",
+        "hash": "3565951833573022120"
+      },
+      {
+        "file": "src/app/domains/luggage/data/luggage.service.spec.ts",
+        "hash": "8239587201834127228"
+      },
+      {
+        "file": "src/app/domains/luggage/data/luggage.service.ts",
+        "hash": "6362443338940475054"
+      },
+      {
+        "file": "src/app/domains/luggage/data/luggage.ts",
+        "hash": "1903621329433533045"
+      },
+      {
+        "file": "src/app/domains/luggage/feature-checkin/checkin/checkin.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/luggage/feature-checkin/checkin/checkin.component.html",
+        "hash": "3313170843390712310"
+      },
+      {
+        "file": "src/app/domains/luggage/feature-checkin/checkin/checkin.component.spec.ts",
+        "hash": "8571743241829485805"
+      },
+      {
+        "file": "src/app/domains/luggage/feature-checkin/checkin/checkin.component.ts",
+        "hash": "14521748100595377998"
+      },
+      {
+        "file": "src/app/domains/luggage/feature-checkin/feature-checkin.routes.ts",
+        "hash": "7439838745061926542"
+      },
+      {
+        "file": "src/app/domains/luggage/feature-checkin/index.ts",
+        "hash": "12355500309132591930"
+      },
+      {
+        "file": "src/app/domains/luggage/ui-common/index.ts",
+        "hash": "17288707486173005317"
+      },
+      {
+        "file": "src/app/domains/luggage/ui-common/luggage-card/luggage-card.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/luggage/ui-common/luggage-card/luggage-card.component.html",
+        "hash": "13251000144142725307"
+      },
+      {
+        "file": "src/app/domains/luggage/ui-common/luggage-card/luggage-card.component.spec.ts",
+        "hash": "15658571264928825780"
+      },
+      {
+        "file": "src/app/domains/luggage/ui-common/luggage-card/luggage-card.component.ts",
+        "hash": "2635084507254862818"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/city.pipe.ts",
+        "hash": "7573493346577548486"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/click-with-warning.directive.ts",
+        "hash": "8406774869919706777"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/confirm/confirm.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/confirm/confirm.component.html",
+        "hash": "6343549198570184645"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/confirm/confirm.component.ts",
+        "hash": "12465906374283307418"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/custom-template-outlet.directive.ts",
+        "hash": "14370533079050378903"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/data-table/data-table.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/data-table/data-table.component.html",
+        "hash": "18287747911902131940"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/data-table/data-table.component.ts",
+        "hash": "15343141393235719886"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/data-table/table-field.directive.ts",
+        "hash": "7852383426213610841"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/date/date-cva.directive.ts",
+        "hash": "7237604943295498766"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/date/date-stepper/date-stepper.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/date/date-stepper/date-stepper.component.html",
+        "hash": "11835145304134468383"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/date/date-stepper/date-stepper.component.ts",
+        "hash": "10005258274202040958"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/index.ts",
+        "hash": "10841531020928203796"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/status-toggle/status-toggle.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/status-toggle/status-toggle.component.html",
+        "hash": "606763250952992066"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/status-toggle/status-toggle.component.ts",
+        "hash": "15779481777842035723"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tab/tab.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tab/tab.component.html",
+        "hash": "2279112272468319087"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tab/tab.component.ts",
+        "hash": "1064346699869292051"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.css",
+        "hash": "17417177808945531009"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.html",
+        "hash": "10825523325216146782"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.ts",
+        "hash": "16562708635429420182"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.css",
+        "hash": "17208606458195356664"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.html",
+        "hash": "9499848027550157770"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.ts",
+        "hash": "1454171460083415736"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.service.ts",
+        "hash": "17450505781308212508"
+      },
+      {
+        "file": "src/app/domains/shared/ui-common/tooltip.directive.ts",
+        "hash": "11665750338790701849"
+      },
+      {
+        "file": "src/app/domains/shared/util-auth/auth.service.ts",
+        "hash": "15521838561653271773"
+      },
+      {
+        "file": "src/app/domains/shared/util-auth/auth.ts",
+        "hash": "8239415273067141803"
+      },
+      {
+        "file": "src/app/domains/shared/util-auth/index.ts",
+        "hash": "15287770697829075935"
+      },
+      {
+        "file": "src/app/domains/shared/util-common/can-exit.ts",
+        "hash": "3240937765546741040"
+      },
+      {
+        "file": "src/app/domains/shared/util-common/index.ts",
+        "hash": "7457891512271565360"
+      },
+      {
+        "file": "src/app/domains/shared/util-config/config.service.ts",
+        "hash": "6771778731985448384"
+      },
+      {
+        "file": "src/app/domains/shared/util-config/config.ts",
+        "hash": "7932397230459329175"
+      },
+      {
+        "file": "src/app/domains/shared/util-config/index.ts",
+        "hash": "17396630609911803886"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/color-config.ts",
+        "hash": "17353081407626768530"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/color.service.ts",
+        "hash": "11842016513783520628"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/color.ts",
+        "hash": "9952372310351434020"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/custom-log-appender.ts",
+        "hash": "1852163641044010697"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/features.ts",
+        "hash": "4132208103107387138"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/index.ts",
+        "hash": "10119711404226908604"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/log-appender.ts",
+        "hash": "4116055021071727713"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/log-formatter.ts",
+        "hash": "2046109285489612862"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/log-level.ts",
+        "hash": "17123463744395769012"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/logger-config.ts",
+        "hash": "11063134927776503740"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/logger.ts",
+        "hash": "127696772517985514"
+      },
+      {
+        "file": "src/app/domains/shared/util-logger/provider.ts",
+        "hash": "10352941218055385330"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/index.ts",
+        "hash": "10439962828902509286"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/validation/async-city-validator.directive.ts",
+        "hash": "12124600392721133222"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/validation/async-city-validator.ts",
+        "hash": "9556912856054368139"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/validation/city-validator.directive.ts",
+        "hash": "17327243076724725643"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/validation/city-validator.ts",
+        "hash": "16508533757731978068"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/validation/roundtrip-validator.directive.ts",
+        "hash": "12786770631757372780"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/validation/roundtrip-validator.ts",
+        "hash": "9795210112194073099"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/validation-errors/validation-errors.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/validation-errors/validation-errors.component.html",
+        "hash": "15712219141690388236"
+      },
+      {
+        "file": "src/app/domains/shared/util-validation/validation-errors/validation-errors.component.ts",
+        "hash": "1046032377480331950"
+      },
+      {
+        "file": "src/app/domains/ticketing/data/flight.service.ts",
+        "hash": "16611147879473203085"
+      },
+      {
+        "file": "src/app/domains/ticketing/data/flight.ts",
+        "hash": "5933006263770184973"
+      },
+      {
+        "file": "src/app/domains/ticketing/data/index.ts",
+        "hash": "15552024163502342248"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-booking.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-booking.component.html",
+        "hash": "2662240233145419238"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-booking.component.ts",
+        "hash": "13030494409697473272"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-booking.routes.ts",
+        "hash": "7642453603492151887"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-card/flight-card.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-card/flight-card.component.html",
+        "hash": "4379694002003647003"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-card/flight-card.component.ts",
+        "hash": "1514756433641926969"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.html",
+        "hash": "17098341404688304335"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.ts",
+        "hash": "2645090102221506053"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.html",
+        "hash": "12798334977457216932"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.ts",
+        "hash": "13539053984438915393"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.html",
+        "hash": "3973552311230784948"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.ts",
+        "hash": "11026706890386277872"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/index.ts",
+        "hash": "1940093348195369411"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.html",
+        "hash": "17551137947322426531"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.ts",
+        "hash": "5009204658968349474"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/checkin/checkin.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/checkin/checkin.component.html",
+        "hash": "11827214945259198734"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/checkin/checkin.component.ts",
+        "hash": "254225509397013339"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/index.ts",
+        "hash": "12917495527679480815"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/next-flights.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/next-flights.component.html",
+        "hash": "8008618415594532975"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/next-flights.component.ts",
+        "hash": "17990415822873147064"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/next-flights.module.ts",
+        "hash": "1365745171707615058"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/next-flights.routes.ts",
+        "hash": "4469137720296927302"
+      },
+      {
+        "file": "src/app/domains/ticketing/feature-next-flights/next-flights.service.ts",
+        "hash": "11474130725929860895"
+      },
+      {
+        "file": "src/app/shell/about/about.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/shell/about/about.component.html",
+        "hash": "296484843790336342"
+      },
+      {
+        "file": "src/app/shell/about/about.component.ts",
+        "hash": "4963293185689215852"
+      },
+      {
+        "file": "src/app/shell/basket/basket.component.css",
+        "hash": "18121572083587802985"
+      },
+      {
+        "file": "src/app/shell/basket/basket.component.html",
+        "hash": "8950987673848260738"
+      },
+      {
+        "file": "src/app/shell/basket/basket.component.ts",
+        "hash": "12759825178273045865"
+      },
+      {
+        "file": "src/app/shell/home/home.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/shell/home/home.component.html",
+        "hash": "16747489378182735204"
+      },
+      {
+        "file": "src/app/shell/home/home.component.ts",
+        "hash": "6597232179024502443"
+      },
+      {
+        "file": "src/app/shell/navbar/navbar.component.html",
+        "hash": "13024434188686493826"
+      },
+      {
+        "file": "src/app/shell/navbar/navbar.component.ts",
+        "hash": "16734913763794271460"
+      },
+      {
+        "file": "src/app/shell/not-found/not-found.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/shell/not-found/not-found.component.html",
+        "hash": "2055145212757067268"
+      },
+      {
+        "file": "src/app/shell/not-found/not-found.component.ts",
+        "hash": "4113455652741662261"
+      },
+      {
+        "file": "src/app/shell/sidebar/sidebar.component.html",
+        "hash": "15556679974933280073"
+      },
+      {
+        "file": "src/app/shell/sidebar/sidebar.component.ts",
+        "hash": "9974239610486200467"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/assets/config.json",
+        "hash": "5909615312567723361"
+      },
+      {
+        "file": "src/assets/paper-design/angular2-logo.png",
+        "hash": "3077806510177886753"
+      },
+      {
+        "file": "src/favicon.ico",
+        "hash": "3464744996580215640"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "6632814141636163724"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "11651307945921823533"
+      },
+      {
+        "file": "src/styles.css",
+        "hash": "14961771576400446723"
+      },
+      {
+        "file": "tools/generators/.gitkeep",
+        "hash": "3244421341483603138"
       },
       {
         "file": "tools/tsconfig.tools.json",
         "hash": "16088922570277978783"
       },
       {
-        "file": "tsconfig.base.json",
-        "hash": "6781932680874174524"
+        "file": "tsconfig.app.json",
+        "hash": "17337579397915052279"
       },
       {
         "file": "tsconfig.json",
-        "hash": "3999473556742372045"
+        "hash": "5681478051126591052"
+      },
+      {
+        "file": "tsconfig.spec.json",
+        "hash": "15575553540147145788"
       }
     ]
   }
