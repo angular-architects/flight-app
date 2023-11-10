@@ -1,4 +1,11 @@
-import { Component, ElementRef, NgZone, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
@@ -12,6 +19,7 @@ import { addMinutes } from 'date-fns';
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
   private element = inject(ElementRef);
@@ -48,7 +56,7 @@ export class FlightSearchComponent {
       const newDate = addMinutes(oldDate, 15);
       const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
 
-      return [newFlight, ...flights.slice(0)];
+      return [newFlight, ...flights.slice(1)];
     });
   }
 
