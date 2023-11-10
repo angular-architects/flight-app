@@ -2,7 +2,7 @@
   <h2 class="title">Flight Search</h2>
 </div>
 
-<form #form>
+<form #form (appUpdate)="update($event)">
   <div class="form-group">
     <label for="from">From:</label>
     <input [ngModel]="from()" id="from" name="from" class="form-control" />

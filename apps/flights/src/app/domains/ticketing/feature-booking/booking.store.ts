@@ -13,8 +13,8 @@ import { addMinutes } from 'date-fns';
 export const BookingStore = signalStore(
   { providedIn: 'root' },
   withState({
-    from: '',
-    to: '',
+    from: 'Graz',
+    to: 'Hamburg',
     basket: {} as Record<number, boolean>,
     flights: [] as Flight[],
   }),
