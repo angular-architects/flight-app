@@ -1,33 +1,29 @@
-import {
-  Component,
-  ElementRef,
-  NgZone,
-  ViewChild,
-  inject,
-  signal,
-} from '@angular/core';
+import { Component, ElementRef, NgZone, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import { BookingStore } from '../booking.store';
-import {} from '@angular/core/rxjs-interop';
+import { FormUpdateDirective } from '@demo/shared/util-common';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
+  imports: [
+    FormUpdateDirective,
+    CommonModule,
+    FormsModule,
+    CityPipe,
+    FlightCardComponent,
+  ],
 })
 export class FlightSearchComponent {
   private element = inject(ElementRef);
   private zone = inject(NgZone);
 
   private store = inject(BookingStore);
-
-  @ViewChild(NgForm)
-  private form!: NgForm;
 
   from = this.store.from;
   to = this.store.to;
@@ -36,16 +32,17 @@ export class FlightSearchComponent {
   basket = this.store.basket;
   selectedFlights = this.store.selectedFlights;
 
-  constructor() {
-    // toSignal(this.form.valueChanges).
-  }
-
   async search(): Promise<void> {
+    this.store.updateCriteria(this.from(), this.to());
     await this.store.load();
   }
 
   delay(): void {
     this.store.delay();
+  }
+
+  update(update: { from: string; to: string }) {
+    this.store.updateCriteria(update.from, update.to);
   }
 
   updateBasket(flightId: number, selected: boolean): void {
