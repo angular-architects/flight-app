@@ -14,6 +14,8 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
+import { toSignal, toObservable } from '@angular/core/rxjs-interop';
+import { combineLatest, debounceTime, filter, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-flight-search',
@@ -33,6 +35,21 @@ export class FlightSearchComponent {
   to = signal('London');
   flights = signal<Flight[]>([]);
 
+  from$ = toObservable(this.from);
+  to$ = toObservable(this.to);
+
+  criteria$ = combineLatest({ from: this.from$, to: this.to$ }).pipe(
+    filter((combi) => combi.from.length >= 3 && combi.to.length >= 3),
+    debounceTime(300)
+  );
+
+  criteria = toSignal(this.criteria$, {
+    initialValue: {
+      from: '',
+      to: '',
+    },
+  });
+
   route = computed(() => this.from() + ' to ' + this.to());
 
   basket = signal<Record<number, boolean>>({
@@ -51,14 +68,13 @@ export class FlightSearchComponent {
   }
 
   async search(): Promise<void> {
-    if (!this.from() || !this.to()) {
+    const { from, to } = this.criteria();
+
+    if (!from || !to) {
       return;
     }
 
-    const flights = await this.flightService.findPromise(
-      this.from(),
-      this.to()
-    );
+    const flights = await this.flightService.findPromise(from, to);
     this.flights.set(flights);
   }
 
