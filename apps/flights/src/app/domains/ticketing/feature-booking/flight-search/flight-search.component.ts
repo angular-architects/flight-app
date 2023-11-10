@@ -3,6 +3,8 @@ import {
   Component,
   ElementRef,
   NgZone,
+  computed,
+  effect,
   inject,
   signal,
 } from '@angular/core';
@@ -31,10 +33,22 @@ export class FlightSearchComponent {
   to = signal('London');
   flights = signal<Flight[]>([]);
 
+  route = computed(() => this.from() + ' to ' + this.to());
+
   basket = signal<Record<number, boolean>>({
     3: true,
     5: true,
   });
+
+  constructor() {
+    effect(() => {
+      console.log('route', this.route());
+    });
+
+    effect(() => {
+      this.search();
+    });
+  }
 
   async search(): Promise<void> {
     if (!this.from() || !this.to()) {
