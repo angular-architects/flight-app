@@ -71,7 +71,7 @@ export const BookingStore = signalStore(
       }))
     ),
   })),
-  withCallState(),
+  withCallState({ prop: 'flights' }),
   withMethods((state) => {
     const flightService = inject(FlightService);
 
@@ -108,6 +108,8 @@ export const BookingStore = signalStore(
           return;
         }
 
+        patchState(state, setLoading('flights'));
+
         const flights = await flightService.findPromise(
           state.from(),
           state.to()
@@ -115,22 +117,23 @@ export const BookingStore = signalStore(
 
         patchState(
           state,
-          setAllEntities(toFlightStateArray(flights), { collection: 'flight' })
+          setAllEntities(toFlightStateArray(flights), { collection: 'flight' }),
+          setLoaded('flights')
         );
       },
       connectCriteria: rxMethod<Criteria>((c$) =>
         c$.pipe(
           filter((c) => c.from.length >= 3 && c.to.length >= 3),
           debounceTime(300),
-          tap(() => patchState(state, setLoading())),
+          // tap(() => patchState(state, setLoading())),
           switchMap((c) => flightService.find(c.from, c.to)),
           tap((flights) =>
             patchState(
               state,
               setAllEntities(toFlightStateArray(flights), {
                 collection: 'flight',
-              }),
-              setLoaded()
+              })
+              // setLoaded()
             )
           )
         )

@@ -29,7 +29,7 @@ export class FlightSearchComponent {
   to = this.store.to;
   flights = this.store.flightEntities;
 
-  loading = this.store.loading;
+  loading = this.store.flightsLoading;
 
   basket = this.store.basket;
   selectedFlights = this.store.selectedFlights;
