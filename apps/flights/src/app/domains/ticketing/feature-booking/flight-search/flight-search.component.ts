@@ -1,10 +1,17 @@
-import { Component, ElementRef, NgZone, inject, signal } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  NgZone,
+  ViewChild,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
-import { Flight, FlightService } from '@demo/ticketing/data';
-import { addMinutes } from 'date-fns';
+import { BookingStore } from '../booking.store';
+import {} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-flight-search',
@@ -17,46 +24,32 @@ export class FlightSearchComponent {
   private element = inject(ElementRef);
   private zone = inject(NgZone);
 
-  private flightService = inject(FlightService);
+  private store = inject(BookingStore);
 
-  from = signal('Paris');
-  to = signal('London');
-  flights = signal<Flight[]>([]);
+  @ViewChild(NgForm)
+  private form!: NgForm;
 
-  basket = signal<Record<number, boolean>>({
-    3: true,
-    5: true,
-  });
+  from = this.store.from;
+  to = this.store.to;
+  flights = this.store.flights;
+
+  basket = this.store.basket;
+  selectedFlights = this.store.selectedFlights;
+
+  constructor() {
+    // toSignal(this.form.valueChanges).
+  }
 
   async search(): Promise<void> {
-    if (!this.from() || !this.to()) {
-      return;
-    }
-
-    const flights = await this.flightService.findPromise(
-      this.from(),
-      this.to()
-    );
-    this.flights.set(flights);
+    await this.store.load();
   }
 
   delay(): void {
-    this.flights.update((flights) => {
-      const oldFlight = flights[0];
-      const oldDate = new Date(oldFlight.date);
-
-      const newDate = addMinutes(oldDate, 15);
-      const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
-
-      return [newFlight, ...flights.slice(1)];
-    });
+    this.store.delay();
   }
 
   updateBasket(flightId: number, selected: boolean): void {
-    this.basket.update((basket) => ({
-      ...basket,
-      [flightId]: selected,
-    }));
+    this.store.updateBasket(flightId, selected);
   }
 
   blink() {
