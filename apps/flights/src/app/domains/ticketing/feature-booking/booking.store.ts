@@ -17,6 +17,7 @@ import {
   setEntities,
 } from '@ngrx/signals/entities';
 import { debounceTime, filter, switchMap, tap } from 'rxjs';
+import { setLoaded, setLoading, withCallState } from '@demo/shared/util-common';
 
 export type Criteria = {
   from: string;
@@ -70,6 +71,7 @@ export const BookingStore = signalStore(
       }))
     ),
   })),
+  withCallState(),
   withMethods((state) => {
     const flightService = inject(FlightService);
 
@@ -120,13 +122,15 @@ export const BookingStore = signalStore(
         c$.pipe(
           filter((c) => c.from.length >= 3 && c.to.length >= 3),
           debounceTime(300),
+          tap(() => patchState(state, setLoading())),
           switchMap((c) => flightService.find(c.from, c.to)),
           tap((flights) =>
             patchState(
               state,
               setAllEntities(toFlightStateArray(flights), {
                 collection: 'flight',
-              })
+              }),
+              setLoaded()
             )
           )
         )

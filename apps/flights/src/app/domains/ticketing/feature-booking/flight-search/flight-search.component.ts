@@ -29,6 +29,8 @@ export class FlightSearchComponent {
   to = this.store.to;
   flights = this.store.flightEntities;
 
+  loading = this.store.loading;
+
   basket = this.store.basket;
   selectedFlights = this.store.selectedFlights;
 
