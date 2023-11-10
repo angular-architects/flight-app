@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgZone, inject } from '@angular/core';
+import { Component, ElementRef, NgZone, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
@@ -19,33 +19,44 @@ export class FlightSearchComponent {
 
   private flightService = inject(FlightService);
 
-  from = 'Paris';
-  to = 'London';
-  flights: Array<Flight> = [];
+  from = signal('Paris');
+  to = signal('London');
+  flights = signal<Flight[]>([]);
 
-  basket: Record<number, boolean> = {
+  basket = signal<Record<number, boolean>>({
     3: true,
     5: true,
-  };
+  });
 
-  search(): void {
-    this.flightService.find(this.from, this.to).subscribe({
-      next: (flights) => {
-        this.flights = flights;
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
-    });
+  async search(): Promise<void> {
+    if (!this.from() || !this.to()) {
+      return;
+    }
+
+    const flights = await this.flightService.findPromise(
+      this.from(),
+      this.to()
+    );
+    this.flights.set(flights);
   }
 
   delay(): void {
-    const oldFlights = this.flights;
-    const oldFlight = oldFlights[0];
-    const oldDate = new Date(oldFlight.date);
+    this.flights.update((flights) => {
+      const oldFlight = flights[0];
+      const oldDate = new Date(oldFlight.date);
 
-    const newDate = addMinutes(oldDate, 15);
-    oldFlight.date = newDate.toISOString();
+      const newDate = addMinutes(oldDate, 15);
+      const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
+
+      return [newFlight, ...flights.slice(0)];
+    });
+  }
+
+  updateBasket(flightId: number, selected: boolean): void {
+    this.basket.update((basket) => ({
+      ...basket,
+      [flightId]: selected,
+    }));
   }
 
   blink() {
