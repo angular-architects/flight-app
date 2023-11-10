@@ -9,6 +9,13 @@ import {
 import { Flight, FlightService } from '../data';
 import { computed, inject } from '@angular/core';
 import { addMinutes } from 'date-fns';
+import { rxMethod } from '@ngrx/signals/rxjs-interop';
+import { debounceTime, filter, switchMap, tap } from 'rxjs';
+
+export type Criteria = {
+  from: string;
+  to: string;
+};
 
 export const BookingStore = signalStore(
   { providedIn: 'root' },
@@ -18,8 +25,9 @@ export const BookingStore = signalStore(
     basket: {} as Record<number, boolean>,
     flights: [] as Flight[],
   }),
-  withComputed(({ flights, basket }) => ({
+  withComputed(({ flights, basket, from, to }) => ({
     selectedFlights: computed(() => flights().filter((f) => basket()[f.id])),
+    criteria: computed(() => ({ from: from(), to: to() })),
   })),
   withMethods((state) => {
     const flightService = inject(FlightService);
@@ -58,11 +66,19 @@ export const BookingStore = signalStore(
         );
         patchState(state, { flights });
       },
+      connectCriteria: rxMethod<Criteria>((c$) =>
+        c$.pipe(
+          filter((c) => c.from.length >= 3 && c.to.length >= 3),
+          debounceTime(300),
+          switchMap((c) => flightService.find(c.from, c.to)),
+          tap((flights) => patchState(state, { flights }))
+        )
+      ),
     };
   }),
   withHooks({
-    onInit({ load }) {
-      load();
+    onInit({ connectCriteria, criteria }) {
+      connectCriteria(criteria);
     },
     onDestroy(store) {
       console.log('destroy!', store);
