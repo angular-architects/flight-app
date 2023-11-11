@@ -7,6 +7,7 @@ import {
   withComputed,
   withState,
 } from '@ngrx/signals';
+import { EmptyFeatureResult } from '@ngrx/signals/src/signal-store-models';
 
 export type CallState = 'init' | 'loading' | 'loaded' | { error: string };
 
@@ -22,6 +23,12 @@ export type NamedCallStateComputed<Prop extends string> = {
   [K in Prop as `${K}Error`]: Signal<string | null>;
 };
 
+export type CallStateFeatureResult<Prop extends string> = {
+  state: NamedCallState<Prop>;
+  signals: NamedCallStateComputed<Prop>;
+  methods: {};
+};
+
 function getCallStateKeys(config: { prop: string }) {
   return {
     callStateKey: `${config.prop}CallState`,
@@ -31,38 +38,15 @@ function getCallStateKeys(config: { prop: string }) {
   };
 }
 
-// Warum funktioniert diese Überladung nicht?
-// Die entspricht dem Rückgabewert eigentlich besser
-// export function withCallState<Prop extends string>(config: {
-//     prop: Prop;
-//   }): SignalStoreFeature<
-//     { state: NamedCallState<Prop>; signals: {}; methods: {} },
-//     {
-//       state: {};
-//       signals: NamedCallStateComputed<Prop>;
-//       methods: {};
-//     }
-//   >;
-
-// Warum kann ich diese Überladung nicht als Implementation-Signatur verwenden?
 export function withCallState<Prop extends string>(config: {
   prop: Prop;
-}): SignalStoreFeature<
-  { state: {}; signals: {}; methods: {} },
-  {
-    state: NamedCallState<Prop>;
-    signals: NamedCallStateComputed<Prop>;
-    methods: {};
-  }
->;
-export function withCallState(config: { prop: string }): SignalStoreFeature {
+}): SignalStoreFeature<EmptyFeatureResult, CallStateFeatureResult<Prop>> {
+  //;
   const { callStateKey, errorKey, loadedKey, loadingKey } =
     getCallStateKeys(config);
 
-  return signalStoreFeature(
-    withState({
-      [callStateKey]: 'init',
-    } as any),
+  const feature = signalStoreFeature(
+    withState({ [callStateKey]: 'init' } as any),
     withComputed((state) => ({
       [loadingKey]: computed(() => state[callStateKey]() === 'loading'),
       [loadedKey]: computed(() => state[callStateKey]() === 'loaded'),
@@ -72,6 +56,11 @@ export function withCallState(config: { prop: string }): SignalStoreFeature {
       }),
     }))
   );
+
+  return feature as SignalStoreFeature<
+    EmptyFeatureResult,
+    CallStateFeatureResult<Prop>
+  >;
 }
 
 export function setLoading<Prop extends string>(
