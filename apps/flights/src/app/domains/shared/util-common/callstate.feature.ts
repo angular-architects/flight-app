@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/ban-types */
 import { Signal, computed } from '@angular/core';
 import {
   SignalStoreFeature,
@@ -23,10 +21,9 @@ export type NamedCallStateComputed<Prop extends string> = {
   [K in Prop as `${K}Error`]: Signal<string | null>;
 };
 
-export type CallStateFeatureResult<Prop extends string> = {
+export type CallStateFeatureResult<Prop extends string> = EmptyFeatureResult & {
   state: NamedCallState<Prop>;
   signals: NamedCallStateComputed<Prop>;
-  methods: {};
 };
 
 function getCallStateKeys(config: { prop: string }) {
@@ -41,11 +38,11 @@ function getCallStateKeys(config: { prop: string }) {
 export function withCallState<Prop extends string>(config: {
   prop: Prop;
 }): SignalStoreFeature<EmptyFeatureResult, CallStateFeatureResult<Prop>> {
-  //;
   const { callStateKey, errorKey, loadedKey, loadingKey } =
     getCallStateKeys(config);
 
   const feature = signalStoreFeature(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     withState({ [callStateKey]: 'init' } as any),
     withComputed((state) => ({
       [loadingKey]: computed(() => state[callStateKey]() === 'loading'),
@@ -66,18 +63,18 @@ export function withCallState<Prop extends string>(config: {
 export function setLoading<Prop extends string>(
   prop: Prop
 ): NamedCallState<Prop> {
-  return { [`${prop}CallState`]: 'loading' } as any;
+  return { [`${prop}CallState`]: 'loading' } as NamedCallState<Prop>;
 }
 
 export function setLoaded<Prop extends string>(
   prop: Prop
 ): NamedCallState<Prop> {
-  return { [`${prop}CallState`]: 'loaded' } as any;
+  return { [`${prop}CallState`]: 'loaded' } as NamedCallState<Prop>;
 }
 
 export function setError<Prop extends string>(
   prop: Prop,
   error: string
 ): NamedCallState<Prop> {
-  return { [`${prop}CallState`]: { error } } as any;
+  return { [`${prop}CallState`]: { error } } as NamedCallState<Prop>;
 }

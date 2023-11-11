@@ -125,15 +125,15 @@ export const BookingStore = signalStore(
         c$.pipe(
           filter((c) => c.from.length >= 3 && c.to.length >= 3),
           debounceTime(300),
-          // tap(() => patchState(state, setLoading())),
+          tap(() => patchState(state, setLoading('flights'))),
           switchMap((c) => flightService.find(c.from, c.to)),
           tap((flights) =>
             patchState(
               state,
               setAllEntities(toFlightStateArray(flights), {
                 collection: 'flight',
-              })
-              // setLoaded()
+              }),
+              setLoaded('flights')
             )
           )
         )
