@@ -1,9 +1,9 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FlightLookupFacade } from '@demo/ticketing/data';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, filter, finalize, Subject, takeUntil } from 'rxjs';
+import { debounceTime, filter, Subject, takeUntil } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FlightLookupFacade } from './flight-lookup.service';
 @Component({
   selector: 'app-flight-lookup',
   standalone: true,

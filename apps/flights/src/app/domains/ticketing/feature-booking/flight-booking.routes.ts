@@ -6,6 +6,7 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 import { FlightService } from '@demo/ticketing/data';
 import { checkAuth } from '@demo/shared/util-auth';
+import { FlightLookupComponent } from './flight-lookup/flight-lookup.component';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
   {
@@ -21,6 +22,10 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
       {
         path: 'flight-search',
         component: FlightSearchComponent,
+      },
+      {
+        path: 'flight-lookup',
+        component: FlightLookupComponent,
       },
       {
         path: 'flight-edit/:id',
