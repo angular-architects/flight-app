@@ -85,3 +85,18 @@ jobs:
           files: "*.zip"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: lab500-enterprise-starter
+      - run: npm install --force
+      - name: Zip Folder
+        run: zip -r ent-nx-sheriff-starter.zip . -x "*.zip"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "*.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
