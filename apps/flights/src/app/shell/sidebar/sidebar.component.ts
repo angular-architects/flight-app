@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { BookingStore } from '@demo/ticketing/feature-booking';
 
 @Component({
   standalone: true,
@@ -7,4 +8,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'app-sidebar-cmp',
   templateUrl: 'sidebar.component.html',
 })
-export class SidebarComponent {}
+export class SidebarComponent {
+  bookingStore = inject(BookingStore);
+}

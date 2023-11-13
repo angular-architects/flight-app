@@ -1,5 +1,11 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  NgZone,
+  inject,
+} from '@angular/core';
 import {
   NavigationCancel,
   NavigationEnd,
@@ -19,8 +25,12 @@ import { ConfigService } from '@demo/shared/util-config';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  private element = inject(ElementRef);
+  private zone = inject(NgZone);
+
   title = 'Hello World!';
   configService = inject(ConfigService);
   router = inject(Router);
@@ -47,5 +57,21 @@ export class AppComponent {
     );
 
     this.loading$ = merge(start$, stop$);
+  }
+
+  blink() {
+    // Dirty Hack used to visualize the change detector
+    this.element.nativeElement.querySelector('#info').style.backgroundColor =
+      'crimson';
+
+    this.zone.runOutsideAngular(() => {
+      setTimeout(() => {
+        this.element.nativeElement.querySelector(
+          '#info'
+        ).style.backgroundColor = 'white';
+      }, 1000);
+    });
+
+    return null;
   }
 }
