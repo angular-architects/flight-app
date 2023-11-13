@@ -20,7 +20,7 @@ export class FlightService {
 
     const params = { from, to, urgent };
 
-    return this.http.get<Flight[]>(url, { headers, params });
+    return this.http.get<Flight[]>(url, { headers, params }).pipe(delay(7000));
   }
 
   findPromise(from: string, to: string, urgent = false): Promise<Flight[]> {
