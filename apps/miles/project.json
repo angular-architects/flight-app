@@ -1,0 +1,91 @@
+{
+  "name": "miles",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "flight-demo",
+  "sourceRoot": "apps/miles/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/miles",
+        "index": "apps/miles/src/index.html",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/miles/tsconfig.app.json",
+        "assets": ["apps/miles/src/favicon.ico", "apps/miles/src/assets"],
+        "styles": ["apps/miles/src/styles.css"],
+        "scripts": [],
+        "main": "apps/miles/src/main.ts",
+        "customWebpackConfig": {
+          "path": "apps/miles/webpack.config.js"
+        },
+        "commonChunk": false
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/miles/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:webpack-dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "miles:build:production"
+        },
+        "development": {
+          "buildTarget": "miles:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
+      }
+    },
+    "extract-i18n": {
+      "executor": "ngx-build-plus:extract-i18n",
+      "options": {
+        "buildTarget": "miles:build",
+        "extraWebpackConfig": "apps/miles/webpack.config.js"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/miles/**/*.ts", "apps/miles/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/miles/jest.config.ts"
+      }
+    }
+  }
+}

@@ -8,7 +8,8 @@
     "watch": "nx build --watch --configuration development",
     "test": "nx test",
     "prepare": "husky install",
-    "lint": "nx lint"
+    "lint": "nx lint",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
