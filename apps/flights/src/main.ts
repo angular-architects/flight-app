@@ -10,6 +10,7 @@ import { LogLevel, provideLogger, withColor } from '@demo/shared/util-logger';
 
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideEffects } from '@ngrx/effects';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -19,6 +20,7 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(MatDialogModule),
 
     provideStore(),
+    provideEffects(),
     isDevMode() ? provideStoreDevtools() : [],
 
     provideLogger(

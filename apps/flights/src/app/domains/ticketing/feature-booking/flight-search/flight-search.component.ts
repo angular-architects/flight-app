@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import {
-  FlightService,
   selectFlightsWithParams,
   ticketingActions,
 } from '@demo/ticketing/data';
@@ -27,7 +26,6 @@ import { Store } from '@ngrx/store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
-  private flightService = inject(FlightService);
   private store = inject(Store);
 
   from = signal('Paris');
@@ -51,16 +49,13 @@ export class FlightSearchComponent {
     });
   }
 
-  async search(): Promise<void> {
-    const from = this.from();
-    const to = this.to();
-
-    if (!from || !to) {
-      return;
-    }
-
-    const flights = await this.flightService.findPromise(from, to);
-    this.store.dispatch(ticketingActions.flightsLoaded({ flights }));
+  search(): void {
+    this.store.dispatch(
+      ticketingActions.loadFlights({
+        from: this.from(),
+        to: this.to(),
+      })
+    );
   }
 
   updateBasket(flightId: number, selected: boolean): void {
