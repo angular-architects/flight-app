@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoggerService } from '@demo/shared/util-logger';
+import { Store } from '@ngrx/store';
+import { selectPassengersWithTickets } from '@demo/ticketing/data';
 
 @Component({
   selector: 'app-passenger-search',
@@ -10,6 +12,9 @@ import { LoggerService } from '@demo/shared/util-logger';
   styleUrls: ['./passenger-search.component.css'],
 })
 export class PassengerSearchComponent {
+  store = inject(Store);
+  passengers = this.store.selectSignal(selectPassengersWithTickets);
+
   constructor(logger: LoggerService) {
     logger.info('passenger search', 'info');
   }
