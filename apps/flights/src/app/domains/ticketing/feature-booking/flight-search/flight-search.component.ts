@@ -1,8 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
-  NgZone,
   computed,
   effect,
   inject,
@@ -12,8 +10,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
-import { Flight, FlightService } from '@demo/ticketing/data';
+import {
+  FlightService,
+  ticketingActions,
+  ticketingFeature,
+} from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-flight-search',
@@ -24,16 +27,14 @@ import { addMinutes } from 'date-fns';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
-  private element = inject(ElementRef);
-  private zone = inject(NgZone);
-
   private flightService = inject(FlightService);
+  private store = inject(Store);
 
   from = signal('Paris');
   to = signal('London');
   route = computed(() => this.from() + ' to ' + this.to());
 
-  flights = signal<Flight[]>([]);
+  flights = this.store.selectSignal(ticketingFeature.selectFlights);
 
   basket = signal<Record<number, boolean>>({
     3: true,
@@ -59,19 +60,7 @@ export class FlightSearchComponent {
     }
 
     const flights = await this.flightService.findPromise(from, to);
-    this.flights.set(flights);
-  }
-
-  delay(): void {
-    this.flights.update((flights) => {
-      const oldFlight = flights[0];
-      const oldDate = new Date(oldFlight.date);
-
-      const newDate = addMinutes(oldDate, 15);
-      const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
-
-      return [newFlight, ...flights.slice(1)];
-    });
+    this.store.dispatch(ticketingActions.flightsLoaded({ flights }));
   }
 
   updateBasket(flightId: number, selected: boolean): void {
@@ -81,16 +70,15 @@ export class FlightSearchComponent {
     }));
   }
 
-  blink() {
-    // Dirty Hack used to visualize the change detector
-    this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';
+  delay(): void {
+    const oldDate = new Date(this.flights()[0].date);
+    const date = addMinutes(oldDate, 15);
 
-    this.zone.runOutsideAngular(() => {
-      setTimeout(() => {
-        this.element.nativeElement.firstChild.style.backgroundColor = 'white';
-      }, 1000);
-    });
+    const flight = {
+      ...this.flights()[0],
+      date: date.toISOString(),
+    };
 
-    return null;
+    this.store.dispatch(ticketingActions.updateFlight({ flight }));
   }
 }
