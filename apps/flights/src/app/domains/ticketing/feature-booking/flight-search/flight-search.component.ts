@@ -11,10 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import {
-  Flight,
   FlightService,
+  selectFilteredFlights,
   ticketingActions,
-  ticketingFeature,
 } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
 import { Store } from '@ngrx/store';
@@ -35,7 +34,7 @@ export class FlightSearchComponent {
   to = signal('London');
   route = computed(() => this.from() + ' to ' + this.to());
 
-  flights = this.store.selectSignal(ticketingFeature.selectFlights);
+  flights = this.store.selectSignal(selectFilteredFlights);
 
   basket = signal<Record<number, boolean>>({
     3: true,
