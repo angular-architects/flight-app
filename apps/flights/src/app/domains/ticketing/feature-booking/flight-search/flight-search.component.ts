@@ -31,9 +31,9 @@ export class FlightSearchComponent {
 
   from = signal('Paris');
   to = signal('London');
-  flights = signal<Flight[]>([]);
-
   route = computed(() => this.from() + ' to ' + this.to());
+
+  flights = signal<Flight[]>([]);
 
   basket = signal<Record<number, boolean>>({
     3: true,
@@ -51,14 +51,14 @@ export class FlightSearchComponent {
   }
 
   async search(): Promise<void> {
-    if (!this.from() || !this.to()) {
+    const from = this.from();
+    const to = this.to();
+
+    if (!from || !to) {
       return;
     }
 
-    const flights = await this.flightService.findPromise(
-      this.from(),
-      this.to()
-    );
+    const flights = await this.flightService.findPromise(from, to);
     this.flights.set(flights);
   }
 
