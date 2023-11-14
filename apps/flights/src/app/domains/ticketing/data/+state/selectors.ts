@@ -1,6 +1,12 @@
 import { createSelector } from '@ngrx/store';
 import { PassengerState, TicketState, ticketingFeature } from './reducers';
 
+export function selectFlightsWithParams(skip: number[]) {
+  return createSelector(ticketingFeature.selectFlights, (flights) =>
+    flights.filter((f) => !skip.includes(f.id))
+  );
+}
+
 export const selectFilteredFlights = createSelector(
   ticketingFeature.selectFlights,
   ticketingFeature.selectSkip,

@@ -12,7 +12,7 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import {
   FlightService,
-  selectFilteredFlights,
+  selectFlightsWithParams,
   ticketingActions,
 } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
@@ -34,7 +34,7 @@ export class FlightSearchComponent {
   to = signal('London');
   route = computed(() => this.from() + ' to ' + this.to());
 
-  flights = this.store.selectSignal(selectFilteredFlights);
+  flights = this.store.selectSignal(selectFlightsWithParams([1176]));
 
   basket = signal<Record<number, boolean>>({
     3: true,
