@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { firstValueFrom, Observable } from 'rxjs';
+import { delay, firstValueFrom, Observable } from 'rxjs';
 import { Flight } from './flight';
 import { ConfigService } from '@demo/shared/util-config';
 
@@ -20,7 +20,7 @@ export class FlightService {
 
     const params = { from, to, urgent };
 
-    return this.http.get<Flight[]>(url, { headers, params });
+    return this.http.get<Flight[]>(url, { headers, params }); //.pipe(delay(7000))
   }
 
   findPromise(from: string, to: string, urgent = false): Promise<Flight[]> {
