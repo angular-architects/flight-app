@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, filter, Subject, takeUntil } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FlightLookupFacade } from './flight-lookup.service';
+import { FlightLookupFacade } from './flight-lookup.facade';
 @Component({
   selector: 'app-flight-lookup',
   standalone: true,
