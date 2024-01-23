@@ -28,7 +28,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let f of flights" [class.selected]="f === selectedFlight">
+    @for(f of flights; track f.id) {
+    <tr [class.selected]="f === selectedFlight">
       <td>{{ f.id }}</td>
       <td>{{ f.from }}</td>
       <td>{{ f.to }}</td>
@@ -37,14 +38,17 @@
         <a (click)="select(f)">Select</a>
       </td>
     </tr>
+    }
   </tbody>
 </table>
 
-<div *ngIf="selectedFlight">
-  <div class="alert alert-primary" *ngIf="message">
+@if (selectedFlight) {
+<div>
+  @if (message) {
+  <div class="alert alert-primary">
     {{ message }}
   </div>
-
+  }
   <div class="form-group">
     <label>Id</label>
     <input [(ngModel)]="selectedFlight.id" class="form-control" />
@@ -72,9 +76,12 @@
 
   <button class="btn btn-default" (click)="save()">Save</button>
 </div>
+}
 
 <p>&nbsp;</p>
 
-<div *ngIf="selectedFlight">
+@if (selectedFlight) {
+<div>
   <pre>{{ selectedFlight | json }}</pre>
 </div>
+}
