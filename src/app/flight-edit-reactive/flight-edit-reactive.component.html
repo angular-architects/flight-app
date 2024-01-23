@@ -5,7 +5,7 @@
   <div class="alert alert-danger">
     {{ form.controls.from.errors | json }}
   </div>
-  } @if (form?.controls?.['from']?.pending) {
+  } @if (form.controls['from'].pending) {
   <div class="alert alert-info">Validating ...</div>
   }
 
