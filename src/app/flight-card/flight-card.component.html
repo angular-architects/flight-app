@@ -16,6 +16,7 @@
       <app-status-toggle [(status)]="item.delayed"> </app-status-toggle>
     </p>
     <p>
+      <<<<<<< HEAD
       <button (click)="select()" *ngIf="!selected" class="btn btn-default">
         Select
       </button>
@@ -24,6 +25,11 @@
       </button>
 
       <button (click)="edit()" class="btn btn-default">Edit</button>
+      ======= @if (!selected) {
+      <button (click)="select()" class="btn btn-default">Select</button>
+      } @else {
+      <button (click)="deselect()" class="btn btn-default">Remove</button>
+      } >>>>>>> d63b5a5 (use @if and @for)
     </p>
     <ng-content select=".bottom"></ng-content>
   </div>
