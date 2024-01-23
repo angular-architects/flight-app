@@ -1,19 +1,20 @@
 <div class="p40">
   <h2>Flight Edit (Reactive)</h2>
 
-  <app-validation-errors
-    [errors]="form.controls['from'].errors ?? {}"
-    field="from"
-  ></app-validation-errors>
+  @if (!form.controls.from.valid) {
+  <div class="alert alert-danger">
+    {{ form.controls.from.errors | json }}
+  </div>
+  }
 
   <app-validation-errors
     [errors]="form.errors ?? {}"
     field="flight"
   ></app-validation-errors>
 
-  <div class="alert alert-info" *ngIf="form?.controls?.['from']?.pending">
-    Validating ...
-  </div>
+  @if (form?.controls?.['from']?.pending) {
+  <div class="alert alert-info">Validating ...</div>
+  }
 
   <form [formGroup]="form">
     <input formControlName="id" />
