@@ -17,35 +17,37 @@
   </div>
 </form>
 
-<table class="table table-condensed" *ngIf="flights.length > 0">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Date</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(f of flights; track f.id) {
-    <tr [class.selected]="f === selectedFlight">
-      <td>{{ f.id }}</td>
-      <td>{{ f.from }}</td>
-      <td>{{ f.to }}</td>
-      <td>{{ f.date | date : "dd.MM.yyyy" }}</td>
-      <td>
-        <a (click)="select(f)">Select</a>
-      </td>
-    </tr>
-    }
-  </tbody>
-</table>
+@if (flights.length > 0) {
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (f of flights; track f.id) {
+        <tr [class.selected]="f === selectedFlight">
+          <td>{{ f.id }}</td>
+          <td>{{ f.from }}</td>
+          <td>{{ f.to }}</td>
+          <td>{{ f.date | date: "dd.MM.yyyy" }}</td>
+          <td>
+            <a (click)="select(f)">Select</a>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
 
 <p>&nbsp;</p>
 
-@if(selectedFlight) {
-<div>
-  <pre>{{ selectedFlight | json }}</pre>
-</div>
+@if (selectedFlight) {
+  <div>
+    <pre>{{ selectedFlight | json }}</pre>
+  </div>
 }
