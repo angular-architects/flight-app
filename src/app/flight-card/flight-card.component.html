@@ -16,12 +16,11 @@
       <app-status-toggle [(status)]="item.delayed"> </app-status-toggle>
     </p>
     <p>
-      <button (click)="select()" *ngIf="!selected" class="btn btn-default">
-        Select
-      </button>
-      <button (click)="deselect()" *ngIf="selected" class="btn btn-default">
-        Remove
-      </button>
+      @if (!selected) {
+      <button (click)="select()" class="btn btn-default">Select</button>
+      } @else {
+      <button (click)="deselect()" class="btn btn-default">Remove</button>
+      }
     </p>
   </div>
 </div>
