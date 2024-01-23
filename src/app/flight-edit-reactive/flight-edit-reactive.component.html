@@ -1,10 +1,11 @@
 <div class="p40">
   <h2>Flight Edit (Reactive)</h2>
 
-  <app-validation-errors
-    [errors]="form.controls['from'].errors ?? {}"
-    field="from"
-  ></app-validation-errors>
+  @if (!form.controls.from.valid) {
+  <div class="alert alert-danger">
+    {{ form.controls.from.errors | json }}
+  </div>
+  }
 
   <form [formGroup]="form">
     <input formControlName="id" />
