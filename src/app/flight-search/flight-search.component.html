@@ -28,10 +28,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr
-      *ngFor="let f of flights"
-      [class.selected]="f?.id === selectedFlight?.id"
-    >
+    @for(f of flights; track f.id) {
+    <tr [class.selected]="f === selectedFlight">
       <td>{{ f.id }}</td>
       <td>{{ f.from | city : "short" }}</td>
       <td>{{ f.to | city : "long" }}</td>
@@ -42,11 +40,14 @@
         <a (click)="select(f)">Select</a>
       </td>
     </tr>
+    }
   </tbody>
 </table>
 
 <p>&nbsp;</p>
 
-<div *ngIf="selectedFlight">
+@if(selectedFlight) {
+<div>
   <pre>{{ selectedFlight | json }}</pre>
 </div>
+}
