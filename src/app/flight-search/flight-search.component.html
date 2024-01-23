@@ -40,6 +40,8 @@
   </tbody>
 </table>
 
-<div *ngIf="selectedFlight">
+@if(selectedFlight) {
+<div>
   <pre>{{ selectedFlight | json }}</pre>
 </div>
+}
