@@ -17,31 +17,33 @@
   </div>
 </form>
 
-<table class="table table-condensed" *ngIf="flights.length > 0">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>From</th>
-      <th>To</th>
-      <th>Date</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let f of flights"
-      [class.selected]="f?.id === selectedFlight?.id"
-    >
-      <td>{{ f.id }}</td>
-      <td>{{ f.from | city : "short" }}</td>
-      <td>{{ f.to | city : "long" }}</td>
-      <td>{{ f.date | date : "dd.MM.yyyy" }}</td>
-      <td>
-        <a (click)="select(f)">Select</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+@if (flights.length > 0) {
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let f of flights"
+        [class.selected]="f?.id === selectedFlight?.id"
+      >
+        <td>{{ f.id }}</td>
+        <td>{{ f.from | city: "short" }}</td>
+        <td>{{ f.to | city: "long" }}</td>
+        <td>{{ f.date | date: "dd.MM.yyyy" }}</td>
+        <td>
+          <a (click)="select(f)">Select</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+}
 
 <p>&nbsp;</p>
 
