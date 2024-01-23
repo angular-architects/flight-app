@@ -28,18 +28,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let f of flights">
-      <td>{{ f.id }}</td>
-      <td>{{ f.from }}</td>
-      <td>{{ f.to }}</td>
-      <td>{{ f.date | date : "dd.MM.yyyy" }}</td>
-      <td>
-        <a (click)="select(f)">Select</a>
-      </td>
-    </tr>
+    @for (f of flights; track f.id) {
+      <tr>
+        <td>{{ f.id }}</td>
+        <td>{{ f.from }}</td>
+        <td>{{ f.to }}</td>
+        <td>{{ f.date | date: "dd.MM.yyyy" }}</td>
+        <td>
+          <a (click)="select(f)">Select</a>
+        </td>
+      </tr>
+    }
   </tbody>
 </table>
 
-<div *ngIf="selectedFlight">
-  <pre>{{ selectedFlight | json }}</pre>
-</div>
+@if (selectedFlight) {
+  <div>
+    <pre>{{ selectedFlight | json }}</pre>
+  </div>
+}
