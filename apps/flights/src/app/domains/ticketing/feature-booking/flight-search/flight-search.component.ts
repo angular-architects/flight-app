@@ -5,6 +5,7 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import { BookingStore } from '../booking.store';
 import { FormUpdateDirective } from '@demo/shared/util-common';
+import { FlightFilter } from '@demo/ticketing/data';
 
 @Component({
   selector: 'app-flight-search',
@@ -25,28 +26,30 @@ export class FlightSearchComponent {
 
   private store = inject(BookingStore);
 
-  from = this.store.from;
-  to = this.store.to;
+  from = this.store.flightFilter.from;
+  to = this.store.flightFilter.to;
   flights = this.store.flightEntities;
 
-  basket = this.store.basket;
-  selectedFlights = this.store.selectedFlights;
+  basket = this.store.selectedFlightIds;
+  selectedFlights = this.store.selectedFlightEntities;
 
   async search(): Promise<void> {
-    this.store.updateCriteria(this.from(), this.to());
-    await this.store.load();
+    await this.store.loadFlightEntities();
   }
 
   delay(): void {
     this.store.delay();
   }
 
-  update(update: { from: string; to: string }) {
-    this.store.updateCriteria(update.from, update.to);
+  update(update: FlightFilter) {
+    this.store.updateFlightFilter({
+      from: update.from,
+      to: update.to,
+    });
   }
 
   updateBasket(flightId: number, selected: boolean): void {
-    this.store.updateBasket(flightId, selected);
+    this.store.updateSelectedFlightEntities(flightId, selected);
   }
 
   blink() {
