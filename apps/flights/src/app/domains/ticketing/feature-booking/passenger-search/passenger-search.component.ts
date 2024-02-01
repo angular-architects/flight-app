@@ -15,17 +15,17 @@ import { FormsModule } from '@angular/forms';
 export class PassengerSearchComponent {
   store = inject(PassengerStore);
 
-  firstName = this.store.filter.firstName;
-  name = this.store.filter.name;
-  passengers = this.store.entities;
+  firstName = this.store.passengerFilter.firstName;
+  name = this.store.passengerFilter.name;
+  passengers = this.store.passengerEntities;
 
   updateFilter(filter: PassengerFilter): void {
     console.log('filter', filter);
-    this.store.updateFilter(filter);
+    this.store.updatePassengerFilter(filter);
   }
 
   search(): void {
-    this.store.load();
+    this.store.loadPassengerEntities();
   }
 
   undo(): void {
