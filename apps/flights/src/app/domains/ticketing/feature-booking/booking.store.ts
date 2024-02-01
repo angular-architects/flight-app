@@ -7,13 +7,15 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { Flight, FlightService, initFlight } from '../data';
+import { Flight, FlightService } from '../data';
 import { computed, inject } from '@angular/core';
 import { addMinutes } from 'date-fns';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { withEntities, setAllEntities } from '@ngrx/signals/entities';
 
 import { debounceTime, filter, switchMap, tap } from 'rxjs';
+
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
 
 export type Criteria = {
   from: string;
@@ -90,5 +92,6 @@ export const BookingStore = signalStore(
     onDestroy(store) {
       console.log('destroy!', store);
     },
-  })
+  }),
+  withDevtools('flights')
 );
