@@ -7,7 +7,7 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { Flight, FlightService, initFlight } from '../data';
+import { Flight, FlightService } from '../data';
 import { computed, inject } from '@angular/core';
 import { addMinutes } from 'date-fns';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
