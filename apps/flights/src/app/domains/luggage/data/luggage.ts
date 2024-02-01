@@ -3,6 +3,7 @@ export interface Luggage {
   weight: number;
   checkedIn: boolean;
   remarks: string;
+  passengerId: number;
 }
 
 export const initialLuggage: Luggage = {
@@ -10,4 +11,5 @@ export const initialLuggage: Luggage = {
   weight: 0,
   checkedIn: false,
   remarks: '',
+  passengerId: 0,
 };

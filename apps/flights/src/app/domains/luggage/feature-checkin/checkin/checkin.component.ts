@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { Luggage, LuggageService } from '@demo/luggage/data';
 import { LuggageCardComponent } from '@demo/luggage/ui-common';
+import { LuggageStore } from './luggage.store';
 
 @Component({
   selector: 'app-checkin',
@@ -12,12 +12,10 @@ import { LuggageCardComponent } from '@demo/luggage/ui-common';
   styleUrls: ['./checkin.component.css'],
 })
 export class CheckinComponent implements OnInit {
-  luggageService = inject(LuggageService);
-  luggage: Luggage[] = [];
+  luggageStore = inject(LuggageStore);
+  luggage = this.luggageStore.luggage;
 
   ngOnInit(): void {
-    this.luggageService.load().subscribe((luggage) => {
-      this.luggage = luggage;
-    });
+    this.luggageStore.load({ passengerId: 17 });
   }
 }
