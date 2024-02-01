@@ -1,16 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoggerService } from '@demo/shared/util-logger';
+import { FormUpdateDirective } from '@demo/shared/util-common';
+import { PassengerStore } from '../passenger.store';
+import { PassengerFilter } from '@demo/ticketing/data';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-passenger-search',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, FormUpdateDirective],
   templateUrl: './passenger-search.component.html',
   styleUrls: ['./passenger-search.component.css'],
 })
 export class PassengerSearchComponent {
-  constructor(logger: LoggerService) {
-    logger.info('passenger search', 'info');
+  store = inject(PassengerStore);
+
+  firstName = this.store.filter.firstName;
+  name = this.store.filter.name;
+  passengers = this.store.entities;
+
+  updateFilter(filter: PassengerFilter): void {
+    console.log('filter', filter);
+    this.store.updateFilter(filter);
+  }
+
+  search(): void {
+    this.store.load();
+  }
+
+  undo(): void {
+    this.store.undo();
+  }
+
+  redo(): void {
+    this.store.redo();
   }
 }

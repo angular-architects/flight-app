@@ -1,1 +1,37 @@
-<p>passenger-search works!</p>
+<div class="header">
+  <h2 class="title">Passenger Search</h2>
+</div>
+
+<form #form (appUpdate)="updateFilter($event)">
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input
+      [ngModel]="firstName()"
+      id="firstName"
+      name="firstName"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input [ngModel]="name()" id="name" name="name" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <button (click)="search()" class="btn btn-default">Search</button>
+    &nbsp;
+    <button (click)="undo()" class="btn btn-default">Undo</button>
+    <button (click)="redo()" class="btn btn-default">Redo</button>
+  </div>
+</form>
+
+<table class="table table-striped">
+  @for(p of passengers(); track p.id) {
+  <tr>
+    <td>{{ p.firstName }}</td>
+    <td>{{ p.name }}</td>
+    <td>{{ p.bonusMiles | number : '1.2' }}</td>
+    <td>{{ p.passengerStatus }}</td>
+  </tr>
+  }
+</table>
