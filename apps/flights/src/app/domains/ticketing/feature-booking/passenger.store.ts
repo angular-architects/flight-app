@@ -4,18 +4,24 @@ import {
   withDevtools,
   withUndoRedo,
 } from '@angular-architects/ngrx-toolkit';
-import { signalStore } from '@ngrx/signals';
+import { signalStore, type } from '@ngrx/signals';
 import { Passenger, PassengerService } from '../data';
 import { withEntities } from '@ngrx/signals/entities';
 
 export const PassengerStore = signalStore(
   { providedIn: 'root' },
-  withCallState(),
-  withEntities<Passenger>(),
+  withCallState({ collection: 'passenger' }),
+  withEntities({
+    collection: 'passenger',
+    entity: type<Passenger>(),
+  }),
   withDataService({
+    collection: 'passenger',
     dataServiceType: PassengerService,
     filter: { firstName: '', name: 'Smith' },
   }),
-  withUndoRedo(),
+  withUndoRedo({
+    collections: ['passenger'],
+  }),
   withDevtools('passenger')
 );
