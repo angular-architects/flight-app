@@ -42,16 +42,18 @@ export function withCallState<Prop extends string>(config: {
     getCallStateKeys(config);
 
   const feature = signalStoreFeature(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    withState({ [callStateKey]: 'init' } as any),
-    withComputed((state) => ({
-      [loadingKey]: computed(() => state[callStateKey]() === 'loading'),
-      [loadedKey]: computed(() => state[callStateKey]() === 'loaded'),
-      [errorKey]: computed(() => {
-        const v = state[callStateKey]();
-        return typeof v === 'object' ? v.error : null;
-      }),
-    }))
+    withState({ [callStateKey]: 'init' }),
+    withComputed((state: Record<string, unknown>) => {
+      const callState = state[callStateKey] as Signal<CallState>;
+      return {
+        [loadingKey]: computed(() => callState() === 'loading'),
+        [loadedKey]: computed(() => callState() === 'loaded'),
+        [errorKey]: computed(() => {
+          const v = callState();
+          return typeof v === 'object' ? v.error : null;
+        }),
+      };
+    })
   );
 
   return feature as SignalStoreFeature<
