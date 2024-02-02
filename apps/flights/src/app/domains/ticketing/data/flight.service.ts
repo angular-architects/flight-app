@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
 import { Flight } from './flight';
-import { ConfigService } from '@demo/shared/util-config';
+import { ConfigService } from '../../shared/util-config';
 
 @Injectable({
   providedIn: 'root',

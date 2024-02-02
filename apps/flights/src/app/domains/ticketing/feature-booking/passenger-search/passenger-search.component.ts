@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoggerService } from '@demo/shared/util-logger';
+import { LoggerService } from '../../../shared/util-logger';
 
 @Component({
   selector: 'app-passenger-search',

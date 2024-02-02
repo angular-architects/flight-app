@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Dialog } from '@angular/cdk/dialog';
-import { ConfirmComponent, DateCvaDirective } from '@demo/shared/ui-common';
-import { initFlight } from '@demo/ticketing/data';
-import { CanExit } from '@demo/shared/util-common';
+import { ConfirmComponent, DateCvaDirective } from '../../../shared/ui-common';
+import { CanExit } from '../../../shared/util-common';
+import { initFlight } from '../../data';
 
 @Component({
   selector: 'app-flight-edit',

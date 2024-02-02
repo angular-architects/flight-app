@@ -11,7 +11,7 @@ import {
 import { filter, map, merge, Observable } from 'rxjs';
 import { SidebarComponent } from './shell/sidebar/sidebar.component';
 import { NavbarComponent } from './shell/navbar/navbar.component';
-import { ConfigService } from '@demo/shared/util-config';
+import { ConfigService } from './domains/shared/util-config';
 
 @Component({
   standalone: true,

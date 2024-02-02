@@ -3,8 +3,8 @@ import { Routes } from '@angular/router';
 import { AboutComponent } from './shell/about/about.component';
 import { HomeComponent } from './shell/home/home.component';
 import { BasketComponent } from './shell/basket/basket.component';
-import { ConfigService } from '@demo/shared/util-config';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
+import { ConfigService } from './domains/shared/util-config';
 
 export const APP_ROUTES: Routes = [
   {
@@ -37,7 +37,7 @@ export const APP_ROUTES: Routes = [
       {
         path: 'next-flights',
         loadChildren: () =>
-          import('@demo/ticketing/feature-next-flights').then(
+          import('./domains/ticketing/feature-next-flights').then(
             (m) => m.NextFlightsModule
           ),
       },
