@@ -7,8 +7,8 @@ import {
   validateAsyncCity,
   validateCity,
   validateRoundTrip,
-} from '@demo/shared/util-validation';
-import { Flight, FlightService } from '@demo/ticketing/data';
+} from '../../../shared/util-validation';
+import { Flight, FlightService } from '../../data';
 
 @Component({
   selector: 'app-flight-edit-reactive',

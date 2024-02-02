@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit-reactive.component';
 import { RouterLink } from '@angular/router';
-import { CityPipe, StatusToggleComponent } from '@demo/shared/ui-common';
-import { initFlight } from '@demo/ticketing/data';
+import { CityPipe, StatusToggleComponent } from '../../../shared/ui-common';
+import { initFlight } from '../../data';
 
 @Component({
   selector: 'app-flight-card',

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoggerService } from '@demo/shared/util-logger';
-import { AuthService } from '@demo/shared/util-auth';
+import { LoggerService } from '../../domains/shared/util-logger';
+import { AuthService } from '../../domains/shared/util-auth';
 
 @Component({
   selector: 'app-home',
