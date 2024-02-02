@@ -7,11 +7,11 @@
   "prefix": "app",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:application",
       "options": {
         "outputPath": "dist/apps/flights",
         "index": "apps/flights/src/index.html",
-        "main": "apps/flights/src/main.ts",
+        "browser": "apps/flights/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/flights/tsconfig.app.json",
         "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
@@ -40,9 +40,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
