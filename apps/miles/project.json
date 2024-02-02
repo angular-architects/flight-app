@@ -1,20 +1,20 @@
 {
-  "name": "flights",
+  "name": "miles",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "generators": {},
-  "sourceRoot": "apps/flights/src",
-  "prefix": "app",
+  "prefix": "flight-demo",
+  "sourceRoot": "apps/miles/src",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-architects/native-federation:build",
       "options": {},
       "configurations": {
         "production": {
-          "target": "flights:esbuild:production"
+          "target": "miles:esbuild:production"
         },
         "development": {
-          "target": "flights:esbuild:development",
+          "target": "miles:esbuild:development",
           "dev": true
         }
       },
@@ -23,7 +23,7 @@
     "serve": {
       "executor": "@angular-architects/native-federation:build",
       "options": {
-        "target": "flights:serve-original:development",
+        "target": "miles:serve-original:development",
         "rebuildDelay": 0,
         "dev": true,
         "port": 0
@@ -32,43 +32,30 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "flights:build"
-      }
-    },
-    "test": {
-      "executor": "@angular-devkit/build-angular:karma",
-      "options": {
-        "polyfills": ["zone.js", "zone.js/testing"],
-        "tsConfig": "apps/flights/tsconfig.spec.json",
-        "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
-        "styles": [
-          "@angular/material/prebuilt-themes/indigo-pink.css",
-          "apps/flights/src/styles.css"
-        ],
-        "scripts": []
+        "buildTarget": "miles:build"
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "lintFilePatterns": ["apps/flights/**/*.ts", "apps/flights/**/*.html"]
+        "jestConfig": "apps/miles/jest.config.ts"
       }
     },
     "esbuild": {
       "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/flights",
-        "index": "apps/flights/src/index.html",
-        "browser": "apps/flights/src/main.ts",
+        "outputPath": "dist/apps/miles",
+        "index": "apps/miles/src/index.html",
+        "browser": "apps/miles/src/main.ts",
         "polyfills": ["zone.js", "es-module-shims"],
-        "tsConfig": "apps/flights/tsconfig.app.json",
-        "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
-        "styles": [
-          "@angular/material/prebuilt-themes/indigo-pink.css",
-          "node_modules/@angular-architects/paper-design/assets/css/bootstrap.css",
-          "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
-          "apps/flights/src/styles.css"
-        ],
+        "tsConfig": "apps/miles/tsconfig.app.json",
+        "assets": ["apps/miles/src/favicon.ico", "apps/miles/src/assets"],
+        "styles": ["apps/miles/src/styles.css"],
         "scripts": []
       },
       "configurations": {
@@ -90,8 +77,7 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
+          "sourceMap": true
         }
       },
       "defaultConfiguration": "production"
@@ -100,15 +86,15 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "flights:esbuild:production"
+          "buildTarget": "miles:esbuild:production"
         },
         "development": {
-          "buildTarget": "flights:esbuild:development"
+          "buildTarget": "miles:esbuild:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4200
+        "port": 4201
       }
     }
   }
