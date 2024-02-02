@@ -7,12 +7,12 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/boarding",
         "index": "apps/boarding/src/index.html",
-        "main": "apps/boarding/src/main.ts",
+        "browser": "apps/boarding/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/boarding/tsconfig.app.json",
         "assets": ["apps/boarding/src/favicon.ico", "apps/boarding/src/assets"],
@@ -36,9 +36,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
