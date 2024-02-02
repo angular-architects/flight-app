@@ -7,11 +7,11 @@
   "prefix": "app",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:application",
       "options": {
         "outputPath": "dist/apps/tickets",
         "index": "apps/tickets/src/index.html",
-        "main": "apps/tickets/src/main.ts",
+        "browser": "apps/tickets/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/tickets/tsconfig.app.json",
         "assets": ["apps/tickets/src/favicon.ico", "apps/tickets/src/assets"],
@@ -40,9 +40,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true

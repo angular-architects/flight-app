@@ -6,12 +6,12 @@
   "prefix": "flight-demo",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/checkin",
         "index": "apps/checkin/src/index.html",
-        "main": "apps/checkin/src/main.ts",
+        "browser": "apps/checkin/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/checkin/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
@@ -36,9 +36,7 @@
           "outputHashing": "all"
         },
         "development": {
-          "buildOptimizer": false,
           "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
