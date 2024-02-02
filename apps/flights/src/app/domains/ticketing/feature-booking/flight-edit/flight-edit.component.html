@@ -1,4 +1,5 @@
-<div *ngIf="flight.id !== 0">
+@if (flight.id !== 0) {
+<div>
   <h2>Flight Edit</h2>
 
   <div class="mt-10">ShowDetails: {{ showDetails }}</div>
@@ -22,3 +23,4 @@
     </div>
   </form>
 </div>
+}
