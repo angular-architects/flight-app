@@ -1,5 +1,8 @@
-<h1 *ngIf="!auth.userName">Welcome!</h1>
-<h1 *ngIf="auth.userName">Welcome {{ auth.userName }}!</h1>
+@if (!auth.userName) {
+<h1>Welcome!</h1>
+} @else {
+<h1>Welcome {{ auth.userName }}!</h1>
+}
 
 <button (click)="auth.login('Max')" class="btn btn-default">Login</button>
 <button (click)="auth.logout()" class="btn btn-default">Logout</button>
