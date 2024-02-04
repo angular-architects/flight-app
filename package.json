@@ -36,7 +36,7 @@
     "@ngrx/signals": "^17.0.0",
     "@ngrx/store": "^17.0.0",
     "@ngrx/store-devtools": "^17.0.0",
-    "@nx/angular": "^17.1.1",
+    "@nx/angular": "17.1.1",
     "date-fns": "^2.30.0",
     "es-module-shims": "^1.5.12",
     "rxjs": "7.8.1",
