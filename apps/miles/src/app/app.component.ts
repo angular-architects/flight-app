@@ -1,17 +1,18 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { CommonModule } from '@angular/common';
+
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '@flight-demo/util-auth';
 
 @Component({
-  standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
   selector: 'flight-demo-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'miles';
+  title = 'miles-app';
   authService = inject(AuthService);
 
   constructor() {

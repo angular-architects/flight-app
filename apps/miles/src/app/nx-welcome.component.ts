@@ -752,7 +752,7 @@ import { CommonModule } from '@angular/common';
                   />
                 </svg>
                 <h2>
-                  Nx Cloud
+                  NxCloud
                   <span> Enable faster CI & better DX </span>
                 </h2>
               </div>
