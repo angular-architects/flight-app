@@ -23,6 +23,7 @@ module.exports = withNativeFederation({
     'rxjs/fetch',
     'rxjs/testing',
     'rxjs/webSocket',
+    /^@nx\/angular/,
     // Add further packages you don't need at runtime
   ],
 });
