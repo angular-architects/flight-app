@@ -7,7 +7,7 @@ module.exports = withNativeFederation({
   name: 'miles',
 
   exposes: {
-    './Routes': './apps/miles/src/app/app.routes.ts',
+    './Miles': './apps/miles/src/app/miles/miles.component.ts',
   },
 
   shared: {
