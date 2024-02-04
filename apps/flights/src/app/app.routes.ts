@@ -24,7 +24,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'miles',
-    loadComponent: () => loadRemoteModule('miles', './Component'),
+    loadChildren: () => loadRemoteModule('miles', './Routes'),
   },
   {
     path: '',

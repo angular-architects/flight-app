@@ -18,3 +18,5 @@ export const APP_ROUTES: Routes = [
     component: NextLevelComponent,
   },
 ];
+
+export default APP_ROUTES;
