@@ -5,6 +5,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import {
   PreloadAllModules,
   provideRouter,
+  withComponentInputBinding,
   withPreloading,
 } from '@angular/router';
 import { AppComponent } from './app/app.component';
@@ -15,7 +16,11 @@ import { provideLogger, withColor } from './app/domains/shared/util-logger';
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
-    provideRouter(APP_ROUTES, withPreloading(PreloadAllModules)),
+    provideRouter(
+      APP_ROUTES,
+      withPreloading(PreloadAllModules),
+      withComponentInputBinding()
+    ),
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),
 
