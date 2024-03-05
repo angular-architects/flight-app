@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  inject,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { initFlight } from '../model/flight';
@@ -20,7 +13,6 @@ import { injectCdBlink } from '../shared/blink';
   imports: [CommonModule, CityPipe, StatusToggleComponent],
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightCardComponent {
   private dialog = inject(MatDialog);
