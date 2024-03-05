@@ -91,14 +91,6 @@ export class FlightSearchComponent {
       console.log('from', this.from());
       console.log('to', this.to());
     });
-
-    // effect(() => {
-    //   this.to.set(this.from());
-    // }, { allowSignalWrites: true });
-
-    // effect(() => {
-    //   this.from.set(this.to());
-    // }, { allowSignalWrites: true });
   }
 
   updateBasket(fid: number, selected: boolean) {
@@ -116,21 +108,6 @@ export class FlightSearchComponent {
         return of([]);
       }),
     );
-  }
-
-  search(): void {
-    // // Reset properties
-    // this.selectedFlight.set(undefined);
-    // this.error.set('');
-    // this.flightService.find(this.from(), this.to()).subscribe({
-    //   next: (flights) => {
-    //     this.flights.set(flights);
-    //   },
-    //   error: (errResp) => {
-    //     this.error.set('Error loading flights');
-    //     console.error(errResp);
-    //   },
-    // });
   }
 
   delay() {
