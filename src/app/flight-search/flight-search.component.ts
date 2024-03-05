@@ -21,7 +21,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
   private flightService = inject(FlightService);

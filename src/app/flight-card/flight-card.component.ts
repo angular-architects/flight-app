@@ -20,7 +20,6 @@ import { injectCdBlink } from '../shared/blink';
   imports: [CommonModule, CityPipe, StatusToggleComponent],
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightCardComponent {
   private dialog = inject(MatDialog);
