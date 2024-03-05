@@ -13,7 +13,6 @@ import { FlightService } from './flight.service';
 import { CityPipe } from '../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { addMinutes } from '../shared/add-minutes';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-flight-search',
@@ -25,7 +24,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class FlightSearchComponent {
   private flightService = inject(FlightService);
-  private snackBar = inject(MatSnackBar);
 
   from = signal('London');
   to = signal('Paris');
