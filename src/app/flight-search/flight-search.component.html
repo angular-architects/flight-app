@@ -30,7 +30,6 @@
 
 <p>Route: {{ flightRoute() }}</p>
 
-<!-- @for(flight of flights$ | async; track flight.id) { ... } -->
 <div class="row">
   <div
     *ngFor="let f of flightsWithDelay()"
@@ -50,6 +49,9 @@
 <p>&nbsp;</p>
 
 <h2>Selected Flights</h2>
+@if (selectedFlights().length === 0) {
+  No selected flights!
+}
 <ul>
   @for (f of selectedFlights(); track f.id) {
     <li>#{{ f.id }} {{ f.from }} - {{ f.to }}</li>
