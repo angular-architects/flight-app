@@ -6,11 +6,7 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import {
-  toObservable,
-  toSignal,
-  takeUntilDestroyed,
-} from '@angular/core/rxjs-interop';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 
 import { CommonModule } from '@angular/common';
 import { Flight } from '../model/flight';
@@ -18,7 +14,19 @@ import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
-import { combineLatest, debounceTime, filter, interval, switchMap } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  combineLatest,
+  debounceTime,
+  filter,
+  interval,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
+import { addMinutes } from '../shared/add-minutes';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-flight-search',
@@ -31,11 +39,18 @@ import { combineLatest, debounceTime, filter, interval, switchMap } from 'rxjs';
 export class FlightSearchComponent {
   from = signal('London');
   to = signal('Paris');
-  selectedFlight = signal<Flight | undefined>(undefined);
+
+  error = signal<string>('');
+  delayInMinutes = signal(0);
 
   flightRoute = computed(() => this.from() + ' to ' + this.to());
+
   selectedFlights = computed(() =>
     this.flights().filter((f) => this.basket()[f.id]),
+  );
+
+  flightsWithDelay = computed(() =>
+    this.toFlightsWithDelay(this.flights(), this.delayInMinutes()),
   );
 
   from$ = toObservable(this.from);
@@ -45,12 +60,12 @@ export class FlightSearchComponent {
     from: this.from$,
     to: this.to$,
   }).pipe(
+    tap(() => this.error.set('')),
     filter((c) => c.to.length >= 3 && c.from.length >= 3),
     debounceTime(300),
-    switchMap((c) => this.flightService.find(c.from, c.to)),
+    tap((c) => console.log('searching by', c)),
+    switchMap((c) => this.find(c.from, c.to)),
   );
-
-  // @for(flight of flights$ | async; track flight.id) { ... }
 
   flights = toSignal(this.flights$, {
     initialValue: [],
@@ -62,8 +77,17 @@ export class FlightSearchComponent {
   });
 
   private flightService = inject(FlightService);
+  private snackBar = inject(MatSnackBar);
 
   constructor() {
+    effect(() => {
+      const error = this.error();
+      console.log('error', error);
+      if (error) {
+        this.snackBar.open(error, 'Ok', { duration: 3000 });
+      }
+    });
+
     effect(() => {
       console.log('from', this.from());
       console.log('to', this.to());
@@ -79,30 +103,49 @@ export class FlightSearchComponent {
   }
 
   updateBasket(fid: number, selected: boolean) {
-    // const b = this.basket();
-    // const newBasket = {...b, [fid]: selected};
-    // this.basket.set(b);
-
     this.basket.update((basket) => ({
       ...basket,
       [fid]: selected,
     }));
   }
 
+  find(from: string, to: string): Observable<Flight[]> {
+    return this.flightService.find(from, to).pipe(
+      catchError((err: Error) => {
+        this.error.set('Error loading flights!');
+        console.error(err);
+        return of([]);
+      }),
+    );
+  }
+
   search(): void {
     // // Reset properties
     // this.selectedFlight.set(undefined);
+    // this.error.set('');
     // this.flightService.find(this.from(), this.to()).subscribe({
     //   next: (flights) => {
     //     this.flights.set(flights);
     //   },
     //   error: (errResp) => {
-    //     console.error('Error loading flights', errResp);
+    //     this.error.set('Error loading flights');
+    //     console.error(errResp);
     //   },
     // });
   }
 
-  select(f: Flight): void {
-    this.selectedFlight.set({ ...f });
+  delay() {
+    this.delayInMinutes.update((delay) => delay + 15);
+  }
+
+  toFlightsWithDelay(flights: Flight[], delay: number): Flight[] {
+    if (flights.length === 0) {
+      return [];
+    }
+
+    return [
+      { ...flights[0], date: addMinutes(flights[0].date, delay) },
+      ...flights.slice(1),
+    ];
   }
 }
