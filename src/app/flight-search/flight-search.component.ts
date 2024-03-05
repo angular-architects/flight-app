@@ -7,7 +7,6 @@ import { FlightService } from './flight.service';
 import { CityPipe } from '../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { addMinutes } from '../shared/add-minutes';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-flight-search',
@@ -18,22 +17,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class FlightSearchComponent {
   private flightService = inject(FlightService);
-  private snackBar = inject(MatSnackBar);
 
   from = signal('London');
   to = signal('Paris');
   flights = signal<Flight[]>([]);
 
-  delayInMinutes = signal(0);
-
   flightRoute = computed(() => this.from() + ' to ' + this.to());
 
   selectedFlights = computed(() =>
     this.flights().filter((f) => this.basket()[f.id]),
-  );
-
-  flightsWithDelay = computed(() =>
-    this.toFlightsWithDelay(this.flights(), this.delayInMinutes()),
   );
 
   basket = signal<Record<number, boolean>>({
@@ -60,7 +52,7 @@ export class FlightSearchComponent {
   }
 
   delay() {
-    this.delayInMinutes.update((delay) => delay + 15);
+    this.flights.update((flights) => this.toFlightsWithDelay(flights, 15));
   }
 
   toFlightsWithDelay(flights: Flight[], delay: number): Flight[] {
