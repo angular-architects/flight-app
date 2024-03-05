@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Flight } from '../model/flight';
@@ -21,12 +21,6 @@ export class FlightSearchComponent {
   from = signal('London');
   to = signal('Paris');
   flights = signal<Flight[]>([]);
-
-  flightRoute = computed(() => this.from() + ' to ' + this.to());
-
-  selectedFlights = computed(() =>
-    this.flights().filter((f) => this.basket()[f.id]),
-  );
 
   basket = signal<Record<number, boolean>>({
     3: true,

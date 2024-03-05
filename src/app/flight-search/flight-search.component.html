@@ -28,13 +28,8 @@
   </div>
 </form>
 
-<p>Route: {{ flightRoute() }}</p>
-
 <div class="row">
-  <div
-    *ngFor="let f of flightsWithDelay()"
-    class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
-  >
+  <div *ngFor="let f of flights()" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <app-flight-card
       [item]="f"
       [selected]="basket()[f.id]"
@@ -47,13 +42,3 @@
 </div>
 
 <p>&nbsp;</p>
-
-<h2>Selected Flights</h2>
-@if (selectedFlights().length === 0) {
-  No selected flights!
-}
-<ul>
-  @for (f of selectedFlights(); track f.id) {
-    <li>#{{ f.id }} {{ f.from }} - {{ f.to }}</li>
-  }
-</ul>
