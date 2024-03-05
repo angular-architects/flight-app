@@ -36,6 +36,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
+  private flightService = inject(FlightService);
+  private snackBar = inject(MatSnackBar);
+
   from = signal('London');
   to = signal('Paris');
 
@@ -74,9 +77,6 @@ export class FlightSearchComponent {
     3: true,
     5: true,
   });
-
-  private flightService = inject(FlightService);
-  private snackBar = inject(MatSnackBar);
 
   constructor() {
     effect(() => {
