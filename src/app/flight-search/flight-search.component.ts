@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  effect,
   inject,
   signal,
 } from '@angular/core';
@@ -13,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
-import { Observable, catchError, of } from 'rxjs';
 import { addMinutes } from '../shared/add-minutes';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -33,7 +31,6 @@ export class FlightSearchComponent {
   to = signal('Paris');
   flights = signal<Flight[]>([]);
 
-  error = signal<string>('');
   delayInMinutes = signal(0);
 
   flightRoute = computed(() => this.from() + ' to ' + this.to());
@@ -51,16 +48,6 @@ export class FlightSearchComponent {
     5: true,
   });
 
-  constructor() {
-    effect(() => {
-      const error = this.error();
-      console.log('error', error);
-      if (error) {
-        this.snackBar.open(error, 'Ok', { duration: 3000 });
-      }
-    });
-  }
-
   updateBasket(fid: number, selected: boolean) {
     this.basket.update((basket) => ({
       ...basket,
@@ -68,24 +55,12 @@ export class FlightSearchComponent {
     }));
   }
 
-  find(from: string, to: string): Observable<Flight[]> {
-    return this.flightService.find(from, to).pipe(
-      catchError((err: Error) => {
-        this.error.set('Error loading flights!');
-        console.error(err);
-        return of([]);
-      }),
-    );
-  }
-
   search(): void {
-    this.error.set('');
     this.flightService.find(this.from(), this.to()).subscribe({
       next: (flights) => {
         this.flights.set(flights);
       },
       error: (errResp) => {
-        this.error.set('Error loading flights');
         console.error(errResp);
       },
     });
