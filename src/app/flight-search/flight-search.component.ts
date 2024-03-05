@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
-import { Observable, catchError, of } from 'rxjs';
 import { addMinutes } from '../shared/add-minutes';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -66,16 +65,6 @@ export class FlightSearchComponent {
       ...basket,
       [fid]: selected,
     }));
-  }
-
-  find(from: string, to: string): Observable<Flight[]> {
-    return this.flightService.find(from, to).pipe(
-      catchError((err: Error) => {
-        this.error.set('Error loading flights!');
-        console.error(err);
-        return of([]);
-      }),
-    );
   }
 
   search(): void {
