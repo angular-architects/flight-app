@@ -5,21 +5,11 @@
 <form>
   <div class="form-group">
     <label>From:</label>
-    <input
-      [ngModel]="from()"
-      (ngModelChange)="from.set($event)"
-      name="from"
-      class="form-control"
-    />
+    <input [(ngModel)]="from" name="from" class="form-control" />
   </div>
   <div class="form-group">
     <label>To:</label>
-    <input
-      [ngModel]="to()"
-      (ngModelChange)="to.set($event)"
-      name="to"
-      class="form-control"
-    />
+    <input [(ngModel)]="to" name="to" class="form-control" />
   </div>
 
   <div class="form-group">
@@ -28,32 +18,19 @@
   </div>
 </form>
 
-<p>Route: {{ flightRoute() }}</p>
-
 <div class="row">
-  <div
-    *ngFor="let f of flightsWithDelay()"
-    class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
-  >
-    <app-flight-card
-      [item]="f"
-      [selected]="basket()[f.id]"
-      (selectedChange)="updateBasket(f.id, $event)"
-    >
-      <p class="middle"><i>Delays are possible!</i></p>
-      <p class="bottom"><small>Statement without guarantee!</small></p>
-    </app-flight-card>
-  </div>
+  @for (f of flights; track f.id) {
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <app-flight-card
+        [item]="f"
+        [selected]="basket[f.id]"
+        (selectedChange)="updateBasket(f.id, $event)"
+      >
+        <p class="middle"><i>Delays are possible!</i></p>
+        <p class="bottom"><small>Statement without guarantee!</small></p>
+      </app-flight-card>
+    </div>
+  }
 </div>
 
 <p>&nbsp;</p>
-
-<h2>Selected Flights</h2>
-@if (selectedFlights().length === 0) {
-  No selected flights!
-}
-<ul>
-  @for (f of selectedFlights(); track f.id) {
-    <li>#{{ f.id }} {{ f.from }} - {{ f.to }}</li>
-  }
-</ul>

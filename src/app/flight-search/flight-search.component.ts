@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Flight } from '../model/flight';
@@ -18,26 +18,23 @@ import { addMinutes } from '../shared/add-minutes';
 export class FlightSearchComponent {
   private flightService = inject(FlightService);
 
-  from = signal('London');
-  to = signal('Paris');
-  flights = signal<Flight[]>([]);
+  from = 'London';
+  to = 'Paris';
+  flights: Flight[] = [];
 
-  basket = signal<Record<number, boolean>>({
+  basket: Record<number, boolean> = {
     3: true,
     5: true,
-  });
+  };
 
   updateBasket(fid: number, selected: boolean) {
-    this.basket.update((basket) => ({
-      ...basket,
-      [fid]: selected,
-    }));
+    this.basket[fid] = selected;
   }
 
   search(): void {
-    this.flightService.find(this.from(), this.to()).subscribe({
+    this.flightService.find(this.from, this.to).subscribe({
       next: (flights) => {
-        this.flights.set(flights);
+        this.flights = flights;
       },
       error: (errResp) => {
         console.error(errResp);
@@ -46,7 +43,7 @@ export class FlightSearchComponent {
   }
 
   delay() {
-    this.flights.update((flights) => this.toFlightsWithDelay(flights, 15));
+    this.flights = this.toFlightsWithDelay(this.flights, 15);
   }
 
   toFlightsWithDelay(flights: Flight[], delay: number): Flight[] {
