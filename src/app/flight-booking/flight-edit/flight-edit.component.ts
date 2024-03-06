@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { Flight } from '../../model/flight';
+import { Flight, initFlight } from '../../model/flight';
 import { ValidationErrorsComponent } from '../../shared/validation-errors/validation-errors.component';
 import { CityValidatorDirective } from '../../shared/validation/city-validator.directive';
 import { AsyncCityValidatorDirective } from '../../shared/validation/async-city-validator.directive';
 import { RoundtripValidatorDirective } from '../../shared/validation/roundtrip-validator.directive';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-flight-edit',
@@ -24,8 +25,14 @@ import { RoundtripValidatorDirective } from '../../shared/validation/roundtrip-v
   styleUrls: ['./flight-edit.component.css'],
 })
 export class FlightEditComponent {
-  dialogRef = inject(MatDialogRef);
-  data = inject<{ flight: Flight }>(MAT_DIALOG_DATA);
+  // dialogRef = inject(MatDialogRef);
+  // data = inject<{ flight: Flight }>(MAT_DIALOG_DATA);
+
+  route = inject(ActivatedRoute);
+
+  id = '';
+  showDetails = 'false';
+  flight = initFlight;
 
   /* 
     Alternative: 
@@ -33,9 +40,14 @@ export class FlightEditComponent {
     data = inject<FlightData>(MAT_DIALOG_DATA);
   */
 
-  flight = this.data.flight;
-
-  close(): void {
-    this.dialogRef.close();
+  constructor() {
+    this.route.paramMap.subscribe((params) => {
+      this.id = params.get('id') ?? '';
+      this.showDetails = params.get('showDetails') || 'false';
+    });
   }
+
+  // close(): void {
+  //   this.dialogRef.close();
+  // }
 }

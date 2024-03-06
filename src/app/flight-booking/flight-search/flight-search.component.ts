@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { CityPipe } from '../../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
+import { FlightBookingComponent } from '../flight-booking.component';
+import { FlightBookingService } from '../flight-booking.service';
 
 @Component({
   selector: 'app-flight-search',
@@ -14,32 +16,27 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
 })
 export class FlightSearchComponent {
-  from = 'London';
-  to = 'Paris';
-  flights: Array<Flight> = [];
+  bookingService = inject(FlightBookingService);
+
+  from = this.bookingService.from;
+  to = this.bookingService.to;
+  flights = this.bookingService.flights;
+
   selectedFlight: Flight | undefined;
   message = '';
 
-  basket: Record<number, boolean> = {
-    3: true,
-    5: true,
-  };
+  basket = this.bookingService.basket;
 
-  private flightService = inject(FlightService);
+  updateCriteria(from: string | null, to: string | null): void {
+    this.bookingService.updateCriteria(from, to);
+  }
+
+  updateBasket(fid: number, selected: boolean): void {
+    this.bookingService.updateBasket(fid, selected);
+  }
 
   search(): void {
-    // Reset properties
-    this.message = '';
-    this.selectedFlight = undefined;
-
-    this.flightService.find(this.from, this.to).subscribe({
-      next: (flights) => {
-        this.flights = flights;
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
-    });
+    this.bookingService.search();
   }
 
   select(f: Flight): void {

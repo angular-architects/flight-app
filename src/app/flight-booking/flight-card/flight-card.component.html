@@ -1,13 +1,13 @@
 <div [ngClass]="{ selected: selected }" class="card">
   <div class="card-header">
     <h2 class="title">
-      {{ item.from | city : "short" }} - {{ item.to | city : "long" }}
+      {{ item.from | city: "short" }} - {{ item.to | city: "long" }}
     </h2>
   </div>
 
   <div class="card-body">
     <p>Flight-No.: #{{ item.id }}</p>
-    <p>Date: {{ item.date | date : "dd.MM.yyyy HH:mm" }}</p>
+    <p>Date: {{ item.date | date: "dd.MM.yyyy HH:mm" }}</p>
 
     <ng-content select=".middle"></ng-content>
 
@@ -17,12 +17,17 @@
     </p>
     <p>
       @if (!selected) {
-      <button (click)="select()" class="btn btn-default">Select</button>
+        <button (click)="select()" class="btn btn-default">Select</button>
       } @else {
-      <button (click)="deselect()" class="btn btn-default">Remove</button>
+        <button (click)="deselect()" class="btn btn-default">Remove</button>
       }
 
-      <button (click)="edit()" class="btn btn-default">Edit</button>
+      <button
+        [routerLink]="['/flight-edit', item.id, { showDetails: true }]"
+        class="btn btn-default"
+      >
+        Edit
+      </button>
     </p>
     <ng-content select=".bottom"></ng-content>
   </div>
