@@ -44,10 +44,6 @@ export class FlightSearchComponent {
     effect(() => {
       console.log('route', this.route());
     });
-
-    effect(() => {
-      this.search();
-    });
   }
 
   async search(): Promise<void> {
