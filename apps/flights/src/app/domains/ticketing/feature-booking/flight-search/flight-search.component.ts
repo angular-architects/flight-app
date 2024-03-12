@@ -8,6 +8,8 @@ import {
   inject,
   signal,
 } from '@angular/core';
+
+import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
@@ -15,6 +17,7 @@ import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { combineLatest, debounceTime, filter, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-flight-search',
@@ -33,8 +36,24 @@ export class FlightSearchComponent {
 
   from = signal('Paris');
   to = signal('London');
-  flights = signal<Flight[]>([]);
   delayTime = signal(0);
+
+  from$ = toObservable(this.from);
+  to$ = toObservable(this.to);
+
+  flights$ = combineLatest({
+    from: this.from$,
+    to: this.to$,
+  }).pipe(
+    filter((c) => c.from.length >= 3 && c.to.length >= 3),
+    debounceTime(300),
+    switchMap((c) => this.flightService.find(c.from, c.to))
+  );
+
+  flights = toSignal(this.flights$, {
+    initialValue: [],
+  });
+
   flightsWithDelays = computed(() =>
     this.toFlightsWithDelays(this.flights(), this.delayTime())
   );
@@ -58,18 +77,6 @@ export class FlightSearchComponent {
         });
       }
     });
-  }
-
-  async search(): Promise<void> {
-    if (!this.from() || !this.to()) {
-      return;
-    }
-
-    const flights = await this.flightService.findPromise(
-      this.from(),
-      this.to()
-    );
-    this.flights.set(flights);
   }
 
   delay(): void {
