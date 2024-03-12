@@ -34,6 +34,10 @@ export class FlightSearchComponent {
   from = signal('Paris');
   to = signal('London');
   flights = signal<Flight[]>([]);
+  delayTime = signal(0);
+  flightsWithDelays = computed(() =>
+    this.toFlightsWithDelays(this.flights(), this.delayTime())
+  );
 
   route = computed(() => this.from() + ' to ' + this.to());
 
@@ -69,15 +73,22 @@ export class FlightSearchComponent {
   }
 
   delay(): void {
-    this.flights.update((flights) => {
-      const oldFlight = flights[0];
-      const oldDate = new Date(oldFlight.date);
+    this.delayTime.update((delayTime) => delayTime + 15);
+  }
 
-      const newDate = addMinutes(oldDate, 15);
-      const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
+  toFlightsWithDelays(flights: Flight[], delay: number): Flight[] {
+    if (flights.length === 0) {
+      return [];
+    }
 
-      return [newFlight, ...flights.slice(1)];
-    });
+    const oldFlights = flights;
+    const oldFlight = oldFlights[0];
+    const oldDate = new Date(oldFlight.date);
+    const newDate = addMinutes(oldDate, delay);
+
+    const newFlight = { ...oldFlight, date: newDate.toISOString() };
+
+    return [newFlight, ...flights.slice(1)];
   }
 
   updateBasket(flightId: number, selected: boolean): void {
