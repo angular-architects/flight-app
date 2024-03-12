@@ -14,6 +14,7 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-flight-search',
@@ -28,6 +29,7 @@ export class FlightSearchComponent {
   private zone = inject(NgZone);
 
   private flightService = inject(FlightService);
+  private snackBar = inject(MatSnackBar);
 
   from = signal('Paris');
   to = signal('London');
@@ -43,6 +45,14 @@ export class FlightSearchComponent {
   constructor() {
     effect(() => {
       console.log('route', this.route());
+    });
+
+    effect(() => {
+      if (this.from() === this.to()) {
+        this.snackBar.open('Round Trips are not supported', 'Ok', {
+          duration: 3000,
+        });
+      }
     });
   }
 
