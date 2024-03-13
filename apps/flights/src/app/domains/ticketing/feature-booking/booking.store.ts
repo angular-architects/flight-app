@@ -17,7 +17,12 @@ import {
   setEntities,
 } from '@ngrx/signals/entities';
 import { debounceTime, filter, switchMap, tap } from 'rxjs';
-import { setLoaded, setLoading, withCallState } from '@demo/shared/util-common';
+import {
+  setError,
+  setLoaded,
+  setLoading,
+  withCallState,
+} from '@demo/shared/util-common';
 
 export type Criteria = {
   from: string;
@@ -103,25 +108,30 @@ export const BookingStore = signalStore(
           })
         );
       },
-      async load(): Promise<void> {
+      load(): void {
         if (!state.from() || !state.to()) {
           return;
         }
 
         patchState(state, setLoading('flights'));
 
-        const flights = await flightService.findPromise(
-          state.from(),
-          state.to()
-        );
-
-        patchState(
-          state,
-          setAllEntities(toFlightStateArray(flights), { collection: 'flight' }),
-          setLoaded('flights')
-        );
+        flightService.find(state.from(), state.to()).subscribe({
+          next: (flights) => {
+            patchState(
+              state,
+              setAllEntities(toFlightStateArray(flights), {
+                collection: 'flight',
+              }),
+              setLoaded('flights')
+            );
+          },
+          error: (errResp) => {
+            console.error('Error loading flights', errResp);
+            patchState(state, setError('flights', errResp.message));
+          },
+        });
       },
-      connectCriteria: rxMethod<Criteria>((c$) =>
+      loadByFilter: rxMethod<Criteria>((c$) =>
         c$.pipe(
           filter((c) => c.from.length >= 3 && c.to.length >= 3),
           debounceTime(300),
@@ -142,8 +152,10 @@ export const BookingStore = signalStore(
   }),
   withHooks({
     onInit(state) {
-      const { connectCriteria, criteria, flightsWithPassengers } = state;
-      connectCriteria(criteria);
+      const { loadByFilter, criteria, flightsWithPassengers } = state;
+
+      loadByFilter(criteria);
+
       patchState(
         state,
         setEntities(
