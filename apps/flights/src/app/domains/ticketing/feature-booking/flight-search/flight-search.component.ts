@@ -32,9 +32,9 @@ export class FlightSearchComponent {
   basket = this.store.basket;
   selectedFlights = this.store.selectedFlights;
 
-  async search(): Promise<void> {
+  search(): void {
     this.store.updateCriteria(this.from(), this.to());
-    await this.store.load();
+    this.store.load();
   }
 
   delay(): void {

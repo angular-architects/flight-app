@@ -47,16 +47,19 @@ export const BookingStore = signalStore(
 
         patchState(state, { flights: newFlights });
       },
-      async load(): Promise<void> {
+      load(): void {
         if (!state.from() || !state.to()) {
           return;
         }
 
-        const flights = await flightService.findPromise(
-          state.from(),
-          state.to()
-        );
-        patchState(state, { flights });
+        flightService.find(state.from(), state.to()).subscribe({
+          next: (flights) => {
+            patchState(state, { flights });
+          },
+          error: (errResp) => {
+            console.error('Error loading flights', errResp);
+          },
+        });
       },
     };
   }),
