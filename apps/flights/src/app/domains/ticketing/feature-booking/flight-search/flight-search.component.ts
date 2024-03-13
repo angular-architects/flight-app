@@ -60,16 +60,15 @@ export class FlightSearchComponent {
     });
   }
 
-  async search(): Promise<void> {
-    if (!this.from() || !this.to()) {
-      return;
-    }
-
-    const flights = await this.flightService.findPromise(
-      this.from(),
-      this.to()
-    );
-    this.flights.set(flights);
+  search(): void {
+    this.flightService.find(this.from(), this.to()).subscribe({
+      next: (flights) => {
+        this.flights.set(flights);
+      },
+      error: (errResp) => {
+        console.error('Error loading flights', errResp);
+      },
+    });
   }
 
   delay(): void {
