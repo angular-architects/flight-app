@@ -62,18 +62,24 @@ export const BookingStore = signalStore(
 
         patchState(state, setAllEntities(newFlights, { collection: 'flight' }));
       },
-      async load(): Promise<void> {
+      load(): void {
         if (!state.from() || !state.to()) {
           return;
         }
 
-        const flights = await flightService.findPromise(
-          state.from(),
-          state.to()
-        );
-        patchState(state, setAllEntities(flights, { collection: 'flight' }));
+        flightService.find(state.from(), state.to()).subscribe({
+          next: (flights) => {
+            patchState(
+              state,
+              setAllEntities(flights, { collection: 'flight' })
+            );
+          },
+          error: (errResp) => {
+            console.error('Error loading flights', errResp);
+          },
+        });
       },
-      connectCriteria: rxMethod<Criteria>((c$) =>
+      loadByFilter: rxMethod<Criteria>((c$) =>
         c$.pipe(
           filter((c) => c.from.length >= 3 && c.to.length >= 3),
           debounceTime(300),
@@ -86,8 +92,8 @@ export const BookingStore = signalStore(
     };
   }),
   withHooks({
-    onInit({ connectCriteria, criteria }) {
-      connectCriteria(criteria);
+    onInit({ loadByFilter, criteria }) {
+      loadByFilter(criteria);
     },
     onDestroy(store) {
       console.log('destroy!', store);
