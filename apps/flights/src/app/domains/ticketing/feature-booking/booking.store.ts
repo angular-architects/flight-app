@@ -16,12 +16,29 @@ import {
   setAllEntities,
   setEntities,
 } from '@ngrx/signals/entities';
-import { debounceTime, filter, switchMap, tap } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  debounceTime,
+  filter,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 
 export type Criteria = {
   from: string;
   to: string;
 };
+
+function find(flightService: FlightService, c: Criteria): Observable<Flight[]> {
+  return flightService.find(c.from, c.to).pipe(
+    catchError((error) => {
+      console.log(error);
+      return of([]);
+    })
+  );
+}
 
 export type FlightState = Flight & {
   passengerIds: number[];
@@ -124,7 +141,7 @@ export const BookingStore = signalStore(
         c$.pipe(
           filter((c) => c.from.length >= 3 && c.to.length >= 3),
           debounceTime(300),
-          switchMap((c) => flightService.find(c.from, c.to)),
+          switchMap((c) => find(flightService, c)),
           tap((flights) =>
             patchState(
               state,
