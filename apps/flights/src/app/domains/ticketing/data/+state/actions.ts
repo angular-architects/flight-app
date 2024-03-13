@@ -8,5 +8,6 @@ export const ticketingActions = createActionGroup({
     'load flights': props<{ from: string; to: string }>(),
     'update flight': props<{ flight: Flight }>(),
     'clear flights': emptyProps(),
+    error: props<{ error: string }>(),
   },
 });
