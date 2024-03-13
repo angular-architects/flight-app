@@ -17,7 +17,15 @@ import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { combineLatest, debounceTime, filter, switchMap } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  combineLatest,
+  debounceTime,
+  filter,
+  of,
+  switchMap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-flight-search',
@@ -47,7 +55,7 @@ export class FlightSearchComponent {
   }).pipe(
     filter((c) => c.from.length >= 3 && c.to.length >= 3),
     debounceTime(300),
-    switchMap((c) => this.flightService.find(c.from, c.to))
+    switchMap((c) => this.find(c.from, c.to))
   );
 
   flights = toSignal(this.flights$, {
@@ -77,6 +85,15 @@ export class FlightSearchComponent {
         });
       }
     });
+  }
+
+  find(from: string, to: string): Observable<Flight[]> {
+    return this.flightService.find(from, to).pipe(
+      catchError((error) => {
+        console.log(error);
+        return of([]);
+      })
+    );
   }
 
   delay(): void {
