@@ -17,7 +17,12 @@ import {
   setEntities,
 } from '@ngrx/signals/entities';
 import { debounceTime, filter, switchMap, tap } from 'rxjs';
-import { setLoaded, setLoading, withCallState } from '@demo/shared/util-common';
+import {
+  setError,
+  setLoaded,
+  setLoading,
+  withCallState,
+} from '@demo/shared/util-common';
 
 export type Criteria = {
   from: string;
@@ -108,17 +113,21 @@ export const BookingStore = signalStore(
           return;
         }
 
+        patchState(state, setLoading());
+
         flightService.find(state.from(), state.to()).subscribe({
           next: (flights) => {
             patchState(
               state,
               setAllEntities(toFlightStateArray(flights), {
                 collection: 'flight',
-              })
+              }),
+              setLoaded()
             );
           },
           error: (errResp) => {
             console.error('Error loading flights', errResp);
+            patchState(state, setError(errResp.message));
           },
         });
       },
