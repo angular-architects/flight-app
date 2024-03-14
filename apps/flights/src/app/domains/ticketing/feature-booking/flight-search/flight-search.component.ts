@@ -40,16 +40,6 @@ export class FlightSearchComponent {
     5: true,
   });
 
-  constructor() {
-    effect(() => {
-      console.log('route', this.route());
-    });
-
-    effect(() => {
-      this.search();
-    });
-  }
-
   search(): void {
     this.facade.load(this.from(), this.to());
   }
