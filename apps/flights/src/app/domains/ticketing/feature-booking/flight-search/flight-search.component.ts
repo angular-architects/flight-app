@@ -41,26 +41,15 @@ export class FlightSearchComponent {
     5: true,
   });
 
-  constructor() {
-    effect(() => {
-      console.log('route', this.route());
+  search(): void {
+    this.flightService.find(this.from(), this.to()).subscribe({
+      next: (flights) => {
+        this.store.dispatch(ticketingActions.flightsLoaded({ flights }));
+      },
+      error: (errResp) => {
+        console.error('Error loading flights', errResp);
+      },
     });
-
-    effect(() => {
-      this.search();
-    });
-  }
-
-  async search(): Promise<void> {
-    const from = this.from();
-    const to = this.to();
-
-    if (!from || !to) {
-      return;
-    }
-
-    const flights = await this.flightService.findPromise(from, to);
-    this.store.dispatch(ticketingActions.flightsLoaded({ flights }));
   }
 
   updateBasket(flightId: number, selected: boolean): void {
