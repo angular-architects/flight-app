@@ -1,11 +1,18 @@
-import { Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
-
-// import {  } from '@demo/checkin/data';
+import { addMinutes } from 'date-fns';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-flight-search',
@@ -13,38 +20,62 @@ import { Flight, FlightService } from '@demo/ticketing/data';
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
   imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
-  from = 'Paris';
-  to = 'London';
-  flights: Array<Flight> = [];
-  selectedFlight: Flight | undefined;
-  message = '';
-  date = new Date();
-
-  basket: Record<number, boolean> = {
-    3: true,
-    5: true,
-  };
-
   private flightService = inject(FlightService);
 
-  search(): void {
-    // Reset properties
-    this.message = '';
-    this.selectedFlight = undefined;
+  from = signal('Paris');
+  to = signal('London');
+  route = computed(() => this.from() + ' to ' + this.to());
 
-    this.flightService.find(this.from, this.to).subscribe({
-      next: (flights) => {
-        this.flights = flights;
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
+  flights = signal<Flight[]>([]);
+
+  basket = signal<Record<number, boolean>>({
+    3: true,
+    5: true,
+  });
+
+  constructor() {
+    effect(() => {
+      console.log('route', this.route());
+    });
+
+    effect(() => {
+      this.search();
     });
   }
 
-  select(f: Flight): void {
-    this.selectedFlight = { ...f };
+  async search(): Promise<void> {
+    const from = this.from();
+    const to = this.to();
+
+    if (!from || !to) {
+      return;
+    }
+
+    const flights = await this.flightService.findPromise(from, to);
+    this.flights.set(flights);
+  }
+
+  updateBasket(flightId: number, selected: boolean): void {
+    this.basket.update((basket) => ({
+      ...basket,
+      [flightId]: selected,
+    }));
+  }
+
+  delay(): void {
+    const oldDate = new Date(this.flights()[0].date);
+    const date = addMinutes(oldDate, 15);
+
+    const flight = {
+      ...this.flights()[0],
+      date: date.toISOString(),
+    };
+
+    const flights = [flight, ...this.flights()];
+
+    this.flights.set(flights);
   }
 }
