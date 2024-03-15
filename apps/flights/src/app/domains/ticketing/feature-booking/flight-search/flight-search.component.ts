@@ -40,12 +40,22 @@ export class FlightSearchComponent {
   }
 
   delay(): void {
-    const oldFlights = this.flights;
+    this.flights = this.toFlightsWithDelays(this.flights, 15);
+  }
+
+  toFlightsWithDelays(flights: Flight[], delay: number): Flight[] {
+    if (flights.length === 0) {
+      return [];
+    }
+
+    const oldFlights = flights;
     const oldFlight = oldFlights[0];
     const oldDate = new Date(oldFlight.date);
+    const newDate = addMinutes(oldDate, delay);
 
-    const newDate = addMinutes(oldDate, 15);
-    oldFlight.date = newDate.toISOString();
+    const newFlight = { ...oldFlight, date: newDate.toISOString() };
+
+    return [newFlight, ...flights.slice(1)];
   }
 
   blink() {
