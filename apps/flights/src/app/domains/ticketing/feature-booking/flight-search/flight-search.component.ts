@@ -68,22 +68,15 @@ export class FlightSearchComponent {
   }
 
   delay(): void {
-    this.flights.update((flights) => this.toFlightsWithDelays(flights, 15));
-  }
+    this.flights.update((flights) => {
+      const oldFlight = flights[0];
+      const oldDate = new Date(oldFlight.date);
 
-  toFlightsWithDelays(flights: Flight[], delay: number): Flight[] {
-    if (flights.length === 0) {
-      return [];
-    }
+      const newDate = addMinutes(oldDate, 15);
+      const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
 
-    const oldFlights = flights;
-    const oldFlight = oldFlights[0];
-    const oldDate = new Date(oldFlight.date);
-    const newDate = addMinutes(oldDate, delay);
-
-    const newFlight = { ...oldFlight, date: newDate.toISOString() };
-
-    return [newFlight, ...flights.slice(1)];
+      return [newFlight, ...flights.slice(1)];
+    });
   }
 
   updateBasket(flightId: number, selected: boolean): void {
