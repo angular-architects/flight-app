@@ -25,6 +25,7 @@ import {
   filter,
   of,
   switchMap,
+  tap,
 } from 'rxjs';
 
 @Component({
@@ -55,6 +56,7 @@ export class FlightSearchComponent {
   }).pipe(
     filter((c) => c.from.length >= 3 && c.to.length >= 3),
     debounceTime(300),
+    tap((c) => console.log('searching flights', c)),
     switchMap((c) => this.find(c.from, c.to))
   );
 
