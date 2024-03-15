@@ -14,7 +14,6 @@ bootstrapApplication(AppComponent, {
     provideRouter(APP_ROUTES),
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),
-
     provideLogger(
       {
         level: LogLevel.DEBUG,
