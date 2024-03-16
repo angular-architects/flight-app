@@ -9,7 +9,7 @@ export class FlightBookingFacade {
   private store = inject(Store);
   readonly flights = this.store.selectSignal(selectFilteredFlights);
 
-  async load(from: string, to: string): Promise<void> {
+  load(from: string, to: string): void {
     this.store.dispatch(ticketingActions.loadFlights({ from, to }));
   }
 
