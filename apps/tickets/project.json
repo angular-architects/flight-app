@@ -2,9 +2,10 @@
   "name": "tickets",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "generators": {},
   "sourceRoot": "apps/tickets/src",
   "prefix": "app",
+  "tags": ["domain:tickets", "type:app"],
+  "generators": {},
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -82,11 +83,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/tickets/**/*.ts", "apps/tickets/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": ["domain:tickets", "type:app"]
+  }
 }

@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/checkin/src",
   "prefix": "flight-demo",
+  "tags": ["domain:checkin", "type:app"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -64,10 +65,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/checkin/**/*.ts", "apps/checkin/**/*.html"]
-      }
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -76,6 +74,5 @@
         "jestConfig": "apps/checkin/jest.config.ts"
       }
     }
-  },
-  "tags": ["domain:checkin", "type:app"]
+  }
 }

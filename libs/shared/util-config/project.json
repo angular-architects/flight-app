@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/shared/util-config/src",
   "prefix": "config",
+  "tags": ["domain:shared", "type:util"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -14,14 +15,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/shared/util-config/**/*.ts",
-          "libs/shared/util-config/**/*.html"
-        ]
-      }
+      "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": ["domain:shared", "type:util"]
+  }
 }

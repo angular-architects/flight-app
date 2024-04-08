@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/checkin/feature-manage/src",
   "prefix": "checkin",
+  "tags": ["domain:checkin", "type:feature"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -14,14 +15,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/checkin/feature-manage/**/*.ts",
-          "libs/checkin/feature-manage/**/*.html"
-        ]
-      }
+      "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": ["domain:checkin", "type:feature"]
+  }
 }

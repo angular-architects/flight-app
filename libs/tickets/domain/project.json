@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/tickets/domain/src",
   "prefix": "tickets",
+  "tags": ["domain:tickets", "type:domain-logic"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -14,14 +15,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/tickets/domain/**/*.ts",
-          "libs/tickets/domain/**/*.html"
-        ]
-      }
+      "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": ["domain:tickets", "type:domain-logic"]
+  }
 }

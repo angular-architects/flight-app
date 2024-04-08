@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/shared/util-validation/src",
   "prefix": "validation",
+  "tags": ["domain:shared", "type:util"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -14,14 +15,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/shared/util-validation/**/*.ts",
-          "libs/shared/util-validation/**/*.html"
-        ]
-      }
+      "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": ["domain:shared", "type:util"]
+  }
 }

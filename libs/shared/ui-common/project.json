@@ -4,6 +4,7 @@
   "projectType": "library",
   "sourceRoot": "libs/shared/ui-common/src",
   "prefix": "common",
+  "tags": ["domain:shared", "type:ui"],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -14,14 +15,7 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "libs/shared/ui-common/**/*.ts",
-          "libs/shared/ui-common/**/*.html"
-        ]
-      }
+      "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": ["domain:shared", "type:ui"]
+  }
 }
