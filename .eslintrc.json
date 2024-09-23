@@ -1,5 +1,12 @@
 {
   "root": true,
+  "env": {
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
   "ignorePatterns": ["**/*"],
   "overrides": [
     {
@@ -26,6 +33,12 @@
             "prefix": "app",
             "style": "kebab-case"
           }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "^_"
+          }
         ]
       }
     },
@@ -36,7 +49,7 @@
     },
     {
       "files": ["*.ts"],
-      "extends": ["plugin:@softarc/sheriff/default"]
+      "extends": ["plugin:@softarc/sheriff/legacy"]
     }
   ],
   "plugins": ["@nx"]
