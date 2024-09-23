@@ -6,6 +6,8 @@ import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
 
+// import {  } from '@demo/checkin/data';
+
 @Component({
   selector: 'app-flight-search',
   standalone: true,
