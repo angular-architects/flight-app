@@ -1,6 +1,21 @@
 {
-  "scopes": [],
-  "groups": [],
+  "scopes": [
+    "apps/flights/src/app/domains/checkin/data",
+    "apps/flights/src/app/domains/checkin/feature-manage",
+    "apps/flights/src/app/domains/shared",
+    "apps/flights/src/app/domains/ticketing/data",
+    "apps/flights/src/app/domains/ticketing/feature-booking",
+    "apps/flights/src/app/domains/ticketing/feature-next-flights"
+  ],
+  "groups": [
+    "apps/flights/src/app/domains/checkin",
+    "apps/flights/src/app/domains/ticketing",
+    "apps/flights/src/app/domains",
+    "apps/flights/src/app",
+    "apps/flights/src",
+    "apps/flights",
+    "apps"
+  ],
   "entries": [],
   "filter": {
     "files": [],
