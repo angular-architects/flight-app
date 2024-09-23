@@ -4,7 +4,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   ValidationErrorsComponent,
-  validateAsyncCity,
   validateCity,
   validateRoundTrip,
 } from '@demo/shared/util-validation';
@@ -35,7 +34,7 @@ export class FlightEditReactiveComponent {
         Validators.minLength(3),
         validateCity(['London', 'Paris', 'Berlin']),
       ],
-      [validateAsyncCity(this.flightService)],
+      [],
     ],
     to: [''],
     date: [''],
