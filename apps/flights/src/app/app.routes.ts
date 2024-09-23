@@ -6,6 +6,7 @@ import { BasketComponent } from './shell/basket/basket.component';
 import { ConfigService } from '@demo/shared/util-config';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { FeatureManageComponent } from '@demo/checkin/feature-manage';
 
 import {
   startsWith,
@@ -78,6 +79,10 @@ export const APP_ROUTES: Routes = [
       config: () => inject(ConfigService).loaded$,
     },
     children: [
+      {
+        path: 'checkin',
+        component: FeatureManageComponent,
+      },
       {
         path: 'flight-booking',
         loadChildren: () =>
