@@ -10,6 +10,7 @@ import {
   WrapperComponent,
   WrapperConfig,
 } from './domains/shared/util-federation-tools';
+import { FeatureManageComponent } from '@demo/checkin/feature-manage';
 
 export const APP_ROUTES: Routes = [
   {
@@ -65,7 +66,10 @@ export const APP_ROUTES: Routes = [
         path: 'about',
         component: AboutComponent,
       },
-
+      {
+        path: 'checkin',
+        component: FeatureManageComponent,
+      },
       // This _needs_ to be the last route!!
       {
         path: '**',
