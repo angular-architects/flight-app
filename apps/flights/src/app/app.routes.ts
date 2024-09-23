@@ -6,6 +6,7 @@ import { BasketComponent } from './shell/basket/basket.component';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
 import { ConfigService } from './domains/shared/util-config';
 import { loadRemoteModule } from '@angular-architects/native-federation';
+import { FeatureManageComponent } from '@demo/checkin/feature-manage';
 
 export const APP_ROUTES: Routes = [
   {
@@ -50,7 +51,10 @@ export const APP_ROUTES: Routes = [
         path: 'about',
         component: AboutComponent,
       },
-
+      {
+        path: 'checkin',
+        component: FeatureManageComponent,
+      },
       // This _needs_ to be the last route!!
       {
         path: '**',
