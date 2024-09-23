@@ -25,9 +25,6 @@
     "paths": {
       "@demo/ui-common": [
         "libs/ui-common/src/index.ts"
-      ],
-      "@demo/*": [
-        "apps/flights/src/app/domains/*"
       ]
     },
     "rootDir": "."
