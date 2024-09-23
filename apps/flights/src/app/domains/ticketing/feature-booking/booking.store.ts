@@ -25,8 +25,6 @@ import {
 
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
 
-import { withDevtools } from '@angular-architects/ngrx-toolkit';
-
 export type Criteria = {
   from: string;
   to: string;
