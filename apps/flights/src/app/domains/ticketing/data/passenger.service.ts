@@ -37,4 +37,8 @@ export class PassengerService
   delete(): Promise<void> {
     throw new Error('Method not implemented.');
   }
+  updateAll(entities: Passenger[]): Promise<Passenger[]> {
+    console.log('updateAll', entities);
+    throw new Error('Method not implemented.');
+  }
 }

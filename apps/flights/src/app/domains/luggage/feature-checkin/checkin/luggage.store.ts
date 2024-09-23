@@ -1,5 +1,5 @@
 import {
-  patchState,
+  updateState,
   payload,
   withDevtools,
   withRedux,
@@ -18,8 +18,9 @@ export const LuggageStore = signalStore(
       loaded: payload<{ luggage: Luggage[] }>(),
     },
     reducer(actions, on) {
-      on(actions.loaded, ({ luggage }, state) => {
-        patchState(state, 'flights loaded', { luggage });
+      on(actions.loaded, (state, action) => {
+        const luggage = action.luggage;
+        updateState(state, 'flights loaded', { luggage });
       });
     },
     effects(actions, create) {
