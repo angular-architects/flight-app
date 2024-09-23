@@ -7,7 +7,7 @@
     "build": "nx build",
     "watch": "nx build --watch --configuration development",
     "test": "nx test",
-    "prepare": "husky install",
+    "prepare": "husky",
     "lint": "nx lint",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
@@ -77,7 +77,7 @@
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-cypress": "2.13.4",
-    "husky": "^8.0.3",
+    "husky": "^9.1.6",
     "jasmine-core": "^4.0.0",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
