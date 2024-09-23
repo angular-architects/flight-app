@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CheckinService } from '../data';
-import { ClickWithWarningDirective } from '@demo/shared/ui-common';
+import { ClickWithWarningDirective } from '../../../domains/shared/ui-common';
 
 // import { } from '../../ticketing/data';
 
