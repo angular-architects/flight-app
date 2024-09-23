@@ -13,6 +13,10 @@ export type NamedCallState<Prop extends string> = {
   [K in Prop as `${K}CallState`]: CallState;
 };
 
+export type Slice<T> = {
+  [K in keyof T]: Signal<T[K]>;
+};
+
 export type NamedCallStateComputed<Prop extends string> = {
   [K in Prop as `${K}Loading`]: Signal<boolean>;
 } & {
@@ -23,7 +27,7 @@ export type NamedCallStateComputed<Prop extends string> = {
 
 export type CallStateFeatureResult<Prop extends string> = EmptyFeatureResult & {
   state: NamedCallState<Prop>;
-  signals: NamedCallStateComputed<Prop>;
+  computed: NamedCallStateComputed<Prop>;
 };
 
 function getCallStateKeys(config: { prop: string }) {
@@ -42,16 +46,18 @@ export function withCallState<Prop extends string>(config: {
     getCallStateKeys(config);
 
   const feature = signalStoreFeature(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    withState({ [callStateKey]: 'init' } as any),
-    withComputed((state) => ({
-      [loadingKey]: computed(() => state[callStateKey]() === 'loading'),
-      [loadedKey]: computed(() => state[callStateKey]() === 'loaded'),
-      [errorKey]: computed(() => {
-        const v = state[callStateKey]();
-        return typeof v === 'object' ? v.error : null;
-      }),
-    }))
+    withState({ [callStateKey]: 'init' }),
+    withComputed((state: Record<string, Signal<unknown>>) => {
+      const callState = state[callStateKey] as Signal<CallState>;
+      return {
+        [loadingKey]: computed(() => callState() === 'loading'),
+        [loadedKey]: computed(() => callState() === 'loaded'),
+        [errorKey]: computed(() => {
+          const v = callState();
+          return typeof v === 'object' ? v.error : null;
+        }),
+      };
+    })
   );
 
   return feature as SignalStoreFeature<
