@@ -3,3 +3,7 @@
 /coverage
 /.nx/cache
 .angular
+
+/.nx/workspace-data
+
+/tsconfig.base.json
