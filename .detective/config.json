@@ -1,0 +1,20 @@
+{
+  "scopes": [
+    "apps/checkin",
+    "apps/tickets",
+    "libs/checkin",
+    "libs/shared",
+    "libs/tickets"
+  ],
+  "groups": ["apps", "libs"],
+  "entries": [],
+  "filter": {
+    "files": [],
+    "logs": []
+  },
+  "aliases": {},
+  "teams": {
+    "example-team-a": ["John Doe", "Jane Doe"],
+    "example-team-b": ["Max Muster", "Susi Sorglos"]
+  }
+}

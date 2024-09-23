@@ -63,6 +63,7 @@
     "@nx/web": "19.8.0",
     "@nx/workspace": "19.8.0",
     "@schematics/angular": "18.2.5",
+    "@softarc/detective": "^1.1.1",
     "@softarc/eslint-plugin-sheriff": "^0.17.0",
     "@softarc/sheriff-core": "^0.17.0",
     "@swc-node/register": "1.9.2",
