@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-next-level',
+  selector: 'flight-demo-next-level',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './next-level.component.html',

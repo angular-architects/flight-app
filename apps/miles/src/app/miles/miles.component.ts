@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-miles',
+  selector: 'flight-demo-miles',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './miles.component.html',
