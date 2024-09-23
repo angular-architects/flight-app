@@ -1,6 +1,6 @@
 {
   "affected": {
-    "defaultBase": "lab500-enterprise-starter"
+    "defaultBase": "main"
   },
   "defaultProject": "flights",
   "namedInputs": {
