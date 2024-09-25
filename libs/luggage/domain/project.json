@@ -1,0 +1,20 @@
+{
+  "name": "luggage-domain",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/luggage/domain/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": ["domain:luggage", "type:domain-logic"],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/luggage/domain/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

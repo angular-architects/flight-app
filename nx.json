@@ -49,6 +49,11 @@
     "@nx/eslint:lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
       "cache": true
+    },
+    "@angular-devkit/build-angular:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "cli": {
@@ -56,10 +61,10 @@
   },
   "generators": {
     "@nx/angular:application": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
       "e2eTestRunner": "none",
+      "linter": "eslint",
+      "style": "css",
+      "unitTestRunner": "jest",
       "projectNameAndRootFormat": "derived"
     },
     "@nx/angular:library": {
