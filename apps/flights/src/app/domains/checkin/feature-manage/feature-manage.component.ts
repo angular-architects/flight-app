@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CheckinService } from '../data';
+import { CheckinService } from '../data/checkin.service';
 import { ClickWithWarningDirective } from '@demo/shared/ui-common';
 
-// import { } from '../../ticketing/data';
+// import { HiddenService } from '../data/internal/hidden.service';
+
+// import { Flight } from '../../ticketing/data';
 
 @Component({
   selector: 'app-feature-manage',
