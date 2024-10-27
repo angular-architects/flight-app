@@ -3,6 +3,8 @@ import { noDependencies, sameTag, SheriffConfig } from '@softarc/sheriff-core';
 export const sheriffConfig: SheriffConfig = {
   version: 1,
 
+  enableBarrelLess: true,
+
   tagging: {
     libs: {
       'ui-<ui>/src': ['domain:shared', 'type:ui'],
