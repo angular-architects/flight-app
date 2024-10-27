@@ -5,7 +5,7 @@ import { HomeComponent } from './shell/home/home.component';
 import { BasketComponent } from './shell/basket/basket.component';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
 import { ConfigService } from './domains/shared/util-config';
-import { FeatureManageComponent } from './domains/checkin/feature-manage';
+import { FeatureManageComponent } from './domains/checkin/feature-manage/feature-manage.component';
 import { loadRemoteModule } from '@angular-architects/native-federation';
 
 export const APP_ROUTES: Routes = [
