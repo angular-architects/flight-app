@@ -5,7 +5,7 @@ import { HomeComponent } from './shell/home/home.component';
 import { BasketComponent } from './shell/basket/basket.component';
 import { ConfigService } from '@demo/shared/util-config';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
-import { FeatureManageComponent } from '@demo/checkin/feature-manage';
+import { FeatureManageComponent } from '@demo/checkin/feature-manage/feature-manage.component';
 
 export const APP_ROUTES: Routes = [
   {
