@@ -8,12 +8,11 @@ import {
   NgZone,
   Output,
 } from '@angular/core';
-import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { initFlight } from '../../model/flight';
 import { CityPipe } from '../../shared/city.pipe';
 import { StatusToggleComponent } from '../../shared/status-toggle/status-toggle.component';
-import { FlightEditComponent } from '../flight-edit/flight-edit.component';
 import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit-reactive.component';
 import { RouterLink } from '@angular/router';
 

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Flight } from '../../model/flight';
 import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
-import { CityPipe } from '../../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 
 @Component({
@@ -11,7 +10,7 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
+  imports: [CommonModule, FormsModule, FlightCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
