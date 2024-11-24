@@ -15,18 +15,17 @@ import { Dialog } from '@angular/cdk/dialog';
 import { ConfirmComponent } from 'src/app/shared/confirm/confirm.component';
 
 @Component({
-  selector: 'app-flight-edit',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ValidationErrorsComponent,
-    CityValidatorDirective,
-    AsyncCityValidatorDirective,
-    RoundtripValidatorDirective,
-  ],
-  templateUrl: './flight-edit.component.html',
-  styleUrls: ['./flight-edit.component.css'],
+    selector: 'app-flight-edit',
+    imports: [
+        CommonModule,
+        FormsModule,
+        ValidationErrorsComponent,
+        CityValidatorDirective,
+        AsyncCityValidatorDirective,
+        RoundtripValidatorDirective,
+    ],
+    templateUrl: './flight-edit.component.html',
+    styleUrls: ['./flight-edit.component.css']
 })
 export class FlightEditComponent implements OnInit, CanExit {
   private route = inject(ActivatedRoute);
