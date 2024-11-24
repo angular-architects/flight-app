@@ -2,11 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-status-toggle',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './status-toggle.component.html',
-  styleUrls: ['./status-toggle.component.css'],
+    selector: 'app-status-toggle',
+    imports: [CommonModule],
+    templateUrl: './status-toggle.component.html',
+    styleUrls: ['./status-toggle.component.css']
 })
 export class StatusToggleComponent {
   @Input() status = false;
