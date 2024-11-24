@@ -5,11 +5,10 @@ import { ValidationErrors } from '@angular/forms';
 export type Error = Record<string, unknown>;
 
 @Component({
-  selector: 'app-validation-errors',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './validation-errors.component.html',
-  styleUrls: ['./validation-errors.component.css'],
+    selector: 'app-validation-errors',
+    imports: [CommonModule],
+    templateUrl: './validation-errors.component.html',
+    styleUrls: ['./validation-errors.component.css']
 })
 export class ValidationErrorsComponent implements OnChanges {
   @Input() errors: ValidationErrors = {};
