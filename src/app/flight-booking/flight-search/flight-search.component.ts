@@ -16,7 +16,6 @@ import { DateStepperComponent } from 'src/app/shared/date/date-stepper/date-step
     CommonModule,
     FormsModule,
     FlightCardComponent,
-    DateCvaDirective,
     DateStepperComponent,
   ],
 })

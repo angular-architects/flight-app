@@ -128,11 +128,14 @@ h2.title {
   padding-bottom: 0;
 }
 
+.cdk-dialog-container .card-body {
+  margin-bottom: 2rem;
+}
+
 form {
   margin-bottom: 40px;
 }
 
-/* Formulare */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -169,8 +172,16 @@ label {
   background-color: #6c757d;
 }
 
+.btn-danger {
+  background-color: crimson;
+}
+
 .btn:hover {
   background-color: #0056b3;
+}
+
+.btn-danger:hover {
+  background-color: #B01030;
 }
 
 .wrapper {
@@ -298,6 +309,28 @@ label {
   gap: 10px;
   font-weight: bold;
   font-size: 1.2em;
+}
+
+.card:has(.nav) {
+  margin-bottom: 20px;
+}
+
+.nav-secondary {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.nav-secondary li {
+  display: inline-block;
+}
+
+.nav-secondary a {
+  text-decoration: none;
+  color: #3f51b5;
 }
 
 /* --- */
