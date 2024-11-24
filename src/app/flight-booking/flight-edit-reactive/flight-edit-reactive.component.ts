@@ -10,11 +10,10 @@ import { ValidationErrorsComponent } from '../../shared/validation-errors/valida
 import { validateRoundTrip } from '../../shared/validation/roundtrip-validator';
 
 @Component({
-  selector: 'app-flight-edit-reactive',
-  standalone: true,
-  templateUrl: './flight-edit-reactive.component.html',
-  styleUrls: ['./flight-edit-reactive.component.css'],
-  imports: [CommonModule, ReactiveFormsModule, ValidationErrorsComponent],
+    selector: 'app-flight-edit-reactive',
+    templateUrl: './flight-edit-reactive.component.html',
+    styleUrls: ['./flight-edit-reactive.component.css'],
+    imports: [CommonModule, ReactiveFormsModule, ValidationErrorsComponent]
 })
 export class FlightEditReactiveComponent {
   private flightService = inject(FlightService);
