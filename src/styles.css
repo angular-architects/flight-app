@@ -136,7 +136,6 @@ form {
   margin-bottom: 40px;
 }
 
-/* Formulare */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -179,6 +178,10 @@ label {
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+.btn-danger:hover {
+  background-color: #B01030;
 }
 
 .wrapper {
