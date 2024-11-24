@@ -11,18 +11,17 @@ import { ActivatedRoute } from '@angular/router';
 import { FlightService } from '../flight-search/flight.service';
 
 @Component({
-  selector: 'app-flight-edit',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ValidationErrorsComponent,
-    CityValidatorDirective,
-    AsyncCityValidatorDirective,
-    RoundtripValidatorDirective,
-  ],
-  templateUrl: './flight-edit.component.html',
-  styleUrls: ['./flight-edit.component.css'],
+    selector: 'app-flight-edit',
+    imports: [
+        CommonModule,
+        FormsModule,
+        ValidationErrorsComponent,
+        CityValidatorDirective,
+        AsyncCityValidatorDirective,
+        RoundtripValidatorDirective,
+    ],
+    templateUrl: './flight-edit.component.html',
+    styleUrls: ['./flight-edit.component.css']
 })
 export class FlightEditComponent implements OnInit {
   private route = inject(ActivatedRoute);
