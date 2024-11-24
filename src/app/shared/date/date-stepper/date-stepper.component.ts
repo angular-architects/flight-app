@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { addDays, subDays } from 'date-fns';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
