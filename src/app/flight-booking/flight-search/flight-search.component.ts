@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Flight } from '../../model/flight';
 import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
-import { CityPipe } from '../../shared/city.pipe';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { DateCvaDirective } from 'src/app/shared/date/date-cva.directive';
 
@@ -15,7 +14,6 @@ import { DateCvaDirective } from 'src/app/shared/date/date-cva.directive';
   imports: [
     CommonModule,
     FormsModule,
-    CityPipe,
     FlightCardComponent,
     DateCvaDirective,
   ],

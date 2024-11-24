@@ -5,11 +5,10 @@ import { CustomLogAppender } from '../shared/logger/custom-log-appender';
 import { AuthService } from '../shared/auth/auth.service';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+    selector: 'app-home',
+    imports: [CommonModule],
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   logger = inject(LoggerService);
