@@ -4,9 +4,9 @@ import {
   effect,
   inject,
   Injector,
-  linkedSignal,
+  resource,
+  ResourceStatus,
   signal,
-  untracked,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Flight } from '../../model/flight';
@@ -15,6 +15,7 @@ import { FlightService } from './flight.service';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-flight-search',
@@ -25,15 +26,47 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class FlightSearchComponent {
   private flightService = inject(FlightService);
 
-  flights = signal<Flight[]>([]);
+  from = signal('London');
+  to = signal('Paris');
+
+  criteria = computed(() => ({
+    from: this.from(),
+    to: this.to(),
+  }));
+
+  // Experimental
+  flightsResource = resource({
+    request: this.criteria,
+    loader: async (params) => {
+      if (params.previous.status === ResourceStatus.Idle) {
+        return undefined;
+      }
+
+      const request = this.criteria();
+      await wait(300 /* params.abortSignal */);
+      return await firstValueFrom(
+        this.flightService.find(
+          request.from,
+          request.to /* params.abortSignal */
+        )
+      );
+    },
+  });
+
+  error = this.flightsResource.error;
+  loading = this.flightsResource.isLoading();
+
+  flights = computed(() => this.flightsResource.value() ?? []);
   delayInMinutes = signal(0);
 
   delayedFlights = computed(() =>
     calcDelayed(this.flights(), this.delayInMinutes())
   );
 
-  from = signal('London');
-  to = signal('Paris');
+  // ------ BERL -----
+  //     ---- GRAZ -------
+  //          -------- MUC ------
+
   selectedFlight = signal<Flight | undefined>(undefined);
   message = signal('');
 
@@ -75,13 +108,7 @@ export class FlightSearchComponent {
   }
 
   search(): void {
-    // Reset properties
-    this.message.set('');
-    this.selectedFlight.set(undefined);
-
-    this.flightService.find(this.from(), this.to()).subscribe((flights) => {
-      this.flights.set(flights);
-    });
+    this.flightsResource.reload();
   }
 
   select(f: Flight): void {
@@ -118,4 +145,8 @@ function calcDelayed(flights: Flight[], delay: number): Flight[] {
   const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
   const newFlights = [newFlight, ...oldFlights.slice(1)];
   return newFlights;
+}
+
+function wait(delay: number) {
+  return new Promise((res) => setTimeout(res, 300));
 }
