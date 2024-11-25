@@ -9,17 +9,16 @@ import { CityValidatorDirective } from '../shared/validation/city-validator.dire
 import { AsyncCityValidatorDirective } from '../shared/validation/async-city-validator.directive';
 
 @Component({
-  selector: 'app-flight-edit',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ValidationErrorsComponent,
-    CityValidatorDirective,
-    AsyncCityValidatorDirective,
-  ],
-  templateUrl: './flight-edit.component.html',
-  styleUrls: ['./flight-edit.component.css'],
+    selector: 'app-flight-edit',
+    imports: [
+        CommonModule,
+        FormsModule,
+        ValidationErrorsComponent,
+        CityValidatorDirective,
+        AsyncCityValidatorDirective,
+    ],
+    templateUrl: './flight-edit.component.html',
+    styleUrls: ['./flight-edit.component.css']
 })
 export class FlightEditComponent {
   dialogRef = inject(MatDialogRef);

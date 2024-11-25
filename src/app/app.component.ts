@@ -6,16 +6,15 @@ import { ConfigService } from './shared/config.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
-  standalone: true,
-  imports: [
-    SidebarComponent,
-    NavbarComponent,
-    FlightSearchComponent,
-    NextFlightsModule,
-  ],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+    imports: [
+        SidebarComponent,
+        NavbarComponent,
+        FlightSearchComponent,
+        NextFlightsModule,
+    ],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Hello World!';

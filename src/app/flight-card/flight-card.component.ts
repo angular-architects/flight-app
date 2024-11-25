@@ -7,11 +7,10 @@ import { StatusToggleComponent } from '../status-toggle/status-toggle.component'
 import { FlightEditComponent } from '../flight-edit/flight-edit.component';
 
 @Component({
-  selector: 'app-flight-card',
-  standalone: true,
-  imports: [CommonModule, CityPipe, StatusToggleComponent],
-  templateUrl: './flight-card.component.html',
-  styleUrls: ['./flight-card.component.css'],
+    selector: 'app-flight-card',
+    imports: [CommonModule, CityPipe, StatusToggleComponent],
+    templateUrl: './flight-card.component.html',
+    styleUrls: ['./flight-card.component.css']
 })
 export class FlightCardComponent {
   private dialog = inject(MatDialog);
