@@ -29,7 +29,6 @@
 
 @if (flights.length > 0) {
   <table class="table table-condensed">
-    <thead>
       <tr>
         <th>Id</th>
         <th>From</th>
@@ -38,8 +37,6 @@
         <th>Delayed</th>
         <th></th>
       </tr>
-    </thead>
-    <tbody>
       @for (f of flights | statusFilter: onlyDelayed; track f.id) {
         <tr [class.selected]="f === selectedFlight">
           <td>{{ f.id }}</td>
@@ -56,7 +53,6 @@
           </td>
         </tr>
       }
-    </tbody>
   </table>
 }
 
