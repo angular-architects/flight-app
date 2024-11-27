@@ -21,8 +21,6 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "node_modules/@angular-architects/paper-design/assets/css/bootstrap.css",
-              "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
               "src/styles.css"
             ],
             "scripts": []
