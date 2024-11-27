@@ -10,7 +10,7 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
+  imports: [CommonModule, FormsModule, FlightCardComponent],
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
 })
