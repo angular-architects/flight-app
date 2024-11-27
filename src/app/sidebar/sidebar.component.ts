@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-sidebar-cmp',
   templateUrl: 'sidebar.component.html',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink],
 })
 export class SidebarComponent {}

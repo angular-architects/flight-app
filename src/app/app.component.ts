@@ -11,7 +11,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   imports: [
     SidebarComponent,
     NavbarComponent,
-    FlightSearchComponent,
     NextFlightsModule,
     RouterOutlet,
   ],
