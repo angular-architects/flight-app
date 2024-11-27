@@ -9,7 +9,7 @@ import { CityPipe } from '../shared/city.pipe';
 @Component({
   selector: 'app-flight-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, CityPipe],
+  imports: [CommonModule, FormsModule],
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
 })
