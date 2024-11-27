@@ -12,7 +12,7 @@ import { FlightBookingService } from '../flight-booking.service';
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [CommonModule, FormsModule, CityPipe, FlightCardComponent],
+  imports: [CommonModule, FormsModule, FlightCardComponent],
 })
 export class FlightSearchComponent {
   private flightService = inject(FlightService);
