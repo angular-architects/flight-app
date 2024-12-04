@@ -72,13 +72,11 @@
       "style": "css",
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "none",
-      "projectNameAndRootFormat": "derived"
+      "e2eTestRunner": "none"
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest",
-      "projectNameAndRootFormat": "derived"
+      "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
       "style": "css"
