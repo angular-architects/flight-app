@@ -27,7 +27,7 @@ import {
   tap,
 } from 'rxjs';
 
-// import {  } from '@demo/checkin/data';
+// import { CheckinService } from '@demo/checkin/data/checkin.service';
 
 @Component({
   selector: 'app-flight-search',
