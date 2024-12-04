@@ -15,7 +15,7 @@ import {
 import { addMinutes } from 'date-fns';
 import { Store } from '@ngrx/store';
 
-// import {  } from '@demo/checkin/data';
+// import { CheckinService } from '@demo/checkin/data/checkin.service';
 
 @Component({
   selector: 'app-flight-search',
