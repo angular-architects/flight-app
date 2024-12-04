@@ -6,7 +6,7 @@ import { BookingStore } from '../booking.store';
 import { FormUpdateDirective } from '@demo/shared/util-common';
 import { FlightFilter } from '@demo/ticketing/data';
 
-// import {  } from '@demo/checkin/data';
+// import { CheckinService } from '@demo/checkin/data/checkin.service';
 
 @Component({
   selector: 'app-flight-search',
