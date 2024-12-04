@@ -65,8 +65,6 @@
         "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
         "styles": [
           "@angular/material/prebuilt-themes/indigo-pink.css",
-          "node_modules/@angular-architects/paper-design/assets/css/bootstrap.css",
-          "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
           "apps/flights/src/styles.css"
         ],
         "scripts": []
