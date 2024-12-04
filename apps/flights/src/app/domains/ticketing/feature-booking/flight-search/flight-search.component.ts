@@ -2,7 +2,6 @@ import { Component, ElementRef, NgZone, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
-import { CityPipe } from '@demo/shared/ui-common';
 import { BookingStore } from '../booking.store';
 import { FormUpdateDirective } from '@demo/shared/util-common';
 
@@ -17,7 +16,6 @@ import { FormUpdateDirective } from '@demo/shared/util-common';
     FormUpdateDirective,
     CommonModule,
     FormsModule,
-    CityPipe,
     FlightCardComponent,
   ],
 })
