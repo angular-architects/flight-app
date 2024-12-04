@@ -15,7 +15,7 @@ import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// import {  } from '@demo/checkin/data';
+// import { CheckinService } from '@demo/checkin/data/checkin.service';
 
 @Component({
   selector: 'app-flight-search',
