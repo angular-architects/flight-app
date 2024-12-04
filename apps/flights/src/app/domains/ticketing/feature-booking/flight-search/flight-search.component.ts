@@ -16,7 +16,7 @@ import { addMinutes } from 'date-fns';
 import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 import { combineLatest, debounceTime, filter, switchMap } from 'rxjs';
 
-// import {  } from '@demo/checkin/data';
+// import { CheckinService } from '@demo/checkin/data/checkin.service';
 
 @Component({
   selector: 'app-flight-search',
