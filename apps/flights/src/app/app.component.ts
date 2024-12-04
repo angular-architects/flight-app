@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
   NavigationCancel,
@@ -15,7 +15,7 @@ import { ConfigService } from './domains/shared/util-config';
 
 @Component({
   standalone: true,
-  imports: [SidebarComponent, NavbarComponent, RouterOutlet, AsyncPipe, NgIf],
+  imports: [SidebarComponent, NavbarComponent, RouterOutlet, AsyncPipe],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
