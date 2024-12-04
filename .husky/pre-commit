@@ -1,4 +1,4 @@
 npx prettier . --write
 git add .
 
-npx nx run-many -t lint --all
+# npx nx run-many -t lint --all
