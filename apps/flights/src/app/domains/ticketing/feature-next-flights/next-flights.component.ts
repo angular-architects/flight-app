@@ -3,6 +3,7 @@ import { NextFlightsService } from './next-flights.service';
 
 @Component({
   selector: 'app-next-flights',
+  standalone: false,
   templateUrl: './next-flights.component.html',
   styleUrls: ['./next-flights.component.css'],
 })
