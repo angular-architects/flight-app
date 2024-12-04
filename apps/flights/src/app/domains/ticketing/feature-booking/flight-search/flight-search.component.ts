@@ -2,9 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
-import { CityPipe } from '@demo/shared/ui-common';
 import { Flight, FlightService } from '@demo/ticketing/data';
-import { UiCommonComponent } from '@demo/ui-common';
 
 // import {  } from '@demo/checkin/data';
 
@@ -13,13 +11,7 @@ import { UiCommonComponent } from '@demo/ui-common';
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [
-    CommonModule,
-    FormsModule,
-    CityPipe,
-    FlightCardComponent,
-    UiCommonComponent,
-  ],
+  imports: [CommonModule, FormsModule, FlightCardComponent],
 })
 export class FlightSearchComponent {
   from = 'Paris';
