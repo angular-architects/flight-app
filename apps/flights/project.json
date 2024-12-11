@@ -12,7 +12,7 @@
         "outputPath": "dist/apps/flights",
         "index": "apps/flights/src/index.html",
         "browser": "apps/flights/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [],
         "tsConfig": "apps/flights/tsconfig.app.json",
         "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
         "styles": [

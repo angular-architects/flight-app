@@ -1,11 +1,18 @@
-import { Component, ElementRef, NgZone, inject } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  NgZone,
+  computed,
+  inject,
+  signal,
+  resource,
+  effect,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
-
-// import { CheckinService } from '@demo/checkin/data/checkin.service';
 
 @Component({
   selector: 'app-flight-search',
@@ -20,28 +27,84 @@ export class FlightSearchComponent {
 
   private flightService = inject(FlightService);
 
-  from = 'Paris';
-  to = 'London';
-  flights: Array<Flight> = [];
+  from = signal('Paris');
+  to = signal('London');
+  flightRoute = computed(() => this.from() + ' to ' + this.to());
 
-  basket: Record<number, boolean> = {
+  criteria = computed(() => ({
+    from: this.from(),
+    to: this.to(),
+  }));
+
+  flightResource = resource({
+    request: this.criteria,
+    loader: async (param) => {
+      const c = param.request;
+      await delayPromise(300);
+      return await this.flightService.findPromise(
+        c.from,
+        c.to /*param.abortSignal*/
+      );
+    },
+  });
+
+  //
+  // This resource can only be triggered by the
+  // reload method
+  //
+  // flightResource = resource({
+  //   loader: async (param) => {
+  //     if (param.previous.status === ResourceStatus.Idle) {
+  //       return;
+  //     }
+  //     const c = this.criteria();
+  //     await delayPromise(300);
+  //     return await this.flightService.findPromise(c.from, c.to, /*param.abortSignal*/);
+  //   }
+  // });
+
+  flights = computed(() => this.flightResource.value() ?? []);
+
+  errors = this.flightResource.error;
+  isLoading = this.flightResource.isLoading;
+
+  delayInMinutes = signal(0);
+
+  flightsWithDelay = computed(() =>
+    this.toFlightsWithDelays(this.flights(), this.delayInMinutes())
+  );
+
+  basket = signal<Record<number, boolean>>({
     3: true,
     5: true,
-  };
+  });
 
-  search(): void {
-    this.flightService.find(this.from, this.to).subscribe({
-      next: (flights) => {
-        this.flights = flights;
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
+  selected = computed(() => this.flights().filter((f) => this.basket()[f.id]));
+
+  constructor() {
+    effect(() => {
+      this.logStuff();
     });
   }
 
+  private logStuff() {
+    console.log('from', this.from());
+    console.log('to', this.to());
+  }
+
+  search(): void {
+    this.flightResource.reload();
+  }
+
+  updateBasket(fid: number, selected: boolean): void {
+    this.basket.update((b) => ({
+      ...b,
+      [fid]: selected,
+    }));
+  }
+
   delay(): void {
-    this.flights = this.toFlightsWithDelays(this.flights, 15);
+    this.delayInMinutes.update((m) => m + 15);
   }
 
   toFlightsWithDelays(flights: Flight[], delay: number): Flight[] {
@@ -71,4 +134,8 @@ export class FlightSearchComponent {
 
     return null;
   }
+}
+
+async function delayPromise(delay: number) {
+  await new Promise((resolve) => setTimeout(resolve, delay));
 }
