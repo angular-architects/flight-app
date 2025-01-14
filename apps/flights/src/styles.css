@@ -1,3 +1,29 @@
+.table-striped {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table-striped th,
+.table-striped td {
+  padding: 12px 15px;
+  border-top: 1px solid #dee2e6;
+}
+
+.table-striped th {
+  background-color: #f8f9fa;
+  color: #343a40;
+  font-weight: bold;
+}
+
+.table-striped td {
+  vertical-align: middle;
+}
+
 .title {
   font-size: 1.5rem;
   font-weight: bold;
