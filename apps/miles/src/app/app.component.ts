@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '@flight-demo/util-auth';
+import { connectRouter } from './mf-utils';
 
 @Component({
   selector: 'flight-demo-root',
@@ -16,6 +17,7 @@ export class AppComponent {
   authService = inject(AuthService);
 
   constructor() {
+    connectRouter();
     this.authService.userName.subscribe((userName) => {
       console.log('userName', userName);
     });

@@ -5,16 +5,16 @@ import { NextLevelComponent } from './next-level/next-level.component';
 
 export const APP_ROUTES: Routes = [
   {
-    path: '',
+    path: 'miles',
     pathMatch: 'full',
     component: HomeComponent,
   },
   {
-    path: 'miles-list',
+    path: 'miles/miles-list',
     component: MilesComponent,
   },
   {
-    path: 'next-level',
+    path: 'miles/next-level',
     component: NextLevelComponent,
   },
 ];

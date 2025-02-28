@@ -6,11 +6,11 @@ import { BasketComponent } from './shell/basket/basket.component';
 import { NotFoundComponent } from './shell/not-found/not-found.component';
 import { ConfigService } from './domains/shared/util-config';
 import { FeatureManageComponent } from './domains/checkin/feature-manage/feature-manage.component';
-import { loadRemoteModule } from '@angular-architects/native-federation';
 import {
   WrapperComponent,
   WrapperConfig,
 } from './domains/shared/util-federation-tools';
+import { startsWith } from './mf-utils';
 
 export const APP_ROUTES: Routes = [
   {
@@ -28,8 +28,15 @@ export const APP_ROUTES: Routes = [
     outlet: 'aux',
   },
   {
-    path: 'miles',
-    loadChildren: () => loadRemoteModule('miles', './Routes'),
+    matcher: startsWith('miles'),
+    component: WrapperComponent,
+    data: {
+      config: {
+        remoteName: 'miles',
+        exposedModule: './web-comp',
+        elementName: 'miles-app',
+      } as WrapperConfig,
+    },
   },
   {
     path: 'svelte-app',
