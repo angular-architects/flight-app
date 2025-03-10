@@ -1,3 +1,49 @@
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+.table > tr > th,
+.table > tr > th,
+.table > tr > th,
+.table > tr > td,
+.table > tr > td,
+.table > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  text-align: left;
+}
+
+td {
+  border-top: 1px solid #ddd;
+}
+
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+
+.table > caption  > tr:first-child > th,
+.table > colgroup > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption > tr:first-child > td,
+.table > colgroup > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+
+.table > tbody  {
+  border-top: 2px solid #ddd;
+}
+
+.table .table {
+  background-color: #fff;
+}
+
 .title {
   font-size: 1.5rem;
   font-weight: bold;
