@@ -5,7 +5,6 @@ import {
   computed,
   inject,
   signal,
-  resource,
   effect,
 } from '@angular/core';
 // import { rxResource } from '@angular/core/rxjs-interop';
@@ -14,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
+import { debounceSignal } from '@demo/shared/util-common';
 
 @Component({
   selector: 'app-flight-search',
@@ -37,17 +37,9 @@ export class FlightSearchComponent {
     to: this.to(),
   }));
 
-  flightResource = resource({
-    request: this.criteria,
-    loader: async (param) => {
-      const c = param.request;
-      return await this.flightService.findPromise(
-        c.from,
-        c.to
-        /*param.abortSignal*/
-      );
-    },
-  });
+  debouncedCriteria = debounceSignal(this.criteria, 300);
+
+  flightResource = this.flightService.createResource(this.debouncedCriteria);
 
   // rxResource Alternative
   // rxFlightResource = rxResource({
