@@ -48,21 +48,6 @@ export class FlightSearchComponent {
     },
   });
 
-  //
-  // This resource can only be triggered by the
-  // reload method
-  //
-  // flightResource = resource({
-  //   loader: async (param) => {
-  //     if (param.previous.status === ResourceStatus.Idle) {
-  //       return;
-  //     }
-  //     const c = this.criteria();
-  //     await delayPromise(300);
-  //     return await this.flightService.findPromise(c.from, c.to, /*param.abortSignal*/);
-  //   }
-  // });
-
   flights = computed(() => this.flightResource.value() ?? []);
 
   errors = this.flightResource.error;
