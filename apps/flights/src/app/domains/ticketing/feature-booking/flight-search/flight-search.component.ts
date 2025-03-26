@@ -8,6 +8,7 @@ import {
   resource,
   effect,
 } from '@angular/core';
+// import { rxResource } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
@@ -40,13 +41,25 @@ export class FlightSearchComponent {
     request: this.criteria,
     loader: async (param) => {
       const c = param.request;
-      await delayPromise(300);
       return await this.flightService.findPromise(
         c.from,
-        c.to /*param.abortSignal*/
+        c.to
+        /*param.abortSignal*/
       );
     },
   });
+
+  // rxResource Alternative
+  // rxFlightResource = rxResource({
+  //   request: this.criteria,
+  //   loader: (param) => {
+  //     const c = param.request;
+  //     return this.flightService.find(
+  //       c.from,
+  //       c.to
+  //     );
+  //   },
+  // });
 
   flights = computed(() => this.flightResource.value() ?? []);
 
@@ -119,8 +132,4 @@ export class FlightSearchComponent {
 
     return null;
   }
-}
-
-async function delayPromise(delay: number) {
-  await new Promise((resolve) => setTimeout(resolve, delay));
 }
