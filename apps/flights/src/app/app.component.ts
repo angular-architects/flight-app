@@ -13,6 +13,7 @@ import { SidebarComponent } from './shell/sidebar/sidebar.component';
 import { NavbarComponent } from './shell/navbar/navbar.component';
 import { ConfigService } from './domains/shared/util-config';
 import { AuthService } from '@flight-demo/util-auth';
+import { connectShellRouter } from './mf-utils';
 
 @Component({
   standalone: true,
@@ -31,6 +32,8 @@ export class AppComponent {
 
   constructor() {
     this.auth.login('Max Mustermann');
+
+    connectShellRouter();
 
     // TODO: In a later lab, we will assure that
     //  loading did happen _before_ we use the config!
