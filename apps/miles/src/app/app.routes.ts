@@ -5,6 +5,11 @@ import { NextLevelComponent } from './next-level/next-level.component';
 
 export const APP_ROUTES: Routes = [
   {
+    path: '',
+    redirectTo: 'miles',
+    pathMatch: 'full',
+  },
+  {
     path: 'miles',
     pathMatch: 'full',
     component: HomeComponent,
