@@ -2,9 +2,9 @@
   "name": "flights",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "generators": {},
   "sourceRoot": "apps/flights/src",
   "prefix": "app",
+  "generators": {},
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -56,7 +56,8 @@
           "buildTarget": "flights:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "continuous": true
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
