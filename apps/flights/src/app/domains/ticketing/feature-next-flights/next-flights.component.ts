@@ -1,3 +1,5 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
+
 import { Component, inject } from '@angular/core';
 import { NextFlightsService } from './next-flights.service';
 
