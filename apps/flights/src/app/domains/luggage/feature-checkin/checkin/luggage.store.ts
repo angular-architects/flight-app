@@ -1,37 +1,47 @@
-import {
-  updateState,
-  payload,
-  withDevtools,
-  withRedux,
-} from '@angular-architects/ngrx-toolkit';
 import { inject } from '@angular/core';
 import { Luggage, LuggageService } from '@demo/luggage/data';
-import { signalStore, withState } from '@ngrx/signals';
-import { switchMap, tap } from 'rxjs';
+import { signalStore, withProps, withState } from '@ngrx/signals';
+import { mapResponse } from '@ngrx/operators';
+import { switchMap } from 'rxjs';
+import { withReducer, withEffects, on, Events } from '@ngrx/signals/events';
+import { checkinEvents } from './checkin.events';
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
 
 export const LuggageStore = signalStore(
   { providedIn: 'root' },
-  withState({ luggage: [] as Luggage[] }),
-  withRedux({
-    actions: {
-      load: payload<{ passengerId: number }>(),
-      loaded: payload<{ luggage: Luggage[] }>(),
-    },
-    reducer(actions, on) {
-      on(actions.loaded, (state, action) => {
-        const luggage = action.luggage;
-        updateState(state, 'flights loaded', { luggage });
-      });
-    },
-    effects(actions, create) {
-      const luggageService = inject(LuggageService);
-      return {
-        load$: create(actions.load).pipe(
-          switchMap((a) => luggageService.load(a.passengerId)),
-          tap((luggage) => actions.loaded({ luggage }))
-        ),
-      };
-    },
+  withState({
+    loading: false,
+    luggage: [] as Luggage[],
+    error: '',
   }),
+  withProps(() => ({
+    events: inject(Events),
+    luggageService: inject(LuggageService),
+  })),
+  withReducer(
+    on(checkinEvents.loadLuggage, () => {
+      return { luggage: [], loading: true };
+    }),
+    on(checkinEvents.loadLuggageSuccess, (event) => {
+      return { luggage: event.payload.luggage, loading: false };
+    }),
+    on(checkinEvents.loadLuggageError, (event) => {
+      return { error: event.payload.error, loading: false };
+      // Updater for projecting old state to new state
+      // return (state) => state.error + '\n' + payload.error;
+    })
+  ),
+  withEffects((store) => ({
+    loadLuggage$: store.events.on(checkinEvents.loadLuggage).pipe(
+      switchMap((event) =>
+        store.luggageService.load(event.payload.passengerId)
+      ),
+      mapResponse({
+        next: (luggage) => checkinEvents.loadLuggageSuccess({ luggage }),
+        error: (error) =>
+          checkinEvents.loadLuggageError({ error: String(error) }),
+      })
+    ),
+  })),
   withDevtools('checkin')
 );

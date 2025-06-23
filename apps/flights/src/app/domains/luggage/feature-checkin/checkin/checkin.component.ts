@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { LuggageCardComponent } from '@demo/luggage/ui-common';
 import { LuggageStore } from './luggage.store';
+import { Dispatcher } from '@ngrx/signals/events';
+import { checkinEvents } from './checkin.events';
 
 @Component({
   selector: 'app-checkin',
@@ -13,9 +15,14 @@ import { LuggageStore } from './luggage.store';
 })
 export class CheckinComponent implements OnInit {
   luggageStore = inject(LuggageStore);
+  dispatcher = inject(Dispatcher);
   luggage = this.luggageStore.luggage;
 
   ngOnInit(): void {
-    this.luggageStore.load({ passengerId: 17 });
+    this.dispatcher.dispatch(
+      checkinEvents.loadLuggage({
+        passengerId: 17,
+      })
+    );
   }
 }
