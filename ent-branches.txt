@@ -1,6 +1,15 @@
+lab501-sheriff
+lab502-mf-routes-solution
+lab502-mf-starter
+lab502a-loading-mf
+lab502b-mf-sharing
+lab502c-mf-routes
+lab502d-mf-routes-solution
+lab502e-mf-loading-components
+lab502f-mf-multi
+lab503-signals-starter
 lab503a-signals
 lab503b-change-detection
-lab503b.1-local-change-detection
 lab503c-computed-effects
 lab503c0-refactor-delay
 lab503d-computed2
@@ -9,8 +18,6 @@ lab503e-rxjs-interop
 lab503f-signal-inputs
 lab504-signal-store-starter
 lab504a-signal-store
-lab504b-rx-method
-lab504c-entities
 lab504d-normalization
 lab504e-custom
 lab504f-custom2

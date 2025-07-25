@@ -3,7 +3,7 @@
 set -e
 
 BRANCH_LIST="ent-branches.txt"
-FIXED_COMMIT="a3dd3b8874e71a0396"  # der zu cherry-pickende Commit
+FIXED_COMMIT="786f548"  # der zu cherry-pickende Commit
 
 while read -r BRANCH; do
   if [[ -z "$BRANCH" ]]; then
@@ -20,7 +20,7 @@ while read -r BRANCH; do
   fi
 
   echo "===> Cherry-Pick von $FIXED_COMMIT"
-  git cherry-pick "$FIXED_COMMIT"
+  git cherry-pick "$FIXED_COMMIT" 
 
 done < "$BRANCH_LIST"
 
