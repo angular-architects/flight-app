@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-architects/module-federation": "^18.0.6",
+    "@angular-architects/module-federation": "^20.0.0",
     "@angular-architects/module-federation-tools": "^20.0.0",
     "@angular-architects/native-federation": "^20.0.0",
     "@angular-architects/ngrx-toolkit": "^19.0.0",
@@ -72,7 +72,7 @@
     "@swc/helpers": "0.5.13",
     "@types/jasmine": "~4.3.1",
     "@types/jest": "30.0.0",
-    "@types/node": "^18.16.9",
+    "@types/node": "^20.19.0",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "@typescript-eslint/utils": "^7.16.0",
@@ -98,7 +98,8 @@
     "pretty-quick": "^3.1.3",
     "ts-jest": "^29.4.0",
     "ts-node": "10.9.1",
-    "typescript": "~5.8.0"
+    "typescript": "~5.8.0",
+    "vite": "^7.0.6"
   },
   "overrides": {
     "@angular/common": "20.1.3",
