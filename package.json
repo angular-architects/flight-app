@@ -13,9 +13,9 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-architects/module-federation": "^19.0.0",
-    "@angular-architects/module-federation-tools": "^19.0.0",
-    "@angular-architects/native-federation": "^19.0.0",
+    "@angular-architects/module-federation": "^20.0.0",
+    "@angular-architects/module-federation-tools": "^20.0.0",
+    "@angular-architects/native-federation": "^20.0.0",
     "@angular-architects/ngrx-toolkit": "^19.0.0",
     "@angular-architects/paper-design": "^1.0.4",
     "@angular/animations": "19.2.9",
