@@ -23,9 +23,11 @@
       "dom"
     ],
     "paths": {
-      "@flight-demo/util-auth": ["libs/util-auth/src/index.ts"],
       "@demo/ui-common": [
         "libs/ui-common/src/index.ts"
+      ],
+      "@flight-demo/util-auth": [
+        "libs/util-auth/src/index.ts"
       ]
     },
     "rootDir": "."
