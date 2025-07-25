@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+npx nx format --write --all
+git add .
 
-npx pretty-quick --staged
+# nx run-many -t lint --all
