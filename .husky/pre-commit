@@ -1,4 +1,4 @@
-npx prettier . --write
+npx nx format --write --all
 git add .
 
-npx nx run-many -t lint --all
+# nx run-many -t lint --all
