@@ -13,14 +13,13 @@ while read -r BRANCH; do
   echo "===> Wechsel zu $BRANCH"
   git checkout "$BRANCH"
 
-  # Prüfen, ob Commit schon im Branch enthalten ist
-  if git cherry "$BRANCH" "$FIXED_COMMIT" | grep -q '^-'; then
-    echo "⏩ Commit bereits in $BRANCH – überspringe."
-    continue
-  fi
-
   echo "===> Cherry-Pick von $FIXED_COMMIT"
-  git cherry-pick "$FIXED_COMMIT" 
+  # git cherry-pick "$FIXED_COMMIT" 
+  cp /tmp/package.json package.json
+  cp /tmp/pre-commit .husky/pre-commit 
+  git add .
+  git commit -m "chore(ent): update to nx 21 and ng 20"
+
 
 done < "$BRANCH_LIST"
 
