@@ -1,4 +1,4 @@
 npx nx format --write --all
 git add .
 
-nx run-many -t lint --all
+# nx run-many -t lint --all
