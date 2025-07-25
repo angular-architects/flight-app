@@ -23,7 +23,9 @@
       "dom"
     ],
     "paths": {
-      "@demo/*": ["apps/flights/src/app/domains/*"]
+      "@demo/*": [
+        "apps/flights/src/app/domains/*"
+      ]
     },
     "rootDir": "."
   },
