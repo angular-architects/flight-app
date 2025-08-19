@@ -5,7 +5,17 @@
   "projects": {
     "flights": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true
+        },
+        "@schematics/angular:directive": {
+          "standalone": true
+        },
+        "@schematics/angular:pipe": {
+          "standalone": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -15,14 +25,12 @@
           "options": {
             "outputPath": "dist/flights",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "node_modules/@angular-architects/paper-design/assets/css/bootstrap.css",
-              "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -44,9 +52,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
@@ -58,10 +64,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "flights:build:production"
+              "buildTarget": "flights:build:production"
             },
             "development": {
-              "browserTarget": "flights:build:development"
+              "buildTarget": "flights:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -69,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n",
           "options": {
-            "browserTarget": "flights:build"
+            "buildTarget": "flights:build"
           }
         },
         "test": {
