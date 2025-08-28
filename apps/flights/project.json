@@ -7,12 +7,60 @@
   "prefix": "app",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:application",
+      "executor": "@angular-architects/native-federation:build",
+      "options": {},
+      "configurations": {
+        "production": {
+          "target": "flights:esbuild:production"
+        },
+        "development": {
+          "target": "flights:esbuild:development",
+          "dev": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "flights:serve-original:development",
+        "rebuildDelay": 0,
+        "dev": true,
+        "port": 0
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "flights:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/flights/tsconfig.spec.json",
+        "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
+        "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/flights/src/styles.css"
+        ],
+        "scripts": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/flights/**/*.ts", "apps/flights/**/*.html"]
+      }
+    },
+    "esbuild": {
+      "executor": "@angular/build:application",
       "options": {
         "outputPath": "dist/apps/flights",
         "index": "apps/flights/src/index.html",
         "browser": "apps/flights/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": ["zone.js", "es-module-shims"],
         "tsConfig": "apps/flights/tsconfig.app.json",
         "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
         "styles": [
@@ -46,41 +94,19 @@
       },
       "defaultConfiguration": "production"
     },
-    "serve": {
+    "serve-original": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "flights:build:production"
+          "buildTarget": "flights:esbuild:production"
         },
         "development": {
-          "buildTarget": "flights:build:development"
+          "buildTarget": "flights:esbuild:development"
         }
       },
-      "defaultConfiguration": "development"
-    },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "defaultConfiguration": "development",
       "options": {
-        "browserTarget": "flights:build"
-      }
-    },
-    "test": {
-      "executor": "@angular-devkit/build-angular:karma",
-      "options": {
-        "polyfills": ["zone.js", "zone.js/testing"],
-        "tsConfig": "apps/flights/tsconfig.spec.json",
-        "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
-        "styles": [
-          "@angular/material/prebuilt-themes/indigo-pink.css",
-          "apps/flights/src/styles.css"
-        ],
-        "scripts": []
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/flights/**/*.ts", "apps/flights/**/*.html"]
+        "port": 4200
       }
     }
   }
