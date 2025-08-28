@@ -1,3 +1,5 @@
+import { computed, inject } from '@angular/core';
+import { tapResponse } from '@ngrx/operators';
 import {
   patchState,
   signalStore,
@@ -5,96 +7,104 @@ import {
   withComputed,
   withHooks,
   withMethods,
+  withProps,
   withState,
 } from '@ngrx/signals';
-import { Flight, FlightService } from '../data';
-import { computed, inject } from '@angular/core';
-import { addMinutes } from 'date-fns';
+import {
+  entityConfig,
+  setAllEntities,
+  updateEntity,
+  withEntities,
+} from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { withEntities, setAllEntities } from '@ngrx/signals/entities';
-
-import { debounceTime, filter, switchMap, tap } from 'rxjs';
+import { addMinutes } from 'date-fns';
+import { debounceTime, filter, pipe, switchMap } from 'rxjs';
+import { Flight, FlightService } from '../data';
 
 export type Criteria = {
   from: string;
   to: string;
+  urgent: boolean;
 };
+
+export interface BookingState {
+  filter: Criteria;
+  basket: Record<number, boolean>;
+}
+
+export const initialBookingState: BookingState = {
+  filter: {
+    from: 'Graz',
+    to: 'Hamburg',
+    urgent: false,
+  },
+  basket: {
+    3: true,
+    5: true,
+  },
+};
+
+export const flightEntity = entityConfig({
+  entity: type<Flight>(),
+  collection: 'flight',
+});
 
 export const BookingStore = signalStore(
   { providedIn: 'root' },
-  withState({
-    from: 'Graz',
-    to: 'Hamburg',
-    basket: {} as Record<number, boolean>,
-  }),
-  withEntities({ entity: type<Flight>(), collection: 'flight' }),
-  withComputed(({ basket, from, to, flightEntities }) => ({
+  // State
+  withState(initialBookingState),
+  withEntities(flightEntity),
+  withProps(() => ({
+    flightService: inject(FlightService),
+  })),
+  withComputed(({ basket, flightEntities }) => ({
     selectedFlights: computed(() =>
       flightEntities().filter((f) => basket()[f.id])
     ),
-    criteria: computed(() => ({ from: from(), to: to() })),
   })),
-  withMethods((state) => {
-    const flightService = inject(FlightService);
-
-    return {
-      updateCriteria(from: string, to: string): void {
-        patchState(state, { from, to });
-      },
-      updateBasket(flightId: number, selected: boolean): void {
-        patchState(state, ({ basket }) => ({
-          basket: {
-            ...basket,
-            [flightId]: selected,
+  // Updaters
+  withMethods((store) => ({
+    setFilter: (filter: Criteria) => patchState(store, { filter }),
+    updateBasket: (flightId: number, selected: boolean) =>
+      patchState(store, ({ basket }) => ({
+        basket: {
+          ...basket,
+          [flightId]: selected,
+        },
+      })),
+    setFlights: (flights: Flight[]) =>
+      patchState(store, setAllEntities(flights, flightEntity)),
+    addFlightDelay: (flight: Flight, delayMin = 15) =>
+      patchState(
+        store,
+        updateEntity(
+          {
+            id: flight.id,
+            changes: {
+              date: addMinutes(new Date(flight.date), delayMin).toISOString(),
+              delayed: true,
+            },
           },
-        }));
-      },
-      delay(): void {
-        const oldFlights = state.flightEntities();
-        const oldFlight = oldFlights[0];
-        const oldDate = new Date(oldFlight.date);
-
-        const newDate = addMinutes(oldDate, 15);
-        const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
-        const newFlights = [newFlight, ...oldFlights.slice(1)];
-
-        patchState(state, setAllEntities(newFlights, { collection: 'flight' }));
-      },
-      load(): void {
-        if (!state.from() || !state.to()) {
-          return;
-        }
-
-        flightService.find(state.from(), state.to()).subscribe({
-          next: (flights) => {
-            patchState(
-              state,
-              setAllEntities(flights, { collection: 'flight' })
-            );
-          },
-          error: (errResp) => {
-            console.error('Error loading flights', errResp);
-          },
-        });
-      },
-      connectCriteria: rxMethod<Criteria>((c$) =>
-        c$.pipe(
-          filter((c) => c.from.length >= 3 && c.to.length >= 3),
-          debounceTime(300),
-          switchMap((c) => flightService.find(c.from, c.to)),
-          tap((flights) =>
-            patchState(state, setAllEntities(flights, { collection: 'flight' }))
-          )
+          flightEntity
         )
       ),
-    };
-  }),
+  })),
+  // Side-Effects
+  withMethods((store) => ({
+    loadFlights: rxMethod<Criteria>(
+      pipe(
+        filter((c) => c.from.length >= 3 && c.to.length >= 3),
+        debounceTime(300),
+        switchMap((c) => store.flightService.find(c.from, c.to, c.urgent)),
+        tapResponse({
+          next: (flights) => store.setFlights(flights),
+          error: (errResp) => console.error('Error loading flights', errResp),
+        })
+      )
+    ),
+  })),
   withHooks({
-    onInit({ connectCriteria, criteria }) {
-      connectCriteria(criteria);
-    },
-    onDestroy(store) {
-      console.log('destroy!', store);
-    },
+    onInit: ({ loadFlights, filter }) => loadFlights(filter),
+    onDestroy: (store) => console.log('destroy!', store),
   })
 );

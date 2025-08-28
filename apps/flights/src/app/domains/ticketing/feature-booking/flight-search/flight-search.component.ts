@@ -2,10 +2,8 @@ import { Component, ElementRef, NgZone, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
-import { BookingStore } from '../booking.store';
+import { BookingStore, Criteria } from '../booking.store';
 import { FormUpdateDirective } from '@demo/shared/util-common';
-
-// import { CheckinService } from '@demo/checkin/data/checkin.service';
 
 @Component({
   selector: 'app-flight-search',
@@ -22,27 +20,31 @@ import { FormUpdateDirective } from '@demo/shared/util-common';
 export class FlightSearchComponent {
   private element = inject(ElementRef);
   private zone = inject(NgZone);
-
   private store = inject(BookingStore);
 
-  from = this.store.from;
-  to = this.store.to;
-  flights = this.store.flightEntities;
-
+  filter = this.store.filter;
   basket = this.store.basket;
+  flights = this.store.flightEntities;
   selectedFlights = this.store.selectedFlights;
 
-  async search(): Promise<void> {
-    this.store.updateCriteria(this.from(), this.to());
-    await this.store.load();
+  search(): void {
+    // this.store.setFilter(this.filter());
+    // this.store.loadFlights()
   }
 
-  delay(): void {
-    this.store.delay();
+  delay(flight = this.flights()[0]): void {
+    if (flight) {
+      console.log(flight);
+      this.store.addFlightDelay(flight);
+    }
   }
 
-  update(update: { from: string; to: string }) {
-    this.store.updateCriteria(update.from, update.to);
+  updateFilter(filter: Criteria) {
+    this.store.setFilter({
+      ...filter,
+      urgent: filter.urgent ?? false,
+    });
+    console.log(this.store.filter());
   }
 
   updateBasket(flightId: number, selected: boolean): void {
