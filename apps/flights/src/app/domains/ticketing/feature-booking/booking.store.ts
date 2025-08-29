@@ -104,7 +104,7 @@ export const BookingStore = signalStore(
     ),
   })),
   withHooks({
-    onInit: ({ loadFlights, filter }) => loadFlights(filter),
+    // onInit: ({ loadFlights, filter }) => loadFlights(filter),
     onDestroy: (store) => console.log('destroy!', store),
   })
 );

@@ -28,8 +28,7 @@ export class FlightSearchComponent {
   selectedFlights = this.store.selectedFlights;
 
   search(): void {
-    // this.store.setFilter(this.filter());
-    // this.store.loadFlights()
+    this.store.loadFlights(this.store.filter());
   }
 
   delay(flight = this.flights()[0]): void {
