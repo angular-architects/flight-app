@@ -1,12 +1,10 @@
 import { computed, inject } from '@angular/core';
-import { tapResponse } from '@ngrx/operators';
+import { mapResponse } from '@ngrx/operators';
 import {
-  patchState,
   signalStore,
   type,
   withComputed,
   withHooks,
-  withMethods,
   withProps,
   withState,
 } from '@ngrx/signals';
@@ -16,10 +14,11 @@ import {
   updateEntity,
   withEntities,
 } from '@ngrx/signals/entities';
-import { rxMethod } from '@ngrx/signals/rxjs-interop';
+import { Events, on, withEffects, withReducer } from '@ngrx/signals/events';
 import { addMinutes } from 'date-fns';
-import { debounceTime, filter, pipe, switchMap } from 'rxjs';
+import { debounceTime, filter, map, switchMap, tap } from 'rxjs';
 import { Flight, FlightService } from '../data';
+import { flightEvents } from './flight.events';
 
 export type Criteria = {
   from: string;
@@ -56,55 +55,60 @@ export const BookingStore = signalStore(
   withEntities(flightEntity),
   withProps(() => ({
     flightService: inject(FlightService),
+    events: inject(Events),
   })),
   withComputed(({ basket, flightEntities }) => ({
     selectedFlights: computed(() =>
       flightEntities().filter((f) => basket()[f.id])
     ),
   })),
-  // Updaters
-  withMethods((store) => ({
-    setFilter: (filter: Criteria) => patchState(store, { filter }),
-    updateBasket: (flightId: number, selected: boolean) =>
-      patchState(store, ({ basket }) => ({
+  // Updater
+  withReducer(
+    on(flightEvents.flightFilterChanged, ({ payload: filter }) => ({ filter })),
+    on(flightEvents.flightsChanged, ({ payload: flights }) =>
+      setAllEntities(flights, flightEntity)
+    ),
+    on(
+      flightEvents.basketUpdated,
+      ({ payload: { flightId: id, selected } }, { basket }) => ({
         basket: {
           ...basket,
-          [flightId]: selected,
+          [id]: selected,
         },
-      })),
-    setFlights: (flights: Flight[]) =>
-      patchState(store, setAllEntities(flights, flightEntity)),
-    addFlightDelay: (flight: Flight, delayMin = 15) =>
-      patchState(
-        store,
-        updateEntity(
-          {
-            id: flight.id,
-            changes: {
-              date: addMinutes(new Date(flight.date), delayMin).toISOString(),
-              delayed: true,
-            },
+      })
+    ),
+    on(flightEvents.flightDelayTriggered, ({ payload: { flight, delayMin } }) =>
+      updateEntity(
+        {
+          id: flight.id,
+          changes: {
+            date: addMinutes(
+              new Date(flight.date),
+              delayMin || 15
+            ).toISOString(),
+            delayed: true,
           },
-          flightEntity
-        )
-      ),
-  })),
-  // Side-Effects
-  withMethods((store) => ({
-    loadFlights: rxMethod<Criteria>(
-      pipe(
-        filter((c) => c.from.length >= 3 && c.to.length >= 3),
-        debounceTime(300),
-        switchMap((c) => store.flightService.find(c.from, c.to, c.urgent)),
-        tapResponse({
-          next: (flights) => store.setFlights(flights),
-          error: (errResp) => console.error('Error loading flights', errResp),
-        })
+        },
+        flightEntity
       )
+    )
+  ),
+  // Side-Effects
+  withEffects((store) => ({
+    loadFlights$: store.events.on(flightEvents.flightSearchTriggered).pipe(
+      map(() => store.filter()),
+      filter((c) => c.from.length >= 3 && c.to.length >= 3),
+      debounceTime(300),
+      switchMap((c) => store.flightService.find(c.from, c.to, c.urgent)),
+      tap(() => console.log('Flux!')),
+      mapResponse({
+        next: (flights) => flightEvents.flightsChanged(flights),
+        error: (errResp) =>
+          flightEvents.flightsChangedError({ error: errResp }),
+      })
     ),
   })),
   withHooks({
-    // onInit: ({ loadFlights, filter }) => loadFlights(filter),
     onDestroy: (store) => console.log('destroy!', store),
   })
 );

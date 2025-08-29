@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { BookingStore, Criteria } from '../booking.store';
 import { FormUpdateDirective } from '@demo/shared/util-common';
+import { injectDispatch } from '@ngrx/signals/events';
+import { flightEvents } from '../flight.events';
 
 @Component({
   selector: 'app-flight-search',
@@ -21,6 +23,7 @@ export class FlightSearchComponent {
   private element = inject(ElementRef);
   private zone = inject(NgZone);
   private store = inject(BookingStore);
+  private flightEvents = injectDispatch(flightEvents);
 
   filter = this.store.filter;
   basket = this.store.basket;
@@ -28,24 +31,24 @@ export class FlightSearchComponent {
   selectedFlights = this.store.selectedFlights;
 
   search(): void {
-    this.store.loadFlights(this.store.filter());
+    this.flightEvents.flightSearchTriggered();
   }
 
   delay(flight = this.flights()[0]): void {
     if (flight) {
-      this.store.addFlightDelay(flight);
+      this.flightEvents.flightDelayTriggered({ flight });
     }
   }
 
   updateFilter(filter: Criteria) {
-    this.store.setFilter({
+    this.flightEvents.flightFilterChanged({
       ...filter,
       urgent: filter.urgent ?? false,
     });
   }
 
   updateBasket(flightId: number, selected: boolean): void {
-    this.store.updateBasket(flightId, selected);
+    this.flightEvents.basketUpdated({ flightId, selected });
   }
 
   blink() {
