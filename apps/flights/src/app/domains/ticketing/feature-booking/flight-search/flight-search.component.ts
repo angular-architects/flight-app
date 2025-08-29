@@ -34,7 +34,6 @@ export class FlightSearchComponent {
 
   delay(flight = this.flights()[0]): void {
     if (flight) {
-      console.log(flight);
       this.store.addFlightDelay(flight);
     }
   }
@@ -44,7 +43,6 @@ export class FlightSearchComponent {
       ...filter,
       urgent: filter.urgent ?? false,
     });
-    console.log(this.store.filter());
   }
 
   updateBasket(flightId: number, selected: boolean): void {
