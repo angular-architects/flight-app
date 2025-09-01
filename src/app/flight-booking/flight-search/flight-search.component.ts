@@ -24,6 +24,9 @@ export class FlightSearchComponent {
   flights = this.store.flightsValue;
   selected = this.store.selected;
 
+  isLoading = this.store.flightsIsLoading;
+  error = this.store.flightsError;
+
   filter = computed(() => ({
     from: this.from(),
     to: this.to(),
@@ -31,8 +34,12 @@ export class FlightSearchComponent {
 
   basket = this.store.basket;
 
+  constructor() {
+    this.store.updateFilter(this.filter);
+  }
+
   search(): void {
-    this.store.updateFilter(this.filter());
+    this.store.reload();
   }
 
   updateBasket(flightId: number, selected: boolean): void {

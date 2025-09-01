@@ -1,5 +1,6 @@
 import {
   patchState,
+  signalMethod,
   signalStore,
   withComputed,
   withMethods,
@@ -39,11 +40,14 @@ export const flightBookingStore = signalStore(
     ),
   })),
   withMethods((store) => ({
-    updateFilter(filter: FlightFilter) {
+    reload() {
+      store._flightsReload();
+    },
+    updateFilter: signalMethod((filter: FlightFilter) => {
       patchState(store, {
         filter,
       });
-    },
+    }),
     updateBasket(id: number, selected: boolean) {
       patchState(store, (state) => ({
         basket: {
