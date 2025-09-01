@@ -1,5 +1,5 @@
 import { signalStore, withState } from '@ngrx/signals';
-// import { with } from "@angular-architects/ngrx-toolkit";
+import { withResource } from '@angular-architects/ngrx-toolkit';
 
 export const flightBookingStore = signalStore(
   { providedIn: 'root' },

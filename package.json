@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-architects/ngrx-toolkit": "^19.3.0",
+    "@angular-architects/ngrx-toolkit": "^20.3.0",
     "@angular-architects/paper-design": "^1.0.3",
     "@angular/animations": "^20.2.3",
     "@angular/cdk": "^20.2.1",
@@ -23,7 +23,7 @@
     "@angular/platform-browser": "^20.2.3",
     "@angular/platform-browser-dynamic": "^20.2.3",
     "@angular/router": "^20.2.3",
-    "@ngrx/signals": "^19.2.1",
+    "@ngrx/signals": "^20.0.1",
     "@standard-schema/spec": "^1.0.0",
     "bootstrap": "^5.3.3",
     "date-fns": "^2.30.0",
