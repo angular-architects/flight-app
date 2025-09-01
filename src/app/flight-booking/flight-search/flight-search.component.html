@@ -5,15 +5,20 @@
 <form>
   <div class="form-group">
     <label>From:</label>
-    <input [(ngModel)]="from" name="from" class="form-control" />
+    <input [control]="filterForm.from" name="from" class="form-control" />
   </div>
   <div class="form-group">
     <label>To:</label>
-    <input [(ngModel)]="to" name="to" class="form-control" />
+    <input [control]="filterForm.to" name="to" class="form-control" />
   </div>
 
   <div class="form-group">
-    <button (click)="search()" class="btn btn-default">Search</button>
+    <input
+      type="button"
+      (click)="search()"
+      class="btn btn-default"
+      value="Search"
+    />
   </div>
 </form>
 
@@ -21,7 +26,7 @@
 <div class="alert alert-danger">{{ error() | json }}</div>
 } @else {
 <div class="row">
-  @for (f of flights(); track f) {
+  @for (f of flights(); track f.id) {
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <app-flight-card
       [item]="f"

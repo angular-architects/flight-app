@@ -1,8 +1,17 @@
 import { HttpClient, httpResource } from '@angular/common/http';
 import { inject, Injectable, Signal } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Flight } from '../../model/flight';
+import { Flight, initFlight } from '../../model/flight';
 import { ConfigService } from '../../shared/config.service';
+import {
+  httpMutation,
+  HttpMutationOptions,
+} from '@angular-architects/ngrx-toolkit/http-mutation';
+
+export type MutationSettings<Params, Result> = Omit<
+  HttpMutationOptions<Params, Result>,
+  'request'
+>;
 
 @Injectable({
   providedIn: 'root',
@@ -46,5 +55,39 @@ export class FlightService {
       }),
       { defaultValue: [] }
     );
+  }
+
+  findResourceById(id: Signal<number>) {
+    return httpResource<Flight>(
+      () =>
+        !id()
+          ? undefined
+          : {
+              url: 'https://demo.angulararchitects.io/api/flight',
+              params: {
+                id: id(),
+              },
+            },
+      {
+        defaultValue: initFlight,
+      }
+    );
+  }
+
+  flightRequest = (flight: Flight) => ({
+    url: 'https://demo.angulararchitects.io/api/flight',
+    method: 'POST',
+    body: flight,
+  });
+
+  createSaveMutation(options: MutationSettings<Flight, Flight>) {
+    return httpMutation({
+      ...options,
+      request: (flight) => ({
+        url: 'https://demo.angulararchitects.io/api/flight',
+        method: 'POST',
+        body: flight,
+      }),
+    });
   }
 }

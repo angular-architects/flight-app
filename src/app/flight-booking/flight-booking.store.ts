@@ -44,9 +44,12 @@ export const flightBookingStore = signalStore(
       store._flightsReload();
     },
     updateFilter: signalMethod((filter: FlightFilter) => {
-      patchState(store, {
-        filter,
-      });
+      const { from, to } = store.filter();
+      if (filter.from !== from || filter.to !== to) {
+        patchState(store, {
+          filter,
+        });
+      }
     }),
     updateBasket(id: number, selected: boolean) {
       patchState(store, (state) => ({

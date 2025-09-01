@@ -1,46 +1,51 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  linkedSignal,
+  numberAttribute,
+} from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
-
-import { Flight, initFlight } from '../../model/flight';
-import { ValidationErrorsComponent } from '../../shared/validation-errors/validation-errors.component';
-import { CityValidatorDirective } from '../../shared/validation/city-validator.directive';
-import { AsyncCityValidatorDirective } from '../../shared/validation/async-city-validator.directive';
-import { RoundtripValidatorDirective } from '../../shared/validation/roundtrip-validator.directive';
-import { ActivatedRoute } from '@angular/router';
-import { FlightService } from '../flight-search/flight.service';
+import { FlightDetailStore } from '../flight-detail.store';
+import { Control, form, minLength, required } from '@angular/forms/signals';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { debounceSignal } from '../../shared/debounce-signal';
 
 @Component({
   selector: 'app-flight-edit',
   imports: [
-    FormsModule,
-    ValidationErrorsComponent,
-    CityValidatorDirective,
-    AsyncCityValidatorDirective,
-    RoundtripValidatorDirective,
+    Control,
+    MatDatepickerModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
 })
-export class FlightEditComponent implements OnInit {
-  private route = inject(ActivatedRoute);
-  private flightService = inject(FlightService);
+export class FlightEditComponent {
+  private store = inject(FlightDetailStore);
 
-  id = '';
-  showDetails = '';
-  flight = initFlight;
+  id = input.required({
+    transform: numberAttribute,
+  });
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.id = params.get('id') ?? '';
-      this.showDetails = params.get('showDetails') ?? '';
-      this.load(this.id);
-    });
+  isPending = debounceSignal(this.store.saveIsPending, 500);
+
+  flight = linkedSignal(() => this.store.flightValue());
+  flightForm = form(this.flight, (schema) => {
+    required(schema.from);
+    minLength(schema.from, 3);
+  });
+
+  constructor() {
+    this.store.updateFilter(this.id);
   }
 
-  load(id: string): void {
-    this.flightService.findById(id).subscribe((flight) => {
-      this.flight = flight;
-    });
+  save(): void {
+    this.store.save(this.flightForm().value());
   }
 }

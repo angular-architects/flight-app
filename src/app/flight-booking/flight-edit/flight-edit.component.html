@@ -1,41 +1,56 @@
-@if (flight.id != 0) {
-<div class="p40">
-  <h2>Flight Edit</h2>
-  <div class="mt-10">ShowDetails: {{ showDetails }}</div>
-  <form #form="ngForm" roundTrip>
-    <app-validation-errors
-      [errors]="form?.controls?.['from']?.errors ?? {}"
-      field="from"
-    ></app-validation-errors>
-    <app-validation-errors
-      [errors]="form?.errors ?? {}"
-      field="flight"
-    ></app-validation-errors>
-    @if (form?.controls?.['from']?.pending) {
-    <div class="alert alert-info">Validating ...</div>
-    }
-    <div>
-      <input name="id" [(ngModel)]="flight.id" />
+<div class="header">
+  <h2 class="title">Flight Edit</h2>
+</div>
+
+@if (flightForm.id().value() !== 0) {
+<form class="flight-form" (ngSubmit)="save()">
+  <div>
+    <mat-form-field appearance="fill" class="w-100p">
+      <mat-label>ID</mat-label>
+      <input matInput [control]="flightForm.id" id="flight-id" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill" class="w-100p">
+      <mat-label>From</mat-label>
+      <input matInput [control]="flightForm.from" id="flight-from" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill" class="w-100p">
+      <mat-label>To</mat-label>
+      <input matInput [control]="flightForm.to" id="flight-to" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill" class="w-100p">
+      <mat-label>Date</mat-label>
       <input
-        name="from"
-        [(ngModel)]="flight.from"
-        [city]="['Paris', 'London', 'Berlin']"
-        asyncCity
-        required
-        minlength="3"
+        matInput
+        [matDatepicker]="picker"
+        [control]="flightForm.date"
+        id="flight-date"
       />
-      <input name="to" [(ngModel)]="flight.to" />
-      <input name="date" [(ngModel)]="flight.date" />
-    </div>
-    <div>
-      <input
-        name="delayed"
-        id="delayed"
-        [(ngModel)]="flight.delayed"
-        type="checkbox"
-      />
-      <label for="delayed">Delayed</label>
-    </div>
-  </form>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-checkbox [control]="flightForm.delayed" id="flight-delayed">
+      Delayed
+    </mat-checkbox>
+  </div>
+
+  <div class="mt-20">
+    <button class="btn btn-default" type="button" (click)="save()">Save</button>
+  </div>
+</form>
+} @if(isPending()) {
+<div class="overlay">
+  <mat-progress-spinner mode="indeterminate" diameter="60">
+  </mat-progress-spinner>
 </div>
 }

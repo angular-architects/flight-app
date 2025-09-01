@@ -50,16 +50,16 @@ h2.title {
 
 @media (max-width: 768px) {
   .sidebar {
-    transform: translateX(-100%); 
+    transform: translateX(-100%);
   }
 
   .sidebar.show {
-    transform: translateX(0); 
+    transform: translateX(0);
   }
 }
 
 .nav-open .sidebar {
-  transform: translateX(0); 
+  transform: translateX(0);
 }
 
 .nav-open {
@@ -73,8 +73,8 @@ h2.title {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 9; 
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9;
   transition: opacity 0.3s ease;
 }
 
@@ -113,7 +113,6 @@ h2.title {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   margin-bottom: 0rem;
-
 }
 
 .card-header {
@@ -151,7 +150,7 @@ form {
 label {
   font-weight: bold;
   display: block;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 .btn {
@@ -181,7 +180,7 @@ label {
 }
 
 .btn-danger:hover {
-  background-color: #B01030;
+  background-color: #b01030;
 }
 
 .wrapper {
@@ -195,12 +194,12 @@ label {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   padding: 0 1.5rem;
   height: 60px;
-  color:white;
-  background-color: #3f51b5; 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+  color: white;
+  background-color: #3f51b5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 10;
   position: fixed;
   top: 0;
@@ -244,7 +243,7 @@ label {
   padding: 1rem 0;
   overflow-y: auto;
   position: fixed;
-  top: 60px; 
+  top: 60px;
   bottom: 0;
   left: 0;
   transition: transform 0.3s ease;
@@ -289,7 +288,7 @@ label {
 }
 
 .main-panel {
-  margin-left: 250px; 
+  margin-left: 250px;
   margin-top: 60px;
   padding: 2rem;
   flex: 1;
@@ -372,4 +371,25 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.w-100p {
+  width: 100%;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 1000;
 }

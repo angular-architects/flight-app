@@ -29,6 +29,7 @@
     "date-fns": "^2.30.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "zod": "^3.25.76",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {

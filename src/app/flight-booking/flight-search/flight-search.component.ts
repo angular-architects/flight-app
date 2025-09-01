@@ -1,41 +1,36 @@
-import {
-  Component,
-  computed,
-  inject,
-  linkedSignal,
-  signal,
-} from '@angular/core';
+import { Component, inject, linkedSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { flightBookingStore } from '../flight-booking.store';
+import { Control, form } from '@angular/forms/signals';
+import { debounceSignal } from 'src/app/shared/debounce-signal';
 
 @Component({
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [CommonModule, FormsModule, FlightCardComponent],
+  imports: [CommonModule, Control, FlightCardComponent],
 })
 export class FlightSearchComponent {
   store = inject(flightBookingStore);
 
-  from = linkedSignal(() => this.store.filter.from());
-  to = linkedSignal(() => this.store.filter.to());
+  filter = linkedSignal(() => this.store.filter());
+
   flights = this.store.flightsValue;
+  basket = this.store.basket;
+
   selected = this.store.selected;
 
   isLoading = this.store.flightsIsLoading;
   error = this.store.flightsError;
 
-  filter = computed(() => ({
-    from: this.from(),
-    to: this.to(),
-  }));
+  filterForm = form(this.filter);
 
-  basket = this.store.basket;
+  debouncedFilterForm = debounceSignal(this.filterForm().value, 300);
 
   constructor() {
-    this.store.updateFilter(this.filter);
+    this.store.reload();
+    this.store.updateFilter(this.debouncedFilterForm);
   }
 
   search(): void {

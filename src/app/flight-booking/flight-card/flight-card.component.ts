@@ -4,14 +4,13 @@ import { CommonModule } from '@angular/common';
 import { initFlight } from '../../model/flight';
 import { CityPipe } from '../../shared/city.pipe';
 import { StatusToggleComponent } from '../../shared/status-toggle/status-toggle.component';
-import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit-reactive.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-flight-card',
-    imports: [CommonModule, CityPipe, StatusToggleComponent, RouterLink],
-    templateUrl: './flight-card.component.html',
-    styleUrls: ['./flight-card.component.css']
+  selector: 'app-flight-card',
+  imports: [CommonModule, CityPipe, StatusToggleComponent, RouterLink],
+  templateUrl: './flight-card.component.html',
+  styleUrls: ['./flight-card.component.css'],
 })
 export class FlightCardComponent {
   private dialog = inject(MatDialog);
@@ -30,11 +29,5 @@ export class FlightCardComponent {
   deselect() {
     this.selected = false;
     this.selectedChange.emit(this.selected);
-  }
-
-  edit() {
-    this.dialog.open(FlightEditReactiveComponent, {
-      data: { flight: this.item },
-    });
   }
 }
