@@ -1,46 +1,41 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  linkedSignal,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Flight } from '../../model/flight';
 import { FormsModule } from '@angular/forms';
-import { FlightService } from './flight.service';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
+import { flightBookingStore } from '../flight-booking.store';
 
 @Component({
-    selector: 'app-flight-search',
-    templateUrl: './flight-search.component.html',
-    styleUrls: ['./flight-search.component.css'],
-    imports: [CommonModule, FormsModule, FlightCardComponent]
+  selector: 'app-flight-search',
+  templateUrl: './flight-search.component.html',
+  styleUrls: ['./flight-search.component.css'],
+  imports: [CommonModule, FormsModule, FlightCardComponent],
 })
 export class FlightSearchComponent {
-  from = 'London';
-  to = 'Paris';
-  flights: Array<Flight> = [];
-  selectedFlight: Flight | undefined;
-  message = '';
+  store = inject(flightBookingStore);
 
-  basket: Record<number, boolean> = {
-    3: true,
-    5: true,
-  };
+  from = linkedSignal(() => this.store.filter.from());
+  to = linkedSignal(() => this.store.filter.to());
+  flights = this.store.flightsValue;
+  selected = this.store.selected;
 
-  private flightService = inject(FlightService);
+  filter = computed(() => ({
+    from: this.from(),
+    to: this.to(),
+  }));
+
+  basket = this.store.basket;
 
   search(): void {
-    // Reset properties
-    this.message = '';
-    this.selectedFlight = undefined;
-
-    this.flightService.find(this.from, this.to).subscribe({
-      next: (flights) => {
-        this.flights = flights;
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
-    });
+    this.store.updateFilter(this.filter());
   }
 
-  select(f: Flight): void {
-    this.selectedFlight = { ...f };
+  updateBasket(flightId: number, selected: boolean): void {
+    this.store.updateBasket(flightId, selected);
   }
 }
