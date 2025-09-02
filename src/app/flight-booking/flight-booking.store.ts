@@ -29,22 +29,14 @@ export const FlightBookingStore = signalStore(
     basket: {} as Record<number, boolean>,
   }),
   withMethods((store) => ({
-    // TODO: make signalMethod
     updateFilter: (filter: FlightFilter) => {
       const { from, to } = store.filter();
       if (filter.from !== from || filter.to !== to) {
-        patchState(store, {
-          filter,
-        });
+        // TODO: patchState
       }
     },
     updateBasket(id: number, selected: boolean) {
-      patchState(store, (state) => ({
-        basket: {
-          ...state.basket,
-          [id]: selected,
-        },
-      }));
+      // TODO: patchState
     },
   }))
 );
