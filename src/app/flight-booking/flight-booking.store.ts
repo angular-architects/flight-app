@@ -15,7 +15,11 @@ export type FlightFilter = {
   to: string;
 };
 
-export const flightBookingStore = signalStore(
+// TODO: Add withProps
+// TODO: Add withResource
+// TODO: Add withComputed
+
+export const FlightBookingStore = signalStore(
   { providedIn: 'root' },
   withState({
     filter: {
@@ -24,22 +28,16 @@ export const flightBookingStore = signalStore(
     },
     basket: {} as Record<number, boolean>,
   }),
-
-  // TODO: Add withProps
-
-  // TODO: Add withResource
-
-  // TODO: Add withComputed
-
   withMethods((store) => ({
-    updateFilter: signalMethod((filter: FlightFilter) => {
+    // TODO: make signalMethod
+    updateFilter: (filter: FlightFilter) => {
       const { from, to } = store.filter();
       if (filter.from !== from || filter.to !== to) {
         patchState(store, {
           filter,
         });
       }
-    }),
+    },
     updateBasket(id: number, selected: boolean) {
       patchState(store, (state) => ({
         basket: {

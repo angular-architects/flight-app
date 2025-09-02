@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
-import { flightBookingStore } from '../flight-booking.store';
+import { FlightBookingStore } from '../flight-booking.store';
 import { Control, form } from '@angular/forms/signals';
 import { debounceSignal } from 'src/app/shared/debounce-signal';
 import { Flight } from 'src/app/model/flight';
@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FlightCardComponent, FormsModule],
 })
 export class FlightSearchComponent {
-  store = inject(flightBookingStore);
+  store = inject(FlightBookingStore);
 
   // TODO: Get Signals from store
 
