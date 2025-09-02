@@ -34,8 +34,6 @@ export class FlightSearchComponent {
   isLoading = signal(false);
   error = signal<unknown>(undefined);
 
-  // TODO: Add selected,
-
   // Add Signal Form
 
   constructor() {

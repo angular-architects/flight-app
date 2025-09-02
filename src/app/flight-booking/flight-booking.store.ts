@@ -17,7 +17,6 @@ export type FlightFilter = {
 
 // TODO: Add withProps
 // TODO: Add withResource
-// TODO: Add withComputed
 
 export const FlightBookingStore = signalStore(
   { providedIn: 'root' },
