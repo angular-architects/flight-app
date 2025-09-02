@@ -45,6 +45,18 @@ export class FlightService {
   }
 
   // TODO: Add findResource
+  findResource(from: Signal<string>, to: Signal<string>) {
+    return httpResource<Flight[]>(
+      () => ({
+        url: 'https://demo.angulararchitects.io/api/flight',
+        params: {
+          from: from(),
+          to: to(),
+        },
+      }),
+      { defaultValue: [] }
+    );
+  }
 
   findResourceById(id: Signal<number>) {
     return httpResource<Flight>(
