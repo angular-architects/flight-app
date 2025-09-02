@@ -8,7 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { FlightBookingStore } from '../flight-booking.store';
-import { Control, form } from '@angular/forms/signals';
+import { Control, form, minLength, required } from '@angular/forms/signals';
 import { debounceSignal } from 'src/app/shared/debounce-signal';
 import { Flight } from 'src/app/model/flight';
 import { FormsModule } from '@angular/forms';
@@ -17,42 +17,36 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [CommonModule, FlightCardComponent, FormsModule],
+  imports: [CommonModule, FlightCardComponent, Control],
 })
 export class FlightSearchComponent {
   store = inject(FlightBookingStore);
 
-  // TODO: Get Signals from store
+  filter = linkedSignal(() => this.store.filter());
 
-  from = signal('Graz');
-  to = signal('Hamburg');
-  filter = computed(() => ({ from: this.from(), to: this.to() }));
+  flights = this.store.flightsValue;
+  basket = this.store.basket;
 
-  flights = signal<Flight[]>([]);
-  basket = signal<Record<number, boolean>>({});
+  isLoading = this.store.flightsIsLoading;
+  error = this.store.flightsError;
 
-  isLoading = signal(false);
-  error = signal<unknown>(undefined);
+  filterForm = form(this.filter, (schema) => {
+    required(schema.from);
+    minLength(schema.from, 3);
+  });
 
-  // Add Signal Form
+  debouncedFilter = debounceSignal(this.filterForm().value, 300);
 
   constructor() {
-    // TODO: Connect filter
+    this.store.reload();
+    this.store.updateFilter(this.debouncedFilter);
   }
 
   search(): void {
-    const date = new Date().toISOString();
-
-    // TODO (re)load flights
-    this.flights.set([
-      { id: 1, from: this.from(), to: this.to(), date, delayed: false },
-      { id: 2, from: this.from(), to: this.to(), date, delayed: false },
-      { id: 3, from: this.from(), to: this.to(), date, delayed: false },
-    ]);
+    this.store.reload();
   }
 
   updateBasket(flightId: number, selected: boolean): void {
-    // TODO: Delegate to store
-    this.basket.update((b) => ({ ...b, [flightId]: selected }));
+    this.store.updateBasket(flightId, selected);
   }
 }

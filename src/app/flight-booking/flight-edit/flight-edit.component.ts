@@ -35,7 +35,8 @@ export class FlightEditComponent {
   });
 
   // TODO: Get from store
-  isPending = signal(false);
+  isPending = debounceSignal(this.store.saveFlightIsPending, 300);
+  error = this.store.saveFlightError;
 
   flight = linkedSignal(() => this.store.flightValue());
   flightForm = form(this.flight);
@@ -45,6 +46,6 @@ export class FlightEditComponent {
   }
 
   save(): void {
-    // TODO: Delegate to store
+    this.store.saveFlight(this.flightForm().value());
   }
 }
