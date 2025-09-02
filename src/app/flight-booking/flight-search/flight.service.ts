@@ -44,18 +44,7 @@ export class FlightService {
     return this.http.get<Flight>(url, { headers, params });
   }
 
-  findResource(from: Signal<string>, to: Signal<string>) {
-    return httpResource<Flight[]>(
-      () => ({
-        url: 'https://demo.angulararchitects.io/api/flight',
-        params: {
-          from: from(),
-          to: to(),
-        },
-      }),
-      { defaultValue: [] }
-    );
-  }
+  // TODO: Add findResource
 
   findResourceById(id: Signal<number>) {
     return httpResource<Flight>(
@@ -73,12 +62,6 @@ export class FlightService {
       }
     );
   }
-
-  flightRequest = (flight: Flight) => ({
-    url: 'https://demo.angulararchitects.io/api/flight',
-    method: 'POST',
-    body: flight,
-  });
 
   createSaveMutation(options: MutationSettings<Flight, Flight>) {
     return httpMutation({

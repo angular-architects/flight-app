@@ -7,7 +7,6 @@ import {
   withProps,
   withState,
 } from '@ngrx/signals';
-import { withResource } from '@angular-architects/ngrx-toolkit';
 import { computed, inject } from '@angular/core';
 import { FlightService } from './flight-search/flight.service';
 
@@ -25,24 +24,14 @@ export const flightBookingStore = signalStore(
     },
     basket: {} as Record<number, boolean>,
   }),
-  withProps(() => ({
-    _flightService: inject(FlightService),
-  })),
-  withResource((store) => ({
-    flights: store._flightService.findResource(
-      store.filter.from,
-      store.filter.to
-    ),
-  })),
-  withComputed((store) => ({
-    selected: computed(() =>
-      store.flightsValue().filter((f) => store.basket()[f.id])
-    ),
-  })),
+
+  // TODO: Add withProps
+
+  // TODO: Add withResource
+
+  // TODO: Add withComputed
+
   withMethods((store) => ({
-    reload() {
-      store._flightsReload();
-    },
     updateFilter: signalMethod((filter: FlightFilter) => {
       const { from, to } = store.filter();
       if (filter.from !== from || filter.to !== to) {

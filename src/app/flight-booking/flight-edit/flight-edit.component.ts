@@ -4,6 +4,7 @@ import {
   input,
   linkedSignal,
   numberAttribute,
+  signal,
 } from '@angular/core';
 
 import { FlightDetailStore } from '../flight-detail.store';
@@ -33,19 +34,17 @@ export class FlightEditComponent {
     transform: numberAttribute,
   });
 
-  isPending = debounceSignal(this.store.saveIsPending, 500);
+  // TODO: Get from store
+  isPending = signal(false);
 
   flight = linkedSignal(() => this.store.flightValue());
-  flightForm = form(this.flight, (schema) => {
-    required(schema.from);
-    minLength(schema.from, 3);
-  });
+  flightForm = form(this.flight);
 
   constructor() {
     this.store.updateFilter(this.id);
   }
 
   save(): void {
-    this.store.save(this.flightForm().value());
+    // TODO: Delegate to store
   }
 }

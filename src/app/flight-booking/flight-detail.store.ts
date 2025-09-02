@@ -12,11 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { FlightService } from './flight-search/flight.service';
 import { Flight } from '../model/flight';
-
-export type FlightFilter = {
-  from: string;
-  to: string;
-};
+import { httpMutation } from '@angular-architects/ngrx-toolkit/http-mutation';
 
 export const FlightDetailStore = signalStore(
   { providedIn: 'root' },
@@ -32,18 +28,9 @@ export const FlightDetailStore = signalStore(
   withResource((store) => ({
     flight: store._flightService.findResourceById(store.filter.id),
   })),
-  withMutations((store) => ({
-    save: store._flightService.createSaveMutation({
-      onSuccess: (result: Flight) => {
-        patchState(store, { flightValue: result });
-        store._snackBar.open('Flight saved!', 'OK');
-      },
-      onError: (error: any) => {
-        console.error('Error saving flight:', error);
-        store._snackBar.open('Error saving flight', 'OK');
-      },
-    }),
-  })),
+
+  // TODO: Add withMutations
+
   withMethods((store) => ({
     updateFilter: signalMethod((id: number) => {
       if (id !== store.filter.id()) {
