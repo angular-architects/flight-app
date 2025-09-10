@@ -1,9 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PassengerService } from 'src/app/data/passenger.service';
-import { Passenger } from 'src/app/model/passenger';
 import { FormsModule } from '@angular/forms';
 import { PassengerCardComponent } from '../passenger-card/passenger-card.component';
+import { PassengerStore } from 'src/app/data/passenger.store';
 
 @Component({
   selector: 'app-passenger-search',
@@ -13,23 +12,16 @@ import { PassengerCardComponent } from '../passenger-card/passenger-card.compone
   styleUrls: ['./passenger-search.component.css'],
 })
 export class PassengerSearchComponent {
-  private passengerService = inject(PassengerService);
+  private store = inject(PassengerStore);
 
-  name = signal('');
-  firstName = signal('');
+  name = this.store.name;
+  firstName = this.store.firstName;
 
-  // TODO: Don't trigger this on filter change
-  passengersResource = this.passengerService.findByName(
-    this.name,
-    this.firstName,
-  );
-
-  passengers = this.passengersResource.value;
-  error = this.passengersResource.error;
-  isLoading = this.passengersResource.isLoading;
+  passengers = this.store.passengers;
+  error = this.store.error;
+  isLoading = this.store.isLoading;
 
   load(): void {
-    this.passengersResource.reload();
+    this.store.reload();
   }
-
 }

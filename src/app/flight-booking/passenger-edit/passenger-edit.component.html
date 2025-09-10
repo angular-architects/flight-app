@@ -1,25 +1,27 @@
 <h2>Flight Edit</h2>
 
-@if (f.invalid) {
-  <div>
-    @if (f.controls["name"].invalid) {
-      <div>Error with Name</div>
-    }
-    @if (f.controls["name"].hasError("required")) {
-      <div>Name is required</div>
-    }
-  </div>
-}
+@if (!error()) {
+  @if (f.invalid) {
+    <div>
+      @if (f.controls["name"].invalid) {
+        <div>Error with Name</div>
+      }
+      @if (f.controls["name"].hasError("required")) {
+        <div>Name is required</div>
+      }
+    </div>
+  }
 
-<form #f="ngForm">
-  <div>
-    <input [(ngModel)]="passenger().id" name="id" />
-    <input [(ngModel)]="passenger().firstName" name="firstName" />
-    <input [(ngModel)]="passenger().name" name="name" required />
-    <input [(ngModel)]="passenger().passengerStatus" name="passengerStatus" />
-    <input [(ngModel)]="passenger().bonusMiles" name="bonusMiles" />
-  </div>
-  <div>
-    <button (click)="save()" class="btn btn-default">Save</button>
-  </div>
-</form>
+  <form #f="ngForm">
+    <div>
+      <input [(ngModel)]="passenger().id" name="id" />
+      <input [(ngModel)]="passenger().firstName" name="firstName" />
+      <input [(ngModel)]="passenger().name" name="name" required />
+      <input [(ngModel)]="passenger().passengerStatus" name="passengerStatus" />
+      <input [(ngModel)]="passenger().bonusMiles" name="bonusMiles" />
+    </div>
+    <div>
+      <button (click)="save()" class="btn btn-default">Save</button>
+    </div>
+  </form>
+}
