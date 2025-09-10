@@ -1,1 +1,49 @@
-<p>passenger-search works!</p>
+<div class="header">
+  <h2 class="title">Passenger Search</h2>
+</div>
+
+<form>
+  <div class="form-group">
+    <label>First Name:</label>
+    <input [(ngModel)]="firstName" name="firstName" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <label>Name:</label>
+    <input [(ngModel)]="name" name="name" class="form-control" />
+  </div>
+
+  <div class="form-group">
+    <button (click)="load()" class="btn btn-default">Search</button>
+  </div>
+</form>
+
+<div class="row">
+@for (p of passengers(); track p.id) {
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <app-passenger-card [passenger]="p" /> 
+    </div>
+}
+</div>
+
+<!-- Alternative -->
+<!-- @if (passengers().length > 0) {
+  <table class="table table-striped">
+    <tr>
+      <td>Id</td>
+      <td>Name</td>
+      <td>First Name</td>
+      <td>Bonus Miles</td>
+      <td>Passenger Status</td>
+    </tr>
+    @for (p of passengers(); track p.id) {
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.firstName }}</td>
+        <td>{{ p.bonusMiles }}</td>
+        <td>{{ p.passengerStatus }}</td>
+      </tr>
+    }
+  </table>
+} -->
