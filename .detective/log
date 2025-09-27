@@ -1,0 +1,1100 @@
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Sep 6 02:45:02 2025 +0200	0adf6e5f752b278c37c67db2533c7bacbef5a8b4,small improvements"
+1	6	apps/flights/src/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Aug 13 20:36:30 2025 +0200	b84cbb375bc29f54a1e2734f9a0d3aa4836e810e,chore(ent): update to ngrx 20"
+11	16	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Jul 25 22:08:05 2025 +0200	3ac3d11c5875029a0ec9db3a9c26c7c989d655f3,chore(ent): update to nx 21 and ng 20"
+3	2	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Jul 25 21:36:26 2025 +0200	0e37f0635f5dea8adc340585f08f3809fe4b4b5c,chore(ent): update to nx 21 and ng 20"
+2	2	.husky/pre-commit
+47	41	package.json
+15	5	tsconfig.base.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sun May 18 20:34:05 2025 +0200	b87db6cd098893e77f93c43409d4f10373d5653e,migrate to nx 21 and ng 19.2"
+2	1	apps/boarding/project.json
+2	1	apps/flights/.eslintrc.json
+3	2	apps/flights/project.json
+2	0	apps/flights/src/app/domains/ticketing/feature-next-flights/checkin/checkin.component.ts
+2	0	apps/flights/src/app/domains/ticketing/feature-next-flights/next-flights.component.ts
+218	12	migrations.json
+48	58	package.json
+5	15	tsconfig.base.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Dec 9 17:04:50 2024 +0100	6c0ff2359c41b97f2b93c47f5411216fe6414406,feat: add connection b/w checkin and shared for detective demo"
+0	29	.detective/config.json
+5	2	apps/flights/src/app/domains/checkin/data/checkin.service.ts
+0	25923	package-lock.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 4 18:33:38 2024 +0100	774c3aec617ef1a58216ac8f819fc636b771510e,update sheriff"
+1	1	apps/flights/src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.ts
+9	0	apps/flights/tsconfig.federation.json
+31	21	package-lock.json
+2	2	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 4 18:17:20 2024 +0100	bbf2e11cd5bdd208dbdbf02253297f6c800b09dd,update nx config"
+2	4	nx.json
+1	1	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 4 17:31:34 2024 +0100	f23d1b36101228cda0cdc82fc3f64a11c69a2e98,update to nx20+ng19"
+0	2	apps/flights/project.json
+2	2	apps/flights/src/app/app.component.ts
+1	2	apps/flights/src/app/domains/checkin/feature-manage/feature-manage.component.ts
+1	9	apps/flights/src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.ts
+1	0	apps/flights/src/app/domains/ticketing/feature-next-flights/checkin/checkin.component.ts
+1	0	apps/flights/src/app/domains/ticketing/feature-next-flights/next-flights.component.ts
+7	126	apps/flights/src/app/shell/navbar/navbar.component.html
+0	10	apps/flights/src/app/shell/sidebar/sidebar.component.html
+2	2	apps/flights/src/app/shell/sidebar/sidebar.component.ts
+336	0	apps/flights/src/styles.css
+4	4	jest.config.ts
+18	0	migrations.json
+4702	6731	package-lock.json
+46	39	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sun Oct 27 19:12:07 2024 +0100	56a1c87b4b0333a2b2b60d356a582651a8d01910,fix: app routes"
+1	1	apps/flights/src/app/app.routes.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sun Oct 27 18:40:18 2024 +0100	2c1e5ed452c37fb5f6421780bc3c4db2400c62dc,feat: showcase barrel-less in checkin domain"
+0	1	apps/flights/src/app/domains/checkin/data/index.ts
+0	0	apps/flights/src/app/domains/checkin/data/{ => internal}/hidden.service.ts
+4	2	apps/flights/src/app/domains/checkin/feature-manage/feature-manage.component.ts
+0	3	apps/flights/src/app/domains/checkin/feature-manage/index.ts
+9	9	package-lock.json
+2	2	package.json
+2	0	sheriff.config.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Sep 23 14:24:47 2024 +0200	f41f4c4290384834cdca131eabc6ecd2ef614440,chore: add demo connections b/w domains for detective"
+17	2	.detective/config.json
+5	0	apps/flights/src/app/app.routes.ts
+2	1	apps/flights/src/app/domains/checkin/feature-manage/feature-manage.component.ts
+0	6	apps/flights/src/app/domains/shared/util-validation/index.ts
+0	33	apps/flights/src/app/domains/shared/util-validation/validation/async-city-validator.directive.ts
+0	16	apps/flights/src/app/domains/shared/util-validation/validation/async-city-validator.ts
+1	2	apps/flights/src/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.ts
+8	1	apps/flights/src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Sep 23 12:10:49 2024 +0200	98b3dbab7c8f4c6e63c9cd53915c591a51628f7b,chore: update to nx 19 and angular 18"
+14	0	.detective/config.json
+3	0	.eslintignore
+7	1	.eslintrc.json
+3	3	.husky/pre-commit
+4	0	.prettierignore
+1	1	apps/flights/.eslintrc.json
+0	26	migrations.json
+1	1	nx.json
+27942	0	package-lock.json
+66	60	package.json
+15	5	tsconfig.base.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Apr 8 16:39:10 2024 +0100	e54a5c86021dd6a4679ec7d5f9e3e00fd3c325fc,upgrade to nx 18"
+0	24424	package-lock.json
+22	25	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Apr 8 00:46:00 2024 +0100	89bd37a3fd9d867ccc59214f3f3df785f97cc6c5,update package.json"
+24424	0	package-lock.json
+3	0	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sun Feb 4 13:42:42 2024 +0100	9abb1c2f2491adbe84ddf8bc8ccbfea877dde895,pin @nx/angular to specific version"
+7	3	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Feb 2 17:53:39 2024 +0100	ec4f2da3334aaa23d5ff19ba98e998c9f4147bae,use @for in flight-search"
+3	1	apps/flights/src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.html
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Feb 2 17:22:21 2024 +0100	305d0fe2f14bd44bcb8925413a8416dd08ea3d4b,del tsconfig and package-lock"
+0	25154	package-lock.json
+0	3	tsconfig.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Feb 2 16:53:30 2024 +0100	7e5a4bdd0e76ac79f04d2b8f79c388550321e200,migrate to ng 17.1"
+2	4	apps/boarding/project.json
+2	4	apps/flights/project.json
+3	1	apps/flights/src/app/app.component.html
+3	1	apps/flights/src/app/domains/shared/ui-common/tab/tab.component.html
+3	25	apps/flights/src/app/domains/shared/util-validation/validation-errors/validation-errors.component.html
+5	7	apps/flights/src/app/domains/ticketing/feature-booking/flight-card/flight-card.component.html
+3	3	apps/flights/src/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.html
+3	1	apps/flights/src/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.html
+5	2	apps/flights/src/app/shell/home/home.component.html
+25154	0	package-lock.json
+33	33	package.json
+1	1	tsconfig.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Nov 13 11:32:38 2023 +0100	f4c5000360a2f93939c2743874f72429a40f8a8f,update to nx and ng 17"
+1	8	apps/boarding/project.json
+2	2	apps/flights/project.json
+1	8	libs/ui-common/project.json
+26	0	migrations.json
+18	0	nx.json
+0	25039	package-lock.json
+64	71	package.json
+2	2	tsconfig.base.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Oct 26 22:40:43 2023 +0200	742b9a92f6530eada64c2dfb5a585d92f7a1ff0d,update @types/node"
+27	27	package-lock.json
+1	1	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Oct 26 22:16:34 2023 +0200	230c68ab399fc9d77e6bc7eb75a20108bd944b21,add projectNameAndRootFormat to nx.json"
+4	2	nx.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Oct 26 22:00:07 2023 +0200	6d61d5e13509eea49ecb7ae52557df30aa111e66,update mod feb plugin"
+2	2	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Oct 21 17:00:46 2023 +0200	a4a8675919b2be8de07f1c648cb34dff5cec8ffa,update scope name"
+1	1	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Oct 21 14:28:20 2023 +0200	818159d34a557dab4c49dc571b9d93de817f696c,add scope name to package.json"
+1	1	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Oct 21 14:27:25 2023 +0200	2d1e1fd30bea0443a7f02c4dbf1e4f10e52b40c2,add additional app and lib"
+36	0	apps/boarding/.eslintrc.json
+22	0	apps/boarding/jest.config.ts
+89	0	apps/boarding/project.json
+0	0	apps/boarding/src/app/app.component.css
+1	0	apps/boarding/src/app/app.component.html
+26	0	apps/boarding/src/app/app.component.spec.ts
+14	0	apps/boarding/src/app/app.component.ts
+5	0	apps/boarding/src/app/app.config.ts
+856	0	apps/boarding/src/app/nx-welcome.component.ts
+0	0	apps/boarding/src/assets/.gitkeep
+-	-	apps/boarding/src/favicon.ico
+13	0	apps/boarding/src/index.html
+7	0	apps/boarding/src/main.ts
+1	0	apps/boarding/src/styles.css
+8	0	apps/boarding/src/test-setup.ts
+10	0	apps/boarding/tsconfig.app.json
+7	0	apps/boarding/tsconfig.editor.json
+32	0	apps/boarding/tsconfig.json
+16	0	apps/boarding/tsconfig.spec.json
+36	0	libs/ui-common/.eslintrc.json
+7	0	libs/ui-common/README.md
+22	0	libs/ui-common/jest.config.ts
+34	0	libs/ui-common/project.json
+1	0	libs/ui-common/src/index.ts
+0	0	libs/ui-common/src/lib/libs/ui-common/ui-common.component.css
+1	0	libs/ui-common/src/lib/libs/ui-common/ui-common.component.html
+21	0	libs/ui-common/src/lib/libs/ui-common/ui-common.component.spec.ts
+11	0	libs/ui-common/src/lib/libs/ui-common/ui-common.component.ts
+8	0	libs/ui-common/src/test-setup.ts
+29	0	libs/ui-common/tsconfig.json
+17	0	libs/ui-common/tsconfig.lib.json
+16	0	libs/ui-common/tsconfig.spec.json
+1	0	nx.json
+4	0	sheriff.config.ts
+1	0	tsconfig.base.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Oct 21 13:32:01 2023 +0200	185cbfcfebe3c08dcc14508778580fe8711cad2a,add nx-sheriff"
+1	0	.eslintignore
+3	2	.eslintrc.json
+3	0	.gitignore
+5	0	.prettierignore
+3	0	.prettierrc
+7	2	.vscode/extensions.json
+10	10	.vscode/settings.json
+0	100	angular.json
+42	0	apps/flights/.eslintrc.json
+91	0	apps/flights/project.json
+0	0	{src => apps/flights/src}/app/app.component.css
+0	0	{src => apps/flights/src}/app/app.component.html
+0	0	{src => apps/flights/src}/app/app.component.ts
+0	0	{src => apps/flights/src}/app/app.routes.ts
+0	0	{src => apps/flights/src}/app/domains/checkin/data/checkin.service.ts
+0	0	{src => apps/flights/src}/app/domains/checkin/data/hidden.service.ts
+0	0	{src => apps/flights/src}/app/domains/checkin/data/index.ts
+0	0	{src => apps/flights/src}/app/domains/checkin/feature-manage/feature-manage.component.css
+0	0	{src => apps/flights/src}/app/domains/checkin/feature-manage/feature-manage.component.html
+0	0	{src => apps/flights/src}/app/domains/checkin/feature-manage/feature-manage.component.ts
+0	0	{src => apps/flights/src}/app/domains/checkin/feature-manage/index.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/city.pipe.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/click-with-warning.directive.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/confirm/confirm.component.css
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/confirm/confirm.component.html
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/confirm/confirm.component.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/custom-template-outlet.directive.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/data-table/data-table.component.css
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/data-table/data-table.component.html
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/data-table/data-table.component.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/data-table/table-field.directive.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/date/date-cva.directive.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/date/date-stepper/date-stepper.component.css
+1	1	{src => apps/flights/src}/app/domains/shared/ui-common/date/date-stepper/date-stepper.component.html
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/date/date-stepper/date-stepper.component.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/index.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/status-toggle/status-toggle.component.css
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/status-toggle/status-toggle.component.html
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/status-toggle/status-toggle.component.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.css
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.html
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tab/tab.component.css
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tab/tab.component.html
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tab/tab.component.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.css
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.html
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.service.ts
+0	0	{src => apps/flights/src}/app/domains/shared/ui-common/tooltip.directive.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-auth/auth.service.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-auth/auth.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-auth/index.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-common/can-exit.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-common/index.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-config/config.service.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-config/config.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-config/index.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/color-config.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/color.service.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/color.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/custom-log-appender.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/features.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/index.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/log-appender.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/log-formatter.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/log-level.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/logger-config.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/logger.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-logger/provider.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-validation/index.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-validation/validation-errors/validation-errors.component.css
+1	1	{src => apps/flights/src}/app/domains/shared/util-validation/validation-errors/validation-errors.component.html
+0	0	{src => apps/flights/src}/app/domains/shared/util-validation/validation-errors/validation-errors.component.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-validation/validation/async-city-validator.directive.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-validation/validation/async-city-validator.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-validation/validation/city-validator.directive.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-validation/validation/city-validator.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-validation/validation/roundtrip-validator.directive.ts
+0	0	{src => apps/flights/src}/app/domains/shared/util-validation/validation/roundtrip-validator.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/data/flight.service.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/data/flight.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/data/index.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-booking.component.css
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-booking.component.html
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-booking.component.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-booking.routes.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-card/flight-card.component.css
+2	2	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-card/flight-card.component.html
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-card/flight-card.component.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.css
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.html
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.css
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.html
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-search/flight-search.component.css
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-search/flight-search.component.html
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/flight-search/flight-search.component.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/index.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.css
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.html
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/checkin/checkin.component.css
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/checkin/checkin.component.html
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/checkin/checkin.component.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/index.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/next-flights.component.css
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/next-flights.component.html
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/next-flights.component.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/next-flights.module.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/next-flights.routes.ts
+0	0	{src => apps/flights/src}/app/domains/ticketing/feature-next-flights/next-flights.service.ts
+0	0	{src => apps/flights/src}/app/shell/about/about.component.css
+0	0	{src => apps/flights/src}/app/shell/about/about.component.html
+0	0	{src => apps/flights/src}/app/shell/about/about.component.ts
+0	0	{src => apps/flights/src}/app/shell/basket/basket.component.css
+0	0	{src => apps/flights/src}/app/shell/basket/basket.component.html
+0	0	{src => apps/flights/src}/app/shell/basket/basket.component.ts
+0	0	{src => apps/flights/src}/app/shell/home/home.component.css
+0	0	{src => apps/flights/src}/app/shell/home/home.component.html
+0	0	{src => apps/flights/src}/app/shell/home/home.component.ts
+0	0	{src => apps/flights/src}/app/shell/navbar/navbar.component.html
+0	0	{src => apps/flights/src}/app/shell/navbar/navbar.component.ts
+0	0	{src => apps/flights/src}/app/shell/not-found/not-found.component.css
+0	0	{src => apps/flights/src}/app/shell/not-found/not-found.component.html
+0	0	{src => apps/flights/src}/app/shell/not-found/not-found.component.ts
+0	0	{src => apps/flights/src}/app/shell/sidebar/sidebar.component.html
+0	0	{src => apps/flights/src}/app/shell/sidebar/sidebar.component.ts
+0	0	{src => apps/flights/src}/assets/.gitkeep
+0	0	{src => apps/flights/src}/assets/config.json
+-	-	{src => apps/flights/src}/assets/paper-design/angular2-logo.png
+-	-	{src => apps/flights/src}/favicon.ico
+0	0	{src => apps/flights/src}/index.html
+0	0	{src => apps/flights/src}/main.ts
+1	1	{src => apps/flights/src}/styles.css
+9	0	apps/flights/tsconfig.app.json
+7	0	apps/flights/tsconfig.editor.json
+32	0	apps/flights/tsconfig.json
+8	0	apps/flights/tsconfig.spec.json
+5	0	jest.config.ts
+3	0	jest.preset.js
+43	0	karma.conf.js
+0	0	libs/.gitkeep
+61	0	nx.json
+25039	0	package-lock.json
+32	12	package.json
+1	1	sheriff.config.ts
+0	0	tools/generators/.gitkeep
+12	0	tools/tsconfig.tools.json
+0	14	tsconfig.app.json
+34	0	tsconfig.base.json
+1	31	tsconfig.json
+0	14	tsconfig.spec.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Tue Jun 20 02:21:07 2023 +0200	8dbb8d212382fc3c76517dc2ca692bd5ce5fcaed,update sheriff version"
+3	2	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Jun 10 19:50:40 2023 +0200	e60fdbcff1dbeb0350bab85309d3f96f05917ad6,add angular-architects/module-federation-tools"
+0	28623	package-lock.json
+1	0	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Jun 9 20:40:40 2023 +0200	26888714f48b66998aadf8be87097370e8b61042,feat: just use one path mapping with wildcards"
+1	27	tsconfig.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sun Jun 4 20:40:44 2023 +0200	d10a951dc9112af2ad16e84d7d50b6a86f8c24c4,fix: avoid deep import in router config"
+1	1	src/app/app.routes.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Jun 3 10:26:22 2023 +0200	43b799230bf9a4967f8439ec4f4c27bbfa728e98,add line for sheriff"
+4	2	src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sun May 21 17:59:33 2023 +0200	c575a9f5cceeb2baced98244d466ff733a833b0a,add wireit"
+1	0	.gitignore
+16	1	package.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sun May 21 16:49:38 2023 +0200	ec02aee76bae39fc07cc98897f3ac721f005089d,subdivide in domains"
+4	0	.eslintrc.json
+1506	393	package-lock.json
+5	1	package.json
+26	0	sheriff.config.ts
+0	22	src/app/about/about.component.spec.ts
+0	54	src/app/about/about.component.ts
+0	31	src/app/app.component.spec.ts
+4	14	src/app/app.component.ts
+10	7	src/app/app.routes.ts
+0	22	src/app/basket/basket.component.spec.ts
+10	0	src/app/domains/checkin/data/checkin.service.ts
+8	0	src/app/domains/checkin/data/hidden.service.ts
+1	0	src/app/domains/checkin/data/index.ts
+3	0	src/app/domains/checkin/feature-manage/feature-manage.component.css
+5	0	src/app/domains/checkin/feature-manage/feature-manage.component.html
+22	0	src/app/domains/checkin/feature-manage/feature-manage.component.ts
+3	0	src/app/domains/checkin/feature-manage/index.ts
+0	0	src/app/{shared => domains/shared/ui-common}/city.pipe.ts
+1	1	src/app/{shared/controls => domains/shared/ui-common}/click-with-warning.directive.ts
+0	0	src/app/{shared => domains/shared/ui-common}/confirm/confirm.component.css
+0	0	src/app/{shared => domains/shared/ui-common}/confirm/confirm.component.html
+0	0	src/app/{shared => domains/shared/ui-common}/confirm/confirm.component.ts
+0	0	src/app/{shared => domains/shared/ui-common}/custom-template-outlet.directive.ts
+0	0	src/app/{shared/controls => domains/shared/ui-common}/data-table/data-table.component.css
+0	0	src/app/{shared/controls => domains/shared/ui-common}/data-table/data-table.component.html
+1	1	src/app/{shared/controls => domains/shared/ui-common}/data-table/data-table.component.ts
+0	0	src/app/{shared/controls => domains/shared/ui-common}/data-table/table-field.directive.ts
+0	0	src/app/{shared => domains/shared/ui-common}/date/date-cva.directive.ts
+0	0	src/app/{shared => domains/shared/ui-common}/date/date-stepper/date-stepper.component.css
+0	0	src/app/{shared => domains/shared/ui-common}/date/date-stepper/date-stepper.component.html
+0	0	src/app/{shared => domains/shared/ui-common}/date/date-stepper/date-stepper.component.ts
+18	0	src/app/domains/shared/ui-common/index.ts
+0	0	src/app/{shared => domains/shared/ui-common}/status-toggle/status-toggle.component.css
+0	0	src/app/{shared => domains/shared/ui-common}/status-toggle/status-toggle.component.html
+0	0	src/app/{shared => domains/shared/ui-common}/status-toggle/status-toggle.component.ts
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tab-navigator/tab-navigator.component.css
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tab-navigator/tab-navigator.component.html
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tab-navigator/tab-navigator.component.ts
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tab/tab.component.css
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tab/tab.component.html
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tab/tab.component.ts
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tabbed-pane/tabbed-pane.component.css
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tabbed-pane/tabbed-pane.component.html
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tabbed-pane/tabbed-pane.component.ts
+0	0	src/app/{shared/controls => domains/shared/ui-common}/tabbed-pane/tabbed-pane.service.ts
+0	0	src/app/{shared => domains/shared/ui-common}/tooltip.directive.ts
+0	0	src/app/{shared/auth => domains/shared/util-auth}/auth.service.ts
+0	0	src/app/{shared/auth => domains/shared/util-auth}/auth.ts
+6	0	src/app/domains/shared/util-auth/index.ts
+0	0	src/app/{shared => domains/shared/util-common}/can-exit.ts
+5	0	src/app/domains/shared/util-common/index.ts
+0	0	src/app/{shared => domains/shared/util-config}/config.service.ts
+0	0	src/app/{shared => domains/shared/util-config}/config.ts
+6	0	src/app/domains/shared/util-config/index.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/color-config.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/color.service.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/color.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/custom-log-appender.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/features.ts
+15	0	src/app/domains/shared/util-logger/index.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/log-appender.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/log-formatter.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/log-level.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/logger-config.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/logger.ts
+0	0	src/app/{shared/logger => domains/shared/util-logger}/provider.ts
+11	0	src/app/domains/shared/util-validation/index.ts
+0	0	src/app/{shared => domains/shared/util-validation}/validation-errors/validation-errors.component.css
+0	0	src/app/{shared => domains/shared/util-validation}/validation-errors/validation-errors.component.html
+0	0	src/app/{shared => domains/shared/util-validation}/validation-errors/validation-errors.component.ts
+3	1	src/app/{shared => domains/shared/util-validation}/validation/async-city-validator.directive.ts
+3	1	src/app/{shared => domains/shared/util-validation}/validation/async-city-validator.ts
+0	0	src/app/{shared => domains/shared/util-validation}/validation/city-validator.directive.ts
+0	0	src/app/{shared => domains/shared/util-validation}/validation/city-validator.ts
+0	0	src/app/{shared => domains/shared/util-validation}/validation/roundtrip-validator.directive.ts
+0	0	src/app/{shared => domains/shared/util-validation}/validation/roundtrip-validator.ts
+14	9	src/app/{flight-booking/flight-search/default-flight.service.ts => domains/ticketing/data/flight.service.ts}
+0	0	src/app/{model => domains/ticketing/data}/flight.ts
+2	0	src/app/domains/ticketing/data/index.ts
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-booking.component.css
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-booking.component.html
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-booking.component.ts
+2	4	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-booking.routes.ts
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-card/flight-card.component.css
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-card/flight-card.component.html
+2	3	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-card/flight-card.component.ts
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-edit-reactive/flight-edit-reactive.component.css
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-edit-reactive/flight-edit-reactive.component.html
+7	6	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-edit-reactive/flight-edit-reactive.component.ts
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-edit/flight-edit.component.css
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-edit/flight-edit.component.html
+3	4	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-edit/flight-edit.component.ts
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-search/flight-search.component.css
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-search/flight-search.component.html
+2	3	src/app/{flight-booking => domains/ticketing/feature-booking}/flight-search/flight-search.component.ts
+1	0	src/app/domains/ticketing/feature-booking/index.ts
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/passenger-search/passenger-search.component.css
+0	0	src/app/{flight-booking => domains/ticketing/feature-booking}/passenger-search/passenger-search.component.html
+1	1	src/app/{flight-booking => domains/ticketing/feature-booking}/passenger-search/passenger-search.component.ts
+0	0	src/app/{next-flights => domains/ticketing/feature-next-flights}/checkin/checkin.component.css
+0	0	src/app/{next-flights => domains/ticketing/feature-next-flights}/checkin/checkin.component.html
+0	0	src/app/{next-flights => domains/ticketing/feature-next-flights}/checkin/checkin.component.ts
+1	0	src/app/domains/ticketing/feature-next-flights/index.ts
+0	0	src/app/{next-flights => domains/ticketing/feature-next-flights}/next-flights.component.css
+0	0	src/app/{next-flights => domains/ticketing/feature-next-flights}/next-flights.component.html
+0	0	src/app/{next-flights => domains/ticketing/feature-next-flights}/next-flights.component.ts
+0	0	src/app/{next-flights => domains/ticketing/feature-next-flights}/next-flights.module.ts
+0	0	src/app/{next-flights => domains/ticketing/feature-next-flights}/next-flights.routes.ts
+1	1	src/app/{next-flights => domains/ticketing/feature-next-flights}/next-flights.service.ts
+0	22	src/app/flight-booking/flight-booking.component.spec.ts
+0	22	src/app/flight-booking/flight-card/flight-card.component.spec.ts
+0	22	src/app/flight-booking/flight-edit-reactive/flight-edit-reactive.component.spec.ts
+0	22	src/app/flight-booking/flight-edit/flight-edit.component.spec.ts
+0	16	src/app/flight-booking/flight-search/default-flight.service.spec.ts
+0	16	src/app/flight-booking/flight-search/dummy-flight.service.spec.ts
+0	26	src/app/flight-booking/flight-search/dummy-flight.service.ts
+0	22	src/app/flight-booking/flight-search/flight-search.component.spec.ts
+0	16	src/app/flight-booking/flight-search/flight.service.spec.ts
+0	13	src/app/flight-booking/flight-search/flight.service.ts
+0	22	src/app/flight-booking/passenger-search/passenger-search.component.spec.ts
+0	22	src/app/home/home.component.spec.ts
+0	22	src/app/next-flights/checkin/checkin.component.spec.ts
+0	22	src/app/next-flights/next-flights.component.spec.ts
+0	16	src/app/next-flights/next-flights.service.spec.ts
+0	22	src/app/not-found/not-found.component.spec.ts
+0	16	src/app/shared/auth/auth.service.spec.ts
+0	8	src/app/shared/city.pipe.spec.ts
+0	16	src/app/shared/config.service.spec.ts
+0	22	src/app/shared/confirm/confirm.component.spec.ts
+0	8	src/app/shared/controls/click-with-warning.directive.spec.ts
+0	22	src/app/shared/controls/data-table/data-table.component.spec.ts
+0	8	src/app/shared/controls/data-table/table-field.directive.spec.ts
+0	22	src/app/shared/controls/tab-navigator/tab-navigator.component.spec.ts
+0	22	src/app/shared/controls/tab/tab.component.spec.ts
+0	22	src/app/shared/controls/tabbed-pane/tabbed-pane.component.spec.ts
+0	16	src/app/shared/controls/tabbed-pane/tabbed-pane.service.spec.ts
+0	8	src/app/shared/custom-template-outlet.directive.spec.ts
+0	8	src/app/shared/date/date-cva.directive.spec.ts
+0	22	src/app/shared/date/date-stepper/date-stepper.component.spec.ts
+0	12	src/app/shared/logger/custom-log-formatter.ts
+0	22	src/app/shared/status-toggle/status-toggle.component.spec.ts
+0	8	src/app/shared/tooltip.directive.spec.ts
+0	22	src/app/shared/validation-errors/validation-errors.component.spec.ts
+0	8	src/app/shared/validation/async-city-validator.directive.spec.ts
+0	8	src/app/shared/validation/city-validator.directive.spec.ts
+0	8	src/app/shared/validation/roundtrip-validator.directive.spec.ts
+0	0	src/app/{ => shell}/about/about.component.css
+0	0	src/app/{ => shell}/about/about.component.html
+11	0	src/app/shell/about/about.component.ts
+0	0	src/app/{ => shell}/basket/basket.component.css
+0	0	src/app/{ => shell}/basket/basket.component.html
+0	0	src/app/{ => shell}/basket/basket.component.ts
+0	0	src/app/{ => shell}/home/home.component.css
+0	0	src/app/{ => shell}/home/home.component.html
+2	2	src/app/{ => shell}/home/home.component.ts
+0	0	src/app/{ => shell}/navbar/navbar.component.html
+0	0	src/app/{ => shell}/navbar/navbar.component.ts
+0	0	src/app/{ => shell}/not-found/not-found.component.css
+0	0	src/app/{ => shell}/not-found/not-found.component.html
+0	0	src/app/{ => shell}/not-found/not-found.component.ts
+0	0	src/app/{ => shell}/sidebar/sidebar.component.html
+0	0	src/app/{ => shell}/sidebar/sidebar.component.ts
+2	3	src/main.ts
+30	4	tsconfig.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sun May 21 15:36:48 2023 +0200	f60b92075dd075fd51a7a5a86f502983dab2c48c,add linter"
+38	0	.eslintrc.json
+9	0	angular.json
+4653	219	package-lock.json
+10	1	package.json
+0	2	src/app/flight-booking/flight-booking.routes.ts
+1	4	src/app/flight-booking/flight-card/flight-card.component.ts
+1	1	src/app/flight-booking/flight-edit/flight-edit.component.html
+1	6	src/app/flight-booking/flight-edit/flight-edit.component.ts
+11	2	src/app/flight-booking/flight-search/dummy-flight.service.ts
+4	4	src/app/flight-booking/flight-search/flight-search.component.html
+0	2	src/app/flight-booking/flight-search/flight-search.component.ts
+0	1	src/app/home/home.component.ts
+79	62	src/app/navbar/navbar.component.html
+1	13	src/app/navbar/navbar.component.ts
+1	1	src/app/shared/auth/auth.service.ts
+1	3	src/app/shared/config.service.ts
+1	1	src/app/shared/controls/data-table/data-table.component.ts
+1	0	src/app/shared/controls/data-table/table-field.directive.ts
+1	2	src/app/shared/controls/tab/tab.component.ts
+6	3	src/app/shared/controls/tabbed-pane/tabbed-pane.component.html
+0	2	src/app/shared/controls/tabbed-pane/tabbed-pane.service.ts
+7	3	src/app/shared/custom-template-outlet.directive.ts
+8	4	src/app/shared/date/date-cva.directive.ts
+6	4	src/app/shared/date/date-stepper/date-stepper.component.ts
+2	1	src/app/shared/tooltip.directive.ts
+1	1	src/app/shared/validation/async-city-validator.directive.ts
+2	2	src/app/shared/validation/city-validator.directive.ts
+1	1	src/app/shared/validation/city-validator.ts
+1	2	src/app/shared/validation/roundtrip-validator.directive.ts
+1	1	src/app/sidebar/sidebar.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sun May 21 14:24:55 2023 +0200	456fd79ab49432ed00e2c2a079a512a32bb26260,prepare starterkit"
+5958	4156	package-lock.json
+22	15	package.json
+2	46	src/app/about/about.component.html
+2	6	src/app/flight-booking/flight-booking.routes.ts
+3	24	src/app/flight-booking/flight-edit/flight-edit.component.html
+2	8	src/app/flight-booking/flight-edit/flight-edit.component.ts
+0	5	src/app/flight-booking/flight-search/flight-search.component.html
+1	8	src/app/flight-booking/flight-search/flight-search.component.ts
+4	3	src/app/shared/date/date-cva.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 15:30:20 2023 +0100	5bee590e9a3a00bde62bf3c9edae77fb7256efb6,implement cva in date stepper"
+2	3	src/app/flight-booking/flight-search/flight-search.component.html
+2	0	src/app/flight-booking/flight-search/flight-search.component.ts
+3	10	src/app/shared/date/date-cva.directive.ts
+27	6	src/app/shared/date/date-stepper/date-stepper.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 15:24:20 2023 +0100	4ab3cd15868d8984acb1b1ce7b63ad919487a15f,add date stepper"
+0	0	src/app/shared/date/date-stepper/date-stepper.component.css
+3	0	src/app/shared/date/date-stepper/date-stepper.component.html
+22	0	src/app/shared/date/date-stepper/date-stepper.component.spec.ts
+25	0	src/app/shared/date/date-stepper/date-stepper.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 15:14:24 2023 +0100	c3d092b5c124cfdfed2f12abe09e758a2a23f69d,add custom cva"
+18	0	package-lock.json
+1	0	package.json
+6	0	src/app/flight-booking/flight-search/flight-search.component.html
+9	1	src/app/flight-booking/flight-search/flight-search.component.ts
+8	0	src/app/shared/date/date-cva.directive.spec.ts
+54	0	src/app/shared/date/date-cva.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 14:46:21 2023 +0100	6affe7be5881d85ecd5a038c44189b0fbe8258d0,add generic loading indicator"
+60	0	src/app/app.component.css
+7	0	src/app/app.component.html
+31	2	src/app/app.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 14:34:13 2023 +0100	c03925707b70800a1e95b631bafcfb15f2cc3ce8,add resolver"
+8	1	src/app/flight-booking/flight-booking.routes.ts
+4	8	src/app/flight-booking/flight-edit/flight-edit.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 14:12:27 2023 +0100	3f119113b29f808c6d3007b227dbe0c81625d83e,add can deactivate guard"
+2	0	src/app/flight-booking/flight-booking.routes.ts
+13	1	src/app/flight-booking/flight-edit/flight-edit.component.ts
+5	0	src/app/shared/can-exit.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 13:58:55 2023 +0100	1286b7c6f0bad34a1423487187977563ab511550,add auth check function"
+2	3	src/app/flight-booking/flight-booking.routes.ts
+14	0	src/app/shared/auth/auth.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 13:49:56 2023 +0100	b4e7466c4a6ffd47d5f655f97a8b70ab35ae83d3,add auth service and guard"
+3	0	src/app/flight-booking/flight-booking.routes.ts
+5	1	src/app/home/home.component.html
+2	0	src/app/home/home.component.ts
+16	0	src/app/shared/auth/auth.service.spec.ts
+25	0	src/app/shared/auth/auth.service.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 13:37:59 2023 +0100	4297561828e845ce89a6158f9542998e0405e4be,add aux route for basket"
+2	0	src/app/app.component.html
+6	1	src/app/app.routes.ts
+7	0	src/app/basket/basket.component.html
+2	1	src/app/basket/basket.component.ts
+1	6	src/app/sidebar/sidebar.component.html
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 13:32:30 2023 +0100	26a9fa057e166eded6b18f0f834d08866f76ea2b,add flight-booking cmp with child routes"
+0	0	src/app/flight-booking/flight-booking.component.css
+17	0	src/app/flight-booking/flight-booking.component.html
+22	0	src/app/flight-booking/flight-booking.component.spec.ts
+12	0	src/app/flight-booking/flight-booking.component.ts
+7	0	src/app/flight-booking/flight-booking.routes.ts
+1	7	src/app/sidebar/sidebar.component.html
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Mon Mar 13 13:22:44 2023 +0100	bcb70ba418f60b8fd5a443623009e4139bb5a791,add basket"
+1	1	src/app/app.component.ts
+25	0	src/app/basket/basket.component.css
+18	0	src/app/basket/basket.component.html
+22	0	src/app/basket/basket.component.spec.ts
+11	0	src/app/basket/basket.component.ts
+1	1	src/app/flight-booking/flight-card/flight-card.component.ts
+25	16	src/app/navbar/navbar.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Feb 4 00:48:07 2023 +0100	f5c24f34cdb7146644432d6eaa942b954ed6aae8,add chaining to logger"
+21	10	src/app/flight-booking/flight-booking.routes.ts
+6	1	src/app/flight-booking/passenger-search/passenger-search.component.ts
+9	0	src/app/shared/logger/logger.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Feb 4 00:41:07 2023 +0100	cefba5c05e7df6adec56db3f2184fbf41e4ad832,refactor log formatter to function"
+12	11	src/app/shared/logger/log-formatter.ts
+3	3	src/app/shared/logger/logger-config.ts
+3	3	src/app/shared/logger/logger.ts
+3	3	src/app/shared/logger/provider.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Feb 4 00:35:38 2023 +0100	0c10ecac1a8e246ce76a6cfad16f1795dd2c3cd0,add color feature"
+12	0	src/app/shared/logger/color-config.ts
+22	0	src/app/shared/logger/color.service.ts
+21	0	src/app/shared/logger/color.ts
+12	0	src/app/shared/logger/features.ts
+7	1	src/app/shared/logger/log-appender.ts
+11	1	src/app/shared/logger/provider.ts
+2	16	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Feb 4 00:16:24 2023 +0100	4d1e58b68f83b7aebddff41561c9ace17c2f8857,add provideLogger function"
+0	3	src/app/home/home.component.ts
+1	1	src/app/shared/logger/log-appender.ts
+7	0	src/app/shared/logger/logger-config.ts
+28	0	src/app/shared/logger/provider.ts
+4	23	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Feb 3 23:54:06 2023 +0100	a4eb896c341087de05ce66b8be457df0b5281869,add custom log appender"
+4	0	src/app/home/home.component.ts
+12	0	src/app/shared/logger/custom-log-appender.ts
+7	0	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Feb 3 16:10:02 2023 +0100	f8c2fbe3bf218524519146d4d1826e73087ffdd4,add log appender with multi provider"
+15	0	src/app/shared/logger/log-appender.ts
+5	1	src/app/shared/logger/logger.ts
+9	0	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Feb 3 16:05:05 2023 +0100	42146a7017c300dbd72bb6d7135fc6e020eee151,add custom log formatter"
+12	0	src/app/shared/logger/custom-log-formatter.ts
+2	1	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Feb 3 15:59:29 2023 +0100	90fcbc3c483287080df498c3e1bce0e57a7ccab2,add providers"
+11	2	src/app/home/home.component.ts
+0	6	src/app/shared/logger/logger-config.ts
+20	0	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Fri Feb 3 15:52:30 2023 +0100	6dede058a2378daa13bdaa087684fb25175f88da,add logger"
+14	0	src/app/shared/logger/log-formatter.ts
+5	0	src/app/shared/logger/log-level.ts
+15	0	src/app/shared/logger/logger-config.ts
+32	0	src/app/shared/logger/logger.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 17:46:40 2023 +0100	a710c53da4f89b479670e9c5572dbca940f687cb,add custom outlet"
+1	1	src/app/shared/controls/data-table/data-table.component.html
+2	1	src/app/shared/controls/data-table/data-table.component.ts
+8	0	src/app/shared/custom-template-outlet.directive.spec.ts
+33	0	src/app/shared/custom-template-outlet.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 17:42:17 2023 +0100	44bdb2c9ab005c92382619e6d6dff5152444e870,add data table"
+11	0	src/app/about/about.component.html
+29	0	src/app/about/about.component.ts
+0	0	src/app/shared/controls/data-table/data-table.component.css
+12	0	src/app/shared/controls/data-table/data-table.component.html
+22	0	src/app/shared/controls/data-table/data-table.component.spec.ts
+21	0	src/app/shared/controls/data-table/data-table.component.ts
+8	0	src/app/shared/controls/data-table/table-field.directive.spec.ts
+10	0	src/app/shared/controls/data-table/table-field.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 17:33:17 2023 +0100	6a85705158648ae8a6eba69a48fafda31300764f,pass params to template"
+5	5	src/app/about/about.component.html
+12	3	src/app/shared/tooltip.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 17:24:51 2023 +0100	edba9b4374b1b62870936304abee4f4293ac6a87,add tip tool text"
+11	0	src/app/about/about.component.html
+2	0	src/app/about/about.component.ts
+8	0	src/app/shared/tooltip.directive.spec.ts
+45	0	src/app/shared/tooltip.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 17:16:47 2023 +0100	fcc23b05f5b58810a1441d121db2d0976508eefe,use export as"
+9	1	src/app/about/about.component.html
+1	0	src/app/shared/controls/click-with-warning.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 17:10:44 2023 +0100	3bd07b1dc1cb01b8815400423f8dff4ad2c2409f,add cdk dialog"
+0	0	src/app/shared/confirm/confirm.component.css
+9	0	src/app/shared/confirm/confirm.component.html
+22	0	src/app/shared/confirm/confirm.component.spec.ts
+19	0	src/app/shared/confirm/confirm.component.ts
+11	1	src/app/shared/controls/click-with-warning.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 16:56:18 2023 +0100	ee26da3c824e9b8c1f0bcde5c93cf0388acc7700,add host-binding"
+1	1	src/app/about/about.component.html
+5	1	src/app/about/about.component.ts
+22	5	src/app/shared/controls/click-with-warning.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 16:45:17 2023 +0100	3e35beeb5a0a6ee34285b86b9700908d463aaeb2,add directive"
+2	0	src/app/about/about.component.html
+7	1	src/app/about/about.component.ts
+8	0	src/app/shared/controls/click-with-warning.directive.spec.ts
+13	0	src/app/shared/controls/click-with-warning.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 16:35:52 2023 +0100	1b5e0fc2cdce6515c3befa274d7927d526376266,add service for communication"
+23	2	src/app/shared/controls/tab-navigator/tab-navigator.component.ts
+14	10	src/app/shared/controls/tabbed-pane/tabbed-pane.component.ts
+16	0	src/app/shared/controls/tabbed-pane/tabbed-pane.service.spec.ts
+12	0	src/app/shared/controls/tabbed-pane/tabbed-pane.service.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 16:27:00 2023 +0100	8eec3240e0890fd17fe31b475e76123153f7f0a3,use view content"
+1	7	src/app/shared/controls/tabbed-pane/tabbed-pane.component.html
+25	1	src/app/shared/controls/tabbed-pane/tabbed-pane.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 16:17:44 2023 +0100	ff3e8c1fdeacc1eae1e75ebeafbbe3ad4ed5f328,add handle"
+7	0	src/app/shared/controls/tabbed-pane/tabbed-pane.component.html
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 16:14:51 2023 +0100	5f67a0642aec0b33083412304f2ed53f74da6bf1,add navigator"
+13	0	src/app/shared/controls/tab-navigator/tab-navigator.component.css
+5	0	src/app/shared/controls/tab-navigator/tab-navigator.component.html
+22	0	src/app/shared/controls/tab-navigator/tab-navigator.component.spec.ts
+31	0	src/app/shared/controls/tab-navigator/tab-navigator.component.ts
+7	0	src/app/shared/controls/tabbed-pane/tabbed-pane.component.html
+10	1	src/app/shared/controls/tabbed-pane/tabbed-pane.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 15:52:34 2023 +0100	0bb1b8048774636b0b9a2ee0742ed0335f34b834,use content children"
+0	6	src/app/shared/controls/tab/tab.component.ts
+13	2	src/app/shared/controls/tabbed-pane/tabbed-pane.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 11:28:38 2023 +0100	d10af04f0ddc535b3310d297ec2f759e6778d602,implement tabbed pane"
+11	9	src/app/about/about.component.html
+2	1	src/app/about/about.component.ts
+8	1	src/app/shared/controls/tab/tab.component.ts
+24	0	src/app/shared/controls/tabbed-pane/tabbed-pane.component.css
+11	1	src/app/shared/controls/tabbed-pane/tabbed-pane.component.html
+23	2	src/app/shared/controls/tabbed-pane/tabbed-pane.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Feb 2 11:21:23 2023 +0100	8d38bc72a91058f8bcd0b5d14a5e0450d30c53ff,add tab and tabbed-pane"
+13	1	src/app/about/about.component.html
+2	1	src/app/about/about.component.ts
+0	0	src/app/shared/controls/tab/tab.component.css
+4	0	src/app/shared/controls/tab/tab.component.html
+22	0	src/app/shared/controls/tab/tab.component.spec.ts
+14	0	src/app/shared/controls/tab/tab.component.ts
+0	0	src/app/shared/controls/tabbed-pane/tabbed-pane.component.css
+1	0	src/app/shared/controls/tabbed-pane/tabbed-pane.component.html
+22	0	src/app/shared/controls/tabbed-pane/tabbed-pane.component.spec.ts
+11	0	src/app/shared/controls/tabbed-pane/tabbed-pane.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 20:46:44 2022 +0100	bfa2e82b1c08056ae65f874999e7b84558862191,route to next flights module"
+7	0	src/app/app.routes.ts
+3	1	src/app/next-flights/next-flights.module.ts
+10	0	src/app/next-flights/next-flights.routes.ts
+6	0	src/app/sidebar/sidebar.component.html
+0	1	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 20:42:08 2022 +0100	6deb525159fdd1dafecd8af8bb0c16374779e929,use preload all strategy"
+7	2	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 20:40:36 2022 +0100	ca2f49192923528bdc086113145be292221e5092,lazy load flight-booking routes"
+4	2	src/app/app.routes.ts
+2	0	src/app/flight-booking/flight-booking.routes.ts
+2	2	src/app/sidebar/sidebar.component.html
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 20:17:10 2022 +0100	f4c8b35df0d6d8b9ca1ea6b7fab8802e4e7e05e8,add route with parameter for flight-edit"
+0	1	src/app/app.routes.ts
+1	1	src/app/flight-booking/flight-booking.routes.ts
+6	1	src/app/flight-booking/flight-card/flight-card.component.html
+2	1	src/app/flight-booking/flight-card/flight-card.component.ts
+3	5	src/app/flight-booking/flight-edit/flight-edit.component.html
+21	14	src/app/flight-booking/flight-edit/flight-edit.component.ts
+12	0	src/app/flight-booking/flight-search/default-flight.service.ts
+1	0	src/app/flight-booking/flight-search/flight.service.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 20:29:35 2022 +0100	4b00b6ca78e88550d90ce7176e2d18224bd320ce,add resolver ensuring config is loaded first"
+21	8	src/app/app.routes.ts
+7	0	src/app/shared/config.service.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 20:00:17 2022 +0100	cb349e18593ec1fa1225e3d5b891acff0d7d2e4e,add routing using app-routes and flight-booking-roots"
+0	0	src/app/about/about.component.css
+1	0	src/app/about/about.component.html
+22	0	src/app/about/about.component.spec.ts
+11	0	src/app/about/about.component.ts
+1	3	src/app/app.component.html
+2	0	src/app/app.component.ts
+27	0	src/app/app.routes.ts
+19	0	src/app/flight-booking/flight-booking.routes.ts
+0	0	src/app/flight-booking/passenger-search/passenger-search.component.css
+1	0	src/app/flight-booking/passenger-search/passenger-search.component.html
+22	0	src/app/flight-booking/passenger-search/passenger-search.component.spec.ts
+11	0	src/app/flight-booking/passenger-search/passenger-search.component.ts
+0	0	src/app/home/home.component.css
+1	0	src/app/home/home.component.html
+22	0	src/app/home/home.component.spec.ts
+11	0	src/app/home/home.component.ts
+0	0	src/app/not-found/not-found.component.css
+1	0	src/app/not-found/not-found.component.html
+22	0	src/app/not-found/not-found.component.spec.ts
+11	0	src/app/not-found/not-found.component.ts
+9	3	src/app/sidebar/sidebar.component.html
+6	5	src/app/sidebar/sidebar.component.ts
+3	0	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 19:47:31 2022 +0100	861bafc157123e9d2888fb75016b34e1fb2cc2c8,refactor structure"
+1	1	src/app/app.component.ts
+0	0	src/app/{ => flight-booking}/flight-card/flight-card.component.css
+0	0	src/app/{ => flight-booking}/flight-card/flight-card.component.html
+0	0	src/app/{ => flight-booking}/flight-card/flight-card.component.spec.ts
+3	3	src/app/{ => flight-booking}/flight-card/flight-card.component.ts
+0	0	src/app/{ => flight-booking}/flight-edit-reactive/flight-edit-reactive.component.css
+0	0	src/app/{ => flight-booking}/flight-edit-reactive/flight-edit-reactive.component.html
+0	0	src/app/{ => flight-booking}/flight-edit-reactive/flight-edit-reactive.component.spec.ts
+5	5	src/app/{ => flight-booking}/flight-edit-reactive/flight-edit-reactive.component.ts
+0	0	src/app/{ => flight-booking}/flight-edit/flight-edit.component.css
+0	0	src/app/{ => flight-booking}/flight-edit/flight-edit.component.html
+0	0	src/app/{ => flight-booking}/flight-edit/flight-edit.component.spec.ts
+5	5	src/app/{ => flight-booking}/flight-edit/flight-edit.component.ts
+0	0	src/app/{ => flight-booking}/flight-search/default-flight.service.spec.ts
+2	2	src/app/{ => flight-booking}/flight-search/default-flight.service.ts
+0	0	src/app/{ => flight-booking}/flight-search/dummy-flight.service.spec.ts
+1	1	src/app/{ => flight-booking}/flight-search/dummy-flight.service.ts
+0	0	src/app/{ => flight-booking}/flight-search/flight-search.component.css
+0	0	src/app/{ => flight-booking}/flight-search/flight-search.component.html
+0	0	src/app/{ => flight-booking}/flight-search/flight-search.component.spec.ts
+2	2	src/app/{ => flight-booking}/flight-search/flight-search.component.ts
+0	0	src/app/{ => flight-booking}/flight-search/flight.service.spec.ts
+1	1	src/app/{ => flight-booking}/flight-search/flight.service.ts
+0	0	src/app/{ => shared}/status-toggle/status-toggle.component.css
+0	0	src/app/{ => shared}/status-toggle/status-toggle.component.html
+0	0	src/app/{ => shared}/status-toggle/status-toggle.component.spec.ts
+0	0	src/app/{ => shared}/status-toggle/status-toggle.component.ts
+1	1	src/app/shared/validation/async-city-validator.directive.ts
+1	1	src/app/shared/validation/async-city-validator.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 16:33:19 2022 +0100	14b9c292c4626180181eb4cd4045caa83e56290a,add reactive round trip validator"
+3	0	src/app/flight-edit-reactive/flight-edit-reactive.component.ts
+22	0	src/app/shared/validation/roundtrip-validator.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 16:26:30 2022 +0100	531d572403a19f824f7886e161bc6d48e9dc564a,add reactive async validator"
+12	2	src/app/flight-edit-reactive/flight-edit-reactive.component.html
+7	2	src/app/flight-edit-reactive/flight-edit-reactive.component.ts
+14	0	src/app/shared/validation/async-city-validator.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 16:16:56 2022 +0100	d12cdb7899042b7e86551e52c06337043fcfc809,add reactive city validator"
+9	1	src/app/flight-edit-reactive/flight-edit-reactive.component.ts
+15	0	src/app/shared/validation/city-validator.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 16:02:01 2022 +0100	3ff078a2e0993a728387525481b9197802d2b81f,add reactive form"
+2	1	src/app/flight-card/flight-card.component.ts
+0	0	src/app/flight-edit-reactive/flight-edit-reactive.component.css
+20	0	src/app/flight-edit-reactive/flight-edit-reactive.component.html
+22	0	src/app/flight-edit-reactive/flight-edit-reactive.component.spec.ts
+50	0	src/app/flight-edit-reactive/flight-edit-reactive.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 15:25:27 2022 +0100	c15c93c24ae72f5b60df17c5abccab476a8d996c,add multifield validator"
+6	1	src/app/flight-edit/flight-edit.component.html
+2	0	src/app/flight-edit/flight-edit.component.ts
+4	0	src/app/shared/validation-errors/validation-errors.component.html
+8	0	src/app/shared/validation/roundtrip-validator.directive.spec.ts
+41	0	src/app/shared/validation/roundtrip-validator.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 15:17:02 2022 +0100	58de6c6373c53519d454c8841137dfe64fbc8ae5,add async city validator"
+5	0	src/app/flight-edit/flight-edit.component.html
+2	0	src/app/flight-edit/flight-edit.component.ts
+4	0	src/app/shared/validation-errors/validation-errors.component.html
+8	0	src/app/shared/validation/async-city-validator.directive.spec.ts
+31	0	src/app/shared/validation/async-city-validator.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 15:07:29 2022 +0100	85bfb013c2d95d6c4512601f5021a579c5af2394,add parameters to city validator"
+1	1	src/app/flight-edit/flight-edit.component.html
+5	4	src/app/shared/validation/city-validator.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 15:04:31 2022 +0100	ea80b11823b971f323bd7ed61962a18e90dc5d4b,add city validator"
+8	1	src/app/flight-edit/flight-edit.component.html
+7	1	src/app/flight-edit/flight-edit.component.ts
+4	0	src/app/shared/validation-errors/validation-errors.component.html
+8	0	src/app/shared/validation/city-validator.directive.spec.ts
+33	0	src/app/shared/validation/city-validator.directive.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 14:44:44 2022 +0100	59216aceb6a28cabb11572a38b266a5171052032,add validation errors component"
+3	20	src/app/flight-edit/flight-edit.component.html
+2	1	src/app/flight-edit/flight-edit.component.ts
+0	0	src/app/shared/validation-errors/validation-errors.component.css
+13	0	src/app/shared/validation-errors/validation-errors.component.html
+22	0	src/app/shared/validation-errors/validation-errors.component.spec.ts
+22	0	src/app/shared/validation-errors/validation-errors.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 14:22:57 2022 +0100	0810a547b92baa624ec8187f4a62060416475757,add styles reflecting form state"
+8	0	src/styles.css
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 13:59:38 2022 +0100	9e0f483526c9ed802e910d5e1f2eb587eb0e1d71,add material dialog"
+90	99	angular.json
+1693	0	package-lock.json
+2	0	package.json
+2	0	src/app/flight-card/flight-card.component.html
+11	1	src/app/flight-card/flight-card.component.ts
+45	27	src/app/flight-edit/flight-edit.component.html
+17	8	src/app/flight-edit/flight-edit.component.ts
+32	13	src/index.html
+6	1	src/main.ts
+13	0	src/styles.css
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 13:34:44 2022 +0100	63f84e1258b24ef771bc5616bc28c51059729576,add edit component"
+0	0	src/app/flight-edit/flight-edit.component.css
+29	0	src/app/flight-edit/flight-edit.component.html
+22	0	src/app/flight-edit/flight-edit.component.spec.ts
+21	0	src/app/flight-edit/flight-edit.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 12:51:44 2022 +0100	af3da080f2d5cb6b4745f2acc3a70e8a2fcf0e95,add two slots for content projection"
+2	1	src/app/flight-card/flight-card.component.html
+2	1	src/app/flight-search/flight-search.component.html
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 12:49:21 2022 +0100	704243d18495b7c637b0ad870530d4374a2d6907,add content project to flight card"
+3	0	src/app/flight-card/flight-card.component.html
+3	1	src/app/flight-search/flight-search.component.html
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 12:37:56 2022 +0100	6ef9e1a1ea2693530648303048d0d6c093e39614,add status toggle component"
+4	1	src/app/flight-card/flight-card.component.html
+3	3	src/app/flight-card/flight-card.component.ts
+0	1	src/app/flight-search/flight-search.component.ts
+0	0	src/app/status-toggle/status-toggle.component.css
+1	0	src/app/status-toggle/status-toggle.component.html
+22	0	src/app/status-toggle/status-toggle.component.spec.ts
+19	0	src/app/status-toggle/status-toggle.component.ts
+10	0	src/styles.css
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 12:14:38 2022 +0100	f261579b71bdbacd33a109eb7b4805fb5de19523,use two-way binding for flight card"
+1	5	src/app/flight-search/flight-search.component.html
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Thu Dec 8 12:11:35 2022 +0100	4f5e6b58219b84c2f297be1692570181e7505c35,add flight card component"
+0	0	src/app/flight-card/flight-card.component.css
+21	0	src/app/flight-card/flight-card.component.html
+22	0	src/app/flight-card/flight-card.component.spec.ts
+30	0	src/app/flight-card/flight-card.component.ts
+11	27	src/app/flight-search/flight-search.component.html
+7	1	src/app/flight-search/flight-search.component.ts
+8	0	src/app/model/flight.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 23:00:14 2022 +0100	6463b709693375ff071fbf7bce99a43476950119,add legacy module"
+2	0	src/app/app.component.html
+7	1	src/app/app.component.ts
+0	0	src/app/next-flights/checkin/checkin.component.css
+1	0	src/app/next-flights/checkin/checkin.component.html
+22	0	src/app/next-flights/checkin/checkin.component.spec.ts
+8	0	src/app/next-flights/checkin/checkin.component.ts
+0	0	src/app/next-flights/next-flights.component.css
+4	0	src/app/next-flights/next-flights.component.html
+22	0	src/app/next-flights/next-flights.component.spec.ts
+12	0	src/app/next-flights/next-flights.component.ts
+13	0	src/app/next-flights/next-flights.module.ts
+16	0	src/app/next-flights/next-flights.service.spec.ts
+16	0	src/app/next-flights/next-flights.service.ts
+2	2	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 22:08:01 2022 +0100	bb8cda30bff744122e01cf700e85a44c631d1152,add city pipe"
+2	2	src/app/flight-search/flight-search.component.html
+2	1	src/app/flight-search/flight-search.component.ts
+8	0	src/app/shared/city.pipe.spec.ts
+34	0	src/app/shared/city.pipe.ts
+0	16	src/app/shared/date-time.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 20:58:23 2022 +0100	33e59721f495bef786cb4b5913a9a4a3ccbff047,make flight-service abstract"
+16	0	src/app/flight-search/default-flight.service.spec.ts
+24	0	src/app/flight-search/default-flight.service.ts
+16	0	src/app/flight-search/dummy-flight.service.spec.ts
+17	0	src/app/flight-search/dummy-flight.service.ts
+4	1	src/app/flight-search/flight-search.component.html
+0	1	src/app/flight-search/flight-search.component.ts
+9	22	src/app/flight-search/flight.service.ts
+16	0	src/app/shared/date-time.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 15:34:03 2022 +0100	aa21de2f883930560803f3956dc1a8a7c6b50ea4,add config service"
+10	1	src/app/app.component.ts
+4	1	src/app/flight-search/flight.service.ts
+16	0	src/app/shared/config.service.spec.ts
+23	0	src/app/shared/config.service.ts
+7	0	src/app/shared/config.ts
+3	0	src/assets/config.json
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 15:10:52 2022 +0100	9661477350a3857a3a6d949f0c3466ef55a483b2,add flight service"
+0	33	src/app/flight-search/flight-search.component.html
+0	15	src/app/flight-search/flight-search.component.ts
+0	10	src/app/flight-search/flight.service.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 15:09:21 2022 +0100	7bb2eb7bf8800c435a63f5b641c4805188d8d759,add flight service"
+4	19	src/app/flight-search/flight-search.component.ts
+16	0	src/app/flight-search/flight.service.spec.ts
+32	0	src/app/flight-search/flight.service.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 14:45:39 2022 +0100	bca0186921e26f0561a7ccd1b281f37e6f629776,implement save"
+35	0	src/app/flight-search/flight-search.component.html
+27	1	src/app/flight-search/flight-search.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 14:09:33 2022 +0100	234c9acca4541465b5df38d755576a364e780bde,add styles"
+2	2	src/app/flight-search/flight-search.component.html
+7	1	src/styles.css
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 13:51:25 2022 +0100	1ebbee240cb691c72b2fae1d6da7de4475fb7f7b,implement flight search"
+1	1	src/app/app.component.html
+10	10	src/app/flight-search/flight-search.component.html
+5	6	src/app/flight-search/flight-search.component.ts
+2	0	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 13:06:23 2022 +0100	9bf651d909f8c3f718961cd0b52b240fc14b9d5d,add simple template"
+5	9	src/app/app.component.html
+3	5	src/app/app.component.ts
+45	1	src/app/flight-search/flight-search.component.html
+2	1	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 12:59:06 2022 +0100	d5cd8ed9be0337bcc3beb76df8e8e904b4477504,implement search method"
+19	1	src/app/flight-search/flight-search.component.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 12:56:38 2022 +0100	4c2866da07dab0863676d8b585d46e1ac64990ad,first step"
+0	0	src/app/flight-search/flight-search.component.css
+1	0	src/app/flight-search/flight-search.component.html
+22	0	src/app/flight-search/flight-search.component.spec.ts
+30	0	src/app/flight-search/flight-search.component.ts
+7	0	src/app/model/flight.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 12:45:35 2022 +0100	242f28c97cac41b720404708fa72f3ce99510b4d,install husky + pretty-quick"
+4	0	.husky/pre-commit
+462	0	package-lock.json
+4	1	package.json
+37	38	src/app/sidebar/sidebar.component.html
+1	1	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 12:10:38 2022 +0100	bd6bca2376ffb131efe9122e7a2de568aafd8989,provide starter kit"
+11	0	.vscode/settings.json
+99	97	angular.json
+11	0	package-lock.json
+1	0	package.json
+10	476	src/app/app.component.html
+10	3	src/app/app.component.ts
+0	16	src/app/app.module.ts
+112	0	src/app/navbar/navbar.component.html
+25	0	src/app/navbar/navbar.component.ts
+43	0	src/app/sidebar/sidebar.component.html
+9	0	src/app/sidebar/sidebar.component.ts
+-	-	src/assets/paper-design/angular2-logo.png
+4	0	src/index.html
+5	6	src/main.ts
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Wed Dec 7 11:59:58 2022 +0100	08275a710aa3eb0b95126a645577ff171e903d4b,initial commit"
+16	0	.editorconfig
+42	0	.gitignore
+4	0	.vscode/extensions.json
+20	0	.vscode/launch.json
+42	0	.vscode/tasks.json
+27	0	README.md
+98	0	angular.json
+19090	0	package-lock.json
+38	0	package.json
+0	0	src/app/app.component.css
+483	0	src/app/app.component.html
+31	0	src/app/app.component.spec.ts
+10	0	src/app/app.component.ts
+16	0	src/app/app.module.ts
+0	0	src/assets/.gitkeep
+-	-	src/favicon.ico
+13	0	src/index.html
+7	0	src/main.ts
+1	0	src/styles.css
+14	0	tsconfig.app.json
+33	0	tsconfig.json
+14	0	tsconfig.spec.json
