@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
+import { delayFirstFlight } from '../delay-first-flight';
 
 // import { CheckinService } from '@demo/checkin/data/checkin.service';
 
@@ -49,15 +50,7 @@ export class FlightSearchComponent {
   }
 
   delay(): void {
-    this.flights.update((flights) => {
-      const oldFlight = flights[0];
-      const oldDate = new Date(oldFlight.date);
-
-      const newDate = addMinutes(oldDate, 15);
-      const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
-
-      return [newFlight, ...flights.slice(1)];
-    });
+    this.flights.update((flights) => delayFirstFlight(flights));
   }
 
   updateBasket(flightId: number, selected: boolean): void {
