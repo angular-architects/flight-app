@@ -1,74 +1,56 @@
 import {
   patchState,
+  signalMethod,
   signalStore,
-  withComputed,
-  withHooks,
   withMethods,
+  withProps,
   withState,
 } from '@ngrx/signals';
+import { withResource } from '@angular-architects/ngrx-toolkit';
+import { inject } from '@angular/core';
 import { Flight, FlightService } from '../data';
-import { computed, inject } from '@angular/core';
 import { addMinutes } from 'date-fns';
+
+export type Filter = { from: string; to: string };
 
 export const BookingStore = signalStore(
   { providedIn: 'root' },
   withState({
     from: 'Graz',
-    to: 'Hamburg',
+    to: 'London',
     basket: {} as Record<number, boolean>,
-    flights: [] as Flight[],
   }),
-  withComputed(({ flights, basket }) => ({
-    selectedFlights: computed(() => flights().filter((f) => basket()[f.id])),
+  withProps(() => ({
+    _flightService: inject(FlightService),
   })),
-  withMethods((state) => {
-    const flightService = inject(FlightService);
-
-    return {
-      updateCriteria(from: string, to: string): void {
-        patchState(state, { from, to });
-      },
-      updateBasket(flightId: number, selected: boolean): void {
-        patchState(state, ({ basket }) => ({
-          basket: {
-            ...basket,
-            [flightId]: selected,
-          },
-        }));
-      },
-      delay(): void {
-        const oldFlights = state.flights();
-        const oldFlight = oldFlights[0];
-        const oldDate = new Date(oldFlight.date);
-
-        const newDate = addMinutes(oldDate, 15);
-        const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
-        const newFlights = [newFlight, ...oldFlights.slice(1)];
-
-        patchState(state, { flights: newFlights });
-      },
-      load(): void {
-        if (!state.from() || !state.to()) {
-          return;
-        }
-
-        flightService.find(state.from(), state.to()).subscribe({
-          next: (flights) => {
-            patchState(state, { flights });
-          },
-          error: (errResp) => {
-            console.error('Error loading flights', errResp);
-          },
-        });
-      },
-    };
-  }),
-  withHooks({
-    onInit({ load }) {
-      load();
+  withResource((store) => ({
+    flights: store._flightService.findResource(store.from, store.to),
+  })),
+  withMethods((store) => ({
+    updateFilter: signalMethod((filter: Filter) => {
+      patchState(store, filter);
+    }),
+    updateBasket: (fid: number, selected: boolean) => {
+      patchState(store, (state) => ({
+        basket: {
+          ...state.basket,
+          [fid]: selected,
+        },
+      }));
     },
-    onDestroy(store) {
-      console.log('destroy!', store);
+    reload() {
+      store._flightsReload();
     },
-  })
+    delay(): void {
+      const oldFlights = store.flightsValue();
+      const oldFlight = oldFlights[0];
+      const oldDate = new Date(oldFlight.date);
+
+      const newDate = addMinutes(oldDate, 15);
+      const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
+      const newFlights = [newFlight, ...oldFlights.slice(1)];
+
+      patchState(store, { flightsValue: newFlights });
+    },
+  }))
 );
