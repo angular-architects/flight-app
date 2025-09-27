@@ -1,7 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import {
   importProvidersFrom,
-  provideExperimentalZonelessChangeDetection,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -16,7 +16,7 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
     provideRouter(APP_ROUTES),
 
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
 
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),

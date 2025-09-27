@@ -17,17 +17,42 @@ export class FlightService {
   private configService = inject(ConfigService);
 
   createResource(criteria: Signal<Criteria>) {
-    return httpResource<Flight[]>(() => ({
-      url: `${this.configService.config.baseUrl}/flight`,
-      headers: {
-        Accept: 'application/json',
-      },
-      params: {
-        from: criteria().from,
-        to: criteria().to,
-      },
-    }));
+    return httpResource<Flight[]>(
+      () => ({
+        url: `${this.configService.config.baseUrl}/flight`,
+        headers: {
+          Accept: 'application/json',
+        },
+        params: {
+          from: criteria().from,
+          to: criteria().to,
+        },
+      }),
+      { defaultValue: [] }
+    );
   }
+
+  // createResource(criteria: Signal<Criteria>) {
+  //   return rxResource({
+  //     params: criteria,
+  //     stream: (loaderParams) => {
+  //       const c = loaderParams.params;
+  //       return this.find(c.from, c.to);
+  //     },
+  //     defaultValue: [],
+  //   });
+  // }
+
+  // createResource(criteria: Signal<Criteria>) {
+  //   return resource({
+  //     params: criteria,
+  //     loader: (loaderParams) => {
+  //       const c = loaderParams.params;
+  //       return this.findPromise(c.from, c.to);
+  //     },
+  //     defaultValue: [],
+  //   });
+  // }
 
   find(from: string, to: string, urgent = false): Observable<Flight[]> {
     const url = `${this.configService.config.baseUrl}/flight`;

@@ -7,7 +7,6 @@ import {
   signal,
   effect,
 } from '@angular/core';
-// import { rxResource } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
@@ -38,22 +37,9 @@ export class FlightSearchComponent {
   }));
 
   debouncedCriteria = debounceSignal(this.criteria, 300);
-
   flightResource = this.flightService.createResource(this.debouncedCriteria);
 
-  // rxResource Alternative
-  // rxFlightResource = rxResource({
-  //   request: this.criteria,
-  //   loader: (param) => {
-  //     const c = param.request;
-  //     return this.flightService.find(
-  //       c.from,
-  //       c.to
-  //     );
-  //   },
-  // });
-
-  flights = computed(() => this.flightResource.value() ?? []);
+  flights = this.flightResource.value;
 
   errors = this.flightResource.error;
   isLoading = this.flightResource.isLoading;
