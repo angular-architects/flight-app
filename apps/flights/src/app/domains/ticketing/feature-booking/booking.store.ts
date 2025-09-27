@@ -10,6 +10,7 @@ import {
 import { withDevtools, withResource } from '@angular-architects/ngrx-toolkit';
 import { computed, inject } from '@angular/core';
 import { Criteria, FlightService } from '../data';
+import { delayFirstFlight } from './delay-first-flights';
 
 export const BookingStore = signalStore(
   { providedIn: 'root' },
@@ -19,6 +20,9 @@ export const BookingStore = signalStore(
     basket: {} as Record<number, boolean>,
     delayInMinutes: 0,
   }),
+  withComputed((store) => ({
+    filter: computed(() => ({ from: store.from(), to: store.to() })),
+  })),
   withProps(() => ({
     _flightService: inject(FlightService),
   })),
@@ -26,10 +30,13 @@ export const BookingStore = signalStore(
     flights: store._flightService.createResource(store.filter),
   })),
 
+  // Add computed
   withComputed((store) => ({
-    filter: computed(() => ({ from: store.from(), to: store.to() })),
     selected: computed(() =>
       store.flightsValue().filter((f) => store.basket()[f.id])
+    ),
+    flightsWithDelay: computed(() =>
+      delayFirstFlight(store.flightsValue(), store.delayInMinutes())
     ),
   })),
 

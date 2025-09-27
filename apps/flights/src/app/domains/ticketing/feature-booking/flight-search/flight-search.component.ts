@@ -28,8 +28,13 @@ export class FlightSearchComponent {
   // Debounce filter
   debouncedFilter = debounceSignal(this.filter, 300);
 
-  flights = this.store.flightsValue;
+  // Use flightsWithDelay
+  flights = this.store.flightsWithDelay;
+
   basket = this.store.basket;
+
+  // Get selected
+  selected = this.store.selected;
 
   constructor() {
     // Delegate debounced filter
