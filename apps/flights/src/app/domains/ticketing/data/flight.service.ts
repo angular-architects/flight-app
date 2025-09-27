@@ -32,28 +32,6 @@ export class FlightService {
     );
   }
 
-  // createResource(criteria: Signal<Criteria>) {
-  //   return rxResource({
-  //     params: criteria,
-  //     stream: (loaderParams) => {
-  //       const c = loaderParams.params;
-  //       return this.find(c.from, c.to);
-  //     },
-  //     defaultValue: [],
-  //   });
-  // }
-
-  // createResource(criteria: Signal<Criteria>) {
-  //   return resource({
-  //     params: criteria,
-  //     loader: (loaderParams) => {
-  //       const c = loaderParams.params;
-  //       return this.findPromise(c.from, c.to);
-  //     },
-  //     defaultValue: [],
-  //   });
-  // }
-
   find(from: string, to: string, urgent = false): Observable<Flight[]> {
     const url = `${this.configService.config.baseUrl}/flight`;
 

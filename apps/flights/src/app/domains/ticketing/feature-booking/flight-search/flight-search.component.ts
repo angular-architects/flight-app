@@ -25,25 +25,16 @@ export class FlightSearchComponent {
     to: this.to(),
   }));
 
-  // Debounce filter
   debouncedFilter = debounceSignal(this.filter, 300);
-
-  // Use flightsWithDelay
   flights = this.store.flightsWithDelay;
-
   basket = this.store.basket;
-
-  // Get selected
   selected = this.store.selected;
 
   constructor() {
-    // Delegate debounced filter
-    // Pass in entire Signal, not just the current value
     this.store.updateFilter(this.debouncedFilter);
   }
 
   search(): void {
-    // Reload Resource
     this.store.reload();
   }
 

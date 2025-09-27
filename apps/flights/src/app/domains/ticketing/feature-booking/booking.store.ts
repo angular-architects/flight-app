@@ -1,22 +1,24 @@
 import {
   patchState,
-  signalMethod,
   signalStore,
   withComputed,
   withMethods,
   withProps,
   withState,
 } from '@ngrx/signals';
-import { withDevtools, withResource } from '@angular-architects/ngrx-toolkit';
+import { rxMethod } from '@ngrx/signals/rxjs-interop';
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
 import { computed, inject } from '@angular/core';
-import { Criteria, FlightService } from '../data';
+import { Criteria, Flight, FlightService } from '../data';
 import { delayFirstFlight } from './delay-first-flights';
+import { switchMap, tap } from 'rxjs';
 
 export const BookingStore = signalStore(
   { providedIn: 'root' },
   withState({
     from: 'Graz',
     to: 'London',
+    flights: [] as Flight[],
     basket: {} as Record<number, boolean>,
     delayInMinutes: 0,
   }),
@@ -26,26 +28,29 @@ export const BookingStore = signalStore(
   withProps(() => ({
     _flightService: inject(FlightService),
   })),
-  withResource((store) => ({
-    flights: store._flightService.createResource(store.filter),
-  })),
-
-  // Add computed
   withComputed((store) => ({
     selected: computed(() =>
-      store.flightsValue().filter((f) => store.basket()[f.id])
+      store.flights().filter((f) => store.basket()[f.id])
     ),
     flightsWithDelay: computed(() =>
-      delayFirstFlight(store.flightsValue(), store.delayInMinutes())
+      delayFirstFlight(store.flights(), store.delayInMinutes())
     ),
   })),
-
   withMethods((store) => ({
-    updateFilter: signalMethod((filter: Criteria) => {
-      patchState(store, filter);
-    }),
+    // rxMethod
+    // Please note, for the sake of brevity, we skipped
+    // error handling (e.g. via catchError) here
+    updateFilter: rxMethod<Criteria>((filter$) =>
+      filter$.pipe(
+        tap((filter) => patchState(store, filter)),
+        switchMap((filter) =>
+          store._flightService.find(filter.from, filter.to)
+        ),
+        tap((flights) => patchState(store, { flights }))
+      )
+    ),
     reload() {
-      store._flightsReload();
+      this.updateFilter(store.filter());
     },
     updateBasket: (fid: number, selected: boolean) => {
       patchState(store, (state) => ({
