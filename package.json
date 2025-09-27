@@ -120,6 +120,14 @@
     "@angular/compiler-cli": "21.0.0-next.5",
     "@angular/language-service": "21.0.0-next.5",
     "ng-packagr@": "21.0.0-next.0",
-    "@angular/build": "21.0.0-next.5"
+    "@angular/build": "21.0.0-next.5",
+    "@swc/core": "1.5.7",
+    "@swc-node/core": {
+      "@swc/core": "1.5.7"
+    },
+    "@swc-node/register": {
+      "@swc/core": "1.5.7"
+    },
+    "rimraf": "^5.0.0"
   }
 }
