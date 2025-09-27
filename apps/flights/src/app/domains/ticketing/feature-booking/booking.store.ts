@@ -1,5 +1,6 @@
 import {
   patchState,
+  signalMethod,
   signalStore,
   withComputed,
   withMethods,
@@ -18,22 +19,26 @@ export const BookingStore = signalStore(
     basket: {} as Record<number, boolean>,
     delayInMinutes: 0,
   }),
-  withComputed((store) => ({
-    // Shape needed for creating the resource
-    filter: computed(() => ({
-      from: store.from(),
-      to: store.to(),
-    })),
-  })),
   withProps(() => ({
     _flightService: inject(FlightService),
   })),
   withResource((store) => ({
     flights: store._flightService.createResource(store.filter),
   })),
+
+  withComputed((store) => ({
+    filter: computed(() => ({ from: store.from(), to: store.to() })),
+    selected: computed(() =>
+      store.flightsValue().filter((f) => store.basket()[f.id])
+    ),
+  })),
+
   withMethods((store) => ({
-    updateFilter(filter: Criteria) {
+    updateFilter: signalMethod((filter: Criteria) => {
       patchState(store, filter);
+    }),
+    reload() {
+      store._flightsReload();
     },
     updateBasket: (fid: number, selected: boolean) => {
       patchState(store, (state) => ({

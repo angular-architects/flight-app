@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { BookingStore } from '../booking.store';
+import { debounceSignal } from '@demo/shared/util-common';
 
 // import { CheckinService } from '@demo/checkin/data/checkin.service';
 
@@ -24,12 +25,21 @@ export class FlightSearchComponent {
     to: this.to(),
   }));
 
-  flights = this.store.flightsValue;
+  // Debounce filter
+  debouncedFilter = debounceSignal(this.filter, 300);
 
+  flights = this.store.flightsValue;
   basket = this.store.basket;
 
+  constructor() {
+    // Delegate debounced filter
+    // Pass in entire Signal, not just the current value
+    this.store.updateFilter(this.debouncedFilter);
+  }
+
   search(): void {
-    this.store.updateFilter(this.filter());
+    // Reload Resource
+    this.store.reload();
   }
 
   delay(): void {
