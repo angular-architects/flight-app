@@ -1,3 +1,12 @@
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Sep 27 14:12:20 2025 +0200	cb209d4c2f9d6493e5a44e46d86366afcd9e747a,chore: exclude .detective folder in .gitignore"
+2	0	.gitignore
+
+"Manfred Steyer <manfred.steyer@gmx.net>,Sat Sep 27 14:11:34 2025 +0200	093dfce39b1c1353cd566bcadd7415c4c3945327,fix(flights): update cva to align with changes in angular 21"
+24	0	.detective/config.json
+1	0	.detective/hash
+1100	0	.detective/log
+8	4	apps/flights/src/app/domains/shared/ui-common/date/date-cva.directive.ts
+
 "Manfred Steyer <manfred.steyer@gmx.net>,Sat Sep 6 02:45:02 2025 +0200	0adf6e5f752b278c37c67db2533c7bacbef5a8b4,small improvements"
 1	6	apps/flights/src/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.ts
 
