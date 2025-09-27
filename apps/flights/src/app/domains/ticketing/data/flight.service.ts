@@ -4,6 +4,11 @@ import { firstValueFrom, Observable } from 'rxjs';
 import { Flight } from './flight';
 import { ConfigService } from '@demo/shared/util-config';
 
+export type Criteria = {
+  from: string;
+  to: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -11,18 +16,43 @@ export class FlightService {
   private http = inject(HttpClient);
   private configService = inject(ConfigService);
 
-  findResource(from: Signal<string>, to: Signal<string>) {
+  createResource(criteria: Signal<Criteria>) {
     return httpResource<Flight[]>(
       () => ({
-        url: 'https://demo.angulararchitects.io/api/flight',
+        url: `${this.configService.config.baseUrl}/flight`,
+        headers: {
+          Accept: 'application/json',
+        },
         params: {
-          from: from(),
-          to: to(),
+          from: criteria().from,
+          to: criteria().to,
         },
       }),
       { defaultValue: [] }
     );
   }
+
+  // createResource(criteria: Signal<Criteria>) {
+  //   return rxResource({
+  //     params: criteria,
+  //     stream: (loaderParams) => {
+  //       const c = loaderParams.params;
+  //       return this.find(c.from, c.to);
+  //     },
+  //     defaultValue: [],
+  //   });
+  // }
+
+  // createResource(criteria: Signal<Criteria>) {
+  //   return resource({
+  //     params: criteria,
+  //     loader: (loaderParams) => {
+  //       const c = loaderParams.params;
+  //       return this.findPromise(c.from, c.to);
+  //     },
+  //     defaultValue: [],
+  //   });
+  // }
 
   find(from: string, to: string, urgent = false): Observable<Flight[]> {
     const url = `${this.configService.config.baseUrl}/flight`;

@@ -1,17 +1,14 @@
 import {
   patchState,
-  signalMethod,
   signalStore,
+  withComputed,
   withMethods,
   withProps,
   withState,
 } from '@ngrx/signals';
-import { withResource } from '@angular-architects/ngrx-toolkit';
-import { inject } from '@angular/core';
-import { Flight, FlightService } from '../data';
-import { addMinutes } from 'date-fns';
-
-export type Filter = { from: string; to: string };
+import { withDevtools, withResource } from '@angular-architects/ngrx-toolkit';
+import { computed, inject } from '@angular/core';
+import { Criteria, FlightService } from '../data';
 
 export const BookingStore = signalStore(
   { providedIn: 'root' },
@@ -19,17 +16,25 @@ export const BookingStore = signalStore(
     from: 'Graz',
     to: 'London',
     basket: {} as Record<number, boolean>,
+    delayInMinutes: 0,
   }),
+  withComputed((store) => ({
+    // Shape needed for creating the resource
+    filter: computed(() => ({
+      from: store.from(),
+      to: store.to(),
+    })),
+  })),
   withProps(() => ({
     _flightService: inject(FlightService),
   })),
   withResource((store) => ({
-    flights: store._flightService.findResource(store.from, store.to),
+    flights: store._flightService.createResource(store.filter),
   })),
   withMethods((store) => ({
-    updateFilter: signalMethod((filter: Filter) => {
+    updateFilter(filter: Criteria) {
       patchState(store, filter);
-    }),
+    },
     updateBasket: (fid: number, selected: boolean) => {
       patchState(store, (state) => ({
         basket: {
@@ -38,19 +43,11 @@ export const BookingStore = signalStore(
         },
       }));
     },
-    reload() {
-      store._flightsReload();
-    },
     delay(): void {
-      const oldFlights = store.flightsValue();
-      const oldFlight = oldFlights[0];
-      const oldDate = new Date(oldFlight.date);
-
-      const newDate = addMinutes(oldDate, 15);
-      const newFlight: Flight = { ...oldFlight, date: newDate.toISOString() };
-      const newFlights = [newFlight, ...oldFlights.slice(1)];
-
-      patchState(store, { flightsValue: newFlights });
+      patchState(store, (state) => ({
+        delayInMinutes: state.delayInMinutes + 15,
+      }));
     },
-  }))
+  })),
+  withDevtools('booking')
 );
