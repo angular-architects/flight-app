@@ -3,8 +3,11 @@ import {
   ElementRef,
   EventEmitter,
   inject,
+  input,
   Input,
+  model,
   NgZone,
+  output,
   Output,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +15,7 @@ import { CommonModule } from '@angular/common';
 import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit-reactive.component';
 import { RouterLink } from '@angular/router';
 import { CityPipe, StatusToggleComponent } from '@demo/shared/ui-common';
-import { initFlight } from '@demo/ticketing/data';
+import { Flight, initFlight } from '@demo/ticketing/data';
 
 @Component({
   selector: 'app-flight-card',
@@ -27,18 +30,20 @@ export class FlightCardComponent {
 
   private dialog = inject(MatDialog);
 
-  @Input() item = initFlight;
-  @Input() selected = false;
-  @Output() selectedChange = new EventEmitter<boolean>();
+  // @Input, @Output
+
+  item = input.required<Flight>();
+  selected = model(false);
+  // selectedChange = output<boolean>()
 
   select() {
-    this.selected = true;
-    this.selectedChange.emit(this.selected);
+    this.selected.set(true);
+    //this.selectedChange.emit(true);
   }
 
   deselect() {
-    this.selected = false;
-    this.selectedChange.emit(this.selected);
+    this.selected.set(false);
+    //this.selectedChange.emit(false);
   }
 
   edit() {

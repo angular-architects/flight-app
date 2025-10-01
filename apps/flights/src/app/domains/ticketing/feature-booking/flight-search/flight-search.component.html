@@ -2,14 +2,22 @@
   <h2 class="title">Flight Search</h2>
 </div>
 
+<pre>{{ searchForm().errorSummary() | json }}</pre>
 <form>
   <div class="form-group">
     <label for="from">From:</label>
-    <input [(ngModel)]="from" id="from" name="from" class="form-control" />
+    <input
+      [control]="searchForm.from"
+      id="from"
+      name="from"
+      class="form-control"
+    />
+    <pre>{{ searchForm.from().errors() | json }}</pre>
   </div>
   <div class="form-group">
     <label for="to">To:</label>
-    <input [(ngModel)]="to" id="to" name="to" class="form-control" />
+    <input [control]="searchForm.to" id="to" name="to" class="form-control" />
+    <pre>{{ searchForm.to().errors() | json }}</pre>
   </div>
 
   <div class="form-group">

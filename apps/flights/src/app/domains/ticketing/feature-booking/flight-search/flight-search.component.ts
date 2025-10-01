@@ -1,15 +1,16 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
-  signal,
+  linkedSignal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
-import { Flight, FlightService } from '@demo/ticketing/data';
-import { delayFirstFlight } from '../delay-first-flight';
-
+import { BookingStore } from '../booking.store';
+import { debounceSignal } from '@demo/shared/util-common';
+import { form, required, minLength, Control } from '@angular/forms/signals';
 // import { CheckinService } from '@demo/checkin/data/checkin.service';
 
 @Component({
@@ -17,44 +18,53 @@ import { delayFirstFlight } from '../delay-first-flight';
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [CommonModule, FormsModule, FlightCardComponent],
+  imports: [CommonModule, FormsModule, FlightCardComponent, Control, JsonPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
-  private flightService = inject(FlightService);
+  private store = inject(BookingStore);
 
-  from = signal('Paris');
-  to = signal('London');
-  flights = signal<Flight[]>([]);
+  from = this.store.from;
+  to = this.store.to;
+  flights = this.store.flightsValue;
 
-  basket = signal<Record<number, boolean>>({
-    3: true,
-    5: true,
+  criteria = linkedSignal(() => ({
+    from: this.from(),
+    to: this.to(),
+    details: {
+      onlyDirectConnections: true,
+      maxPrice: 370,
+    },
+    stops: [{ city: 'CDG' }, { city: 'NYC' }],
+  }));
+
+  searchForm = form(this.criteria, (path) => {
+    required(path.from);
+    required(path.to);
+    minLength(path.from, 3);
+    minLength(path.to, 3);
   });
 
+  debouncedCriteria = debounceSignal(this.searchForm().value, 300);
+
+  error = this.store.flightsError;
+  isLoading = this.store.flightsIsLoading;
+
+  basket = this.store.basket;
+
   constructor() {
-    this.search();
+    this.store.updateFilter(this.debouncedCriteria);
   }
 
   search(): void {
-    this.flightService.find(this.from(), this.to()).subscribe({
-      next: (flights) => {
-        this.flights.set(flights);
-      },
-      error: (errResp) => {
-        console.error('Error loading flights', errResp);
-      },
-    });
+    this.store.reload();
   }
 
   delay(): void {
-    this.flights.update((flights) => delayFirstFlight(flights, 300));
+    this.store.delay();
   }
 
   updateBasket(flightId: number, selected: boolean): void {
-    this.basket.update((basket) => ({
-      ...basket,
-      [flightId]: selected,
-    }));
+    this.store.updateBasket(flightId, selected);
   }
 }
