@@ -22,6 +22,15 @@
       />
       <label for="delayed">Delayed</label>
     </div>
+
+    <div>
+      {{ flightForm.to().hidden() }}
+    </div>
+
+    @if(flightForm.to().pending()) {
+    <div>Pending ...</div>
+    }
+
     <button type="button" class="btn btn-default" (click)="saveFlight()">
       Save
     </button>
