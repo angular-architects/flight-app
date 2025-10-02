@@ -1,4 +1,6 @@
-@if (flight().id !== 0) {
+@if(showIndicator()) {
+<div>Processing ...</div>
+} @if (flight().id !== 0) {
 <div>
   <h2>Flight Edit</h2>
 

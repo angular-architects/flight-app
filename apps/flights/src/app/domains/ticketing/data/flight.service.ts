@@ -81,7 +81,7 @@ export class FlightService {
     );
   }
 
-  createSaveFlight(options: Partial<HttpMutationOptions<Flight, undefined>>) {
+  createSaveFlight(options: Partial<HttpMutationOptions<Flight, Flight>>) {
     return httpMutation({
       ...options,
       request: (flight: Flight) => ({

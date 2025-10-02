@@ -1,4 +1,4 @@
-import { Component, inject, linkedSignal } from '@angular/core';
+import { Component, computed, inject, linkedSignal } from '@angular/core';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -22,6 +22,11 @@ export class FlightEditComponent {
 
   error = this.store.saveFlightError;
   isPending = this.store.saveFlightIsPending;
+  isLoading = this.store.flightIsLoading;
+
+  showIndicator = computed(() => this.isLoading() || this.isPending());
+
+  // saveFlightValue = this.store.saveFlightValue
 
   // TODO: Add some validators
   flightForm = form(this.flight, (path) => {
