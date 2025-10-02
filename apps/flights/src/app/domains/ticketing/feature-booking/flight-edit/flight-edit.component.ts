@@ -1,44 +1,56 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, linkedSignal } from '@angular/core';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Dialog } from '@angular/cdk/dialog';
-import { ConfirmComponent, DateCvaDirective } from '@demo/shared/ui-common';
-import { initFlight } from '@demo/ticketing/data';
-import { CanExit } from '@demo/shared/util-common';
+import { DateCvaDirective } from '@demo/shared/ui-common';
+import { FlightDetailStore } from '../flight-detail.store';
+import { Control, form, required, submit } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-flight-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule, DateCvaDirective],
+  imports: [CommonModule, FormsModule, DateCvaDirective, Control, JsonPipe],
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
 })
-export class FlightEditComponent implements OnInit, CanExit {
+export class FlightEditComponent {
   private route = inject(ActivatedRoute);
-  private dialog = inject(Dialog);
 
-  id = '';
-  showDetails = '';
-  flight = initFlight;
+  private store = inject(FlightDetailStore);
+  flight = linkedSignal(() => this.store.flightValue());
 
-  ngOnInit(): void {
+  error = this.store.saveFlightError;
+  isPending = this.store.saveFlightIsPending;
+
+  // TODO: Add some validators
+  flightForm = form(this.flight, (path) => {
+    required(path.from);
+    required(path.to);
+  });
+
+  constructor() {
     this.route.paramMap.subscribe((params) => {
-      this.id = params.get('id') ?? '';
-      this.showDetails = params.get('showDetails') ?? '';
-    });
-
-    this.route.data.subscribe((data) => {
-      this.flight = data['flight'];
+      const id = Number(params.get('id')) ?? 0;
+      this.store.updateId(id);
     });
   }
 
-  canExit(): Observable<boolean> {
-    const confirm = this.dialog.open(ConfirmComponent, {
-      data: 'Do you really want to leave me?',
+  saveFlight(): void {
+    // TODO: use validation details from backend
+
+    submit(this.flightForm, async (flightForm) => {
+      const value = flightForm().value();
+      const result = await this.store.saveFlight(value);
+
+      if (result.status === 'error') {
+        return {
+          kind: 'server_error',
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          message: 'Server error: ' + (result.error as any).message,
+        };
+      }
+      return null;
     });
-    return confirm.closed as Observable<boolean>;
   }
 }

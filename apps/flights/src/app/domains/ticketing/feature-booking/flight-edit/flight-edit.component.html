@@ -1,26 +1,28 @@
-@if (flight.id !== 0) {
+@if (flight().id !== 0) {
 <div>
   <h2>Flight Edit</h2>
 
-  <div class="mt-10">ShowDetails: {{ showDetails }}</div>
-
-  <form #form="ngForm" roundTrip>
+  <pre>{{ flightForm().errorSummary() | json }} </pre>
+  <form>
     <div>
-      <input name="id" [(ngModel)]="flight.id" />
-      <input name="from" [(ngModel)]="flight.from" />
-      <input name="to" [(ngModel)]="flight.to" />
-      <input name="date" [(ngModel)]="flight.date" appDateCva />
+      <input name="id" [control]="flightForm.id" />
+      <input name="from" [control]="flightForm.from" />
+      <input name="to" [control]="flightForm.to" />
+      <input name="date" [control]="flightForm.date" appDateCva />
     </div>
 
     <div>
       <input
         name="delayed"
         id="delayed"
-        [(ngModel)]="flight.delayed"
+        [control]="flightForm.delayed"
         type="checkbox"
       />
       <label for="delayed">Delayed</label>
     </div>
+    <button type="button" class="btn btn-default" (click)="saveFlight()">
+      Save
+    </button>
   </form>
 </div>
 }
