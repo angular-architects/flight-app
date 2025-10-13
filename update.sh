@@ -2,7 +2,7 @@
 
 set -e
 
-BRANCH_LIST="ent-branches.txt"
+BRANCH_LIST="branches.txt"
 FIXED_COMMIT="edecfbf20703dac0092c"  # der zu cherry-pickende Commit
 
 while read -r BRANCH; do
