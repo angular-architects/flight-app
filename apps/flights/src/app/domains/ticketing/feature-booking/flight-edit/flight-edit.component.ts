@@ -28,12 +28,12 @@ export class FlightEditComponent {
   });
 
   id = input(0, { transform: numberAttribute });
-  id$ = toObservable(this.id);
-  flight$ = this.id$.pipe(switchMap((id) => this.flightService.findById(id)));
-  flight = toSignal(this.flight$, {
-    // requireSync: true,
-    initialValue: initFlight,
-  });
+  flight = toSignal(
+    toObservable(this.id).pipe(
+      switchMap((id) => this.flightService.findById(id))
+    ),
+    { initialValue: initFlight }
+  );
 
   constructor() {
     effect(() => this.editForm.patchValue(this.flight()));
