@@ -1,32 +1,28 @@
 import { httpResource } from '@angular/common/http';
-import {
-  Component,
-  effect,
-  inject,
-  input,
-  numberAttribute,
-} from '@angular/core';
-import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Flight, FlightService, initFlight } from '@demo/ticketing/data';
+import { Component, input, numberAttribute, signal } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Control, form } from '@angular/forms/signals';
+import { Flight, initFlight } from '@demo/ticketing/data';
 
 @Component({
   selector: 'app-flight-edit',
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    // (3) UI Control: Template Binding
+    Control,
+  ],
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
 })
 export class FlightEditComponent {
-  private flightService = inject(FlightService);
-
-  protected editForm = inject(NonNullableFormBuilder).group({
-    id: [0],
-    from: ['INIT'],
-    to: [''],
-    date: [new Date().toISOString()],
-    delayed: [false],
-  });
+  // (1) Data Model: Writable Signal
+  /*  flight = signal({
+    ...initFlight,
+    from: 'Rome'
+  }); */
 
   id = input(0, { transform: numberAttribute });
+  // (1) Data Model: Writable Signal
   flightResource = httpResource<Flight>(
     () => ({
       url: 'https://demo.angulararchitects.io/api/flight',
@@ -35,15 +31,18 @@ export class FlightEditComponent {
     { defaultValue: initFlight }
   );
 
+  // (2) Field State: value, valid, touched, dirty, ...
+  editForm = form(this.flightResource.value);
+
   constructor() {
-    effect(() => {
+    /* effect(() => {
       if (this.flightResource.hasValue()) {
         this.editForm.patchValue(this.flightResource.value());
       }
-    });
+    }); */
   }
 
   save(): void {
-    console.log(this.editForm.value);
+    console.log(this.editForm().value());
   }
 }

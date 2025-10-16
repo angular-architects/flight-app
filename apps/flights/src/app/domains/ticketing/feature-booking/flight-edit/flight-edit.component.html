@@ -1,22 +1,22 @@
 <div>
   <h2>Flight Edit</h2>
 
-  <form [formGroup]="editForm">
+  <form>
     <div class="form-group">
-      <input formControlName="id" />
+      <input [control]="editForm.id" />
     </div>
     <div class="form-group">
-      <input formControlName="from" />
+      <input [control]="editForm.from" />
     </div>
     <div class="form-group">
-      <input formControlName="to" />
+      <input [control]="editForm.to" />
     </div>
     <div class="form-group">
-      <input formControlName="date" />
+      <input [control]="editForm.date" />
     </div>
 
     <div class="form-group">
-      <input id="delayed" formControlName="delayed" type="checkbox" />
+      <input id="delayed" [control]="editForm.delayed" type="checkbox" />
       <label for="delayed">Delayed</label>
     </div>
 
