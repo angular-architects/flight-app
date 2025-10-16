@@ -1,4 +1,0 @@
-npx nx format --write --all
-git add .
-
-# nx run-many -t lint --all
