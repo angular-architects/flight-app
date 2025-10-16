@@ -5,10 +5,8 @@ import {
   input,
   numberAttribute,
 } from '@angular/core';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { FlightService, initFlight } from '@demo/ticketing/data';
-import { switchMap } from 'rxjs';
+import { FlightService } from '@demo/ticketing/data';
 
 @Component({
   selector: 'app-flight-edit',
@@ -28,15 +26,14 @@ export class FlightEditComponent {
   });
 
   id = input(0, { transform: numberAttribute });
-  flight = toSignal(
-    toObservable(this.id).pipe(
-      switchMap((id) => this.flightService.findById(id))
-    ),
-    { initialValue: initFlight }
-  );
+  flightResource = this.flightService.findByIdAsResource(this.id);
 
   constructor() {
-    effect(() => this.editForm.patchValue(this.flight()));
+    effect(() => {
+      if (this.flightResource.hasValue()) {
+        this.editForm.patchValue(this.flightResource.value());
+      }
+    });
   }
 
   save(): void {
