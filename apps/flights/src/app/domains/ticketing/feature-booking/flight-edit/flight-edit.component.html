@@ -7,9 +7,23 @@
     </div>
     <div class="form-group">
       <input [control]="editForm.from" />
+      <p class="form-info">
+        Allowed Cities: {{ fromAllowedCities()?.join(', ') }}
+      </p>
+      @for (error of editForm.from().errors(); track error.kind) { @switch
+      (error.kind) { @default {
+      <p class="form-error">{{ error.message }}</p>
+      } } }
     </div>
     <div class="form-group">
       <input [control]="editForm.to" />
+      <p class="form-info">
+        Allowed Cities: {{ toAllowedCities()?.join(', ') }}
+      </p>
+      @for (error of editForm.to().errors(); track error.kind) { @switch
+      (error.kind) { @default {
+      <p class="form-error">{{ error.message }}</p>
+      } } }
     </div>
     <div class="form-group">
       <input [control]="editForm.date" />
@@ -24,7 +38,13 @@
       <button (click)="flightResource.reload()" class="btn btn-default">
         Reload
       </button>
-      <button (click)="save()" class="btn btn-default">Save</button>
+      <button
+        (click)="save()"
+        [disabled]="!editForm().valid()"
+        class="btn btn-default"
+      >
+        Save
+      </button>
     </div>
   </form>
 </div>
