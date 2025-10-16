@@ -5,7 +5,13 @@
 <form>
   <div class="form-group">
     <label for="from">From:</label>
-    <input [(ngModel)]="from" id="from" name="from" class="form-control" />
+    <input
+      [ngModel]="from()"
+      (ngModelChange)="from.set($event)"
+      id="from"
+      name="from"
+      class="form-control"
+    />
   </div>
   <div class="form-group">
     <label for="to">To:</label>
@@ -16,6 +22,8 @@
     <button (click)="search()" class="btn btn-default">Search</button>
     <button (click)="delay()" class="btn btn-default">Delay</button>
   </div>
+
+  <p>{{ route() }}</p>
 </form>
 
 <div class="row">
