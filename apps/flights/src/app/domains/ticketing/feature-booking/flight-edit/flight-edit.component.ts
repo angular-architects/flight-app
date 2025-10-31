@@ -1,6 +1,7 @@
+import { httpResource } from '@angular/common/http';
 import { Component, effect, inject, input, numberAttribute } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { FlightService } from '@demo/ticketing/data';
+import { Flight, FlightService, initFlight } from '@demo/ticketing/data';
 
 @Component({
   selector: 'app-flight-edit',
@@ -19,7 +20,10 @@ export class FlightEditComponent {
   });
 
   id = input(0, { transform: numberAttribute });
-  flightResource = this.flightService.findByIdAsResource(this.id);
+  flightResource = httpResource<Flight>(() => ({
+    url: 'https://demo.angulararchitects.io/api/flight',
+    params: { id: this.id() }
+  }), { defaultValue: initFlight });
 
   constructor() {
     effect(() => {
