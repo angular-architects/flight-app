@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgZone, inject, signal } from '@angular/core';
+import { Component, ElementRef, NgZone, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
@@ -23,6 +23,9 @@ export class FlightSearchComponent {
   from = signal('Paris');
   to = signal('London');
   flights = signal<Flight[]>([]);
+  route = computed(
+    () => 'From ' + this.from() + ' to ' + this.to() + '.'
+  );
 
   basket = signal<Record<number, boolean>>({
     3: true,
