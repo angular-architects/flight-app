@@ -19,3 +19,19 @@ input[type='checkbox'] {
 label {
   display: inline-block;
 }
+
+.form-info {
+  font-size: 10px;
+  color: blue;
+  margin: 5px 0 0 5px;
+}
+
+.form-error {
+  font-size: 10px;
+  color: red;
+  margin: 5px 0 0 5px;
+}
+
+a {
+  text-decoration: none;
+}
