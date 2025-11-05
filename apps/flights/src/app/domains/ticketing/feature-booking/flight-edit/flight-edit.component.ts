@@ -1,8 +1,7 @@
+import { httpResource } from '@angular/common/http';
 import { Component, effect, inject, input, numberAttribute } from '@angular/core';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { FlightService, initFlight } from '@demo/ticketing/data';
-import { switchMap } from 'rxjs';
+import { Flight, initFlight } from '@demo/ticketing/data';
 
 @Component({
   selector: 'app-flight-edit',
@@ -11,7 +10,6 @@ import { switchMap } from 'rxjs';
   styleUrls: ['./flight-edit.component.css'],
 })
 export class FlightEditComponent {
-  private flightService = inject(FlightService);
   protected editForm = inject(NonNullableFormBuilder).group({
     id: [0],
     from: [''],
@@ -21,18 +19,17 @@ export class FlightEditComponent {
   });
 
   id = input(0, { transform: numberAttribute });
-  id$ = toObservable(this.id);
-  flight$ = this.id$.pipe(
-    switchMap(id => this.flightService.findById(id))
-  );
-  flight = toSignal(this.flight$, {
-    // requireSync: true
-    initialValue: initFlight
-  });
+  flightResource = httpResource<Flight>(() => ({
+    url: 'https://demo.angulararchitects.io/api/flight',
+    params: { id: this.id()}
+  }), { defaultValue: initFlight });
 
   constructor() {
-    effect(() => console.log(this.id()));
-    effect(() => this.editForm.patchValue(this.flight()));
+    effect(() => {
+      if (this.flightResource.hasValue()) {
+        this.editForm.patchValue(this.flightResource.value());
+      }
+    });
   }
 
   save(): void {
