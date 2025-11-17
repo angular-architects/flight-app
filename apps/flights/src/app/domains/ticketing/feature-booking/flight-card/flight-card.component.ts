@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CityPipe, StatusToggleComponent } from '@demo/shared/ui-common';
 import { initFlight } from '@demo/ticketing/data';
@@ -12,12 +12,11 @@ import { initFlight } from '@demo/ticketing/data';
   styleUrls: ['./flight-card.component.css'],
 })
 export class FlightCardComponent {
-  @Input() item = initFlight;
-  @Input() selected = false;
-  @Output() selectedChange = new EventEmitter<boolean>();
+  readonly item = input(initFlight);
+  readonly selected = model(false);
+  // readonly selectedChange = output<boolean>();
 
   toggleSelection() {
-    this.selected = !this.selected;
-    this.selectedChange.emit(this.selected);
+    this.selected.update(curr => !curr);
   }
 }
