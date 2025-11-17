@@ -7,9 +7,35 @@
     </div>
     <div class="form-group">
       <input [control]="editForm.from" />
+      <p class="form-info">
+        Allowed Cities: {{ fromAllowedCities()?.join(', ') }}
+      </p>
+      @for (error of editForm.from().errors(); track error.kind) {
+        @switch (error.kind) {
+          @case ('required') {
+            <p class="form-error">This field is mandatory.</p>
+          }
+          @default {
+            <p class="form-error">{{ error.message }}</p>
+          }
+        }
+      }
     </div>
     <div class="form-group">
       <input [control]="editForm.to" />
+      <p class="form-info">
+        Allowed Cities: {{ toAllowedCities()?.join(', ') }}
+      </p>
+      @for (error of editForm.to().errors(); track error.kind) {
+        @switch (error.kind) {
+          @case ('required') {
+            <p class="form-error">This field is mandatory.</p>
+          }
+          @default {
+            <p class="form-error">{{ error.message }}</p>
+          }
+        }
+      }
     </div>
     <div class="form-group">
       <input [control]="editForm.date" />
@@ -21,13 +47,28 @@
     </div>
 
   </form>
-  
   <div class="form-group">
-    <button (click)="save()" class="btn btn-default">Save</button>
+    <a
+      [routerLink]="['..', this.id()-1]"
+      class="btn btn-default"
+    >
+      ID-1
+    </a>
+    <button (click)="flightResource.reload()" class="btn btn-default">
+      Reload
+    </button>
+    <button
+      (click)="save()"
+      [disabled]="!editForm().valid()"
+      class="btn btn-default"
+    >
+      Save
+    </button>
+    <a
+      [routerLink]="['..', this.id()+1]"
+      class="btn btn-default"
+    >
+      ID+1
+    </a>
   </div>
-  <div class="form-group">
-    <button (click)="flightResource.reload()" class="btn btn-default">Reload</button>
-  </div>
-
-  <p>Status: {{ flightResource.status() }}</p>
 </div>
