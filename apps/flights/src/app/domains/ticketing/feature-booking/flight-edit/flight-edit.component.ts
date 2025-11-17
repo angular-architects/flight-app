@@ -33,6 +33,7 @@ export class FlightEditComponent {
   }
 
   save(): void {
+    this.flightResource.set(this.editForm.getRawValue());
     console.log(this.editForm.value);
   }
 }
