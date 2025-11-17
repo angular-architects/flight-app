@@ -1,5 +1,6 @@
 import { httpResource } from '@angular/common/http';
-import { Component, computed, input, numberAttribute } from '@angular/core';
+import { Component, computed, effect, inject, input, numberAttribute } from '@angular/core';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import {
   Control,
   createProperty,
@@ -12,7 +13,8 @@ import {
   validate,
 } from '@angular/forms/signals';
 import { RouterLink } from '@angular/router';
-import { Flight, initFlight } from '@demo/ticketing/data';
+import { Flight, FlightService, initFlight } from '@demo/ticketing/data';
+import { delay, switchMap } from 'rxjs';
 
 // Custom Field Property
 const ALLOWED_CITIES = createProperty<string[]>();
@@ -57,7 +59,16 @@ const flightSchema = schema<Flight>((flightPath) => {
   styleUrls: ['./flight-edit.component.css'],
 })
 export class FlightEditComponent {
+  private flightService = inject(FlightService);
+
   id = input(0, { transform: numberAttribute });
+
+  flight = toSignal(
+    toObservable(this.id).pipe(
+      switchMap(id => this.flightService.findById(id)),
+      delay(3_000)
+    ), { initialValue: initFlight }
+  );
 
   // (1) Data Model: Writable Signal
   flightResource = httpResource<Flight>(
@@ -75,6 +86,12 @@ export class FlightEditComponent {
   );
   toAllowedCities = computed(() => this.editForm.to().property(ALLOWED_CITIES));
 
+  constructor() {
+    effect(() => console.log(
+      'Flight as Signal fetched with RxJS Interop:',
+      this.flight()
+    ));
+  }
   save(): void {
     console.log(this.flightResource.value());
   }
