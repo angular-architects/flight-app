@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx lint",
+    "startTime": "2025-11-15T18:32:16.572Z",
+    "endTime": "2025-11-15T18:32:18.221Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "flights:lint",
+      "target": "lint",
+      "projectName": "flights",
+      "hash": "18071284485659657010",
+      "startTime": "2025-11-15T18:32:16.608Z",
+      "endTime": "2025-11-15T18:32:18.220Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

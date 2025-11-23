@@ -1,0 +1,1040 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.3.6",
+  "pathMappings": {
+    "@demo/ui-common": [
+      "libs/ui-common/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "13843625296058690029"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "14316676337194834177"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "5409149420400058781"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "3625404667893174177"
+      },
+      {
+        "file": ".npmrc",
+        "hash": "18085261541358865259"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "12084407610214494911"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "18037487075392171512"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "4815948323043747099"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "13386081792971229925"
+      },
+      {
+        "file": ".vscode/tasks.json",
+        "hash": "5336636969995539451"
+      },
+      {
+        "file": "README.md",
+        "hash": "14500239786134566109"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "3494843969422251966"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "karma.conf.js",
+        "hash": "9656364725710720620"
+      },
+      {
+        "file": "libs/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "migrations.json",
+        "hash": "6069594634068903575"
+      },
+      {
+        "file": "nx.json",
+        "hash": "13822946197563531230"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "493956022300889310"
+      },
+      {
+        "file": "package.json",
+        "hash": "17964289210538785560"
+      },
+      {
+        "file": "sheriff.config.ts",
+        "hash": "5747708948954156631"
+      },
+      {
+        "file": "tools/generators/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "tools/tsconfig.tools.json",
+        "hash": "16088922570277978783"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "17879904607066938881"
+      }
+    ],
+    "projectFileMap": {
+      "flights": [
+        {
+          "file": "apps/flights/.eslintrc.json",
+          "hash": "13791879208644663889"
+        },
+        {
+          "file": "apps/flights/project.json",
+          "hash": "9565385763864508079"
+        },
+        {
+          "file": "apps/flights/src/app/app.component.css",
+          "hash": "18161877728228858206"
+        },
+        {
+          "file": "apps/flights/src/app/app.component.html",
+          "hash": "12800171800116867538"
+        },
+        {
+          "file": "apps/flights/src/app/app.component.ts",
+          "hash": "17861589985315585783",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/app.routes.ts",
+          "hash": "6497193714517911810",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/checkin/data/checkin.service.ts",
+          "hash": "11871903202408237818",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/checkin/data/internal/hidden.service.ts",
+          "hash": "17322369993450596052",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/checkin/feature-manage/feature-manage.component.css",
+          "hash": "524429178687792510"
+        },
+        {
+          "file": "apps/flights/src/app/domains/checkin/feature-manage/feature-manage.component.html",
+          "hash": "5910562564704534418"
+        },
+        {
+          "file": "apps/flights/src/app/domains/checkin/feature-manage/feature-manage.component.ts",
+          "hash": "6569294115928379134",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/city.pipe.ts",
+          "hash": "7573493346577548486",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/click-with-warning.directive.ts",
+          "hash": "8406774869919706777",
+          "deps": [
+            "npm:@angular/cdk",
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/confirm/confirm.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/confirm/confirm.component.html",
+          "hash": "6343549198570184645"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/confirm/confirm.component.ts",
+          "hash": "12465906374283307418",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/cdk"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/custom-template-outlet.directive.ts",
+          "hash": "14370533079050378903",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/data-table/data-table.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/data-table/data-table.component.html",
+          "hash": "18287747911902131940"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/data-table/data-table.component.ts",
+          "hash": "15343141393235719886",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/data-table/table-field.directive.ts",
+          "hash": "7852383426213610841",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/date/date-cva.directive.ts",
+          "hash": "13460277118099793353",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:date-fns"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/date/date-stepper/date-stepper.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/date/date-stepper/date-stepper.component.html",
+          "hash": "11835145304134468383"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/date/date-stepper/date-stepper.component.ts",
+          "hash": "10005258274202040958",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:date-fns",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/index.ts",
+          "hash": "10841531020928203796"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/status-toggle/status-toggle.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/status-toggle/status-toggle.component.html",
+          "hash": "606763250952992066"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/status-toggle/status-toggle.component.ts",
+          "hash": "15779481777842035723",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.css",
+          "hash": "17417177808945531009"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.html",
+          "hash": "10825523325216146782"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.ts",
+          "hash": "16562708635429420182",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tab/tab.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tab/tab.component.html",
+          "hash": "6139441455566325263"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tab/tab.component.ts",
+          "hash": "1064346699869292051",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.css",
+          "hash": "17208606458195356664"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.html",
+          "hash": "9499848027550157770"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.ts",
+          "hash": "1454171460083415736",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.service.ts",
+          "hash": "17450505781308212508",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/ui-common/tooltip.directive.ts",
+          "hash": "11665750338790701849",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-auth/auth.service.ts",
+          "hash": "15521838561653271773",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-auth/auth.ts",
+          "hash": "8239415273067141803",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-auth/index.ts",
+          "hash": "15287770697829075935"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-common/can-exit.ts",
+          "hash": "3240937765546741040",
+          "deps": [
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-common/index.ts",
+          "hash": "7457891512271565360"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-config/config.service.ts",
+          "hash": "6771778731985448384",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-config/config.ts",
+          "hash": "7932397230459329175"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-config/index.ts",
+          "hash": "17396630609911803886"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/color-config.ts",
+          "hash": "17353081407626768530"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/color.service.ts",
+          "hash": "11842016513783520628",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/color.ts",
+          "hash": "9952372310351434020"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/custom-log-appender.ts",
+          "hash": "1852163641044010697",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/features.ts",
+          "hash": "4132208103107387138",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/index.ts",
+          "hash": "10119711404226908604"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/log-appender.ts",
+          "hash": "4116055021071727713",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/log-formatter.ts",
+          "hash": "2046109285489612862",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/log-level.ts",
+          "hash": "17123463744395769012"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/logger-config.ts",
+          "hash": "11063134927776503740",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/logger.ts",
+          "hash": "127696772517985514",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-logger/provider.ts",
+          "hash": "10352941218055385330",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/index.ts",
+          "hash": "7739962377276821025"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/validation-errors/validation-errors.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/validation-errors/validation-errors.component.html",
+          "hash": "1959466978076168296"
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/validation-errors/validation-errors.component.ts",
+          "hash": "1046032377480331950",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/validation/async-city-validator.directive.ts",
+          "hash": "2192506373427633083",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/validation/async-city-validator.ts",
+          "hash": "17938674161587203085",
+          "deps": [
+            "npm:@angular/forms",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/validation/city-validator.directive.ts",
+          "hash": "17327243076724725643",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/validation/city-validator.ts",
+          "hash": "16508533757731978068",
+          "deps": [
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/validation/roundtrip-validator.directive.ts",
+          "hash": "12786770631757372780",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/shared/util-validation/validation/roundtrip-validator.ts",
+          "hash": "9795210112194073099",
+          "deps": [
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/data/flight.service.ts",
+          "hash": "16702757566111088158",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/data/flight.ts",
+          "hash": "5933006263770184973"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/data/index.ts",
+          "hash": "15552024163502342248"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-booking.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-booking.component.html",
+          "hash": "2662240233145419238"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-booking.component.ts",
+          "hash": "13030494409697473272",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-booking.routes.ts",
+          "hash": "14548933952757200942",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-card/flight-card.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-card/flight-card.component.html",
+          "hash": "17945529162571267548"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-card/flight-card.component.ts",
+          "hash": "8965616875765346900",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:@angular/common",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.html",
+          "hash": "14770139383146581999"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-edit-reactive/flight-edit-reactive.component.ts",
+          "hash": "5580247527982843023",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.html",
+          "hash": "9889566726170279982"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-edit/flight-edit.component.ts",
+          "hash": "15669553317815415719",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms",
+            "npm:@angular/router",
+            "npm:rxjs",
+            "npm:@angular/cdk"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.html",
+          "hash": "1435580054924449815"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.ts",
+          "hash": "15509485387989215401",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/index.ts",
+          "hash": "1940093348195369411"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.html",
+          "hash": "17551137947322426531"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-booking/passenger-search/passenger-search.component.ts",
+          "hash": "2952086505914635408",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/checkin/checkin.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/checkin/checkin.component.html",
+          "hash": "11827214945259198734"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/checkin/checkin.component.ts",
+          "hash": "5604688752547658169",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/index.ts",
+          "hash": "12917495527679480815"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/next-flights.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/next-flights.component.html",
+          "hash": "8008618415594532975"
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/next-flights.component.ts",
+          "hash": "6595169954537466780",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/next-flights.module.ts",
+          "hash": "1365745171707615058",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/next-flights.routes.ts",
+          "hash": "4469137720296927302",
+          "deps": [
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/domains/ticketing/feature-next-flights/next-flights.service.ts",
+          "hash": "11474130725929860895",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/shell/about/about.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/shell/about/about.component.html",
+          "hash": "296484843790336342"
+        },
+        {
+          "file": "apps/flights/src/app/shell/about/about.component.ts",
+          "hash": "4963293185689215852",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/shell/basket/basket.component.css",
+          "hash": "18121572083587802985"
+        },
+        {
+          "file": "apps/flights/src/app/shell/basket/basket.component.html",
+          "hash": "8950987673848260738"
+        },
+        {
+          "file": "apps/flights/src/app/shell/basket/basket.component.ts",
+          "hash": "12759825178273045865",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/shell/home/home.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/shell/home/home.component.html",
+          "hash": "15671202653776455253"
+        },
+        {
+          "file": "apps/flights/src/app/shell/home/home.component.ts",
+          "hash": "12510905127028174234",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/shell/navbar/navbar.component.html",
+          "hash": "16771679363621358475"
+        },
+        {
+          "file": "apps/flights/src/app/shell/navbar/navbar.component.ts",
+          "hash": "16734913763794271460",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/shell/not-found/not-found.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/app/shell/not-found/not-found.component.html",
+          "hash": "2055145212757067268"
+        },
+        {
+          "file": "apps/flights/src/app/shell/not-found/not-found.component.ts",
+          "hash": "4113455652741662261",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/flights/src/app/shell/sidebar/sidebar.component.html",
+          "hash": "11606225837506625922"
+        },
+        {
+          "file": "apps/flights/src/app/shell/sidebar/sidebar.component.ts",
+          "hash": "4141629322131372430",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/flights/src/assets/config.json",
+          "hash": "5909615312567723361"
+        },
+        {
+          "file": "apps/flights/src/assets/paper-design/angular2-logo.png",
+          "hash": "3077806510177886753"
+        },
+        {
+          "file": "apps/flights/src/favicon.ico",
+          "hash": "3464744996580215640"
+        },
+        {
+          "file": "apps/flights/src/index.html",
+          "hash": "6632814141636163724"
+        },
+        {
+          "file": "apps/flights/src/main.ts",
+          "hash": "13659209067830360227",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:@angular/platform-browser",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/flights/src/styles.css",
+          "hash": "11874406385707770279"
+        },
+        {
+          "file": "apps/flights/tsconfig.app.json",
+          "hash": "2381145790002888757"
+        },
+        {
+          "file": "apps/flights/tsconfig.editor.json",
+          "hash": "17511610827034788226"
+        },
+        {
+          "file": "apps/flights/tsconfig.federation.json",
+          "hash": "2381145790002888757"
+        },
+        {
+          "file": "apps/flights/tsconfig.json",
+          "hash": "12094030803572703611"
+        },
+        {
+          "file": "apps/flights/tsconfig.spec.json",
+          "hash": "17700927949365452100"
+        }
+      ],
+      "libs/ui-common": [
+        {
+          "file": "libs/ui-common/.eslintrc.json",
+          "hash": "9628345067573567197"
+        },
+        {
+          "file": "libs/ui-common/README.md",
+          "hash": "3182986418962496120"
+        },
+        {
+          "file": "libs/ui-common/jest.config.ts",
+          "hash": "12739847858696147259"
+        },
+        {
+          "file": "libs/ui-common/project.json",
+          "hash": "15366453678371482989"
+        },
+        {
+          "file": "libs/ui-common/src/index.ts",
+          "hash": "6326863482249252748"
+        },
+        {
+          "file": "libs/ui-common/src/lib/libs/ui-common/ui-common.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "libs/ui-common/src/lib/libs/ui-common/ui-common.component.html",
+          "hash": "17751360872697606961"
+        },
+        {
+          "file": "libs/ui-common/src/lib/libs/ui-common/ui-common.component.spec.ts",
+          "hash": "16546488516166786276",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/ui-common/src/lib/libs/ui-common/ui-common.component.ts",
+          "hash": "16456243338116125683",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/ui-common/src/test-setup.ts",
+          "hash": "12935735732682149507",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "libs/ui-common/tsconfig.json",
+          "hash": "15487755565970508470"
+        },
+        {
+          "file": "libs/ui-common/tsconfig.lib.json",
+          "hash": "5796668385415907511"
+        },
+        {
+          "file": "libs/ui-common/tsconfig.spec.json",
+          "hash": "2927375835638640771"
+        }
+      ],
+      "boarding": [
+        {
+          "file": "apps/boarding/.eslintrc.json",
+          "hash": "3322449398258820698"
+        },
+        {
+          "file": "apps/boarding/jest.config.ts",
+          "hash": "4135544059452486776"
+        },
+        {
+          "file": "apps/boarding/project.json",
+          "hash": "8762692403336811072"
+        },
+        {
+          "file": "apps/boarding/src/app/app.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/boarding/src/app/app.component.html",
+          "hash": "7878832395666837443"
+        },
+        {
+          "file": "apps/boarding/src/app/app.component.spec.ts",
+          "hash": "8568862959725612096",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/boarding/src/app/app.component.ts",
+          "hash": "15694715571008874749",
+          "deps": [
+            "npm:@angular/core",
+            "libs/ui-common"
+          ]
+        },
+        {
+          "file": "apps/boarding/src/app/app.config.ts",
+          "hash": "9756254947726201314",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/boarding/src/app/nx-welcome.component.ts",
+          "hash": "11562814980395182146",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/boarding/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/boarding/src/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/boarding/src/index.html",
+          "hash": "9555191559374813379"
+        },
+        {
+          "file": "apps/boarding/src/main.ts",
+          "hash": "16635586463787978962",
+          "deps": [
+            "npm:@angular/platform-browser"
+          ]
+        },
+        {
+          "file": "apps/boarding/src/styles.css",
+          "hash": "5195668842064076916"
+        },
+        {
+          "file": "apps/boarding/src/test-setup.ts",
+          "hash": "12935735732682149507",
+          "deps": [
+            "npm:jest-preset-angular"
+          ]
+        },
+        {
+          "file": "apps/boarding/tsconfig.app.json",
+          "hash": "8365644956319658761"
+        },
+        {
+          "file": "apps/boarding/tsconfig.editor.json",
+          "hash": "17511610827034788226"
+        },
+        {
+          "file": "apps/boarding/tsconfig.json",
+          "hash": "12094030803572703611"
+        },
+        {
+          "file": "apps/boarding/tsconfig.spec.json",
+          "hash": "2927375835638640771"
+        }
+      ]
+    }
+  }
+}

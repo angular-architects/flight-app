@@ -1,0 +1,24 @@
+
+Linting "flights"...
+=============
+
+WARNING: You are currently running a version of TypeScript which is not officially supported by @typescript-eslint/typescript-estree.
+
+You may find that it works just fine, or you may not.
+
+SUPPORTED TYPESCRIPT VERSIONS: >=4.7.4 <5.6.0
+
+YOUR TYPESCRIPT VERSION: 5.9.2
+
+Please only submit bug reports when using the officially supported version.
+
+=============
+[0m[0m
+[0m[4m/Users/manfredsteyer/projects/trainings/flight-app/apps/flights/src/app/domains/ticketing/feature-booking/flight-search/flight-search.component.ts[24m[0m
+[0m  [2m7:1[22m   [31merror[39m  module /apps/flights/src/app/domains/ticketing/feature-booking cannot access /apps/flights/src/app/domains/checkin/data. Tag domain:ticketing has no clearance for tags domain:checkin, type:data  [2m@softarc/sheriff/dependency-rule[22m[0m
+[0m  [2m7:10[22m  [31merror[39m  'CheckinService' is defined but never used                                                                                                                                                         [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[31m[1m✖ 2 problems (2 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
+✖ 2 problems (2 errors, 0 warnings)
+
