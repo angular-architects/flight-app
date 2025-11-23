@@ -12,9 +12,11 @@
       field="flight"
     ></app-validation-errors>
 
-    <div class="alert alert-info" *ngIf="form?.controls?.['from']?.pending">
-      Validating ...
-    </div>
+    @if (form?.controls?.['from']?.pending) {
+      <div class="alert alert-info">
+        Validating ...
+      </div>
+    }
 
     <div>
       <input name="id" [(ngModel)]="flight.id" />
@@ -25,7 +27,7 @@
         asyncCity
         required
         minlength="3"
-      />
+        />
       <input name="to" [(ngModel)]="flight.to" />
       <input name="date" [(ngModel)]="flight.date" />
     </div>
@@ -36,7 +38,7 @@
         id="delayed"
         [(ngModel)]="flight.delayed"
         type="checkbox"
-      />
+        />
       <label for="delayed">Delayed</label>
     </div>
 
