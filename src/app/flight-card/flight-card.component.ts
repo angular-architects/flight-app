@@ -1,10 +1,9 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, model } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { initFlight } from '../model/flight';
+import { Flight } from '../model/flight';
 import { CityPipe } from '../shared/city.pipe';
 import { StatusToggleComponent } from '../status-toggle/status-toggle.component';
-import { FlightEditComponent } from '../flight-edit/flight-edit.component';
 import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit-reactive.component';
 
 @Component({
@@ -13,24 +12,22 @@ import { FlightEditReactiveComponent } from '../flight-edit-reactive/flight-edit
   imports: [CommonModule, CityPipe, StatusToggleComponent],
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightCardComponent {
   private dialog = inject(MatDialog);
 
-  @Input() item = initFlight;
-  @Input() selected: boolean = false;
-  @Output() selectedChange = new EventEmitter<boolean>();
+  item = input.required<Flight>();
+  selected = model(false);
 
   ngOnInit() {}
 
   select() {
-    this.selected = true;
-    this.selectedChange.emit(this.selected);
+    this.selected.set(true);
   }
 
   deselect() {
-    this.selected = false;
-    this.selectedChange.emit(this.selected);
+    this.selected.set(false);
   }
 
   edit() {

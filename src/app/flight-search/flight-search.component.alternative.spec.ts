@@ -4,52 +4,53 @@ import { provideHttpClient } from '@angular/common/http';
 import { FlightSearchComponent } from './flight-search.component';
 import { FlightService } from './flight.service';
 import { DummyFlightService } from './dummy-flight.service';
+import { vi } from 'vitest';
 
 describe('Alternative Unit test: flight-search.component', () => {
-    let component: FlightSearchComponent;
-    let fixture: ComponentFixture<FlightSearchComponent>;
-    let flightService: FlightService;
+  let component: FlightSearchComponent;
+  let fixture: ComponentFixture<FlightSearchComponent>;
+  let flightService: FlightService;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [FlightSearchComponent],
-            providers: [
-                provideHttpClient(),
-                {
-                    provide: FlightService,
-                    useClass: DummyFlightService,
-                },
-            ],
-        });
-
-        fixture = TestBed.createComponent(FlightSearchComponent);
-
-        flightService = TestBed.inject(FlightService);
-        vi.spyOn(flightService, 'find');
-
-        component = fixture.componentInstance;
-        fixture.detectChanges();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [FlightSearchComponent],
+      providers: [
+        provideHttpClient(),
+        {
+          provide: FlightService,
+          useClass: DummyFlightService,
+        },
+      ],
     });
 
-    it('should not have any flights loaded initially', () => {
-        expect(component.flights.length).toBe(0);
-    });
+    fixture = TestBed.createComponent(FlightSearchComponent);
 
-    it('should load flights when user entered from and to', () => {
-        component.from = 'Graz';
-        component.to = 'Hamburg';
-        component.search();
+    flightService = TestBed.inject(FlightService);
+    vi.spyOn(flightService, 'find');
 
-        expect(component.flights.length).toBe(3);
-        expect(flightService.find).toHaveBeenCalled();
-    });
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-    it('should *not* load flights when user did not enter from and to', () => {
-        component.from = '';
-        component.to = '';
-        component.search();
+  it('should not have any flights loaded initially', () => {
+    expect(component.flights().length).toBe(0);
+  });
 
-        expect(component.flights.length).toBe(0);
-        expect(flightService.find).not.toHaveBeenCalled();
-    });
+  it('should load flights when user entered from and to', () => {
+    component.from.set('Graz');
+    component.to.set('Hamburg');
+    component.search();
+
+    expect(component.flights().length).toBe(3);
+    expect(flightService.find).toHaveBeenCalled();
+  });
+
+  it('should *not* load flights when user did not enter from and to', () => {
+    component.from.set('');
+    component.to.set('');
+    component.search();
+
+    expect(component.flights().length).toBe(0);
+    expect(flightService.find).not.toHaveBeenCalled();
+  });
 });

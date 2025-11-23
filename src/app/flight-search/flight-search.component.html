@@ -15,7 +15,7 @@
   <div class="form-group">
     <button
       (click)="search()"
-      [disabled]="!from || !to"
+      [disabled]="!from() || !to()"
       class="btn btn-default"
       >
       Search
@@ -24,9 +24,9 @@
 </form>
 
 <div class="row">
-  @for (f of flights; track f) {
+  @for (f of flights(); track f) {
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <app-flight-card [item]="f" [(selected)]="basket[f.id]">
+      <app-flight-card [item]="f" [selected]="basket()[f.id]" (selectedChange)="updateBasket(f.id, $event)">
         <p class="middle"><i>Delays are possible!</i></p>
         <p class="bottom"><small>Statement without guarantee!</small></p>
       </app-flight-card>
@@ -37,5 +37,5 @@
 <p>&nbsp;</p>
 
 <div>
-  <pre>{{ basket | json }}</pre>
+  <pre>{{ basket() | json }}</pre>
 </div>

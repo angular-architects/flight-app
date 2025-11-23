@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ValidationErrors } from '@angular/forms';
 
@@ -13,7 +13,7 @@ export type Error = Record<string, unknown>;
 })
 export class ValidationErrorsComponent implements OnChanges {
   @Input() errors: ValidationErrors = {};
-  @Input() field = '';
+  readonly field = input('');
   hasErrors = false;
 
   ngOnChanges(changes: SimpleChanges): void {

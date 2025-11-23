@@ -1,9 +1,6 @@
 import {
   ComponentFixture,
-  fakeAsync,
-  flush,
   TestBed,
-  tick,
 } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import {
@@ -13,6 +10,8 @@ import {
 
 import { FlightSearchComponent } from './flight-search.component';
 import { By } from '@angular/platform-browser';
+import { vi } from 'vitest';
+
 
 describe('Unit test: flight-search.component', () => {
   let component: FlightSearchComponent;
@@ -33,12 +32,12 @@ describe('Unit test: flight-search.component', () => {
   });
 
   it('should not have any flights loaded initially', () => {
-    expect(component.flights.length).toBe(0);
+    expect(component.flights().length).toBe(0);
   });
 
   it('should load flights when user entered from and to', () => {
-    component.from = 'Graz';
-    component.to = 'Hamburg';
+    component.from.set('Graz');
+    component.to.set('Hamburg');
     component.search();
 
     const req = ctrl.expectOne('/flight?from=Graz&to=Hamburg');
@@ -67,16 +66,16 @@ describe('Unit test: flight-search.component', () => {
       },
     ]);
 
-    expect(component.flights.length).toBe(3);
+    expect(component.flights().length).toBe(3);
     ctrl.verify();
   });
 
   it('should *not* load flights when user did not enter from and to', () => {
-    component.from = '';
-    component.to = '';
+    component.from.set('');
+    component.to.set('');
     component.search();
 
-    expect(component.flights.length).toBe(0);
+    expect(component.flights().length).toBe(0);
     ctrl.verify();
   });
 
@@ -84,22 +83,17 @@ describe('Unit test: flight-search.component', () => {
     const input = fixture.debugElement.query(By.css(selector)).nativeElement;
     input.value = value;
     input.dispatchEvent(new Event('input'));
-    tick();
   }
 
-  it('should have a disabled search button w/o params', fakeAsync(async () => {
-    tick();
-    // Set values
+  it('should have a disabled search button w/o params', async () => {
     setInput('input[name=from]', '');
     setInput('input[name=to]', '');
 
-    // Trigger change detection
-    fixture.detectChanges();
+    await fixture.whenStable();
 
-    // Get disabled
     const disabled = fixture.debugElement.query(By.css('button')).nativeElement
       .disabled;
 
     expect(disabled).toBeTruthy();
-  }));
+  });
 });

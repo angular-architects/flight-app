@@ -1,22 +1,24 @@
-<div [ngClass]="{ selected: selected }" class="card">
+@let itemValue = item();
+
+<div [ngClass]="{ selected: selected() }" class="card">
   <div class="card-header">
     <h2 class="title">
-      {{ item.from | city : "short" }} - {{ item.to | city : "long" }}
+      {{ itemValue.from | city : "short" }} - {{ itemValue.to | city : "long" }}
     </h2>
   </div>
 
   <div class="card-body">
-    <p>Flight-No.: #{{ item.id }}</p>
-    <p>Date: {{ item.date | date : "dd.MM.yyyy HH:mm" }}</p>
+    <p>Flight-No.: #{{ itemValue.id }}</p>
+    <p>Date: {{ itemValue.date | date : "dd.MM.yyyy HH:mm" }}</p>
 
     <ng-content select=".middle"></ng-content>
 
     <p>
       Delayed:
-      <app-status-toggle [(status)]="item.delayed"> </app-status-toggle>
+      <app-status-toggle [(status)]="itemValue.delayed"> </app-status-toggle>
     </p>
     <p>
-      @if (!selected) {
+      @if (!selected()) {
       <button (click)="select()" class="btn btn-default">Select</button>
       } @else {
       <button (click)="deselect()" class="btn btn-default">Remove</button>

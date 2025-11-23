@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, input } from '@angular/core';
 import {
   AbstractControl,
   NG_VALIDATORS,
@@ -18,14 +18,14 @@ import {
   ],
 })
 export class CityValidatorDirective implements Validator {
-  @Input('city') validCities: string[] = [];
+  readonly validCities = input<string[]>([], { alias: "city" });
 
   validate(c: AbstractControl): ValidationErrors | null {
-    if (c.value && this.validCities.indexOf(c.value) === -1) {
+    if (c.value && this.validCities().indexOf(c.value) === -1) {
       return {
         city: {
           actualValue: c.value,
-          validCities: this.validCities,
+          validCities: this.validCities(),
         },
       };
     }
