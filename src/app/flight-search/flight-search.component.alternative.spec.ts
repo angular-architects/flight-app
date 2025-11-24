@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 
 import { FlightSearchComponent } from './flight-search.component';
@@ -53,4 +53,5 @@ describe('Alternative Unit test: flight-search.component', () => {
     expect(component.flights().length).toBe(0);
     expect(flightService.find).not.toHaveBeenCalled();
   });
+
 });
