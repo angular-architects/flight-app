@@ -1,7 +1,4 @@
-import {
-  ComponentFixture,
-  TestBed,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import {
   HttpTestingController,
@@ -10,8 +7,8 @@ import {
 
 import { FlightSearchComponent } from './flight-search.component';
 import { By } from '@angular/platform-browser';
-import { vi } from 'vitest';
 
+import { vi } from 'vitest';
 
 describe('Unit test: flight-search.component', () => {
   let component: FlightSearchComponent;
@@ -36,8 +33,10 @@ describe('Unit test: flight-search.component', () => {
   });
 
   it('should load flights when user entered from and to', () => {
-    component.from.set('Graz');
-    component.to.set('Hamburg');
+    component.filterForm().value.set({
+      from: 'Graz',
+      to: 'Hamburg',
+    });
     component.search();
 
     const req = ctrl.expectOne('/flight?from=Graz&to=Hamburg');
@@ -71,8 +70,10 @@ describe('Unit test: flight-search.component', () => {
   });
 
   it('should *not* load flights when user did not enter from and to', () => {
-    component.from.set('');
-    component.to.set('');
+    component.filterForm().value.set({
+      from: '',
+      to: '',
+    });
     component.search();
 
     expect(component.flights().length).toBe(0);
@@ -86,9 +87,11 @@ describe('Unit test: flight-search.component', () => {
   }
 
   it('should have a disabled search button w/o params', async () => {
-    setInput('input[name=from]', '');
-    setInput('input[name=to]', '');
+    vi.useFakeTimers();
+    setInput('input[data-testid=from]', '');
+    setInput('input[data-testid=to]', '');
 
+    await vi.runAllTimersAsync();
     await fixture.whenStable();
 
     const disabled = fixture.debugElement.query(By.css('button')).nativeElement

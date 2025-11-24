@@ -37,8 +37,10 @@ describe('Alternative Unit test: flight-search.component', () => {
   });
 
   it('should load flights when user entered from and to', () => {
-    component.from.set('Graz');
-    component.to.set('Hamburg');
+    component.filterForm().value.set({
+       from: 'Graz',
+       to: 'Hamburg'
+    });
     component.search();
 
     expect(component.flights().length).toBe(3);
@@ -46,8 +48,10 @@ describe('Alternative Unit test: flight-search.component', () => {
   });
 
   it('should *not* load flights when user did not enter from and to', () => {
-    component.from.set('');
-    component.to.set('');
+    component.filterForm().value.set({
+       from: '',
+       to: ''
+    });
     component.search();
 
     expect(component.flights().length).toBe(0);

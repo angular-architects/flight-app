@@ -5,17 +5,17 @@
 <form>
   <div class="form-group">
     <label>From:</label>
-    <input [(ngModel)]="from" name="from" class="form-control" />
+    <input [field]="filterForm.from" data-testid="from" class="form-control" />
   </div>
   <div class="form-group">
     <label>To:</label>
-    <input [(ngModel)]="to" name="to" class="form-control" />
+    <input [field]="filterForm.to" data-testid="to" class="form-control" />
   </div>
 
   <div class="form-group">
     <button
       (click)="search()"
-      [disabled]="!from() || !to()"
+      [disabled]="!filter().from || !filter().to"
       class="btn btn-default"
       >
       Search

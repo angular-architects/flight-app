@@ -1,21 +1,52 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Flight } from '../model/flight';
 import { FormsModule } from '@angular/forms';
 import { FlightService } from './flight.service';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
+import {
+  debounce,
+  Field,
+  form,
+  minLength,
+  required,
+  SchemaPath,
+  validate,
+} from '@angular/forms/signals';
 
 @Component({
   selector: 'app-flight-search',
   standalone: true,
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [CommonModule, FormsModule, FlightCardComponent],
+  imports: [CommonModule, FormsModule, FlightCardComponent, Field],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
-  from = signal('London');
-  to = signal('Paris');
+  filter = signal({
+    from: 'Graz',
+    to: 'Hamburg',
+  });
+
+  filterForm = form(this.filter, (path) => {
+    required(path.from);
+    minLength(path.from, 3);
+
+    required(path.to);
+    minLength(path.to, 3);
+
+    debounce(path.from, 300);
+    debounce(path.to, 300);
+
+    const allowed = ['Graz', 'Hamburg', 'Paris'];
+    validateAirport(path.from, allowed);
+  });
+
   flights = signal<Flight[]>([]);
 
   basket = signal<Record<number, boolean>>({
@@ -26,11 +57,13 @@ export class FlightSearchComponent {
   private flightService = inject(FlightService);
 
   search(): void {
-    if (!this.from() || !this.to()) {
+    const { from, to } = this.filterForm().value();
+
+    if (!from && !to) {
       return;
     }
 
-    this.flightService.find(this.from(), this.to()).subscribe({
+    this.flightService.find(from, to).subscribe({
       next: (flights) => {
         this.flights.set(flights);
       },
@@ -41,10 +74,21 @@ export class FlightSearchComponent {
   }
 
   updateBasket(flightId: number, selected: boolean): void {
-    this.basket.update(basket => ({
+    this.basket.update((basket) => ({
       ...basket,
-      [flightId]: selected
+      [flightId]: selected,
     }));
   }
-
+}
+function validateAirport(path: SchemaPath<string>, allowed: string[]) {
+  validate(path, (ctx) => {
+    if (allowed.includes(ctx.value())) {
+      return null;
+    }
+    return {
+      kind: 'airport_not_supported',
+      allowed,
+      actual: ctx.value(),
+    };
+  });
 }
