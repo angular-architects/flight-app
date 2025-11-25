@@ -1,7 +1,4 @@
-import {
-  ComponentFixture,
-  TestBed,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import {
   HttpTestingController,
@@ -9,9 +6,8 @@ import {
 } from '@angular/common/http/testing';
 
 import { FlightSearchComponent } from './flight-search.component';
-import { By } from '@angular/platform-browser';
-import { vi } from 'vitest';
-
+import { expect } from 'vitest';
+import { page } from 'vitest/browser';
 
 describe('Unit test: flight-search.component', () => {
   let component: FlightSearchComponent;
@@ -79,21 +75,16 @@ describe('Unit test: flight-search.component', () => {
     ctrl.verify();
   });
 
-  function setInput(selector: string, value: string): void {
-    const input = fixture.debugElement.query(By.css(selector)).nativeElement;
-    input.value = value;
-    input.dispatchEvent(new Event('input'));
-  }
-
   it('should have a disabled search button w/o params', async () => {
-    setInput('input[name=from]', '');
-    setInput('input[name=to]', '');
 
+    await page.getByLabelText('from').fill('');
+    await page.getByLabelText('to').fill('');
     await fixture.whenStable();
 
-    const disabled = fixture.debugElement.query(By.css('button')).nativeElement
-      .disabled;
+    const button = page.getByRole('button').element() as HTMLButtonElement;
+    const disabled = button.disabled;
 
     expect(disabled).toBeTruthy();
+
   });
 });

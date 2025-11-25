@@ -80,7 +80,13 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "tsconfig.spec.json"
+            "runner": "vitest",
+            "runnerConfig": "vitest.config.ts"
+          },
+          "configurations": {
+            "headless": {
+              "browsers": ["ChromiumHeadless"]
+            }
           }
         }
       }
