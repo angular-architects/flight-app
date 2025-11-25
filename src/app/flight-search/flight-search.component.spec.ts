@@ -7,7 +7,6 @@ import {
 
 import { FlightSearchComponent } from './flight-search.component';
 import { By } from '@angular/platform-browser';
-
 import { vi } from 'vitest';
 
 describe('Unit test: flight-search.component', () => {
@@ -93,6 +92,7 @@ describe('Unit test: flight-search.component', () => {
 
     await vi.runAllTimersAsync();
     await fixture.whenStable();
+
 
     const disabled = fixture.debugElement.query(By.css('button')).nativeElement
       .disabled;

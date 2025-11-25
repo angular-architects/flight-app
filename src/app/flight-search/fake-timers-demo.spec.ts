@@ -4,7 +4,7 @@ import { debounceTime, Subject } from 'rxjs';
 import { vi } from 'vitest';
 import { toSignal } from '@angular/core/rxjs-interop';
 
-describe('createResource', () => {
+describe('fake timer demo', () => {
   beforeEach(() => {
     vi.useFakeTimers();
   });
@@ -17,7 +17,7 @@ describe('createResource', () => {
     });
   });
 
-  it('returns resource with loaded value', () => {
+  it('returns debounced value', () => {
     TestBed.runInInjectionContext(() => {
       const input = createInput();
       input.set('Hallo');
