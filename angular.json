@@ -84,7 +84,7 @@
             "browsers": ["Chromium"]
           },
           "configurations": {
-            "headless": {
+            "ci": {
               "browsers": ["ChromiumHeadless"]
             }
           }
