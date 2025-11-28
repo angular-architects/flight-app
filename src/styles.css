@@ -424,3 +424,22 @@ a {
 .p40 {
   padding: 20px;
 }
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+
+fieldset {
+  padding-right:30px;
+  margin-top:10px;
+  margin-bottom: 20px;
+}
+
+.m-10 {
+  margin: 15px;
+}

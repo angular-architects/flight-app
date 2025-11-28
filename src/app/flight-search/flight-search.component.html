@@ -6,27 +6,81 @@
   <div class="form-group">
     <label>From:</label>
     <input [field]="filterForm.from" data-testid="from" class="form-control" />
+    <div>{{ filterForm.from().errors() | json }}</div>
   </div>
   <div class="form-group">
     <label>To:</label>
     <input [field]="filterForm.to" data-testid="to" class="form-control" />
+    <div>{{ filterForm.to().errors() | json }}</div>
   </div>
 
-  <div class="form-group">
+  <fieldset>
+    <legend>Details</legend>
+
+    <div class="form-group">
+      <label>Max. Layovers:</label>
+      <input
+        [field]="filterForm.details.maxLayovers"
+        type="number"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Max. Price:</label>
+      <input
+        [field]="filterForm.details.maxPrice"
+        type="number"
+        class="form-control"
+      />
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Layovers</legend>
+
+    @for (layover of filterForm.layovers; track $index) {
+      <div class="row">
+        <div class="m-10 form-group">
+          <label>Airport:</label>
+          <input [field]="layover.airport" class="form-control" />
+        </div>
+        <div class="m-10 form-group">
+          <label>Min Duration:</label>
+          <input
+            [field]="layover.minDuration"
+            type="number"
+            class="form-control"
+          />
+        </div>
+      </div>
+    }
+    <button (click)="addLayover()" class="mt-20 btn btn-default">
+      Add Layover
+    </button>
+  </fieldset>
+
+  <div class="mt-30 form-group">
     <button
+      data-testid="btn-search"
       (click)="search()"
       [disabled]="!filter().from || !filter().to"
       class="btn btn-default"
-      >
+    >
       Search
     </button>
+
   </div>
 </form>
 
 <div class="row">
   @for (f of flights(); track f) {
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-      <app-flight-card [item]="f" [selected]="basket()[f.id]" (selectedChange)="updateBasket(f.id, $event)">
+      <app-flight-card
+        [item]="f"
+        [selected]="basket()[f.id]"
+        (selectedChange)="updateBasket(f.id, $event)"
+      >
         <p class="middle"><i>Delays are possible!</i></p>
         <p class="bottom"><small>Statement without guarantee!</small></p>
       </app-flight-card>

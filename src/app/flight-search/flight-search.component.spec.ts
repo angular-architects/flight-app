@@ -7,7 +7,6 @@ import {
 
 import { FlightSearchComponent } from './flight-search.component';
 import { By } from '@angular/platform-browser';
-import { vi } from 'vitest';
 
 describe('Unit test: flight-search.component', () => {
   let component: FlightSearchComponent;
@@ -32,10 +31,11 @@ describe('Unit test: flight-search.component', () => {
   });
 
   it('should load flights when user entered from and to', () => {
-    component.filterForm().value.set({
+    component.filterForm().value.update((value) => ({
+      ...value,
       from: 'Graz',
       to: 'Hamburg',
-    });
+    }));
     component.search();
 
     const req = ctrl.expectOne('/flight?from=Graz&to=Hamburg');
@@ -69,10 +69,11 @@ describe('Unit test: flight-search.component', () => {
   });
 
   it('should *not* load flights when user did not enter from and to', () => {
-    component.filterForm().value.set({
+    component.filterForm().value.update((value) => ({
+      ...value,
       from: '',
       to: '',
-    });
+    }));
     component.search();
 
     expect(component.flights().length).toBe(0);
@@ -86,15 +87,12 @@ describe('Unit test: flight-search.component', () => {
   }
 
   it('should have a disabled search button w/o params', async () => {
-    vi.useFakeTimers();
     setInput('input[data-testid=from]', '');
     setInput('input[data-testid=to]', '');
 
-    await vi.runAllTimersAsync();
     await fixture.whenStable();
 
-
-    const disabled = fixture.debugElement.query(By.css('button')).nativeElement
+    const disabled = fixture.debugElement.query(By.css('button[data-testid=btn-search]')).nativeElement
       .disabled;
 
     expect(disabled).toBeTruthy();

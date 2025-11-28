@@ -17,11 +17,11 @@ describe('fake timer demo', () => {
     });
   });
 
-  it('returns debounced value', () => {
-    TestBed.runInInjectionContext(() => {
+  it('returns debounced value', async () => {
+    await TestBed.runInInjectionContext(async () => {
       const input = createInput();
       input.set('Hallo');
-      vi.runAllTimers();
+      await vi.runAllTimersAsync();
       expect(input.value()).toBe('Hallo');
     });
   });

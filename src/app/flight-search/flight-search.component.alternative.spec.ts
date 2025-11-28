@@ -5,6 +5,7 @@ import { FlightSearchComponent } from './flight-search.component';
 import { FlightService } from './flight.service';
 import { DummyFlightService } from './dummy-flight.service';
 import { vi } from 'vitest';
+import { of } from 'rxjs';
 
 describe('Alternative Unit test: flight-search.component', () => {
   let component: FlightSearchComponent;
@@ -27,9 +28,9 @@ describe('Alternative Unit test: flight-search.component', () => {
 
     flightService = TestBed.inject(FlightService);
     vi.spyOn(flightService, 'find');
+    // vi.spyOn(flightService, 'find').mockImplementation((_from, _to) => of([]))
 
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should not have any flights loaded initially', () => {
@@ -37,10 +38,11 @@ describe('Alternative Unit test: flight-search.component', () => {
   });
 
   it('should load flights when user entered from and to', () => {
-    component.filterForm().value.set({
-       from: 'Graz',
-       to: 'Hamburg'
-    });
+    component.filterForm().value.update((value) => ({
+      ...value,
+      from: 'Graz',
+      to: 'Hamburg',
+    }));
     component.search();
 
     expect(component.flights().length).toBe(3);
@@ -48,14 +50,15 @@ describe('Alternative Unit test: flight-search.component', () => {
   });
 
   it('should *not* load flights when user did not enter from and to', () => {
-    component.filterForm().value.set({
-       from: '',
-       to: ''
-    });
+    component.filterForm().value.update((value) => ({
+      ...value,
+      from: '',
+      to: '',
+    }));
+
     component.search();
 
     expect(component.flights().length).toBe(0);
     expect(flightService.find).not.toHaveBeenCalled();
   });
-
 });
