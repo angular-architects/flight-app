@@ -81,7 +81,7 @@
           "builder": "@angular/build:unit-test",
           "options": {
             "runner": "vitest",
-            "runnerConfig": "vitest.config.ts"
+            "browsers": ["Chromium"]
           },
           "configurations": {
             "headless": {
