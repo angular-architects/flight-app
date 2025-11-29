@@ -11,7 +11,6 @@ import { FlightCardComponent } from '../flight-card/flight-card.component';
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
   imports: [CommonModule, FormsModule, FlightCardComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
   from = 'London';
