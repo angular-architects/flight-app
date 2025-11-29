@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Flight } from '../../model/flight';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -10,10 +10,10 @@ import { ValidationErrorsComponent } from '../../shared/validation-errors/valida
 import { validateRoundTrip } from '../../shared/validation/roundtrip-validator';
 
 @Component({
-    selector: 'app-flight-edit-reactive',
-    templateUrl: './flight-edit-reactive.component.html',
-    styleUrls: ['./flight-edit-reactive.component.css'],
-    imports: [CommonModule, ReactiveFormsModule, ValidationErrorsComponent]
+  selector: 'app-flight-edit-reactive',
+  templateUrl: './flight-edit-reactive.component.html',
+  styleUrls: ['./flight-edit-reactive.component.css'],
+  imports: [ReactiveFormsModule, ValidationErrorsComponent],
 })
 export class FlightEditReactiveComponent {
   private flightService = inject(FlightService);
