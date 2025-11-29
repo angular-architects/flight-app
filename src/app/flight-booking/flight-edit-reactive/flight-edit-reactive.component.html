@@ -11,9 +11,9 @@
     field="flight"
   ></app-validation-errors>
 
-  <div class="alert alert-info" *ngIf="form?.controls?.['from']?.pending">
-    Validating ...
-  </div>
+  @if (form.controls['from'].pending) {
+  <div class="alert alert-info">Validating ...</div>
+  }
 
   <form [formGroup]="form">
     <input formControlName="id" />
