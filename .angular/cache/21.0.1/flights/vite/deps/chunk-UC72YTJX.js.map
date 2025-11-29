@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../../node_modules/@angular/common/fesm2022/_xhr-chunk.mjs"],
+  "sourcesContent": ["/**\n * @license Angular v21.0.1\n * (c) 2010-2025 Google LLC. https://angular.dev/\n * License: MIT\n */\n\nfunction parseCookieValue(cookieStr, name) {\n  name = encodeURIComponent(name);\n  for (const cookie of cookieStr.split(';')) {\n    const eqIndex = cookie.indexOf('=');\n    const [cookieName, cookieValue] = eqIndex == -1 ? [cookie, ''] : [cookie.slice(0, eqIndex), cookie.slice(eqIndex + 1)];\n    if (cookieName.trim() === name) {\n      return decodeURIComponent(cookieValue);\n    }\n  }\n  return null;\n}\n\nclass XhrFactory {}\n\nexport { XhrFactory, parseCookieValue };\n\n"],
+  "mappings": ";AAMA,SAAS,iBAAiB,WAAW,MAAM;AACzC,SAAO,mBAAmB,IAAI;AAC9B,aAAW,UAAU,UAAU,MAAM,GAAG,GAAG;AACzC,UAAM,UAAU,OAAO,QAAQ,GAAG;AAClC,UAAM,CAAC,YAAY,WAAW,IAAI,WAAW,KAAK,CAAC,QAAQ,EAAE,IAAI,CAAC,OAAO,MAAM,GAAG,OAAO,GAAG,OAAO,MAAM,UAAU,CAAC,CAAC;AACrH,QAAI,WAAW,KAAK,MAAM,MAAM;AAC9B,aAAO,mBAAmB,WAAW;AAAA,IACvC;AAAA,EACF;AACA,SAAO;AACT;AAEA,IAAM,aAAN,MAAiB;AAAC;",
+  "names": []
+}
