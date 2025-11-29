@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 import { Flight, initFlight } from '../../model/flight';
@@ -11,17 +11,16 @@ import { ActivatedRoute } from '@angular/router';
 import { FlightService } from '../flight-search/flight.service';
 
 @Component({
-    selector: 'app-flight-edit',
-    imports: [
-        CommonModule,
-        FormsModule,
-        ValidationErrorsComponent,
-        CityValidatorDirective,
-        AsyncCityValidatorDirective,
-        RoundtripValidatorDirective,
-    ],
-    templateUrl: './flight-edit.component.html',
-    styleUrls: ['./flight-edit.component.css']
+  selector: 'app-flight-edit',
+  imports: [
+    FormsModule,
+    ValidationErrorsComponent,
+    CityValidatorDirective,
+    AsyncCityValidatorDirective,
+    RoundtripValidatorDirective,
+  ],
+  templateUrl: './flight-edit.component.html',
+  styleUrls: ['./flight-edit.component.css'],
 })
 export class FlightEditComponent implements OnInit {
   private route = inject(ActivatedRoute);
