@@ -80,7 +80,6 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "runner": "vitest",
             "browsers": ["Chromium"]
           },
           "configurations": {

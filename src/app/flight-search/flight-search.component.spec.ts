@@ -80,12 +80,9 @@ describe('Unit test: flight-search.component', () => {
     await page.getByLabelText('from').fill('');
     await page.getByLabelText('to').fill('');
 
-    await fixture.whenStable();
-
     const button = page.getByRole('button', { name: 'search' }).element() as HTMLButtonElement;
     const disabled = button.disabled;
 
     expect(disabled).toBeTruthy();
-
   });
 });
