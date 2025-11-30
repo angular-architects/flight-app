@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LoggerService } from '../shared/logger/logger';
 
 @Component({
   selector: 'app-home',
