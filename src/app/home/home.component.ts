@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LoggerService } from '../shared/logger/logger';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,6 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   logger = inject(LoggerService);
-  auth = inject(AuthService);
 
   constructor() {
     this.logger.debug('home', 'debug');
