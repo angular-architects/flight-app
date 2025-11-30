@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggerService } from 'src/app/shared/logger/logger';
 
 @Component({
   selector: 'app-passenger-search',
