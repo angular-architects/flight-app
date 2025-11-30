@@ -6,7 +6,7 @@ type OnChange = (value: Date) => void;
 type OnTouched = () => void;
 
 @Directive({
-  selector: '[appDateCva]',
+  selector: 'input[appDateCva]',
   standalone: true,
   providers: [
     {
@@ -23,8 +23,10 @@ export class DateCvaDirective implements ControlValueAccessor {
   @HostBinding('value')
   value = '';
 
-  @HostListener('change', ['$event.target.value'])
-  change(value: string): void {
+  @HostListener('change', ['$event'])
+  change(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const value = target.value;
     const date = value ? parse(value, 'dd.MM.yyyy HH:mm', 0) : new Date();
     this._onChange(date);
   }
