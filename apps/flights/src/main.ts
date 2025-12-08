@@ -1,5 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
-import { importProvidersFrom, isDevMode } from '@angular/core';
+import { importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
@@ -13,6 +13,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideZoneChangeDetection(),
     provideHttpClient(),
     provideRouter(APP_ROUTES),
     importProvidersFrom(NextFlightsModule),
