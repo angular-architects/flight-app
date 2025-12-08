@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+/.angular
+/.nx
+
 # Compiled output
 /dist
 /tmp
@@ -41,6 +44,3 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.angular
-
-.nx
