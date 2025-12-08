@@ -1,5 +1,5 @@
 import { provideHttpClient } from '@angular/common/http';
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -11,6 +11,7 @@ import { LogLevel, provideLogger, withColor } from '@demo/shared/util-logger';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideZoneChangeDetection(),
     provideHttpClient(),
     provideRouter(APP_ROUTES),
     importProvidersFrom(NextFlightsModule),
