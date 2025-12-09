@@ -13,12 +13,19 @@ while read -r BRANCH; do
   echo "===> Wechsel zu $BRANCH"
   git checkout "$BRANCH"
 
-  cp /tmp/home.component.ts src/app/home/home.component.ts
+  git cherry-pick "$FIXED_COMMIT" -X theirs
+ 
+done < "$BRANCH_LIST"
 
-  git add .
-  git commit -m "chore: provide empty about component template"
+echo "✅ Alle Cherry-Picks abgeschlossen."
 
-  # git cherry-pick "$FIXED_COMMIT" -X theirs
+
+
+
+ # cp /tmp/home.component.ts src/app/home/home.component.ts
+
+  # git add .
+  # git commit -m "chore: provide empty about component template"
 
   # echo "===> Cherry-Pick von $FIXED_COMMIT"
   # git cherry-pick "$FIXED_COMMIT" -X theirs || (git add . && git cherry-pick --continue)
@@ -32,8 +39,3 @@ while read -r BRANCH; do
 
   # git add .
   # git commit -m "chore(ent): update to ng 21 next.5 to showcase signal forms" || echo Weiter gehts ...
-
-
-done < "$BRANCH_LIST"
-
-echo "✅ Alle Cherry-Picks abgeschlossen."

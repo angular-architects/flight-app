@@ -1,0 +1,102 @@
+name: create-starter-zip
+run-name: Creating Starter Zip
+on: [push]
+jobs:
+  check-bats-version:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: lab00-ess-starter
+      - run: npm install --force
+      - name: Zip Folder
+        run: zip -r ess-starter.zip . -x "*.zip"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "*.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: lab250-reactive-starter
+      - run: npm install --force
+      - name: Zip Folder
+        run: zip -r rea-starter.zip . -x "*.zip"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "*.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: lab300-deep-dive-starter
+      - run: npm install --force
+      - name: Zip Folder
+        run: zip -r ddv-starter.zip . -x "*.zip"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "*.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: lab400-enterprise-starter
+      - run: npm install --force
+      - name: Zip Folder
+        run: zip -r ent-cli-starter.zip . -x "*.zip"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "*.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: lab200-enterprise-starter
+      - run: npm install --force
+      - name: Zip Folder
+        run: zip -r ent-starter.zip . -x "*.zip"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "*.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: lab500-enterprise-starter
+      - run: npm install --force
+      - name: Zip Folder
+        run: zip -r ent-nx-sheriff-starter.zip . -x "*.zip"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "*.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
