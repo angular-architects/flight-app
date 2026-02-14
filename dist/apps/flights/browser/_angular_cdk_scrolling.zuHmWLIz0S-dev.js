@@ -1,0 +1,10 @@
+import { CdkFixedSizeVirtualScroll, CdkScrollable, CdkScrollableModule, CdkVirtualForOf, CdkVirtualScrollViewport, CdkVirtualScrollable, CdkVirtualScrollableElement, CdkVirtualScrollableWindow, DEFAULT_RESIZE_TIME, DEFAULT_SCROLL_TIME, FixedSizeVirtualScrollStrategy, ScrollDispatcher, ScrollingModule, VIRTUAL_SCROLLABLE, VIRTUAL_SCROLL_STRATEGY, ViewportRuler, _fixedSizeVirtualScrollStrategyFactory } from "@nf-internal/chunk-P2TUBJGR";
+import "@nf-internal/chunk-R44VMRSN";
+import "@nf-internal/chunk-26DDZNO4";
+import { Dir } from "@nf-internal/chunk-XABR7MXZ";
+import "@nf-internal/chunk-GSHCXC35";
+import "@nf-internal/chunk-XODDVZAQ";
+import "@nf-internal/chunk-AOJKIHRQ";
+import "@nf-internal/chunk-AUAW3OPY";
+import "@nf-internal/chunk-54JPAORE";
+export { CdkFixedSizeVirtualScroll, CdkScrollable, CdkScrollableModule, CdkVirtualForOf, CdkVirtualScrollViewport, CdkVirtualScrollable, CdkVirtualScrollableElement, CdkVirtualScrollableWindow, DEFAULT_RESIZE_TIME, DEFAULT_SCROLL_TIME, FixedSizeVirtualScrollStrategy, ScrollDispatcher, ScrollingModule, VIRTUAL_SCROLLABLE, VIRTUAL_SCROLL_STRATEGY, ViewportRuler, _fixedSizeVirtualScrollStrategyFactory, Dir as ɵɵDir };

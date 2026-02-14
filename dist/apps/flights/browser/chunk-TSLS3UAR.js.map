@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/endOfDecade/index.js"],
+  "sourcesContent": ["import toDate from \"../toDate/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name endOfDecade\n * @category Decade Helpers\n * @summary Return the end of a decade for the given date.\n *\n * @description\n * Return the end of a decade for the given date.\n *\n * @param {Date|Number} date - the original date\n * @returns {Date} the end of a decade\n * @param {Object} [options] - an object with options.\n * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}\n * @throws {TypeError} 1 argument required\n * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2\n *\n * @example\n * // The end of a decade for 12 May 1984 00:00:00:\n * const result = endOfDecade(new Date(1984, 4, 12, 00, 00, 00))\n * //=> Dec 31 1989 23:59:59.999\n */\nexport default function endOfDecade(dirtyDate) {\n  requiredArgs(1, arguments);\n  var date = toDate(dirtyDate);\n  var year = date.getFullYear();\n  var decade = 9 + Math.floor(year / 10) * 10;\n  date.setFullYear(decade, 11, 31);\n  date.setHours(23, 59, 59, 999);\n  return date;\n}"],
+  "mappings": ";;;;;;;;AAsBe,SAAR,YAA6B,WAAW;AAC7C,eAAa,GAAG,SAAS;AACzB,MAAI,OAAO,OAAO,SAAS;AAC3B,MAAI,OAAO,KAAK,YAAY;AAC5B,MAAI,SAAS,IAAI,KAAK,MAAM,OAAO,EAAE,IAAI;AACzC,OAAK,YAAY,QAAQ,IAAI,EAAE;AAC/B,OAAK,SAAS,IAAI,IAAI,IAAI,GAAG;AAC7B,SAAO;AACT;",
+  "names": []
+}

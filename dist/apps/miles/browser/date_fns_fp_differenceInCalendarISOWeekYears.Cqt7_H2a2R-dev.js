@@ -1,0 +1,13 @@
+import { differenceInCalendarISOWeekYears_default } from "@nf-internal/chunk-APJH2KLM";
+import "@nf-internal/chunk-T7SIIF37";
+import "@nf-internal/chunk-VVR2DV3R";
+import "@nf-internal/chunk-RE4UM5WB";
+import "@nf-internal/chunk-CKVZFPX6";
+import "@nf-internal/chunk-YBP42KGB";
+import "@nf-internal/chunk-M2CTTFQ2";
+import "@nf-internal/chunk-SQMTRHET";
+import "@nf-internal/chunk-FP3WEKKQ";
+import "@nf-internal/chunk-D7ZASVPN";
+import "@nf-internal/chunk-Z43A42SM";
+import "@nf-internal/chunk-54JPAORE";
+export { differenceInCalendarISOWeekYears_default as default };

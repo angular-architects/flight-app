@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/locale/fr/_lib/formatRelative/index.js"],
+  "sourcesContent": ["var formatRelativeLocale = {\n  lastWeek: \"eeee 'dernier \u00E0' p\",\n  yesterday: \"'hier \u00E0' p\",\n  today: \"'aujourd\u2019hui \u00E0' p\",\n  tomorrow: \"'demain \u00E0' p'\",\n  nextWeek: \"eeee 'prochain \u00E0' p\",\n  other: 'P'\n};\nvar formatRelative = function formatRelative(token, _date, _baseDate, _options) {\n  return formatRelativeLocale[token];\n};\nexport default formatRelative;"],
+  "mappings": ";AAAA,IAAI,uBAAuB;AAAA,EACzB,UAAU;AAAA,EACV,WAAW;AAAA,EACX,OAAO;AAAA,EACP,UAAU;AAAA,EACV,UAAU;AAAA,EACV,OAAO;AACT;AACA,IAAI,iBAAiB,SAASA,gBAAe,OAAO,OAAO,WAAW,UAAU;AAC9E,SAAO,qBAAqB,KAAK;AACnC;AACA,IAAO,yBAAQ;",
+  "names": ["formatRelative"]
+}

@@ -1,0 +1,34 @@
+[42m[38;5;15m INFO [39m[49m [Federation SSE] Local reloader initialized with endpoint /@angular-architects/native-federation:build-notifications
+[42m[38;5;15m INFO [39m[49m Building federation artefacts
+[42m[38;5;15m INFO [39m[49m Preparing shared npm packages for the platform browser
+[103m[30m NOTE [39m[49m This only needs to be done once, as results are cached
+[103m[30m NOTE [39m[49m Skip packages you don't want to share in your federation config
+o [?25l[2m◼[22m Building...
+[2K[1A[2K[G[33m⠋[39m Building...
+[2K[1A[2K[G[33m⠙[39m Building...
+[2K[1A[2K[G[33m⠹[39m Building...
+[2K[1A[2K[G[33m⠸[39m Building...
+[2K[1A[2K[G[33m⠼[39m Building...
+[2K[1A[2K[G[33m⠴[39m Building...
+[2K[1A[2K[G[33m⠦[39m Building...
+[2K[1A[2K[G[33m⠧[39m Building...
+[2K[1A[2K[G[32m✔[39m Building...
+[2K[1A[2K[G[?25h[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[39m
+[37m[32mmain.js[39m[37m            [2m | [22m[2mmain[22m         [2m | [22m[36m262 bytes[39m[37m[2m | [22m[39m
+[37m[32mpolyfills.js[39m[37m       [2m | [22m[2mpolyfills[22m    [2m | [22m[36m121 bytes[39m[37m[2m | [22m[39m
+[37m[32mstyles.css[39m[37m         [2m | [22m[2mstyles[22m       [2m | [22m[36m106 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37m[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m489 bytes[22m[39m
+[37m[39m
+[37m[1mLazy chunk files[22m   [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[39m
+[37m[32mchunk-LLZVBBE4.js[39m[37m  [2m | [22m[2mbootstrap[22m    [2m | [22m  [36m8.40 kB[39m[37m[2m | [22m[39m
+[37m[39m
+[37mApplication bundle generation complete. [0.815 seconds] - 2025-12-08T19:25:32.294Z[39m
+[37m[39m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4201[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+o
+[42m[38;5;15m INFO [39m[49m [Federation SSE] Client connected. Active connections: 1
+^C[?25h

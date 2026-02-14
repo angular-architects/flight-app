@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/setQuarter/index.js"],
+  "sourcesContent": ["import toInteger from \"../_lib/toInteger/index.js\";\nimport toDate from \"../toDate/index.js\";\nimport setMonth from \"../setMonth/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name setQuarter\n * @category Quarter Helpers\n * @summary Set the year quarter to the given date.\n *\n * @description\n * Set the year quarter to the given date.\n *\n * @param {Date|Number} date - the date to be changed\n * @param {Number} quarter - the quarter of the new date\n * @returns {Date} the new date with the quarter set\n * @throws {TypeError} 2 arguments required\n *\n * @example\n * // Set the 2nd quarter to 2 July 2014:\n * const result = setQuarter(new Date(2014, 6, 2), 2)\n * //=> Wed Apr 02 2014 00:00:00\n */\nexport default function setQuarter(dirtyDate, dirtyQuarter) {\n  requiredArgs(2, arguments);\n  var date = toDate(dirtyDate);\n  var quarter = toInteger(dirtyQuarter);\n  var oldQuarter = Math.floor(date.getMonth() / 3) + 1;\n  var diff = quarter - oldQuarter;\n  return setMonth(date, date.getMonth() + diff * 3);\n}"],
+  "mappings": ";;;;;;;;;;;;;;AAsBe,SAAR,WAA4B,WAAW,cAAc;AAC1D,eAAa,GAAG,SAAS;AACzB,MAAI,OAAO,OAAO,SAAS;AAC3B,MAAI,UAAU,UAAU,YAAY;AACpC,MAAI,aAAa,KAAK,MAAM,KAAK,SAAS,IAAI,CAAC,IAAI;AACnD,MAAI,OAAO,UAAU;AACrB,SAAO,SAAS,MAAM,KAAK,SAAS,IAAI,OAAO,CAAC;AAClD;",
+  "names": []
+}

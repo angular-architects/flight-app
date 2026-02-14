@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/lastDayOfDecade/index.js"],
+  "sourcesContent": ["import toDate from \"../toDate/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name lastDayOfDecade\n * @category Decade Helpers\n * @summary Return the last day of a decade for the given date.\n *\n * @description\n * Return the last day of a decade for the given date.\n *\n * @param {Date|Number} date - the original date\n * @returns {Date} the last day of a decade\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // The last day of a decade for 21 December 2012 21:12:00:\n * const result = lastDayOfDecade(new Date(2012, 11, 21, 21, 12, 00))\n * //=> Wed Dec 31 2019 00:00:00\n */\nexport default function lastDayOfDecade(dirtyDate) {\n  requiredArgs(1, arguments);\n  var date = toDate(dirtyDate);\n  var year = date.getFullYear();\n  var decade = 9 + Math.floor(year / 10) * 10;\n  date.setFullYear(decade + 1, 0, 0);\n  date.setHours(0, 0, 0, 0);\n  return date;\n}"],
+  "mappings": ";;;;;;;;AAmBe,SAAR,gBAAiC,WAAW;AACjD,eAAa,GAAG,SAAS;AACzB,MAAI,OAAO,OAAO,SAAS;AAC3B,MAAI,OAAO,KAAK,YAAY;AAC5B,MAAI,SAAS,IAAI,KAAK,MAAM,OAAO,EAAE,IAAI;AACzC,OAAK,YAAY,SAAS,GAAG,GAAG,CAAC;AACjC,OAAK,SAAS,GAAG,GAAG,GAAG,CAAC;AACxB,SAAO;AACT;",
+  "names": []
+}

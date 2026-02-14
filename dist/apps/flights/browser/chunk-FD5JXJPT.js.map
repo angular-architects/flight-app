@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/yearsToQuarters/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { quartersInYear } from \"../constants/index.js\";\n/**\n * @name yearsToQuarters\n * @category Conversion Helpers\n * @summary Convert years to quarters.\n *\n * @description\n * Convert a number of years to a full number of quarters.\n *\n * @param {number} years - number of years to be converted\n *\n * @returns {number} the number of years converted in quarters\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 2 years to quarters\n * const result = yearsToQuarters(2)\n * //=> 8\n */\nexport default function yearsToQuarters(years) {\n  requiredArgs(1, arguments);\n  return Math.floor(years * quartersInYear);\n}"],
+  "mappings": ";;;;;;;;AAoBe,SAAR,gBAAiC,OAAO;AAC7C,eAAa,GAAG,SAAS;AACzB,SAAO,KAAK,MAAM,QAAQ,cAAc;AAC1C;",
+  "names": []
+}

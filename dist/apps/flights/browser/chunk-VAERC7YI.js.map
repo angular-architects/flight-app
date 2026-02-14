@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/cdk/fesm2022/focus-key-manager.mjs"],
+  "sourcesContent": ["import { ListKeyManager } from './list-key-manager.mjs';\n\nclass FocusKeyManager extends ListKeyManager {\n    _origin = 'program';\n    /**\n     * Sets the focus origin that will be passed in to the items for any subsequent `focus` calls.\n     * @param origin Focus origin to be used when focusing items.\n     */\n    setFocusOrigin(origin) {\n        this._origin = origin;\n        return this;\n    }\n    setActiveItem(item) {\n        super.setActiveItem(item);\n        if (this.activeItem) {\n            this.activeItem.focus(this._origin);\n        }\n    }\n}\n\nexport { FocusKeyManager };\n\n"],
+  "mappings": ";;;;;AAEA,IAAM,kBAAN,cAA8B,eAAe;AAAA,EACzC,UAAU;AAAA;AAAA;AAAA;AAAA;AAAA,EAKV,eAAe,QAAQ;AACnB,SAAK,UAAU;AACf,WAAO;AAAA,EACX;AAAA,EACA,cAAc,MAAM;AAChB,UAAM,cAAc,IAAI;AACxB,QAAI,KAAK,YAAY;AACjB,WAAK,WAAW,MAAM,KAAK,OAAO;AAAA,IACtC;AAAA,EACJ;AACJ;",
+  "names": []
+}

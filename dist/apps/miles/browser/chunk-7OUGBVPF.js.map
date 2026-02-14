@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/previousThursday/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport previousDay from \"../previousDay/index.js\";\n/**\n * @name previousThursday\n * @category Weekday Helpers\n * @summary When is the previous Thursday?\n *\n * @description\n * When is the previous Thursday?\n *\n * @param {Date | number} date - the date to start counting from\n * @returns {Date} the previous Thursday\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // When is the previous Thursday before Jun, 18, 2021?\n * const result = previousThursday(new Date(2021, 5, 18))\n * //=> Thu June 17 2021 00:00:00\n */\nexport default function previousThursday(date) {\n  requiredArgs(1, arguments);\n  return previousDay(date, 4);\n}"],
+  "mappings": ";;;;;;;;AAmBe,SAAR,iBAAkC,MAAM;AAC7C,eAAa,GAAG,SAAS;AACzB,SAAO,YAAY,MAAM,CAAC;AAC5B;",
+  "names": []
+}

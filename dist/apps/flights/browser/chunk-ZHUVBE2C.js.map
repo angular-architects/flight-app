@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/fp/parseWithOptions/index.js"],
+  "sourcesContent": ["// This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.\nimport fn from \"../../parse/index.js\";\nimport convertToFP from \"../_lib/convertToFP/index.js\";\nexport default convertToFP(fn, 4);"],
+  "mappings": ";;;;;;;;AAGA,IAAO,2BAAQ,YAAY,OAAI,CAAC;",
+  "names": []
+}

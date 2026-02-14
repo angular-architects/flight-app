@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/_lib/addLeadingZeros/index.js"],
+  "sourcesContent": ["export default function addLeadingZeros(number, targetLength) {\n  var sign = number < 0 ? '-' : '';\n  var output = Math.abs(number).toString();\n  while (output.length < targetLength) {\n    output = '0' + output;\n  }\n  return sign + output;\n}"],
+  "mappings": ";AAAe,SAAR,gBAAiC,QAAQ,cAAc;AAC5D,MAAI,OAAO,SAAS,IAAI,MAAM;AAC9B,MAAI,SAAS,KAAK,IAAI,MAAM,EAAE,SAAS;AACvC,SAAO,OAAO,SAAS,cAAc;AACnC,aAAS,MAAM;AAAA,EACjB;AACA,SAAO,OAAO;AAChB;",
+  "names": []
+}

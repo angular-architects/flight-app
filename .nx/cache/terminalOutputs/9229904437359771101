@@ -1,0 +1,62 @@
+[?25l[2m◼[22m Building...
+[2K[1A[2K[G[33m⠋[39m Building...
+[2K[1A[2K[G[33m⠙[39m Building...
+[2K[1A[2K[G[33m⠹[39m Building...
+[2K[1A[2K[G[33m⠸[39m Building...
+[2K[1A[2K[G[33m⠼[39m Building...
+[2K[1A[2K[G[33m⠴[39m Building...
+[2K[1A[2K[G[33m⠦[39m Building...
+[2K[1A[2K[G[33m⠧[39m Building...
+[2K[1A[2K[G[33m⠇[39m Building...
+[2K[1A[2K[G[33m⠏[39m Building...
+[2K[1A[2K[G[33m⠋[39m Building...
+[2K[1A[2K[G[33m⠙[39m Building...
+[2K[1A[2K[G[33m⠹[39m Building...
+[2K[1A[2K[G[33m⠸[39m Building...
+[2K[1A[2K[G[32m✔[39m Building...
+[2K[1A[2K[G[?25h[37m[1mInitial chunk files[22m             [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[39m
+[37m[32mstyles.css[39m[37m                      [2m | [22m[2mstyles[22m       [2m | [22m[36m116.61 kB[39m[37m[2m | [22m[39m
+[37m[32mmain.js[39m[37m                         [2m | [22m[2mmain[22m         [2m | [22m [36m42.59 kB[39m[37m[2m | [22m[39m
+[37m[32mchunk-35AHONE5.js[39m[37m               [2m | [22m[2m-[22m            [2m | [22m  [36m9.19 kB[39m[37m[2m | [22m[39m
+[37m[32mchunk-ZOVUJYOZ.js[39m[37m               [2m | [22m[2m-[22m            [2m | [22m  [36m2.99 kB[39m[37m[2m | [22m[39m
+[37m[32mchunk-SG2LYVAH.js[39m[37m               [2m | [22m[2m-[22m            [2m | [22m[36m894 bytes[39m[37m[2m | [22m[39m
+[37m[32mpolyfills.js[39m[37m                    [2m | [22m[2mpolyfills[22m    [2m | [22m [36m95 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37m[1m [22m                               [2m | [22m[1mInitial total[22m[2m | [22m[1m172.37 kB[22m[39m
+[37m[39m
+[37m[1mLazy chunk files[22m                [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[39m
+[37m[32mfeature-booking-47ZMANDI.js[39m[37m     [2m | [22m[2mindex[22m        [2m | [22m [36m97.60 kB[39m[37m[2m | [22m[39m
+[37m[32mfeature-next-flights-BRKFOJ5Z.js[39m[37m[2m | [22m[2mindex[22m        [2m | [22m[36m179 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37mApplication bundle generation complete. [1.359 seconds] - 2025-12-08T19:16:31.971Z[39m
+[37m[39m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+[2m20:16:32[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m Re-optimizing dependencies because lockfile has changed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m20:16:32[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because lockfile has changed [33m(x2)[39m
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+^C[?25h

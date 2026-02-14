@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/material/fesm2022/input-value-accessor.mjs"],
+  "sourcesContent": ["import { InjectionToken } from '@angular/core';\n\n/**\n * This token is used to inject the object whose value should be set into `MatInput`. If none is\n * provided, the native `HTMLInputElement` is used. Directives like `MatDatepickerInput` can provide\n * themselves for this token, in order to make `MatInput` delegate the getting and setting of the\n * value to them.\n */\nconst MAT_INPUT_VALUE_ACCESSOR = new InjectionToken('MAT_INPUT_VALUE_ACCESSOR');\n\nexport { MAT_INPUT_VALUE_ACCESSOR };\n\n"],
+  "mappings": ";AAAA,SAAS,sBAAsB;AAQ/B,IAAM,2BAA2B,IAAI,eAAe,0BAA0B;",
+  "names": []
+}

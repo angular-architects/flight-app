@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/millisecondsToSeconds/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { millisecondsInSecond } from \"../constants/index.js\";\n/**\n * @name millisecondsToSeconds\n * @category Conversion Helpers\n * @summary Convert milliseconds to seconds.\n *\n * @description\n * Convert a number of milliseconds to a full number of seconds.\n *\n * @param {number} milliseconds - number of milliseconds to be converted\n *\n * @returns {number} the number of milliseconds converted in seconds\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 1000 miliseconds to seconds:\n * const result = millisecondsToSeconds(1000)\n * //=> 1\n *\n * @example\n * // It uses floor rounding:\n * const result = millisecondsToSeconds(1999)\n * //=> 1\n */\nexport default function millisecondsToSeconds(milliseconds) {\n  requiredArgs(1, arguments);\n  var seconds = milliseconds / millisecondsInSecond;\n  return Math.floor(seconds);\n}"],
+  "mappings": ";;;;;;;;AAyBe,SAAR,sBAAuC,cAAc;AAC1D,eAAa,GAAG,SAAS;AACzB,MAAI,UAAU,eAAe;AAC7B,SAAO,KAAK,MAAM,OAAO;AAC3B;",
+  "names": []
+}

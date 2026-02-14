@@ -1,0 +1,72 @@
+[42m[38;5;15m INFO [39m[49m [Federation SSE] Local reloader initialized with endpoint /@angular-architects/native-federation:build-notifications
+[42m[38;5;15m INFO [39m[49m Building federation artefacts
+[42m[38;5;15m INFO [39m[49m Preparing shared npm packages for the platform browser
+[103m[30m NOTE [39m[49m This only needs to be done once, as results are cached
+[103m[30m NOTE [39m[49m Skip packages you don't want to share in your federation config
+[?25l[2m◼[22m Building...
+[2K[1A[2K[G[33m⠋[39m Building...
+[2K[1A[2K[G[33m⠙[39m Building...
+[2K[1A[2K[G[33m⠹[39m Building...
+[2K[1A[2K[G[33m⠸[39m Building...
+[2K[1A[2K[G[33m⠼[39m Building...
+[2K[1A[2K[G[33m⠴[39m Building...
+[2K[1A[2K[G[33m⠦[39m Building...
+[2K[1A[2K[G[33m⠧[39m Building...
+[2K[1A[2K[G[33m⠇[39m Building...
+[2K[1A[2K[G[33m⠏[39m Building...
+[2K[1A[2K[G[33m⠋[39m Building...
+[2K[1A[2K[G[33m⠙[39m Building...
+[2K[1A[2K[G[33m⠹[39m Building...
+[2K[1A[2K[G[33m⠸[39m Building...
+[2K[1A[2K[G[33m⠼[39m Building...
+[2K[1A[2K[G[33m⠴[39m Building...
+[2K[1A[2K[G[33m⠦[39m Building...
+[2K[1A[2K[G[33m⠧[39m Building...
+[2K[1A[2K[G[32m✔[39m Building...
+[2K[1A[2K[G[?25h[37m[1mInitial chunk files[22m             [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[39m
+[37m[32mstyles.css[39m[37m                      [2m | [22m[2mstyles[22m       [2m | [22m[36m117.04 kB[39m[37m[2m | [22m[39m
+[37m[32mmain.js[39m[37m                         [2m | [22m[2mmain[22m         [2m | [22m[36m301 bytes[39m[37m[2m | [22m[39m
+[37m[32mpolyfills.js[39m[37m                    [2m | [22m[2mpolyfills[22m    [2m | [22m[36m121 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37m[1m [22m                               [2m | [22m[1mInitial total[22m[2m | [22m[1m117.46 kB[22m[39m
+[37m[39m
+[37m[1mLazy chunk files[22m                [2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[39m
+[37m[32mfeature-booking-LL5BOEGC.js[39m[37m     [2m | [22m[2mindex[22m        [2m | [22m [36m79.58 kB[39m[37m[2m | [22m[39m
+[37m[32mbootstrap-OS4PCQFV.js[39m[37m           [2m | [22m[2mbootstrap[22m    [2m | [22m [36m32.20 kB[39m[37m[2m | [22m[39m
+[37m[32mchunk-S7BTWX76.js[39m[37m               [2m | [22m[2m-[22m            [2m | [22m [36m10.25 kB[39m[37m[2m | [22m[39m
+[37m[32mchunk-J6I7VDD7.js[39m[37m               [2m | [22m[2m-[22m            [2m | [22m  [36m6.41 kB[39m[37m[2m | [22m[39m
+[37m[32mchunk-VTZCDIGA.js[39m[37m               [2m | [22m[2m-[22m            [2m | [22m  [36m1.31 kB[39m[37m[2m | [22m[39m
+[37m[32mfeature-next-flights-7GYUQP55.js[39m[37m[2m | [22m[2mindex[22m        [2m | [22m[36m179 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37mApplication bundle generation complete. [1.741 seconds] - 2025-12-08T19:23:28.554Z[39m
+[37m[39m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+[2m20:23:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because vite config has changed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m20:23:28[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m Re-optimizing dependencies because vite config has changed [33m(x2)[39m
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+^C[?25h

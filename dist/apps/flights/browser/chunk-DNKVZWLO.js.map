@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/_lib/cloneObject/index.js"],
+  "sourcesContent": ["import assign from \"../assign/index.js\";\nexport default function cloneObject(object) {\n  return assign({}, object);\n}"],
+  "mappings": ";;;;;AACe,SAAR,YAA6B,QAAQ;AAC1C,SAAO,OAAO,CAAC,GAAG,MAAM;AAC1B;",
+  "names": []
+}

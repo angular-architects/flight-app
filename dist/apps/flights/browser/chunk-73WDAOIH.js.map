@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/hoursToMinutes/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { minutesInHour } from \"../constants/index.js\";\n/**\n * @name hoursToMinutes\n * @category Conversion Helpers\n * @summary Convert hours to minutes.\n *\n * @description\n * Convert a number of hours to a full number of minutes.\n *\n * @param {number} hours - number of hours to be converted\n *\n * @returns {number} the number of hours converted in minutes\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 2 hours to minutes:\n * const result = hoursToMinutes(2)\n * //=> 120\n */\nexport default function hoursToMinutes(hours) {\n  requiredArgs(1, arguments);\n  return Math.floor(hours * minutesInHour);\n}"],
+  "mappings": ";;;;;;;;AAoBe,SAAR,eAAgC,OAAO;AAC5C,eAAa,GAAG,SAAS;AACzB,SAAO,KAAK,MAAM,QAAQ,aAAa;AACzC;",
+  "names": []
+}

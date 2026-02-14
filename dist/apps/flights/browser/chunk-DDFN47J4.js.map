@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/cdk/fesm2022/array.mjs"],
+  "sourcesContent": ["function coerceArray(value) {\n    return Array.isArray(value) ? value : [value];\n}\n\nexport { coerceArray };\n\n"],
+  "mappings": ";AAAA,SAAS,YAAY,OAAO;AACxB,SAAO,MAAM,QAAQ,KAAK,IAAI,QAAQ,CAAC,KAAK;AAChD;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/startOfYesterday/index.js"],
+  "sourcesContent": ["/**\n * @name startOfYesterday\n * @category Day Helpers\n * @summary Return the start of yesterday.\n * @pure false\n *\n * @description\n * Return the start of yesterday.\n *\n * > \u26A0\uFE0F Please note that this function is not present in the FP submodule as\n * > it uses `new Date()` internally hence impure and can't be safely curried.\n *\n * @returns {Date} the start of yesterday\n *\n * @example\n * // If today is 6 October 2014:\n * const result = startOfYesterday()\n * //=> Sun Oct 5 2014 00:00:00\n */\nexport default function startOfYesterday() {\n  var now = new Date();\n  var year = now.getFullYear();\n  var month = now.getMonth();\n  var day = now.getDate();\n  var date = new Date(0);\n  date.setFullYear(year, month, day - 1);\n  date.setHours(0, 0, 0, 0);\n  return date;\n}"],
+  "mappings": ";AAmBe,SAAR,mBAAoC;AACzC,MAAI,MAAM,oBAAI,KAAK;AACnB,MAAI,OAAO,IAAI,YAAY;AAC3B,MAAI,QAAQ,IAAI,SAAS;AACzB,MAAI,MAAM,IAAI,QAAQ;AACtB,MAAI,OAAO,oBAAI,KAAK,CAAC;AACrB,OAAK,YAAY,MAAM,OAAO,MAAM,CAAC;AACrC,OAAK,SAAS,GAAG,GAAG,GAAG,CAAC;AACxB,SAAO;AACT;",
+  "names": []
+}

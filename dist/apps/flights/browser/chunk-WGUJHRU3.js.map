@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/_lib/isSameUTCWeek/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../requiredArgs/index.js\";\nimport startOfUTCWeek from \"../startOfUTCWeek/index.js\";\nexport default function isSameUTCWeek(dirtyDateLeft, dirtyDateRight, options) {\n  requiredArgs(2, arguments);\n  var dateLeftStartOfWeek = startOfUTCWeek(dirtyDateLeft, options);\n  var dateRightStartOfWeek = startOfUTCWeek(dirtyDateRight, options);\n  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime();\n}"],
+  "mappings": ";;;;;;;;AAEe,SAAR,cAA+B,eAAe,gBAAgB,SAAS;AAC5E,eAAa,GAAG,SAAS;AACzB,MAAI,sBAAsB,eAAe,eAAe,OAAO;AAC/D,MAAI,uBAAuB,eAAe,gBAAgB,OAAO;AACjE,SAAO,oBAAoB,QAAQ,MAAM,qBAAqB,QAAQ;AACxE;",
+  "names": []
+}

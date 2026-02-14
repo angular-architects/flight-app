@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/nextTuesday/index.js"],
+  "sourcesContent": ["import nextDay from \"../nextDay/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name nextTuesday\n * @category Weekday Helpers\n * @summary When is the next Tuesday?\n *\n * @description\n * When is the next Tuesday?\n *\n * @param {Date | number} date - the date to start counting from\n * @returns {Date} the next Tuesday\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // When is the next Tuesday after Mar, 22, 2020?\n * const result = nextTuesday(new Date(2020, 2, 22))\n * //=> Tue Mar 24 2020 00:00:00\n */\nexport default function nextTuesday(date) {\n  requiredArgs(1, arguments);\n  return nextDay(date, 2);\n}"],
+  "mappings": ";;;;;;;;AAmBe,SAAR,YAA6B,MAAM;AACxC,eAAa,GAAG,SAAS;AACzB,SAAO,QAAQ,MAAM,CAAC;AACxB;",
+  "names": []
+}

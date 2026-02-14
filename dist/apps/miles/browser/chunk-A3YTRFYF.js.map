@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/isToday/index.js"],
+  "sourcesContent": ["import isSameDay from \"../isSameDay/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name isToday\n * @category Day Helpers\n * @summary Is the given date today?\n * @pure false\n *\n * @description\n * Is the given date today?\n *\n * > \u26A0\uFE0F Please note that this function is not present in the FP submodule as\n * > it uses `Date.now()` internally hence impure and can't be safely curried.\n *\n * @param {Date|Number} date - the date to check\n * @returns {Boolean} the date is today\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // If today is 6 October 2014, is 6 October 14:00:00 today?\n * const result = isToday(new Date(2014, 9, 6, 14, 0))\n * //=> true\n */\nexport default function isToday(dirtyDate) {\n  requiredArgs(1, arguments);\n  return isSameDay(dirtyDate, Date.now());\n}"],
+  "mappings": ";;;;;;;;AAuBe,SAAR,QAAyB,WAAW;AACzC,eAAa,GAAG,SAAS;AACzB,SAAO,UAAU,WAAW,KAAK,IAAI,CAAC;AACxC;",
+  "names": []
+}

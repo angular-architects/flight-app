@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/nextDay/index.js"],
+  "sourcesContent": ["import addDays from \"../addDays/index.js\";\nimport getDay from \"../getDay/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name nextDay\n * @category Weekday Helpers\n * @summary When is the next day of the week?\n *\n * @description\n * When is the next day of the week? 0-6 the day of the week, 0 represents Sunday.\n *\n * @param {Date | number} date - the date to check\n * @param {Day} day - day of the week\n * @returns {Date} - the date is the next day of week\n * @throws {TypeError} - 2 arguments required\n *\n * @example\n * // When is the next Monday after Mar, 20, 2020?\n * const result = nextDay(new Date(2020, 2, 20), 1)\n * //=> Mon Mar 23 2020 00:00:00\n *\n * @example\n * // When is the next Tuesday after Mar, 21, 2020?\n * const result = nextDay(new Date(2020, 2, 21), 2)\n * //=> Tue Mar 24 2020 00:00:00\n */\nexport default function nextDay(date, day) {\n  requiredArgs(2, arguments);\n  var delta = day - getDay(date);\n  if (delta <= 0) delta += 7;\n  return addDays(date, delta);\n}"],
+  "mappings": ";;;;;;;;;;;AA0Be,SAAR,QAAyB,MAAM,KAAK;AACzC,eAAa,GAAG,SAAS;AACzB,MAAI,QAAQ,MAAM,OAAO,IAAI;AAC7B,MAAI,SAAS,EAAG,UAAS;AACzB,SAAO,QAAQ,MAAM,KAAK;AAC5B;",
+  "names": []
+}

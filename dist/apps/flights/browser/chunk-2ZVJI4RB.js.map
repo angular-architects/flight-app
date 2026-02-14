@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/_lib/defaultLocale/index.js"],
+  "sourcesContent": ["import defaultLocale from \"../../locale/en-US/index.js\";\nexport default defaultLocale;"],
+  "mappings": ";;;;;AACA,IAAO,wBAAQ;",
+  "names": []
+}

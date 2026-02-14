@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../libs/ui-common/src/lib/libs/ui-common/ui-common.component.ts", "../../../../libs/ui-common/src/lib/libs/ui-common/ui-common.component.html"],
+  "sourcesContent": ["import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'lib-ui-common',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './ui-common.component.html',\n  styleUrls: ['./ui-common.component.css'],\n})\nexport class UiCommonComponent {}\n", "<p>ui-common works!</p>\n"],
+  "mappings": ";AAAA,SAAS,iBAAiB;AAC1B,SAAS,oBAAoB;;AASvB,IAAO,qBAAP,MAAO,mBAAiB;;;mCAAjB,oBAAiB;AAAA;sFAAjB,oBAAiB,WAAA,CAAA,CAAA,eAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,SAAA,2BAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACV9B,IAAA,+BAAA,GAAA,GAAA;AAAG,IAAA,oBAAA,GAAA,kBAAA;AAAgB,IAAA,6BAAA;;kBDMP,YAAY,GAAA,eAAA,EAAA,CAAA;AAIlB,IAAO,oBAAP;;gFAAO,mBAAiB,EAAA,WAAA,qBAAA,UAAA,gEAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

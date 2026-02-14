@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/cdk/fesm2022/css-pixel-value.mjs"],
+  "sourcesContent": ["/** Coerces a value to a CSS pixel value. */\nfunction coerceCssPixelValue(value) {\n    if (value == null) {\n        return '';\n    }\n    return typeof value === 'string' ? value : `${value}px`;\n}\n\nexport { coerceCssPixelValue };\n\n"],
+  "mappings": ";AACA,SAAS,oBAAoB,OAAO;AAChC,MAAI,SAAS,MAAM;AACf,WAAO;AAAA,EACX;AACA,SAAO,OAAO,UAAU,WAAW,QAAQ,GAAG,KAAK;AACvD;",
+  "names": []
+}

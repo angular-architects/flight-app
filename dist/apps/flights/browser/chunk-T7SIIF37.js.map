@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/fp/_lib/convertToFP/index.js"],
+  "sourcesContent": ["export default function convertToFP(fn, arity) {\n  var a = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];\n  if (a.length >= arity) {\n    return fn.apply(null, a.slice(0, arity).reverse());\n  }\n  return function () {\n    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {\n      args[_key] = arguments[_key];\n    }\n    return convertToFP(fn, arity, a.concat(args));\n  };\n}"],
+  "mappings": ";AAAe,SAAR,YAA6B,IAAI,OAAO;AAC7C,MAAI,IAAI,UAAU,SAAS,KAAK,UAAU,CAAC,MAAM,SAAY,UAAU,CAAC,IAAI,CAAC;AAC7E,MAAI,EAAE,UAAU,OAAO;AACrB,WAAO,GAAG,MAAM,MAAM,EAAE,MAAM,GAAG,KAAK,EAAE,QAAQ,CAAC;AAAA,EACnD;AACA,SAAO,WAAY;AACjB,aAAS,OAAO,UAAU,QAAQ,OAAO,IAAI,MAAM,IAAI,GAAG,OAAO,GAAG,OAAO,MAAM,QAAQ;AACvF,WAAK,IAAI,IAAI,UAAU,IAAI;AAAA,IAC7B;AACA,WAAO,YAAY,IAAI,OAAO,EAAE,OAAO,IAAI,CAAC;AAAA,EAC9C;AACF;",
+  "names": []
+}

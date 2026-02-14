@@ -1,0 +1,17 @@
+import { formatDistanceToNowStrict } from "@nf-internal/chunk-2I6RT2RR";
+import "@nf-internal/chunk-SIQU324K";
+import "@nf-internal/chunk-DNKVZWLO";
+import "@nf-internal/chunk-FPKNQFRY";
+import "@nf-internal/chunk-2ZVJI4RB";
+import "@nf-internal/chunk-HLOECY6E";
+import "@nf-internal/chunk-TVB6VXYN";
+import "@nf-internal/chunk-MDR3XCW7";
+import "@nf-internal/chunk-ILKXEUEW";
+import "@nf-internal/chunk-WHFO7FND";
+import "@nf-internal/chunk-OBRWG5KZ";
+import "@nf-internal/chunk-M2CTTFQ2";
+import "@nf-internal/chunk-FP3WEKKQ";
+import "@nf-internal/chunk-D7ZASVPN";
+import "@nf-internal/chunk-Z43A42SM";
+import "@nf-internal/chunk-54JPAORE";
+export { formatDistanceToNowStrict as default };

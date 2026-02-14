@@ -1,0 +1,15 @@
+import { MAT_SELECT_CONFIG, MAT_SELECT_SCROLL_STRATEGY, MAT_SELECT_TRIGGER, MatSelect, MatSelectChange, MatSelectModule, MatSelectTrigger } from "@nf-internal/chunk-ASS6ZOPL";
+import "@nf-internal/chunk-PRFT4OOY";
+import "@nf-internal/chunk-5UAVXUH3";
+import "@nf-internal/chunk-JH7AURNV";
+import "@nf-internal/chunk-PMUPKZSP";
+import { MatOptgroup, MatOption } from "@nf-internal/chunk-WY3OPLEO";
+import "@nf-internal/chunk-ALI6I7TC";
+import "@nf-internal/chunk-LTTGRATQ";
+import { MatError, MatFormField, MatHint, MatLabel, MatPrefix, MatSuffix } from "@nf-internal/chunk-PK4EDZ3R";
+import "@nf-internal/chunk-MAEJBUHM";
+import "@nf-internal/chunk-YH4D56O7";
+import "@nf-internal/chunk-LDHZVRH4";
+import "@nf-internal/chunk-C4FVYSZR";
+import "@nf-internal/chunk-54JPAORE";
+export { MAT_SELECT_CONFIG, MAT_SELECT_SCROLL_STRATEGY, MAT_SELECT_TRIGGER, MatError, MatFormField, MatHint, MatLabel, MatOptgroup, MatOption, MatPrefix, MatSelect, MatSelectChange, MatSelectModule, MatSelectTrigger, MatSuffix };

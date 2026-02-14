@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/nextSunday/index.js"],
+  "sourcesContent": ["import nextDay from \"../nextDay/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name nextSunday\n * @category Weekday Helpers\n * @summary When is the next Sunday?\n *\n * @description\n * When is the next Sunday?\n *\n * @param {Date | number} date - the date to start counting from\n * @returns {Date} the next Sunday\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // When is the next Sunday after Mar, 22, 2020?\n * const result = nextSunday(new Date(2020, 2, 22))\n * //=> Sun Mar 29 2020 00:00:00\n */\nexport default function nextSunday(date) {\n  requiredArgs(1, arguments);\n  return nextDay(date, 0);\n}"],
+  "mappings": ";;;;;;;;AAmBe,SAAR,WAA4B,MAAM;AACvC,eAAa,GAAG,SAAS;AACzB,SAAO,QAAQ,MAAM,CAAC;AACxB;",
+  "names": []
+}

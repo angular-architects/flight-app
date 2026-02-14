@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/previousSaturday/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport previousDay from \"../previousDay/index.js\";\n/**\n * @name previousSaturday\n * @category Weekday Helpers\n * @summary When is the previous Saturday?\n *\n * @description\n * When is the previous Saturday?\n *\n * @param {Date | number} date - the date to start counting from\n * @returns {Date} the previous Saturday\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // When is the previous Saturday before Jun, 20, 2021?\n * const result = previousSaturday(new Date(2021, 5, 20))\n * //=> Sat June 19 2021 00:00:00\n */\nexport default function previousSaturday(date) {\n  requiredArgs(1, arguments);\n  return previousDay(date, 6);\n}"],
+  "mappings": ";;;;;;;;AAmBe,SAAR,iBAAkC,MAAM;AAC7C,eAAa,GAAG,SAAS;AACzB,SAAO,YAAY,MAAM,CAAC;AAC5B;",
+  "names": []
+}

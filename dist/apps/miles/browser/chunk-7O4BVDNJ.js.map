@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/quartersToMonths/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { monthsInQuarter } from \"../constants/index.js\";\n/**\n * @name quartersToMonths\n * @category Conversion Helpers\n * @summary Convert number of quarters to months.\n *\n * @description\n * Convert a number of quarters to a full number of months.\n *\n * @param {number} quarters - number of quarters to be converted\n *\n * @returns {number} the number of quarters converted in months\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 2 quarters to months\n * const result = quartersToMonths(2)\n * //=> 6\n */\nexport default function quartersToMonths(quarters) {\n  requiredArgs(1, arguments);\n  return Math.floor(quarters * monthsInQuarter);\n}"],
+  "mappings": ";;;;;;;;AAoBe,SAAR,iBAAkC,UAAU;AACjD,eAAa,GAAG,SAAS;AACzB,SAAO,KAAK,MAAM,WAAW,eAAe;AAC9C;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/fp/formatISO9075/index.js"],
+  "sourcesContent": ["// This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.\nimport fn from \"../../formatISO9075/index.js\";\nimport convertToFP from \"../_lib/convertToFP/index.js\";\nexport default convertToFP(fn, 1);"],
+  "mappings": ";;;;;;;;AAGA,IAAO,wBAAQ,YAAY,eAAI,CAAC;",
+  "names": []
+}

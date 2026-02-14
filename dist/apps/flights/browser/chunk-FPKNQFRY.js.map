@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/_lib/assign/index.js"],
+  "sourcesContent": ["export default function assign(target, object) {\n  if (target == null) {\n    throw new TypeError('assign requires that input parameter not be null or undefined');\n  }\n  for (var property in object) {\n    if (Object.prototype.hasOwnProperty.call(object, property)) {\n      ;\n      target[property] = object[property];\n    }\n  }\n  return target;\n}"],
+  "mappings": ";AAAe,SAAR,OAAwB,QAAQ,QAAQ;AAC7C,MAAI,UAAU,MAAM;AAClB,UAAM,IAAI,UAAU,+DAA+D;AAAA,EACrF;AACA,WAAS,YAAY,QAAQ;AAC3B,QAAI,OAAO,UAAU,eAAe,KAAK,QAAQ,QAAQ,GAAG;AAC1D;AACA,aAAO,QAAQ,IAAI,OAAO,QAAQ;AAAA,IACpC;AAAA,EACF;AACA,SAAO;AACT;",
+  "names": []
+}

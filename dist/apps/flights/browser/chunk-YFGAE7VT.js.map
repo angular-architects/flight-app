@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/_lib/roundingMethods/index.js"],
+  "sourcesContent": ["var roundingMap = {\n  ceil: Math.ceil,\n  round: Math.round,\n  floor: Math.floor,\n  trunc: function trunc(value) {\n    return value < 0 ? Math.ceil(value) : Math.floor(value);\n  } // Math.trunc is not supported by IE\n};\n\nvar defaultRoundingMethod = 'trunc';\nexport function getRoundingMethod(method) {\n  return method ? roundingMap[method] : roundingMap[defaultRoundingMethod];\n}"],
+  "mappings": ";AAAA,IAAI,cAAc;AAAA,EAChB,MAAM,KAAK;AAAA,EACX,OAAO,KAAK;AAAA,EACZ,OAAO,KAAK;AAAA,EACZ,OAAO,SAAS,MAAM,OAAO;AAC3B,WAAO,QAAQ,IAAI,KAAK,KAAK,KAAK,IAAI,KAAK,MAAM,KAAK;AAAA,EACxD;AAAA;AACF;AAEA,IAAI,wBAAwB;AACrB,SAAS,kBAAkB,QAAQ;AACxC,SAAO,SAAS,YAAY,MAAM,IAAI,YAAY,qBAAqB;AACzE;",
+  "names": []
+}

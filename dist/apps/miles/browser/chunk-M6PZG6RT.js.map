@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/minutesToSeconds/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { secondsInMinute } from \"../constants/index.js\";\n/**\n * @name minutesToSeconds\n * @category Conversion Helpers\n * @summary Convert minutes to seconds.\n *\n * @description\n * Convert a number of minutes to a full number of seconds.\n *\n * @param { number } minutes - number of minutes to be converted\n *\n * @returns {number} the number of minutes converted in seconds\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 2 minutes to seconds\n * const result = minutesToSeconds(2)\n * //=> 120\n */\nexport default function minutesToSeconds(minutes) {\n  requiredArgs(1, arguments);\n  return Math.floor(minutes * secondsInMinute);\n}"],
+  "mappings": ";;;;;;;;AAoBe,SAAR,iBAAkC,SAAS;AAChD,eAAa,GAAG,SAAS;AACzB,SAAO,KAAK,MAAM,UAAU,eAAe;AAC7C;",
+  "names": []
+}

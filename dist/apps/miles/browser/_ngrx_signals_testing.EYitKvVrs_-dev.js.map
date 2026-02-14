@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@ngrx/signals/fesm2022/ngrx-signals-testing.mjs"],
+  "sourcesContent": ["import { isWritableStateSource } from '@ngrx/signals';\n\nfunction unprotected(source) {\n    if (isWritableStateSource(source)) {\n        return source;\n    }\n    throw new Error('@ngrx/signals: The provided source is not writable.');\n}\n\n/**\n * Generated bundle index. Do not edit.\n */\n\nexport { unprotected };\n\n"],
+  "mappings": ";;;AAAA,SAAS,6BAA6B;AAEtC,SAAS,YAAY,QAAQ;AACzB,MAAI,sBAAsB,MAAM,GAAG;AAC/B,WAAO;AAAA,EACX;AACA,QAAM,IAAI,MAAM,qDAAqD;AACzE;",
+  "names": []
+}

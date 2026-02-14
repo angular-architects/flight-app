@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/getYear/index.js"],
+  "sourcesContent": ["import toDate from \"../toDate/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name getYear\n * @category Year Helpers\n * @summary Get the year of the given date.\n *\n * @description\n * Get the year of the given date.\n *\n * @param {Date|Number} date - the given date\n * @returns {Number} the year\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Which year is 2 July 2014?\n * const result = getYear(new Date(2014, 6, 2))\n * //=> 2014\n */\nexport default function getYear(dirtyDate) {\n  requiredArgs(1, arguments);\n  return toDate(dirtyDate).getFullYear();\n}"],
+  "mappings": ";;;;;;;;AAmBe,SAAR,QAAyB,WAAW;AACzC,eAAa,GAAG,SAAS;AACzB,SAAO,OAAO,SAAS,EAAE,YAAY;AACvC;",
+  "names": []
+}

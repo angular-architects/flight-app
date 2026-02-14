@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["apps/flights/src/app/domains/shared/ui-common/tabbed-pane/tabbed-pane.component.css"],
+  "sourcesContent": [".navigation {\n  margin-bottom: 30px;\n}\n\n.tab-link {\n  font-size: 16px;\n  padding-bottom: 3px;\n  border-bottom: 5px solid darkseagreen;\n  margin-right: 10px;\n}\n\n.tab-link a {\n  color: black;\n  cursor: pointer;\n}\n\n.tab-link a:hover {\n  color: orangered;\n  text-decoration: none;\n}\n\n.tab-link a.active {\n  color: orangered;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,iBAAe;AACjB;AAEA,CAAC;AACC,aAAW;AACX,kBAAgB;AAChB,iBAAe,IAAI,MAAM;AACzB,gBAAc;AAChB;AAEA,CAPC,SAOS;AACR,SAAO;AACP,UAAQ;AACV;AAEA,CAZC,SAYS,CAAC;AACT,SAAO;AACP,mBAAiB;AACnB;AAEA,CAjBC,SAiBS,CAAC,CAAC;AACV,SAAO;AACT;",
+  "names": []
+}

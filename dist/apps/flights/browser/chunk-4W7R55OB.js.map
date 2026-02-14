@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/getDefaultOptions/index.js"],
+  "sourcesContent": ["import { getDefaultOptions as getInternalDefaultOptions } from \"../_lib/defaultOptions/index.js\";\nimport assign from \"../_lib/assign/index.js\";\n/**\n * @name getDefaultOptions\n * @category Common Helpers\n * @summary Get default options.\n * @pure false\n *\n * @description\n * Returns an object that contains defaults for\n * `options.locale`, `options.weekStartsOn` and `options.firstWeekContainsDate`\n * arguments for all functions.\n *\n * You can change these with [setDefaultOptions]{@link https://date-fns.org/docs/setDefaultOptions}.\n *\n * @returns {Object} default options\n *\n * @example\n * const result = getDefaultOptions()\n * //=> {}\n *\n * @example\n * setDefaultOptions({ weekStarsOn: 1, firstWeekContainsDate: 4 })\n * const result = getDefaultOptions()\n * //=> { weekStarsOn: 1, firstWeekContainsDate: 4 }\n */\nexport default function getDefaultOptions() {\n  return assign({}, getInternalDefaultOptions());\n}"],
+  "mappings": ";;;;;;;;AA0Be,SAARA,qBAAqC;AAC1C,SAAO,OAAO,CAAC,GAAG,kBAA0B,CAAC;AAC/C;",
+  "names": ["getDefaultOptions"]
+}

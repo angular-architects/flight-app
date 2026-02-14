@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/getUnixTime/index.js"],
+  "sourcesContent": ["import getTime from \"../getTime/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name getUnixTime\n * @category Timestamp Helpers\n * @summary Get the seconds timestamp of the given date.\n *\n * @description\n * Get the seconds timestamp of the given date.\n *\n * @param {Date|Number} date - the given date\n * @returns {Number} the timestamp\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Get the timestamp of 29 February 2012 11:45:05 CET:\n * const result = getUnixTime(new Date(2012, 1, 29, 11, 45, 5))\n * //=> 1330512305\n */\nexport default function getUnixTime(dirtyDate) {\n  requiredArgs(1, arguments);\n  return Math.floor(getTime(dirtyDate) / 1000);\n}"],
+  "mappings": ";;;;;;;;AAmBe,SAAR,YAA6B,WAAW;AAC7C,eAAa,GAAG,SAAS;AACzB,SAAO,KAAK,MAAM,QAAQ,SAAS,IAAI,GAAI;AAC7C;",
+  "names": []
+}

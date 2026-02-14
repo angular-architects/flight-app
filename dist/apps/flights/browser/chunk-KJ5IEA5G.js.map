@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/isThisYear/index.js"],
+  "sourcesContent": ["import isSameYear from \"../isSameYear/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name isThisYear\n * @category Year Helpers\n * @summary Is the given date in the same year as the current date?\n * @pure false\n *\n * @description\n * Is the given date in the same year as the current date?\n *\n * > \u26A0\uFE0F Please note that this function is not present in the FP submodule as\n * > it uses `Date.now()` internally hence impure and can't be safely curried.\n *\n * @param {Date|Number} date - the date to check\n * @returns {Boolean} the date is in this year\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // If today is 25 September 2014, is 2 July 2014 in this year?\n * const result = isThisYear(new Date(2014, 6, 2))\n * //=> true\n */\nexport default function isThisYear(dirtyDate) {\n  requiredArgs(1, arguments);\n  return isSameYear(dirtyDate, Date.now());\n}"],
+  "mappings": ";;;;;;;;AAuBe,SAAR,WAA4B,WAAW;AAC5C,eAAa,GAAG,SAAS;AACzB,SAAO,WAAW,WAAW,KAAK,IAAI,CAAC;AACzC;",
+  "names": []
+}

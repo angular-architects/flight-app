@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/fp/differenceInCalendarYears/index.js"],
+  "sourcesContent": ["// This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.\nimport fn from \"../../differenceInCalendarYears/index.js\";\nimport convertToFP from \"../_lib/convertToFP/index.js\";\nexport default convertToFP(fn, 2);"],
+  "mappings": ";;;;;;;;AAGA,IAAO,oCAAQ,YAAY,2BAAI,CAAC;",
+  "names": []
+}

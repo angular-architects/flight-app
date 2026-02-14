@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/millisecondsToMinutes/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { millisecondsInMinute } from \"../constants/index.js\";\n/**\n * @name millisecondsToMinutes\n * @category Conversion Helpers\n * @summary Convert milliseconds to minutes.\n *\n * @description\n * Convert a number of milliseconds to a full number of minutes.\n *\n * @param {number} milliseconds - number of milliseconds to be converted.\n *\n * @returns {number} the number of milliseconds converted in minutes\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 60000 milliseconds to minutes:\n * const result = millisecondsToMinutes(60000)\n * //=> 1\n *\n * @example\n * // It uses floor rounding:\n * const result = millisecondsToMinutes(119999)\n * //=> 1\n */\nexport default function millisecondsToMinutes(milliseconds) {\n  requiredArgs(1, arguments);\n  var minutes = milliseconds / millisecondsInMinute;\n  return Math.floor(minutes);\n}"],
+  "mappings": ";;;;;;;;AAyBe,SAAR,sBAAuC,cAAc;AAC1D,eAAa,GAAG,SAAS;AACzB,MAAI,UAAU,eAAe;AAC7B,SAAO,KAAK,MAAM,OAAO;AAC3B;",
+  "names": []
+}

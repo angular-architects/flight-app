@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/fp/eachDayOfIntervalWithOptions/index.js"],
+  "sourcesContent": ["// This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.\nimport fn from \"../../eachDayOfInterval/index.js\";\nimport convertToFP from \"../_lib/convertToFP/index.js\";\nexport default convertToFP(fn, 2);"],
+  "mappings": ";;;;;;;;AAGA,IAAO,uCAAQ,YAAY,mBAAI,CAAC;",
+  "names": []
+}

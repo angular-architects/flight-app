@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/_lib/defaultOptions/index.js"],
+  "sourcesContent": ["var defaultOptions = {};\nexport function getDefaultOptions() {\n  return defaultOptions;\n}\nexport function setDefaultOptions(newOptions) {\n  defaultOptions = newOptions;\n}"],
+  "mappings": ";AAAA,IAAI,iBAAiB,CAAC;AACf,SAAS,oBAAoB;AAClC,SAAO;AACT;AACO,SAAS,kBAAkB,YAAY;AAC5C,mBAAiB;AACnB;",
+  "names": []
+}

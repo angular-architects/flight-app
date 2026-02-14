@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/cdk/fesm2022/element.mjs"],
+  "sourcesContent": ["import { ElementRef } from '@angular/core';\n\nfunction coerceNumberProperty(value, fallbackValue = 0) {\n    if (_isNumberValue(value)) {\n        return Number(value);\n    }\n    return arguments.length === 2 ? fallbackValue : 0;\n}\n/**\n * Whether the provided value is considered a number.\n * @docs-private\n */\nfunction _isNumberValue(value) {\n    // parseFloat(value) handles most of the cases we're interested in (it treats null, empty string,\n    // and other non-number values as NaN, where Number just uses 0) but it considers the string\n    // '123hello' to be a valid number. Therefore we also check if Number(value) is NaN.\n    return !isNaN(parseFloat(value)) && !isNaN(Number(value));\n}\n\n/**\n * Coerces an ElementRef or an Element into an element.\n * Useful for APIs that can accept either a ref or the native element itself.\n */\nfunction coerceElement(elementOrRef) {\n    return elementOrRef instanceof ElementRef ? elementOrRef.nativeElement : elementOrRef;\n}\n\nexport { _isNumberValue, coerceElement, coerceNumberProperty };\n\n"],
+  "mappings": ";AAAA,SAAS,kBAAkB;AAE3B,SAAS,qBAAqB,OAAO,gBAAgB,GAAG;AACpD,MAAI,eAAe,KAAK,GAAG;AACvB,WAAO,OAAO,KAAK;AAAA,EACvB;AACA,SAAO,UAAU,WAAW,IAAI,gBAAgB;AACpD;AAKA,SAAS,eAAe,OAAO;AAI3B,SAAO,CAAC,MAAM,WAAW,KAAK,CAAC,KAAK,CAAC,MAAM,OAAO,KAAK,CAAC;AAC5D;AAMA,SAAS,cAAc,cAAc;AACjC,SAAO,wBAAwB,aAAa,aAAa,gBAAgB;AAC7E;",
+  "names": []
+}

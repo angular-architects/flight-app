@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/endOfTomorrow/index.js"],
+  "sourcesContent": ["/**\n * @name endOfTomorrow\n * @category Day Helpers\n * @summary Return the end of tomorrow.\n * @pure false\n *\n * @description\n * Return the end of tomorrow.\n *\n * > \u26A0\uFE0F Please note that this function is not present in the FP submodule as\n * > it uses `new Date()` internally hence impure and can't be safely curried.\n *\n * @returns {Date} the end of tomorrow\n *\n * @example\n * // If today is 6 October 2014:\n * const result = endOfTomorrow()\n * //=> Tue Oct 7 2014 23:59:59.999\n */\nexport default function endOfTomorrow() {\n  var now = new Date();\n  var year = now.getFullYear();\n  var month = now.getMonth();\n  var day = now.getDate();\n  var date = new Date(0);\n  date.setFullYear(year, month, day + 1);\n  date.setHours(23, 59, 59, 999);\n  return date;\n}"],
+  "mappings": ";AAmBe,SAAR,gBAAiC;AACtC,MAAI,MAAM,oBAAI,KAAK;AACnB,MAAI,OAAO,IAAI,YAAY;AAC3B,MAAI,QAAQ,IAAI,SAAS;AACzB,MAAI,MAAM,IAAI,QAAQ;AACtB,MAAI,OAAO,oBAAI,KAAK,CAAC;AACrB,OAAK,YAAY,MAAM,OAAO,MAAM,CAAC;AACrC,OAAK,SAAS,IAAI,IAAI,IAAI,GAAG;AAC7B,SAAO;AACT;",
+  "names": []
+}

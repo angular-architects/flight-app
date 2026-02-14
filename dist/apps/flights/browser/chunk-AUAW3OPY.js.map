@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/cdk/fesm2022/data-source.mjs"],
+  "sourcesContent": ["import { ConnectableObservable } from 'rxjs';\n\nclass DataSource {\n}\n/** Checks whether an object is a data source. */\nfunction isDataSource(value) {\n    // Check if the value is a DataSource by observing if it has a connect function. Cannot\n    // be checked as an `instanceof DataSource` since people could create their own sources\n    // that match the interface, but don't extend DataSource. We also can't use `isObservable`\n    // here, because of some internal apps.\n    return value && typeof value.connect === 'function' && !(value instanceof ConnectableObservable);\n}\n\nexport { DataSource, isDataSource };\n\n"],
+  "mappings": ";AAAA,SAAS,6BAA6B;AAEtC,IAAM,aAAN,MAAiB;AACjB;AAEA,SAAS,aAAa,OAAO;AAKzB,SAAO,SAAS,OAAO,MAAM,YAAY,cAAc,EAAE,iBAAiB;AAC9E;",
+  "names": []
+}

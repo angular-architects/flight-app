@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/isThisQuarter/index.js"],
+  "sourcesContent": ["import isSameQuarter from \"../isSameQuarter/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name isThisQuarter\n * @category Quarter Helpers\n * @summary Is the given date in the same quarter as the current date?\n * @pure false\n *\n * @description\n * Is the given date in the same quarter as the current date?\n *\n * > \u26A0\uFE0F Please note that this function is not present in the FP submodule as\n * > it uses `Date.now()` internally hence impure and can't be safely curried.\n *\n * @param {Date|Number} date - the date to check\n * @returns {Boolean} the date is in this quarter\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // If today is 25 September 2014, is 2 July 2014 in this quarter?\n * const result = isThisQuarter(new Date(2014, 6, 2))\n * //=> true\n */\nexport default function isThisQuarter(dirtyDate) {\n  requiredArgs(1, arguments);\n  return isSameQuarter(Date.now(), dirtyDate);\n}"],
+  "mappings": ";;;;;;;;AAuBe,SAAR,cAA+B,WAAW;AAC/C,eAAa,GAAG,SAAS;AACzB,SAAO,cAAc,KAAK,IAAI,GAAG,SAAS;AAC5C;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/cdk/fesm2022/coercion/private.mjs"],
+  "sourcesContent": ["import { isObservable, of } from 'rxjs';\n\n/**\n * Given either an Observable or non-Observable value, returns either the original\n * Observable, or wraps it in an Observable that emits the non-Observable value.\n */\nfunction coerceObservable(data) {\n    if (!isObservable(data)) {\n        return of(data);\n    }\n    return data;\n}\n\nexport { coerceObservable };\n\n"],
+  "mappings": ";AAAA,SAAS,cAAc,UAAU;AAMjC,SAAS,iBAAiB,MAAM;AAC5B,MAAI,CAAC,aAAa,IAAI,GAAG;AACrB,WAAO,GAAG,IAAI;AAAA,EAClB;AACA,SAAO;AACX;",
+  "names": []
+}

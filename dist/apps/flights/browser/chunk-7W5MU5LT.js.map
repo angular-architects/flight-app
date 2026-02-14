@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/isMonday/index.js"],
+  "sourcesContent": ["import toDate from \"../toDate/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name isMonday\n * @category Weekday Helpers\n * @summary Is the given date Monday?\n *\n * @description\n * Is the given date Monday?\n *\n * @param {Date|Number} date - the date to check\n * @returns {Boolean} the date is Monday\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Is 22 September 2014 Monday?\n * const result = isMonday(new Date(2014, 8, 22))\n * //=> true\n */\nexport default function isMonday(date) {\n  requiredArgs(1, arguments);\n  return toDate(date).getDay() === 1;\n}"],
+  "mappings": ";;;;;;;;AAmBe,SAAR,SAA0B,MAAM;AACrC,eAAa,GAAG,SAAS;AACzB,SAAO,OAAO,IAAI,EAAE,OAAO,MAAM;AACnC;",
+  "names": []
+}

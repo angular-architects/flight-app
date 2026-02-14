@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/fp/differenceInQuartersWithOptions/index.js"],
+  "sourcesContent": ["// This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.\nimport fn from \"../../differenceInQuarters/index.js\";\nimport convertToFP from \"../_lib/convertToFP/index.js\";\nexport default convertToFP(fn, 3);"],
+  "mappings": ";;;;;;;;AAGA,IAAO,0CAAQ,YAAY,sBAAI,CAAC;",
+  "names": []
+}

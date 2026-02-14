@@ -1,0 +1,11 @@
+import { zh_CN_default } from "@nf-internal/chunk-6DLI5Z7M";
+import "@nf-internal/chunk-WGUJHRU3";
+import "@nf-internal/chunk-BGDVF36W";
+import "@nf-internal/chunk-ILKXEUEW";
+import "@nf-internal/chunk-M2CTTFQ2";
+import "@nf-internal/chunk-SQMTRHET";
+import "@nf-internal/chunk-FP3WEKKQ";
+import "@nf-internal/chunk-D7ZASVPN";
+import "@nf-internal/chunk-Z43A42SM";
+import "@nf-internal/chunk-54JPAORE";
+export { zh_CN_default as default };

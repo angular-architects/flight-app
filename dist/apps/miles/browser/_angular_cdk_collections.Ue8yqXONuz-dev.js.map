@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/cdk/fesm2022/collections.mjs"],
+  "sourcesContent": ["export { UniqueSelectionDispatcher } from './unique-selection-dispatcher.mjs';\nexport { ArrayDataSource, _RecycleViewRepeaterStrategy, _VIEW_REPEATER_STRATEGY, _ViewRepeaterOperation } from './recycle-view-repeater-strategy.mjs';\nexport { DataSource, isDataSource } from './data-source.mjs';\nexport { _DisposeViewRepeaterStrategy } from './dispose-view-repeater-strategy.mjs';\nexport { SelectionModel, getMultipleValuesInSingleSelectionError } from './selection-model.mjs';\nimport '@angular/core';\nimport 'rxjs';\n\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAKA,OAAO;AACP,OAAO;",
+  "names": []
+}

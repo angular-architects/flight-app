@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/cdk/fesm2022/cdk.mjs"],
+  "sourcesContent": ["import { Version } from '@angular/core';\n\n/** Current version of the Angular Component Development Kit. */\nconst VERSION = new Version('21.0.0-next.5');\n\nexport { VERSION };\n\n"],
+  "mappings": ";;;AAAA,SAAS,eAAe;AAGxB,IAAM,UAAU,IAAI,QAAQ,eAAe;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/_lib/toInteger/index.js"],
+  "sourcesContent": ["export default function toInteger(dirtyNumber) {\n  if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {\n    return NaN;\n  }\n  var number = Number(dirtyNumber);\n  if (isNaN(number)) {\n    return number;\n  }\n  return number < 0 ? Math.ceil(number) : Math.floor(number);\n}"],
+  "mappings": ";AAAe,SAAR,UAA2B,aAAa;AAC7C,MAAI,gBAAgB,QAAQ,gBAAgB,QAAQ,gBAAgB,OAAO;AACzE,WAAO;AAAA,EACT;AACA,MAAI,SAAS,OAAO,WAAW;AAC/B,MAAI,MAAM,MAAM,GAAG;AACjB,WAAO;AAAA,EACT;AACA,SAAO,SAAS,IAAI,KAAK,KAAK,MAAM,IAAI,KAAK,MAAM,MAAM;AAC3D;",
+  "names": []
+}

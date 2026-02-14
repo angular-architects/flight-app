@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/setYear/index.js"],
+  "sourcesContent": ["import toInteger from \"../_lib/toInteger/index.js\";\nimport toDate from \"../toDate/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name setYear\n * @category Year Helpers\n * @summary Set the year to the given date.\n *\n * @description\n * Set the year to the given date.\n *\n * @param {Date|Number} date - the date to be changed\n * @param {Number} year - the year of the new date\n * @returns {Date} the new date with the year set\n * @throws {TypeError} 2 arguments required\n *\n * @example\n * // Set year 2013 to 1 September 2014:\n * const result = setYear(new Date(2014, 8, 1), 2013)\n * //=> Sun Sep 01 2013 00:00:00\n */\nexport default function setYear(dirtyDate, dirtyYear) {\n  requiredArgs(2, arguments);\n  var date = toDate(dirtyDate);\n  var year = toInteger(dirtyYear);\n\n  // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date\n  if (isNaN(date.getTime())) {\n    return new Date(NaN);\n  }\n  date.setFullYear(year);\n  return date;\n}"],
+  "mappings": ";;;;;;;;;;;AAqBe,SAAR,QAAyB,WAAW,WAAW;AACpD,eAAa,GAAG,SAAS;AACzB,MAAI,OAAO,OAAO,SAAS;AAC3B,MAAI,OAAO,UAAU,SAAS;AAG9B,MAAI,MAAM,KAAK,QAAQ,CAAC,GAAG;AACzB,WAAO,oBAAI,KAAK,GAAG;AAAA,EACrB;AACA,OAAK,YAAY,IAAI;AACrB,SAAO;AACT;",
+  "names": []
+}

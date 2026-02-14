@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/material/fesm2022/material.mjs"],
+  "sourcesContent": ["// primary entry-point which is empty as of version 9. All components should\n// be imported through their individual entry-points. This file is needed to\n// satisfy the \"ng_package\" bazel rule which also requires a primary entry-point.\n// Workaround for: https://github.com/microsoft/rushstack/issues/2806.\n// This is a private export that can be removed at any time.\nconst \u0275\u0275tsModuleIndicatorApiExtractorWorkaround = true;\n\nexport { \u0275\u0275tsModuleIndicatorApiExtractorWorkaround };\n\n"],
+  "mappings": ";;;AAKA,IAAM,sDAA4C;",
+  "names": []
+}

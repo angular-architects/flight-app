@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/monthsToQuarters/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { monthsInQuarter } from \"../constants/index.js\";\n/**\n * @name monthsToQuarters\n * @category Conversion Helpers\n * @summary Convert number of months to quarters.\n *\n * @description\n * Convert a number of months to a full number of quarters.\n *\n * @param {number} months - number of months to be converted.\n *\n * @returns {number} the number of months converted in quarters\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 6 months to quarters:\n * const result = monthsToQuarters(6)\n * //=> 2\n *\n * @example\n * // It uses floor rounding:\n * const result = monthsToQuarters(7)\n * //=> 2\n */\nexport default function monthsToQuarters(months) {\n  requiredArgs(1, arguments);\n  var quarters = months / monthsInQuarter;\n  return Math.floor(quarters);\n}"],
+  "mappings": ";;;;;;;;AAyBe,SAAR,iBAAkC,QAAQ;AAC/C,eAAa,GAAG,SAAS;AACzB,MAAI,WAAW,SAAS;AACxB,SAAO,KAAK,MAAM,QAAQ;AAC5B;",
+  "names": []
+}

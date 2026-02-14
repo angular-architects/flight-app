@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular-architects/module-federation/src/index.js"],
+  "sourcesContent": ["\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst tslib_1 = require(\"tslib\");\ntslib_1.__exportStar(require(\"@angular-architects/module-federation-runtime\"), exports);\n"],
+  "mappings": ";;;;;;;;;;;AAAA;AAAA;AACA,WAAO,eAAe,SAAS,cAAc,EAAE,OAAO,KAAK,CAAC;AAC5D,QAAM,UAAU,UAAQ,OAAO;AAC/B,YAAQ,aAAa,2HAA0D,OAAO;AAAA;AAAA;",
+  "names": []
+}

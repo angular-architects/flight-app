@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/fp/previousFriday/index.js"],
+  "sourcesContent": ["// This file is generated automatically by `scripts/build/fp.ts`. Please, don't change it.\nimport fn from \"../../previousFriday/index.js\";\nimport convertToFP from \"../_lib/convertToFP/index.js\";\nexport default convertToFP(fn, 1);"],
+  "mappings": ";;;;;;;;AAGA,IAAO,yBAAQ,YAAY,gBAAI,CAAC;",
+  "names": []
+}

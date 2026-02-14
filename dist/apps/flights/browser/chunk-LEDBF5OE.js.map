@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/secondsToHours/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { secondsInHour } from \"../constants/index.js\";\n/**\n * @name secondsToHours\n * @category Conversion Helpers\n * @summary Convert seconds to hours.\n *\n * @description\n * Convert a number of seconds to a full number of hours.\n *\n * @param {number} seconds - number of seconds to be converted\n *\n * @returns {number} the number of seconds converted in hours\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 7200 seconds into hours\n * const result = secondsToHours(7200)\n * //=> 2\n *\n * @example\n * // It uses floor rounding:\n * const result = secondsToHours(7199)\n * //=> 1\n */\nexport default function secondsToHours(seconds) {\n  requiredArgs(1, arguments);\n  var hours = seconds / secondsInHour;\n  return Math.floor(hours);\n}"],
+  "mappings": ";;;;;;;;AAyBe,SAAR,eAAgC,SAAS;AAC9C,eAAa,GAAG,SAAS;AACzB,MAAI,QAAQ,UAAU;AACtB,SAAO,KAAK,MAAM,KAAK;AACzB;",
+  "names": []
+}

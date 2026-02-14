@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["apps/flights/src/app/domains/shared/util-federation-tools/wrapper/wrapper.component.css"],
+  "sourcesContent": [":host {\n  display: block;\n}\n"],
+  "mappings": ";AAAA;AACE,WAAS;AACX;",
+  "names": []
+}

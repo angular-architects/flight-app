@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["apps/flights/src/app/domains/checkin/feature-manage/feature-manage.component.css"],
+  "sourcesContent": [".form-control {\n  max-width: 300px;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,aAAW;AACb;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/core/fesm2022/weak_ref.mjs"],
+  "sourcesContent": ["/**\n * @license Angular v21.0.0-next.5\n * (c) 2010-2025 Google LLC. https://angular.io/\n * License: MIT\n */\n\nfunction setAlternateWeakRefImpl(impl) {\n    // TODO: remove this function\n}\n\nexport { setAlternateWeakRefImpl };\n\n"],
+  "mappings": ";AAMA,SAAS,wBAAwB,MAAM;AAEvC;",
+  "names": []
+}

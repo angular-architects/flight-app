@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/endOfToday/index.js"],
+  "sourcesContent": ["import endOfDay from \"../endOfDay/index.js\";\n/**\n * @name endOfToday\n * @category Day Helpers\n * @summary Return the end of today.\n * @pure false\n *\n * @description\n * Return the end of today.\n *\n * > \u26A0\uFE0F Please note that this function is not present in the FP submodule as\n * > it uses `Date.now()` internally hence impure and can't be safely curried.\n *\n * @returns {Date} the end of today\n *\n * @example\n * // If today is 6 October 2014:\n * const result = endOfToday()\n * //=> Mon Oct 6 2014 23:59:59.999\n */\nexport default function endOfToday() {\n  return endOfDay(Date.now());\n}"],
+  "mappings": ";;;;;AAoBe,SAAR,aAA8B;AACnC,SAAO,SAAS,KAAK,IAAI,CAAC;AAC5B;",
+  "names": []
+}

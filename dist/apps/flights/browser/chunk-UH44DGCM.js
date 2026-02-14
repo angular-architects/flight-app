@@ -1,0 +1,20 @@
+// node_modules/date-fns/esm/constants/index.js
+var daysInWeek = 7;
+var daysInYear = 365.2425;
+var maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1e3;
+var millisecondsInMinute = 6e4;
+var millisecondsInHour = 36e5;
+var millisecondsInSecond = 1e3;
+var minTime = -maxTime;
+var minutesInHour = 60;
+var monthsInQuarter = 3;
+var monthsInYear = 12;
+var quartersInYear = 4;
+var secondsInHour = 3600;
+var secondsInMinute = 60;
+var secondsInDay = secondsInHour * 24;
+var secondsInWeek = secondsInDay * 7;
+var secondsInYear = secondsInDay * daysInYear;
+var secondsInMonth = secondsInYear / 12;
+var secondsInQuarter = secondsInMonth * 3;
+export { daysInWeek, daysInYear, maxTime, millisecondsInMinute, millisecondsInHour, millisecondsInSecond, minTime, minutesInHour, monthsInQuarter, monthsInYear, quartersInYear, secondsInHour, secondsInMinute, secondsInDay, secondsInWeek, secondsInYear, secondsInMonth, secondsInQuarter };

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/millisecondsToHours/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { millisecondsInHour } from \"../constants/index.js\";\n/**\n * @name millisecondsToHours\n * @category Conversion Helpers\n * @summary Convert milliseconds to hours.\n *\n * @description\n * Convert a number of milliseconds to a full number of hours.\n *\n * @param {number} milliseconds - number of milliseconds to be converted\n *\n * @returns {number} the number of milliseconds converted in hours\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 7200000 milliseconds to hours:\n * const result = millisecondsToHours(7200000)\n * //=> 2\n *\n * @example\n * // It uses floor rounding:\n * const result = millisecondsToHours(7199999)\n * //=> 1\n */\nexport default function millisecondsToHours(milliseconds) {\n  requiredArgs(1, arguments);\n  var hours = milliseconds / millisecondsInHour;\n  return Math.floor(hours);\n}"],
+  "mappings": ";;;;;;;;AAyBe,SAAR,oBAAqC,cAAc;AACxD,eAAa,GAAG,SAAS;AACzB,MAAI,QAAQ,eAAe;AAC3B,SAAO,KAAK,MAAM,KAAK;AACzB;",
+  "names": []
+}

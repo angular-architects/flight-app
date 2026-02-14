@@ -1,0 +1,11 @@
+import { differenceInCalendarISOWeeks } from "@nf-internal/chunk-GWIOS3H3";
+import "@nf-internal/chunk-OBRWG5KZ";
+import "@nf-internal/chunk-CKVZFPX6";
+import "@nf-internal/chunk-YBP42KGB";
+import "@nf-internal/chunk-M2CTTFQ2";
+import "@nf-internal/chunk-SQMTRHET";
+import "@nf-internal/chunk-FP3WEKKQ";
+import "@nf-internal/chunk-D7ZASVPN";
+import "@nf-internal/chunk-Z43A42SM";
+import "@nf-internal/chunk-54JPAORE";
+export { differenceInCalendarISOWeeks as default };

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/locale/en-GB/_lib/formatLong/index.js"],
+  "sourcesContent": ["import buildFormatLongFn from \"../../../_lib/buildFormatLongFn/index.js\";\nvar dateFormats = {\n  full: 'EEEE, d MMMM yyyy',\n  long: 'd MMMM yyyy',\n  medium: 'd MMM yyyy',\n  short: 'dd/MM/yyyy'\n};\nvar timeFormats = {\n  full: 'HH:mm:ss zzzz',\n  long: 'HH:mm:ss z',\n  medium: 'HH:mm:ss',\n  short: 'HH:mm'\n};\nvar dateTimeFormats = {\n  full: \"{{date}} 'at' {{time}}\",\n  long: \"{{date}} 'at' {{time}}\",\n  medium: '{{date}}, {{time}}',\n  short: '{{date}}, {{time}}'\n};\nvar formatLong = {\n  date: buildFormatLongFn({\n    formats: dateFormats,\n    defaultWidth: 'full'\n  }),\n  time: buildFormatLongFn({\n    formats: timeFormats,\n    defaultWidth: 'full'\n  }),\n  dateTime: buildFormatLongFn({\n    formats: dateTimeFormats,\n    defaultWidth: 'full'\n  })\n};\nexport default formatLong;"],
+  "mappings": ";;;;;AACA,IAAI,cAAc;AAAA,EAChB,MAAM;AAAA,EACN,MAAM;AAAA,EACN,QAAQ;AAAA,EACR,OAAO;AACT;AACA,IAAI,cAAc;AAAA,EAChB,MAAM;AAAA,EACN,MAAM;AAAA,EACN,QAAQ;AAAA,EACR,OAAO;AACT;AACA,IAAI,kBAAkB;AAAA,EACpB,MAAM;AAAA,EACN,MAAM;AAAA,EACN,QAAQ;AAAA,EACR,OAAO;AACT;AACA,IAAI,aAAa;AAAA,EACf,MAAM,kBAAkB;AAAA,IACtB,SAAS;AAAA,IACT,cAAc;AAAA,EAChB,CAAC;AAAA,EACD,MAAM,kBAAkB;AAAA,IACtB,SAAS;AAAA,IACT,cAAc;AAAA,EAChB,CAAC;AAAA,EACD,UAAU,kBAAkB;AAAA,IAC1B,SAAS;AAAA,IACT,cAAc;AAAA,EAChB,CAAC;AACH;AACA,IAAO,qBAAQ;",
+  "names": []
+}

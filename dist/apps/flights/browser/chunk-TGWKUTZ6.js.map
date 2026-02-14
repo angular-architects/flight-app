@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../@angular/cdk/fesm2022/activedescendant-key-manager.mjs"],
+  "sourcesContent": ["import { ListKeyManager } from './list-key-manager.mjs';\n\nclass ActiveDescendantKeyManager extends ListKeyManager {\n    setActiveItem(index) {\n        if (this.activeItem) {\n            this.activeItem.setInactiveStyles();\n        }\n        super.setActiveItem(index);\n        if (this.activeItem) {\n            this.activeItem.setActiveStyles();\n        }\n    }\n}\n\nexport { ActiveDescendantKeyManager };\n\n"],
+  "mappings": ";;;;;AAEA,IAAM,6BAAN,cAAyC,eAAe;AAAA,EACpD,cAAc,OAAO;AACjB,QAAI,KAAK,YAAY;AACjB,WAAK,WAAW,kBAAkB;AAAA,IACtC;AACA,UAAM,cAAc,KAAK;AACzB,QAAI,KAAK,YAAY;AACjB,WAAK,WAAW,gBAAgB;AAAA,IACpC;AAAA,EACJ;AACJ;",
+  "names": []
+}

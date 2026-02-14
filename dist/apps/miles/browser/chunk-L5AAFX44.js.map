@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/fromUnixTime/index.js"],
+  "sourcesContent": ["import toDate from \"../toDate/index.js\";\nimport toInteger from \"../_lib/toInteger/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name fromUnixTime\n * @category Timestamp Helpers\n * @summary Create a date from a Unix timestamp.\n *\n * @description\n * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.\n *\n * @param {Number} unixTime - the given Unix timestamp (in seconds)\n * @returns {Date} the date\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Create the date 29 February 2012 11:45:05:\n * const result = fromUnixTime(1330515905)\n * //=> Wed Feb 29 2012 11:45:05\n */\nexport default function fromUnixTime(dirtyUnixTime) {\n  requiredArgs(1, arguments);\n  var unixTime = toInteger(dirtyUnixTime);\n  return toDate(unixTime * 1000);\n}"],
+  "mappings": ";;;;;;;;;;;AAoBe,SAAR,aAA8B,eAAe;AAClD,eAAa,GAAG,SAAS;AACzB,MAAI,WAAW,UAAU,aAAa;AACtC,SAAO,OAAO,WAAW,GAAI;AAC/B;",
+  "names": []
+}

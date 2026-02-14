@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["apps/flights/src/app/shell/basket/basket.component.css"],
+  "sourcesContent": [".gray-bg {\n  opacity: 0.4;\n  background-color: black;\n  left: 0px;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  z-index: 2000;\n}\n\n.flight-history {\n  left: 0px;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  z-index: 2010;\n}\n\n.flight-history-inside {\n  background-color: white;\n  margin: 100px auto;\n  width: 400px;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,oBAAkB;AAClB,QAAM;AACN,OAAK;AACL,SAAO;AACP,UAAQ;AACR,YAAU;AACV,WAAS;AACX;AAEA,CAAC;AACC,QAAM;AACN,OAAK;AACL,SAAO;AACP,UAAQ;AACR,YAAU;AACV,WAAS;AACX;AAEA,CAAC;AACC,oBAAkB;AAClB,UAAQ,MAAM;AACd,SAAO;AACT;",
+  "names": []
+}

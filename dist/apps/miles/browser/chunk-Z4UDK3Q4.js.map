@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/previousDay/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport getDay from \"../getDay/index.js\";\nimport subDays from \"../subDays/index.js\";\n/**\n * @name previousDay\n * @category Weekday Helpers\n * @summary When is the previous day of the week?\n *\n * @description\n * When is the previous day of the week? 0-6 the day of the week, 0 represents Sunday.\n *\n * @param {Date | number} date - the date to check\n * @param {number} day - day of the week\n * @returns {Date} - the date is the previous day of week\n * @throws {TypeError} - 2 arguments required\n *\n * @example\n * // When is the previous Monday before Mar, 20, 2020?\n * const result = previousDay(new Date(2020, 2, 20), 1)\n * //=> Mon Mar 16 2020 00:00:00\n *\n * @example\n * // When is the previous Tuesday before Mar, 21, 2020?\n * const result = previousDay(new Date(2020, 2, 21), 2)\n * //=> Tue Mar 17 2020 00:00:00\n */\nexport default function previousDay(date, day) {\n  requiredArgs(2, arguments);\n  var delta = getDay(date) - day;\n  if (delta <= 0) delta += 7;\n  return subDays(date, delta);\n}"],
+  "mappings": ";;;;;;;;;;;AA0Be,SAAR,YAA6B,MAAM,KAAK;AAC7C,eAAa,GAAG,SAAS;AACzB,MAAI,QAAQ,OAAO,IAAI,IAAI;AAC3B,MAAI,SAAS,EAAG,UAAS;AACzB,SAAO,QAAQ,MAAM,KAAK;AAC5B;",
+  "names": []
+}

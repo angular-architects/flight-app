@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/hoursToSeconds/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { secondsInHour } from \"../constants/index.js\";\n/**\n * @name hoursToSeconds\n * @category Conversion Helpers\n * @summary Convert hours to seconds.\n *\n * @description\n * Convert a number of hours to a full number of seconds.\n *\n * @param {number} hours - number of hours to be converted\n *\n * @returns {number} the number of hours converted in seconds\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 2 hours to seconds:\n * const result = hoursToSeconds(2)\n * //=> 7200\n */\nexport default function hoursToSeconds(hours) {\n  requiredArgs(1, arguments);\n  return Math.floor(hours * secondsInHour);\n}"],
+  "mappings": ";;;;;;;;AAoBe,SAAR,eAAgC,OAAO;AAC5C,eAAa,GAAG,SAAS;AACzB,SAAO,KAAK,MAAM,QAAQ,aAAa;AACzC;",
+  "names": []
+}

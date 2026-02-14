@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/locale/en-GB/index.js"],
+  "sourcesContent": ["import formatDistance from \"../en-US/_lib/formatDistance/index.js\";\nimport formatRelative from \"../en-US/_lib/formatRelative/index.js\";\nimport localize from \"../en-US/_lib/localize/index.js\";\nimport match from \"../en-US/_lib/match/index.js\";\nimport formatLong from \"./_lib/formatLong/index.js\";\n/**\n * @type {Locale}\n * @category Locales\n * @summary English locale (United Kingdom).\n * @language English\n * @iso-639-2 eng\n * @author Alex [@glintik]{@link https://github.com/glintik}\n */\nvar locale = {\n  code: 'en-GB',\n  formatDistance: formatDistance,\n  formatLong: formatLong,\n  formatRelative: formatRelative,\n  localize: localize,\n  match: match,\n  options: {\n    weekStartsOn: 1 /* Monday */,\n    firstWeekContainsDate: 4\n  }\n};\nexport default locale;"],
+  "mappings": ";;;;;;;;;;;;;AAaA,IAAI,SAAS;AAAA,EACX,MAAM;AAAA,EACN,gBAAgB;AAAA,EAChB,YAAY;AAAA,EACZ,gBAAgB;AAAA,EAChB,UAAU;AAAA,EACV,OAAO;AAAA,EACP,SAAS;AAAA,IACP,cAAc;AAAA,IACd,uBAAuB;AAAA,EACzB;AACF;AACA,IAAO,gBAAQ;",
+  "names": []
+}

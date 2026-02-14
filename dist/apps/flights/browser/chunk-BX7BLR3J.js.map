@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/yearsToMonths/index.js"],
+  "sourcesContent": ["import requiredArgs from \"../_lib/requiredArgs/index.js\";\nimport { monthsInYear } from \"../constants/index.js\";\n/**\n * @name yearsToMonths\n * @category Conversion Helpers\n * @summary Convert years to months.\n *\n * @description\n * Convert a number of years to a full number of months.\n *\n * @param {number} years - number of years to be converted\n *\n * @returns {number} the number of years converted in months\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // Convert 2 years into months\n * const result = yearsToMonths(2)\n * //=> 24\n */\nexport default function yearsToMonths(years) {\n  requiredArgs(1, arguments);\n  return Math.floor(years * monthsInYear);\n}"],
+  "mappings": ";;;;;;;;AAoBe,SAAR,cAA+B,OAAO;AAC3C,eAAa,GAAG,SAAS;AACzB,SAAO,KAAK,MAAM,QAAQ,YAAY;AACxC;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../date-fns/esm/isThisMinute/index.js"],
+  "sourcesContent": ["import isSameMinute from \"../isSameMinute/index.js\";\nimport requiredArgs from \"../_lib/requiredArgs/index.js\";\n/**\n * @name isThisMinute\n * @category Minute Helpers\n * @summary Is the given date in the same minute as the current date?\n * @pure false\n *\n * @description\n * Is the given date in the same minute as the current date?\n *\n * > \u26A0\uFE0F Please note that this function is not present in the FP submodule as\n * > it uses `Date.now()` internally hence impure and can't be safely curried.\n *\n * @param {Date|Number} date - the date to check\n * @returns {Boolean} the date is in this minute\n * @throws {TypeError} 1 argument required\n *\n * @example\n * // If now is 25 September 2014 18:30:15.500,\n * // is 25 September 2014 18:30:00 in this minute?\n * const result = isThisMinute(new Date(2014, 8, 25, 18, 30))\n * //=> true\n */\nexport default function isThisMinute(dirtyDate) {\n  requiredArgs(1, arguments);\n  return isSameMinute(Date.now(), dirtyDate);\n}"],
+  "mappings": ";;;;;;;;AAwBe,SAAR,aAA8B,WAAW;AAC9C,eAAa,GAAG,SAAS;AACzB,SAAO,aAAa,KAAK,IAAI,GAAG,SAAS;AAC3C;",
+  "names": []
+}

@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx serve miles",
+    "startTime": "2026-01-11T18:04:21.078Z",
+    "endTime": "2026-01-11T18:04:53.281Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "miles:serve",
+      "target": "serve",
+      "projectName": "miles",
+      "hash": "11638489199130066497",
+      "startTime": "2026-01-11T18:04:21.109Z",
+      "endTime": "2026-01-11T18:04:53.280Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

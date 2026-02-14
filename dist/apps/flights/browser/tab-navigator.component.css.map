@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["apps/flights/src/app/domains/shared/ui-common/tab-navigator/tab-navigator.component.css"],
+  "sourcesContent": [".tab-navigator {\n  border: 2px solid black;\n  width: 150px;\n}\n\n.tab-navigator button {\n  border: none;\n  background-color: inherit;\n}\n\n.tab-navigator .next {\n  float: right;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,UAAQ,IAAI,MAAM;AAClB,SAAO;AACT;AAEA,CALC,cAKc;AACb,UAAQ;AACR,oBAAkB;AACpB;AAEA,CAVC,cAUc,CAAC;AACd,SAAO;AACT;",
+  "names": []
+}
