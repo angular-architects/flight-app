@@ -2,8 +2,8 @@
 
 set -e
 
-BRANCH_LIST="branches.txt"
-FIXED_COMMIT="a9e637b996496122"  # der zu cherry-pickende Commit
+BRANCH_LIST="branches-ess.txt"
+FIXED_COMMIT="0e5e50755922b26afcbc1850241932669d8c12e2"  # der zu cherry-pickende Commit
 
 while read -r BRANCH; do
   if [[ -z "$BRANCH" ]]; then
@@ -13,13 +13,17 @@ while read -r BRANCH; do
   echo "===> Wechsel zu $BRANCH"
   git checkout "$BRANCH"
 
-  cp /tmp/home.component.ts src/app/home/home.component.ts
+  # git add .
+  # git commit -m "chore: provide empty about component template"
 
-  git add .
-  git commit -m "chore: provide empty about component template"
+  rm package-lock.json
 
-  # git cherry-pick "$FIXED_COMMIT" -X theirs
-
+  if git merge-base --is-ancestor "$FIXED_COMMIT" HEAD; then
+    echo "Commit already present"
+  else
+    git cherry-pick "$FIXED_COMMIT" -X theirs
+  fi
+  
   # echo "===> Cherry-Pick von $FIXED_COMMIT"
   # git cherry-pick "$FIXED_COMMIT" -X theirs || (git add . && git cherry-pick --continue)
   # echo "Copying files..."
