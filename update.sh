@@ -2,8 +2,8 @@
 
 set -e
 
-BRANCH_LIST="ent-branches.txt"
-FIXED_COMMIT="edecfbf20703dac0092c"  # der zu cherry-pickende Commit
+BRANCH_LIST="branches-ess.txt"
+FIXED_COMMIT="02e792ba57d6956142fd567"  # der zu cherry-pickende Commit
 
 while read -r BRANCH; do
   if [[ -z "$BRANCH" ]]; then
@@ -13,21 +13,21 @@ while read -r BRANCH; do
   echo "===> Wechsel zu $BRANCH"
   git checkout "$BRANCH"
 
-  echo "===> Cherry-Pick von $FIXED_COMMIT"
+
+  git cherry-pick "$FIXED_COMMIT" -X theirs
+
+  # echo "===> Cherry-Pick von $FIXED_COMMIT"
   # git cherry-pick "$FIXED_COMMIT" -X theirs || (git add . && git cherry-pick --continue)
+  # echo "Copying files..."
 
   # cp /tmp/package.json package.json
+  # cp /tmp/date-cva.directive.ts apps/flights/src/app/domains/shared/ui-common/date/date-cva.directive.ts 
+  
   #cp /tmp/pre-commit .husky/pre-commit 
   # git add .
-  git checkout lab08a-testing -- src/app/next-flights/next-flights.component.ts
-  git checkout lab08a-testing -- src/app/next-flights/checkin/checkin.component.ts
 
-  git checkout lab08a-testing -- src/styles.css
-
-  git checkout lab08a-testing -- src/app/navbar/navbar.component.html
-  git checkout lab08a-testing -- src/app/sidebar/sidebar.component.html
-  git add .
-  git commit -m "chore(ent): update to ngrx 20"
+  # git add .
+  # git commit -m "chore(ent): update to ng 21 next.5 to showcase signal forms" || echo Weiter gehts ...
 
 
 done < "$BRANCH_LIST"
