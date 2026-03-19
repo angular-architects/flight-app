@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
@@ -14,7 +14,7 @@ import { Flight, FlightService } from '@demo/ticketing/data';
   standalone: true,
   templateUrl: './flight-edit-reactive.component.html',
   styleUrls: ['./flight-edit-reactive.component.css'],
-  imports: [CommonModule, ReactiveFormsModule, ValidationErrorsComponent],
+  imports: [ReactiveFormsModule, ValidationErrorsComponent],
 })
 export class FlightEditReactiveComponent {
   private flightService = inject(FlightService);

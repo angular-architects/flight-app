@@ -6,6 +6,7 @@ import {
   importProvidersFrom,
   inject,
   provideAppInitializer,
+  provideZoneChangeDetection
 } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -19,7 +20,7 @@ import { ConfigService } from '@demo/shared/util-config';
 bootstrapApplication(AppComponent, {
   providers: [
     // provideZoneChangeDetection(),
-    provideHttpClient(),
+    provideZoneChangeDetection(),provideHttpClient(),
     provideRouter(APP_ROUTES),
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),

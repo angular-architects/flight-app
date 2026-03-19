@@ -46,3 +46,6 @@ testem.log
 Thumbs.db
 .wireit 
 
+
+.claude/worktrees
+.claude/settings.local.json

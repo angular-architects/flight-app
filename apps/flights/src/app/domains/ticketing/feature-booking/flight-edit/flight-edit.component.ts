@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 import { ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { CanExit } from '@demo/shared/util-common';
 @Component({
   selector: 'app-flight-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule, DateCvaDirective],
+  imports: [FormsModule, DateCvaDirective],
   templateUrl: './flight-edit.component.html',
   styleUrls: ['./flight-edit.component.css'],
 })

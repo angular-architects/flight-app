@@ -44,7 +44,7 @@ export class FlightSearchComponent {
   flightsCount = this.flightStore.flightsCount
 
   constructor() {
-
+    this.flightStore.search(computed(() => ({ from: this.from(), to: this.to() })))
   }
 
   // httpFlights = httpResource(() => ({
@@ -94,7 +94,6 @@ export class FlightSearchComponent {
     // this.from.set('Luzern')
     // this.from.set(from)
 
-    this.flightStore.search(this.from(), this.to())
 
   }
 

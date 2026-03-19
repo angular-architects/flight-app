@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { CheckinService } from '../data/checkin.service';
 
@@ -10,7 +10,7 @@ import { CheckinService } from '../data/checkin.service';
 @Component({
   selector: 'app-feature-manage',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './feature-manage.component.html',
   styleUrls: ['./feature-manage.component.css'],
 })

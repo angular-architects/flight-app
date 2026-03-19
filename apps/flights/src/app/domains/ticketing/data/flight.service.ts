@@ -44,7 +44,7 @@ export class FlightService {
   createResource(params: () => ({ from: string, to: string } | undefined), intervalMs: number) {
     return rxResource({
       params,
-      stream: ({ params: { from, to } }) => interval(intervalMs).pipe(switchMap(() => this.find(from, to)))
+      stream: ({ params: { from, to } }) => this.find(from, to)
     })
   }
 }

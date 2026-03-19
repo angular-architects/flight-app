@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-confirm',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './confirm.component.html',
   styleUrls: ['./confirm.component.css'],
 })

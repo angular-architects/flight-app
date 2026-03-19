@@ -6,13 +6,13 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { TabbedPaneService } from '../tabbed-pane/tabbed-pane.service';
 
 @Component({
   selector: 'app-tab-navigator',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './tab-navigator.component.html',
   styleUrls: ['./tab-navigator.component.css'],
 })

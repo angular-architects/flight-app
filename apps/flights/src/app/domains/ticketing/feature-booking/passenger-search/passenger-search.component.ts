@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { LoggerService } from '@demo/shared/util-logger';
 
 @Component({
   selector: 'app-passenger-search',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './passenger-search.component.html',
   styleUrls: ['./passenger-search.component.css'],
 })
