@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
 
-
 import { Luggage, LuggageService } from '@demo/luggage/data';
 import { LuggageCardComponent } from '@demo/luggage/ui-common';
 

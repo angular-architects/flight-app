@@ -1,16 +1,16 @@
 <table class="table">
   @for (row of data; track row) {
-    <tr>
-      @for (f of fieldList; track f) {
-        <td>
-          <ng-container
+  <tr>
+    @for (f of fieldList; track f) {
+    <td>
+      <ng-container
         *appCustomTemplateOutlet="
           f.templateRef;
           context: { $implicit: row[f.propName] }
         "
-          ></ng-container>
-        </td>
-      }
-    </tr>
+      ></ng-container>
+    </td>
+    }
+  </tr>
   }
 </table>

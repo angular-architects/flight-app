@@ -7,8 +7,8 @@ import { Config } from './config';
 })
 export class ConfigService {
   private _config = httpResource<Config>(() => ({
-    url: './assets/config.json'
-  }))
+    url: './assets/config.json',
+  }));
 
-  readonly config = this._config.asReadonly()
+  readonly config = this._config.asReadonly();
 }
