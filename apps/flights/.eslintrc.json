@@ -1,5 +1,5 @@
 {
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", "**/vitest.config.*.timestamp*"],
   "overrides": [
     {
       "files": ["*.ts"],

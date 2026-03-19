@@ -16,7 +16,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `nx test flights` (or `ng test`) to execute unit tests with [Vitest](https://vitest.dev) via Nx and [@analogjs/vitest-angular](https://analogjs.org/docs/features/testing/vitest).
 
 ## Running end-to-end tests
 

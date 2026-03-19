@@ -44,8 +44,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-.wireit 
+.wireit
 
 
 .claude/worktrees
 .claude/settings.local.json
+vitest.config.*.timestamp*

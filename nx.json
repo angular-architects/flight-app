@@ -10,7 +10,6 @@
       "default",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/**/*.spec.[jt]s",
-      "!{projectRoot}/karma.conf.js",
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/eslint.config.js",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -29,8 +28,7 @@
       "inputs": [
         "default",
         "^production",
-        "{workspaceRoot}/karma.conf.js",
-        "{workspaceRoot}/jest.preset.js"
+        "{workspaceRoot}/vitest.workspace.ts"
       ],
       "cache": true
     },
@@ -41,18 +39,22 @@
         "{workspaceRoot}/eslint.config.js"
       ],
       "cache": true
+    },
+    "@nx/vitest:test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
     }
   },
   "generators": {
     "@nx/angular:application": {
       "style": "css",
       "linter": "eslint",
-      "unitTestRunner": "jest",
+      "unitTestRunner": "vitest-analog",
       "e2eTestRunner": "none"
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "vitest-analog"
     },
     "@nx/angular:component": {
       "style": "css"

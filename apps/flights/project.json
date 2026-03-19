@@ -2,9 +2,9 @@
   "name": "flights",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "generators": {},
   "sourceRoot": "apps/flights/src",
   "prefix": "app",
+  "generators": {},
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -64,23 +64,17 @@
         "browserTarget": "flights:build"
       }
     },
-    "test": {
-      "executor": "@angular-devkit/build-angular:karma",
-      "options": {
-        "polyfills": ["zone.js", "zone.js/testing"],
-        "tsConfig": "apps/flights/tsconfig.spec.json",
-        "assets": ["apps/flights/src/favicon.ico", "apps/flights/src/assets"],
-        "styles": [
-          "@angular/material/prebuilt-themes/indigo-pink.css",
-          "apps/flights/src/styles.css"
-        ],
-        "scripts": []
-      }
-    },
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": ["apps/flights/**/*.ts", "apps/flights/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vitest:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "coverage/apps/flights"
       }
     }
   }
