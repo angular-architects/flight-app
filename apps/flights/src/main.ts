@@ -6,7 +6,7 @@ import {
   importProvidersFrom,
   inject,
   provideAppInitializer,
-  provideZoneChangeDetection
+  provideZoneChangeDetection,
 } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -20,7 +20,8 @@ import { ConfigService } from '@demo/shared/util-config';
 bootstrapApplication(AppComponent, {
   providers: [
     // provideZoneChangeDetection(),
-    provideZoneChangeDetection(),provideHttpClient(),
+    provideZoneChangeDetection(),
+    provideHttpClient(),
     provideRouter(APP_ROUTES),
     importProvidersFrom(NextFlightsModule),
     importProvidersFrom(MatDialogModule),
@@ -34,14 +35,17 @@ bootstrapApplication(AppComponent, {
       //   .pipe(filter((status) => status === 'resolved'), first());
 
       return new Promise<void>((resolve) => {
-        effect(() => {
-          const status = configService.config.status();
+        effect(
+          () => {
+            const status = configService.config.status();
 
-          if (status === 'resolved') {
-            resolve();
-            childInjector.destroy();
-          }
-        }, { injector: childInjector });
+            if (status === 'resolved') {
+              resolve();
+              childInjector.destroy();
+            }
+          },
+          { injector: childInjector }
+        );
       });
     }),
 

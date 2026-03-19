@@ -6,7 +6,8 @@ import {
   input,
   Input,
   NgZone,
-  Output, OnInit,
+  Output,
+  OnInit,
   effect,
   afterNextRender,
   model,
@@ -33,20 +34,20 @@ export class FlightCardComponent {
   private dialog = inject(MatDialog);
 
   item = input.required<Flight>();
-  selected = model(false)
+  selected = model(false);
 
-  something = output<boolean>()
+  something = output<boolean>();
 
   constructor() {
-    effect(() => console.log(this.item()))
+    effect(() => console.log(this.item()));
   }
 
   select() {
-    this.selected.set(true)
+    this.selected.set(true);
   }
 
   deselect() {
-    this.selected.set(false)
+    this.selected.set(false);
   }
 
   edit() {

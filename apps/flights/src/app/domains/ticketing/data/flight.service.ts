@@ -11,7 +11,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 export class FlightService {
   private http = inject(HttpClient);
   private configService = inject(ConfigService);
-  private baseUrl = this.configService.config.value()?.baseUrl ?? ''
+  private baseUrl = this.configService.config.value()?.baseUrl ?? '';
 
   find(from: string, to: string, urgent = false): Observable<Flight[]> {
     const url = `${this.baseUrl}/flight`;
@@ -41,10 +41,13 @@ export class FlightService {
     return this.http.get<Flight>(url, { headers, params });
   }
 
-  createResource(params: () => ({ from: string, to: string } | undefined), intervalMs: number) {
+  createResource(
+    params: () => { from: string; to: string } | undefined,
+    intervalMs: number
+  ) {
     return rxResource({
       params,
-      stream: ({ params: { from, to } }) => this.find(from, to)
-    })
+      stream: ({ params: { from, to } }) => this.find(from, to),
+    });
   }
 }

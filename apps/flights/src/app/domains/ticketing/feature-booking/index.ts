@@ -1,2 +1,2 @@
 export * from './flight-booking.routes';
-export { FlightStore } from './flight-store'
+export { FlightStore } from './flight-store';

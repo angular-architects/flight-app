@@ -9,5 +9,5 @@ import { FlightStore } from '@demo/ticketing/feature-booking';
   templateUrl: 'sidebar.component.html',
 })
 export class SidebarComponent {
-  fligthsCount = inject(FlightStore).flightsCount
+  fligthsCount = inject(FlightStore).flightsCount;
 }

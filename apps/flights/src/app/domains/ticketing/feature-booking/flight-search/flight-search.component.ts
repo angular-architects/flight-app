@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, linkedSignal, NgZone } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  linkedSignal,
+  NgZone,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Flight } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
@@ -13,7 +21,6 @@ import { FlightStore } from '../flight-store';
  * 2. Dynamic Dependency Tracking
  * 3. Glitch-Free
  */
-
 
 // type Flights = { status: 'idle' | 'loading' } | { status: "error", error: Error } | {
 //   status: 'resolved',
@@ -39,12 +46,14 @@ export class FlightSearchComponent {
   });
   to = linkedSignal(() => this.flightStore.searchParams().to);
 
-  flights = this.flightStore.flights
+  flights = this.flightStore.flights;
 
-  flightsCount = this.flightStore.flightsCount
+  flightsCount = this.flightStore.flightsCount;
 
   constructor() {
-    this.flightStore.search(computed(() => ({ from: this.from(), to: this.to() })))
+    this.flightStore.search(
+      computed(() => ({ from: this.from(), to: this.to() }))
+    );
   }
 
   // httpFlights = httpResource(() => ({
@@ -71,34 +80,30 @@ export class FlightSearchComponent {
 
   prettySearch = computed(() => {
     return `${this.from()} nach ${this.to()}`;
-  })
+  });
 
   logPrettySearch() {
-    console.log(this.prettySearch())
+    console.log(this.prettySearch());
   }
 
   introduce(value: string | Date) {
     if (typeof value === 'string') {
-      value.toLowerCase()
+      value.toLowerCase();
     } else if (value instanceof Date) {
       value.getTime();
     }
-
   }
 
   search(): void {
     // const from = this.from()
-
     // this.from.set('')
     // this.from.set('Wien')
     // this.from.set('Luzern')
     // this.from.set(from)
-
-
   }
 
   handleClick() {
-    console.log('ist nichts...')
+    console.log('ist nichts...');
   }
 
   delay(): void {
@@ -107,7 +112,9 @@ export class FlightSearchComponent {
 
   reverse() {
     this.flightStore.reverseSearch();
-    console.log(`Flugsuche wurde geändert auf: ${this.from()} nach ${this.to()}`);
+    console.log(
+      `Flugsuche wurde geändert auf: ${this.from()} nach ${this.to()}`
+    );
   }
 
   toFlightsWithDelays(flights: Flight[], delay: number): Flight[] {
