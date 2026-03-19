@@ -1,3 +1,5 @@
+@let item = this.item();
+
 <div [ngClass]="{ selected: selected }" class="card">
   <div class="card-header">
     <h2 class="title">
@@ -16,10 +18,10 @@
       <app-status-toggle [(status)]="item.delayed"> </app-status-toggle>
     </p>
     <p>
-      @if (!selected) {
-      <button (click)="select()" class="btn btn-default">Select</button>
-      } @if(selected) {
+      @if (selected()) {
       <button (click)="deselect()" class="btn btn-default">Remove</button>
+      } @else {
+      <button (click)="select()" class="btn btn-default">Select</button>
       }
       <button
         [routerLink]="['../flight-edit', item.id, { showDetails: false }]"

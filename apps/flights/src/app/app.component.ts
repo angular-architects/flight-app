@@ -29,7 +29,6 @@ export class AppComponent {
   constructor() {
     // TODO: In a later lab, we will assure that
     //  loading did happen _before_ we use the config!
-    this.configService.loadConfig();
 
     const stop$ = this.router.events.pipe(
       filter(
