@@ -9,10 +9,22 @@ import {
   NgZone,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Flight } from '@demo/ticketing/data';
+import {
+  disabled,
+  form,
+  FormField,
+  FormRoot,
+  hidden,
+  required,
+  validate,
+  validateAsync,
+  validateStandardSchema,
+} from '@angular/forms/signals';
+import { Flight, FlightService } from '@demo/ticketing/data';
 import { addMinutes } from 'date-fns';
 import { FlightCardComponent } from '../flight-card/flight-card.component';
 import { FlightStore } from '../flight-store';
+import { searchParamsSchema } from '../search-params';
 
 // import { CheckinService } from '@demo/checkin/data/checkin.service';
 
@@ -31,7 +43,7 @@ import { FlightStore } from '../flight-store';
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  imports: [CommonModule, FormsModule, FlightCardComponent],
+  imports: [CommonModule, FormField, FormRoot, FlightCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightSearchComponent {
@@ -39,6 +51,52 @@ export class FlightSearchComponent {
   private zone = inject(NgZone);
 
   protected readonly flightStore = inject(FlightStore);
+  protected readonly flightService = inject(FlightService);
+
+  searchParams = linkedSignal(this.flightStore.searchParams);
+
+  searchForm = form(
+    this.searchParams,
+    (path) => {
+      validateStandardSchema(path, searchParamsSchema);
+
+      validate(path.to, (ctx) => {
+        if (ctx.value() === 'Olten') {
+          return {
+            kind: 'city',
+            message: 'Hauptsache weg',
+          };
+        }
+
+        return undefined;
+      });
+
+      disabled(path.to, (ctx) => ctx.valueOf(path.from) === 'Olten');
+      hidden(path.to, (ctx) => ctx.valueOf(path.from) === 'Wien');
+
+      validateAsync(path.from, {
+        params: (ctx) => ctx.value(),
+        factory: (params) =>
+          this.flightService.createResource(() => {
+            const from = params();
+            return from ? { from, to: '' } : undefined;
+          }),
+        onSuccess: (flights) =>
+          flights.length > 0
+            ? undefined
+            : {
+                kind: 'asyncCity',
+                message: 'Von dieser Stadt wird nicht geflogen',
+              },
+        onError: () => ({ kind: 'network', message: 'Geht nicht' }),
+      });
+    },
+    {
+      submission: {
+        action: async (form) => void this.flightStore.search(form().value()),
+      },
+    }
+  );
 
   from = linkedSignal({
     source: this.flightStore.searchParams,
@@ -50,10 +108,14 @@ export class FlightSearchComponent {
 
   flightsCount = this.flightStore.flightsCount;
 
+  // Wird jetzt von searchForm.submission übernommen
+  // search(): void {
+  // this.flightStore.search(this.searchParams())
+  // }
+
   constructor() {
-    this.flightStore.search(
-      computed(() => ({ from: this.from(), to: this.to() }))
-    );
+    // Reactive Suche
+    // this.flightStore.search(() => this.searchForm().valid() ? this.searchParams() : undefined);
   }
 
   // httpFlights = httpResource(() => ({
@@ -83,6 +145,7 @@ export class FlightSearchComponent {
   });
 
   logPrettySearch() {
+    const value = this.flightStore.favourites;
     console.log(this.prettySearch());
   }
 
@@ -92,14 +155,6 @@ export class FlightSearchComponent {
     } else if (value instanceof Date) {
       value.getTime();
     }
-  }
-
-  search(): void {
-    // const from = this.from()
-    // this.from.set('')
-    // this.from.set('Wien')
-    // this.from.set('Luzern')
-    // this.from.set(from)
   }
 
   handleClick() {

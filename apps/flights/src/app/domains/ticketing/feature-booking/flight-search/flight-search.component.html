@@ -2,18 +2,35 @@
   <h2 class="title">Flight Search</h2>
 </div>
 
-<form>
+<form [formRoot]="searchForm">
   <div class="form-group">
     <label for="from">From:</label>
-    <input [(ngModel)]="from" id="from" name="from" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="to">To:</label>
-    <input [(ngModel)]="to" id="to" name="to" class="form-control" />
+    <input [formField]="searchForm.from" class="form-control" />
+
+    @for(error of searchForm.from().errors(); track error) {
+    <p>{{ error.message }}</p>
+    }
   </div>
 
+  @if (!searchForm.to().hidden()) {
   <div class="form-group">
-    <button (click)="search()" class="btn btn-default">Search</button>
+    <label for="to">To:</label>
+    <input [formField]="searchForm.to" class="form-control" />
+
+    @for(error of searchForm.to().errors(); track error) {
+    <p>{{ error.message }}</p>
+    }
+  </div>
+  }
+
+  <div class="form-group">
+    <button
+      type="submit"
+      class="btn btn-default"
+      [disabled]="searchForm().invalid()"
+    >
+      Search
+    </button>
     <button (click)="delay()" class="btn btn-default">Delay</button>
     <button (click)="flightStore.reload()" class="btn btn-default">
       Reload

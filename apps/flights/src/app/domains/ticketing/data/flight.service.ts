@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { firstValueFrom, interval, Observable, switchMap } from 'rxjs';
-import { Flight } from './flight';
+import { firstValueFrom, interval, map, Observable, switchMap } from 'rxjs';
+import { Flight, parseFlights } from './flight';
 import { ConfigService } from '@demo/shared/util-config';
 import { rxResource } from '@angular/core/rxjs-interop';
 
@@ -13,7 +13,7 @@ export class FlightService {
   private configService = inject(ConfigService);
   private baseUrl = this.configService.config.value()?.baseUrl ?? '';
 
-  find(from: string, to: string, urgent = false): Observable<Flight[]> {
+  find(from: string, to: string, urgent = false) {
     const url = `${this.baseUrl}/flight`;
 
     const headers = {
@@ -22,7 +22,7 @@ export class FlightService {
 
     const params = { from, to, urgent };
 
-    return this.http.get<Flight[]>(url, { headers, params });
+    return this.http.get(url, { headers, params }).pipe(map(parseFlights));
   }
 
   findPromise(from: string, to: string, urgent = false): Promise<Flight[]> {
@@ -41,10 +41,7 @@ export class FlightService {
     return this.http.get<Flight>(url, { headers, params });
   }
 
-  createResource(
-    params: () => { from: string; to: string } | undefined,
-    intervalMs: number
-  ) {
+  createResource(params: () => { from: string; to: string } | undefined) {
     return rxResource({
       params,
       stream: ({ params: { from, to } }) => this.find(from, to),

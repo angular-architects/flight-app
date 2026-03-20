@@ -6,14 +6,22 @@ import {
   withMethods,
   withProps,
   withState,
+  withFeature,
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { withDevtools } from '@angular-architects/ngrx-toolkit';
+import {
+  withDevtools,
+  withStorageSync,
+} from '@angular-architects/ngrx-toolkit';
 import { FlightService } from '../data';
 import { debounceTime, pipe, tap } from 'rxjs';
+import { withFavourites } from '@demo/shared/util-signals/with-favourites';
+import { withFlightsMethods } from './with-flights-methods';
 
 export const FlightStore = signalStore(
   { providedIn: 'root' },
+  withDevtools('flights'),
+  // withStorageSync('flights'),
   withState({
     searchParams: {
       from: 'Zürich',
@@ -22,43 +30,24 @@ export const FlightStore = signalStore(
     refreshInterval: 5_000,
   }),
   withProps((state) => {
-    const _flights = inject(FlightService).createResource(
-      state.searchParams,
-      state.refreshInterval()
-    );
+    const _flights = inject(FlightService).createResource(state.searchParams);
     return {
       _flights,
       flights: _flights.asReadonly(),
     };
   }),
+  withFeature((state) =>
+    withFavourites(() =>
+      state.flights.hasValue() ? state.flights.value() : []
+    )
+  ),
   withComputed((state) => ({
     prettySearch: () =>
       `${state.searchParams.from()} nach ${state.searchParams.to()}`,
     flightsCount: () =>
       state.flights.hasValue() ? state.flights.value().length : 0,
   })),
-  withMethods((state) => ({
-    setSearchInterval(refreshInterval: number) {
-      patchState(state, { refreshInterval });
-    },
-
-    search: rxMethod<{ from: string; to: string }>(
-      pipe(
-        debounceTime(700),
-        tap(({ from, to }) => patchState(state, { searchParams: { from, to } }))
-      )
-    ),
-
-    reload() {
-      state._flights.reload();
-    },
-
-    reverseSearch() {
-      patchState(state, ({ searchParams: { from, to } }) => ({
-        searchParams: { from: to, to: from },
-      }));
-    },
-  }))
+  withFlightsMethods()
 );
 
 @Injectable({ providedIn: 'root' })
@@ -74,8 +63,7 @@ export class FlightStoreSelbstgemacht {
 
   // extra
   private readonly _flights = this.flightService.createResource(
-    this._searchParams,
-    this._refreshInterval()
+    this._searchParams
   );
 
   // slices
