@@ -21,3 +21,22 @@ export const initFlight: Flight = {
 export function parseFlights(response: unknown) {
   return flightSchema.array().parse(response);
 }
+
+const defautlFlight: Flight = {
+  id: 1,
+  from: 'London',
+  to: 'Paris',
+  date: '2026-01-01',
+  delayed: false,
+}
+
+function flight(values: Partial<Flight> = {}) {
+  return { ...defautlFlight, ...values };
+}
+
+const flighStoreMock = {
+  load: vitest.fn().mockResolvedValue([flight({
+    from: "Zürich}), flight(), flight()]),
+  }
+
+expect(flighStoreMock.load()).toHaveBeenCalledWith();
