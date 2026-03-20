@@ -49,6 +49,13 @@ export const APP_ROUTES: Routes = [
           ),
       },
       {
+        path: 'airline',
+        loadComponent: () =>
+          import('./domains/ticketing/feature-airline/airline.component').then(
+            (m) => m.AirlineComponent
+          ),
+      },
+      {
         path: 'about',
         component: AboutComponent,
       },
