@@ -62,6 +62,7 @@
     "@nx/vitest": "22.6.0",
     "@nx/web": "22.6.0",
     "@nx/workspace": "22.6.0",
+    "@playwright/test": "^1.58.2",
     "@schematics/angular": "21.2.3",
     "@softarc/detective": "^2.0.1",
     "@softarc/eslint-plugin-sheriff": "^0.18.0",

@@ -5,7 +5,11 @@
 <form [formRoot]="searchForm">
   <div class="form-group">
     <label for="from">From:</label>
-    <input [formField]="searchForm.from" class="form-control" />
+    <input
+      [formField]="searchForm.from"
+      class="form-control"
+      aria-label="From"
+    />
 
     @for(error of searchForm.from().errors(); track error) {
     <p>{{ error.message }}</p>
@@ -15,7 +19,7 @@
   @if (!searchForm.to().hidden()) {
   <div class="form-group">
     <label for="to">To:</label>
-    <input [formField]="searchForm.to" class="form-control" />
+    <input [formField]="searchForm.to" class="form-control" aria-label="To" />
 
     @for(error of searchForm.to().errors(); track error) {
     <p>{{ error.message }}</p>

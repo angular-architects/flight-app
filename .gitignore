@@ -50,3 +50,11 @@ Thumbs.db
 .claude/worktrees
 .claude/settings.local.json
 vitest.config.*.timestamp*
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

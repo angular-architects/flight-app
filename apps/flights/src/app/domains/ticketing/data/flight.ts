@@ -29,14 +29,3 @@ const defautlFlight: Flight = {
   date: '2026-01-01',
   delayed: false,
 }
-
-function flight(values: Partial<Flight> = {}) {
-  return { ...defautlFlight, ...values };
-}
-
-const flighStoreMock = {
-  load: vitest.fn().mockResolvedValue([flight({
-    from: "Zürich}), flight(), flight()]),
-  }
-
-expect(flighStoreMock.load()).toHaveBeenCalledWith();
