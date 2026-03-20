@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FlightStore } from '@demo/ticketing/feature-booking';
 
 @Component({
   standalone: true,
@@ -9,5 +8,6 @@ import { FlightStore } from '@demo/ticketing/feature-booking';
   templateUrl: 'sidebar.component.html',
 })
 export class SidebarComponent {
-  fligthsCount = inject(FlightStore).flightsCount;
+  // fligthsCount = inject(FlightStore).flightsCount;
+  fligthsCount = signal(0);
 }

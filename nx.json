@@ -43,14 +43,19 @@
     "@nx/vitest:test": {
       "cache": true,
       "inputs": ["default", "^production"]
+    },
+    "@angular/build:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "generators": {
     "@nx/angular:application": {
-      "style": "css",
+      "e2eTestRunner": "none",
       "linter": "eslint",
-      "unitTestRunner": "vitest-analog",
-      "e2eTestRunner": "none"
+      "style": "css",
+      "unitTestRunner": "vitest-analog"
     },
     "@nx/angular:library": {
       "linter": "eslint",

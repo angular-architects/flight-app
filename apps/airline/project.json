@@ -1,20 +1,20 @@
 {
-  "name": "flights",
+  "name": "airline",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/flights/src",
   "prefix": "app",
-  "generators": {},
+  "sourceRoot": "apps/airline/src",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-architects/native-federation:build",
       "options": {},
       "configurations": {
         "production": {
-          "target": "flights:esbuild:production"
+          "target": "airline:esbuild:production"
         },
         "development": {
-          "target": "flights:esbuild:development",
+          "target": "airline:esbuild:development",
           "dev": true
         }
       },
@@ -23,27 +23,15 @@
     "serve": {
       "executor": "@angular-architects/native-federation:build",
       "options": {
-        "target": "flights:serve-original:development",
+        "target": "airline:serve-original:development",
         "rebuildDelay": 500,
         "dev": true,
         "cacheExternalArtifacts": false,
         "port": 0
       }
     },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
-      "options": {
-        "browserTarget": "flights:build"
-      }
-    },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/flights/**/*.ts",
-          "apps/flights/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/vitest:test",
@@ -51,29 +39,39 @@
         "{options.reportsDirectory}"
       ],
       "options": {
-        "reportsDirectory": "coverage/apps/flights"
+        "reportsDirectory": "coverage/apps/airline"
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "airline:build",
+        "staticFilePath": "dist/apps/airline/browser",
+        "spa": true
       }
     },
     "esbuild": {
       "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "outputPath": "dist/apps/flights",
-        "index": "apps/flights/src/index.html",
-        "browser": "apps/flights/src/main.ts",
-        "polyfills": [
-          "zone.js",
-          "es-module-shims"
-        ],
-        "tsConfig": "apps/flights/tsconfig.app.json",
+        "outputPath": "dist/apps/airline",
+        "browser": "apps/airline/src/main.ts",
+        "tsConfig": "apps/airline/tsconfig.app.json",
         "assets": [
-          "apps/flights/src/favicon.ico",
-          "apps/flights/src/assets"
+          {
+            "glob": "**/*",
+            "input": "apps/airline/public"
+          }
         ],
         "styles": [
-          "@angular/material/prebuilt-themes/indigo-pink.css",
-          "apps/flights/src/styles.css"
+          "apps/airline/src/styles.css"
         ],
-        "scripts": []
+        "polyfills": [
+          "es-module-shims"
+        ]
       },
       "configurations": {
         "production": {
@@ -85,8 +83,8 @@
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
             }
           ],
           "outputHashing": "all"
@@ -94,25 +92,25 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
+          "sourceMap": true
         }
       },
       "defaultConfiguration": "production"
     },
     "serve-original": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "flights:esbuild:production"
+          "buildTarget": "airline:esbuild:production"
         },
         "development": {
-          "buildTarget": "flights:esbuild:development"
+          "buildTarget": "airline:esbuild:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4200
+        "port": 4201
       }
     }
   }
