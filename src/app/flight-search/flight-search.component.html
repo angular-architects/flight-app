@@ -1,20 +1,89 @@
-<input [(ngModel)]="from">
-<input [(ngModel)]="to">
+<div class="header">
+  <h2 class="title">Flight Search</h2>
+</div>
 
-<button [disabled]="!from || !to" (click)="search()">Search</button>
+<form>
+  <div class="form-group">
+    <label>From:</label>
+    <input [(ngModel)]="from" name="from" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>To:</label>
+    <input [(ngModel)]="to" name="to" class="form-control" />
+  </div>
 
-<table>
-  @for (flight of flights; track flight.id) {
-    <tr>
-      <td>{{flight.id}}</td>
-      <td>{{flight.date}}</td>
-      <td>{{flight.from}}</td>
-      <td>{{flight.to}}</td>
-      <td><button (click)="selectFlight(flight)">Select</button></td>
-    </tr>
-  }
-</table>
+  <div class="form-group">
+    <button (click)="search()" class="btn btn-default">Search</button>
+  </div>
+</form>
 
-<pre>
-  {{selectedFlight | json}}
-</pre>
+@if (flights.length > 0) {
+  <table class="table table-condensed">
+      <tr>
+        <th>Id</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+      @for (f of flights; track f.id) {
+        <tr [class.selected]="f.id === selectedFlight?.id">
+          <td>{{ f.id }}</td>
+          <td>{{ f.from }}</td>
+          <td>{{ f.to }}</td>
+          <td>{{ f.date | date: "dd.MM.yyyy" }}</td>
+          <td>
+            <a (click)="select(f)">Select</a>
+          </td>
+        </tr>
+      }
+  </table>
+}
+
+@if (selectedFlight) {
+  <div>
+    @if (message) {
+      <div class="alert alert-primary">
+        {{ message }}
+      </div>
+    }
+    <div class="form-group">
+      <label>Id</label>
+      <input [(ngModel)]="selectedFlight.id" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>From</label>
+      <input [(ngModel)]="selectedFlight.from" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>To</label>
+      <input [(ngModel)]="selectedFlight.to" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>Date</label>
+      <input [(ngModel)]="selectedFlight.date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <input
+        [(ngModel)]="selectedFlight.delayed"
+        type="checkbox"
+        id="delayed"
+      />
+      <label for="delayed">Delayed</label>
+    </div>
+
+    <button class="btn btn-default" (click)="save()">Save</button>
+  </div>
+}
+
+<p>&nbsp;</p>
+
+@if (selectedFlight) {
+  <div>
+    <pre>{{ selectedFlight | json }}</pre>
+  </div>
+}

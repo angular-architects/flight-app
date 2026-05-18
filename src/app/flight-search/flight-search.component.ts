@@ -1,38 +1,73 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Flight } from '../model/flight';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-flight-search',
-  imports: [FormsModule, JsonPipe],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './flight-search.component.html',
-  styleUrl: './flight-search.component.css'
+  styleUrls: ['./flight-search.component.css'],
 })
 export class FlightSearchComponent {
-  protected from = 'Wien';
-  protected to = 'Berlin';
+  from = 'London';
+  to = 'Paris';
+  flights: Array<Flight> = [];
+  selectedFlight: Flight | undefined;
+  message = '';
 
-  private httpClient = inject(HttpClient);
+  private http = inject(HttpClient);
 
-  protected flights: Flight[] = [];
-  protected selectedFlight: Flight | undefined
+  search(): void {
+    // Reset properties
+    this.message = '';
+    this.selectedFlight = undefined;
 
-  protected async search() {
-    const flights$ = firstValueFrom(
-      this.httpClient.get<Flight[]>('https://demo.angulararchitects.io/api/flight', {
-        params: {
-          from: this.from,
-          to: this.to
-        }
-      }));
+    const url = 'https://demo.angulararchitects.io/api/flight';
 
-    this.flights = await flights$;
+    const headers = {
+      Accept: 'application/json',
+    };
+
+    const params = {
+      from: this.from,
+      to: this.to,
+    };
+
+    this.http.get<Flight[]>(url, { headers, params }).subscribe({
+      next: (flights) => {
+        this.flights = flights;
+      },
+      error: (errResp) => {
+        console.error('Error loading flights', errResp);
+      },
+    });
   }
 
-  protected selectFlight(flight: Flight) {
-    this.selectedFlight = flight;
+  save(): void {
+    if (!this.selectedFlight) return;
+
+    const url = 'https://demo.angulararchitects.io/api/flight';
+
+    const headers = {
+      Accept: 'application/json',
+    };
+
+    this.http.post<Flight>(url, this.selectedFlight, { headers }).subscribe({
+      next: (flight) => {
+        this.selectedFlight = flight;
+        this.message = 'Update successful!';
+      },
+      error: (errResponse) => {
+        this.message = 'Error on updating the Flight';
+        console.error(this.message, errResponse);
+      },
+    });
+  }
+
+  select(f: Flight): void {
+    this.selectedFlight = { ...f };
   }
 }

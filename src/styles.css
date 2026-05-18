@@ -1,3 +1,9 @@
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
 .table {
   width: 100%;
   max-width: 100%;
@@ -44,11 +50,6 @@ td {
   background-color: #fff;
 }
 
-.title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
-}
 
 h1 {
   margin-top: 0;
@@ -395,3 +396,10 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+.selected {
+  background-color: moccasin;
+}
+a {
+  cursor: pointer;
+}
+
