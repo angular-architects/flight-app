@@ -1,0 +1,20 @@
+<input [(ngModel)]="from">
+<input [(ngModel)]="to">
+
+<button [disabled]="!from || !to" (click)="search()">Search</button>
+
+<table>
+  @for (flight of flights; track flight.id) {
+    <tr>
+      <td>{{flight.id}}</td>
+      <td>{{flight.date}}</td>
+      <td>{{flight.from}}</td>
+      <td>{{flight.to}}</td>
+      <td><button (click)="selectFlight(flight)">Select</button></td>
+    </tr>
+  }
+</table>
+
+<pre>
+  {{selectedFlight | json}}
+</pre>
