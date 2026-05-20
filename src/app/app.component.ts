@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { FlightSearchComponent } from './flight-search/flight-search.component';
+import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
-  standalone: true,
-  imports: [SidebarComponent, NavbarComponent, FlightSearchComponent],
+  imports: [SidebarComponent, NavbarComponent, RouterOutlet],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

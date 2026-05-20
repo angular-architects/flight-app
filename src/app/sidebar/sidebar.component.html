@@ -1,20 +1,19 @@
 <div class="sidebar-wrapper">
-
   <ul class="nav">
     <li class="active">
-      <a href="#">
+      <a routerLink="/">
         <p>Start</p>
       </a>
     </li>
 
     <li>
-      <a>
-        <p>Flights</p>
+      <a routerLink="/flight-search">
+        <p>Flights ({{ flightsCount() }})</p>
       </a>
     </li>
 
     <li>
-      <a>
+      <a routerLink="/passengers">
         <p>Passengers</p>
       </a>
     </li>

@@ -2,49 +2,72 @@
   <h2 class="title">Flight Search</h2>
 </div>
 
-<form>
+<form [formRoot]="searchForm">
   <div class="form-group">
-    <label>From:</label>
-    <input [(ngModel)]="from" name="from" class="form-control" />
+    <label
+      >From:
+      <input [formField]="searchForm.from" class="form-control" />
+    </label>
+    @for (error of searchForm.from().errors(); track error) {
+      <div class="alert alert-danger">
+        {{ error.message }}
+      </div>
+    }
+    <!--    <app-form-errors controlName="from" [group]="formGroup"/>-->
   </div>
   <div class="form-group">
-    <label>To:</label>
-    <input [(ngModel)]="to" name="to" class="form-control" />
+    <label
+      >To:
+      <input [formField]="searchForm.to" class="form-control" />
+    </label>
+    @for (error of searchForm.to().errors(); track error) {
+      <div class="alert alert-danger">
+        {{ error.message }}
+      </div>
+    }
+    <!--    <app-form-errors controlName="to" [group]="formGroup"/>-->
   </div>
 
   <div class="form-group">
-    <button (click)="search()" class="btn btn-default">Search</button>
+    <button
+      [disabled]="searchForm().invalid()"
+      class="btn btn-default"
+      type="submit"
+    >
+      Search
+    </button>
+    <button (click)="reset()" class="btn btn-default">Reset</button>
+    <button (click)="reload()" class="btn btn-default">Reload</button>
   </div>
 </form>
 
-@if (flights.length > 0) {
-  <table class="table table-condensed">
-      <tr>
-        <th>Id</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Date</th>
-        <th></th>
-      </tr>
-      @for (f of flights; track f.id) {
-        <tr [class.selected]="f.id === selectedFlight?.id">
-          <td>{{ f.id }}</td>
-          <td>{{ f.from }}</td>
-          <td>{{ f.to }}</td>
-          <td>{{ f.date | date: "dd.MM.yyyy" }}</td>
-          <td>
-            <a (click)="select(f)">Select</a>
-          </td>
-        </tr>
-      }
-  </table>
+<p>{{ prettySearch() }}</p>
+
+<div>
+  Basket
+  <pre>{{ basket | json }}</pre>
+</div>
+
+@if (!flights.error()) {
+  <div class="row">
+    @for (flight of flights.value(); track flight.id) {
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <flight-card
+          [item]="flight"
+          [selected]="basket[flight.id]"
+          (selectedChange)="basket[flight.id] = $event"
+        />
+      </div>
+    }
+  </div>
 }
 
+@let selectedFlight = this.selectedFlight();
 @if (selectedFlight) {
   <div>
-    @if (message) {
+    @if (message()) {
       <div class="alert alert-primary">
-        {{ message }}
+        {{ message() }}
       </div>
     }
     <div class="form-group">
